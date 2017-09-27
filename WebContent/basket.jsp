@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
-<!-- test -->
+<!-- 정화 커밋 -->
 
 <head>
 
