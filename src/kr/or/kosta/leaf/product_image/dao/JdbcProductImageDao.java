@@ -1,11 +1,11 @@
 package kr.or.kosta.leaf.product_image.dao;
 
 /**
- * 검색, 추천 시 더욱 정확하고 빠른 정보를 제공하기 위한 
- * Keyword 테이블 매칭 JdbcDao
+ * 이미지 제공하기 위한 
+ * product_image 테이블 매칭 JdbcDao
  * 
  * ------ 2017-09-27------
- * CRUD 구현(Update 불필요 -> 구현 X)
+ * CRUD 구현
  * 
  * 
  * -----------------------
