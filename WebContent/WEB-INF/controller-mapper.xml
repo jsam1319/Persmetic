@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<!-- 메인 페이지 세부 컨트롤러 -->
+	<bean name="/index" class="kr.or.kosta.leaf.main.controller.MainController"/>
+	
+<!-- 	회원 관련 세부 컨트롤러 
+	<bean name="/user/list" class="kr.or.kosta.shoppingmall.user.controller.UserListController"/>
+	<bean name="/user/login_action" class="kr.or.kosta.shoppingmall.user.controller.UserLoginController"/>
+	<bean name="/user/regist" class="kr.or.kosta.shoppingmall.user.controller.RegistController"/>
+	<bean name="/user/detail" class="kr.or.kosta.shoppingmall.user.controller.UserDetailController"/>
+	<bean name="/user/remove" class="kr.or.kosta.shoppingmall.user.controller.UserRemoveController"/> -->
+</beans>
