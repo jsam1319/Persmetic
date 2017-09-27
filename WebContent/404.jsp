@@ -53,9 +53,9 @@
                 <ul class="menu">
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                     </li>
-                    <li><a href="register.leaf">Register</a>
+                    <li><a href="register.jsp">Register</a>
                     </li>
-                    <li><a href="contact.leaf">Contact</a>
+                    <li><a href="contact.jsp">Contact</a>
                     </li>
                     <li><a href="#">Recently viewed</a>
                     </li>
@@ -71,7 +71,7 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="customer-orders.leaf" method="post">
+                        <form action="customer-orders.jsp" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
@@ -86,7 +86,7 @@
                         </form>
 
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.leaf"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                        <p class="text-center text-muted"><a href="register.jsp"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
 
                     </div>
                 </div>
@@ -104,7 +104,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="index.leaf" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="index.jsp" data-animate-hover="bounce">
                     <img src="img/logo.png" alt="Obaju logo" class="hidden-xs">
                     <img src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
                 </a>
@@ -117,7 +117,7 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="basket.leaf">
+                    <a class="btn btn-default navbar-toggle" href="basket.jsp">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 items in cart</span>
                     </a>
                 </div>
@@ -127,7 +127,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="index.leaf">Home</a>
+                    <li class="active"><a href="index.jsp">Home</a>
                     </li>
                     <li class="dropdown yamm-fw">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Men <b class="caret"></b></a>
@@ -138,63 +138,63 @@
                                         <div class="col-sm-3">
                                             <h5>Clothing</h5>
                                             <ul>
-                                                <li><a href="category.leaf">T-shirts</a>
+                                                <li><a href="category.jsp">T-shirts</a>
                                                 </li>
-                                                <li><a href="category.leaf">Shirts</a>
+                                                <li><a href="category.jsp">Shirts</a>
                                                 </li>
-                                                <li><a href="category.leaf">Pants</a>
+                                                <li><a href="category.jsp">Pants</a>
                                                 </li>
-                                                <li><a href="category.leaf">Accessories</a>
+                                                <li><a href="category.jsp">Accessories</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>Shoes</h5>
                                             <ul>
-                                                <li><a href="category.leaf">Trainers</a>
+                                                <li><a href="category.jsp">Trainers</a>
                                                 </li>
-                                                <li><a href="category.leaf">Sandals</a>
+                                                <li><a href="category.jsp">Sandals</a>
                                                 </li>
-                                                <li><a href="category.leaf">Hiking shoes</a>
+                                                <li><a href="category.jsp">Hiking shoes</a>
                                                 </li>
-                                                <li><a href="category.leaf">Casual</a>
+                                                <li><a href="category.jsp">Casual</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>Accessories</h5>
                                             <ul>
-                                                <li><a href="category.leaf">Trainers</a>
+                                                <li><a href="category.jsp">Trainers</a>
                                                 </li>
-                                                <li><a href="category.leaf">Sandals</a>
+                                                <li><a href="category.jsp">Sandals</a>
                                                 </li>
-                                                <li><a href="category.leaf">Hiking shoes</a>
+                                                <li><a href="category.jsp">Hiking shoes</a>
                                                 </li>
-                                                <li><a href="category.leaf">Casual</a>
+                                                <li><a href="category.jsp">Casual</a>
                                                 </li>
-                                                <li><a href="category.leaf">Hiking shoes</a>
+                                                <li><a href="category.jsp">Hiking shoes</a>
                                                 </li>
-                                                <li><a href="category.leaf">Casual</a>
+                                                <li><a href="category.jsp">Casual</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>Featured</h5>
                                             <ul>
-                                                <li><a href="category.leaf">Trainers</a>
+                                                <li><a href="category.jsp">Trainers</a>
                                                 </li>
-                                                <li><a href="category.leaf">Sandals</a>
+                                                <li><a href="category.jsp">Sandals</a>
                                                 </li>
-                                                <li><a href="category.leaf">Hiking shoes</a>
+                                                <li><a href="category.jsp">Hiking shoes</a>
                                                 </li>
                                             </ul>
                                             <h5>Looks and trends</h5>
                                             <ul>
-                                                <li><a href="category.leaf">Trainers</a>
+                                                <li><a href="category.jsp">Trainers</a>
                                                 </li>
-                                                <li><a href="category.leaf">Sandals</a>
+                                                <li><a href="category.jsp">Sandals</a>
                                                 </li>
-                                                <li><a href="category.leaf">Hiking shoes</a>
+                                                <li><a href="category.jsp">Hiking shoes</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -214,52 +214,52 @@
                                         <div class="col-sm-3">
                                             <h5>Clothing</h5>
                                             <ul>
-                                                <li><a href="category.leaf">T-shirts</a>
+                                                <li><a href="category.jsp">T-shirts</a>
                                                 </li>
-                                                <li><a href="category.leaf">Shirts</a>
+                                                <li><a href="category.jsp">Shirts</a>
                                                 </li>
-                                                <li><a href="category.leaf">Pants</a>
+                                                <li><a href="category.jsp">Pants</a>
                                                 </li>
-                                                <li><a href="category.leaf">Accessories</a>
+                                                <li><a href="category.jsp">Accessories</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>Shoes</h5>
                                             <ul>
-                                                <li><a href="category.leaf">Trainers</a>
+                                                <li><a href="category.jsp">Trainers</a>
                                                 </li>
-                                                <li><a href="category.leaf">Sandals</a>
+                                                <li><a href="category.jsp">Sandals</a>
                                                 </li>
-                                                <li><a href="category.leaf">Hiking shoes</a>
+                                                <li><a href="category.jsp">Hiking shoes</a>
                                                 </li>
-                                                <li><a href="category.leaf">Casual</a>
+                                                <li><a href="category.jsp">Casual</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>Accessories</h5>
                                             <ul>
-                                                <li><a href="category.leaf">Trainers</a>
+                                                <li><a href="category.jsp">Trainers</a>
                                                 </li>
-                                                <li><a href="category.leaf">Sandals</a>
+                                                <li><a href="category.jsp">Sandals</a>
                                                 </li>
-                                                <li><a href="category.leaf">Hiking shoes</a>
+                                                <li><a href="category.jsp">Hiking shoes</a>
                                                 </li>
-                                                <li><a href="category.leaf">Casual</a>
+                                                <li><a href="category.jsp">Casual</a>
                                                 </li>
-                                                <li><a href="category.leaf">Hiking shoes</a>
+                                                <li><a href="category.jsp">Hiking shoes</a>
                                                 </li>
-                                                <li><a href="category.leaf">Casual</a>
+                                                <li><a href="category.jsp">Casual</a>
                                                 </li>
                                             </ul>
                                             <h5>Looks and trends</h5>
                                             <ul>
-                                                <li><a href="category.leaf">Trainers</a>
+                                                <li><a href="category.jsp">Trainers</a>
                                                 </li>
-                                                <li><a href="category.leaf">Sandals</a>
+                                                <li><a href="category.jsp">Sandals</a>
                                                 </li>
-                                                <li><a href="category.leaf">Hiking shoes</a>
+                                                <li><a href="category.jsp">Hiking shoes</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -291,64 +291,64 @@
                                         <div class="col-sm-3">
                                             <h5>Shop</h5>
                                             <ul>
-                                                <li><a href="index.leaf">Homepage</a>
+                                                <li><a href="index.jsp">Homepage</a>
                                                 </li>
-                                                <li><a href="category.leaf">Category - sidebar left</a>
+                                                <li><a href="category.jsp">Category - sidebar left</a>
                                                 </li>
-                                                <li><a href="category-right.leaf">Category - sidebar right</a>
+                                                <li><a href="category-right.jsp">Category - sidebar right</a>
                                                 </li>
-                                                <li><a href="category-full.leaf">Category - full width</a>
+                                                <li><a href="category-full.jsp">Category - full width</a>
                                                 </li>
-                                                <li><a href="detail.leaf">Product detail</a>
+                                                <li><a href="detail.jsp">Product detail</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>User</h5>
                                             <ul>
-                                                <li><a href="register.leaf">Register / login</a>
+                                                <li><a href="register.jsp">Register / login</a>
                                                 </li>
-                                                <li><a href="customer-orders.leaf">Orders history</a>
+                                                <li><a href="customer-orders.jsp">Orders history</a>
                                                 </li>
-                                                <li><a href="customer-order.leaf">Order history detail</a>
+                                                <li><a href="customer-order.jsp">Order history detail</a>
                                                 </li>
-                                                <li><a href="customer-wishlist.leaf">Wishlist</a>
+                                                <li><a href="customer-wishlist.jsp">Wishlist</a>
                                                 </li>
-                                                <li><a href="customer-account.leaf">Customer account / change password</a>
+                                                <li><a href="customer-account.jsp">Customer account / change password</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>Order process</h5>
                                             <ul>
-                                                <li><a href="basket.leaf">Shopping cart</a>
+                                                <li><a href="basket.jsp">Shopping cart</a>
                                                 </li>
-                                                <li><a href="checkout1.leaf">Checkout - step 1</a>
+                                                <li><a href="checkout1.jsp">Checkout - step 1</a>
                                                 </li>
-                                                <li><a href="checkout2.leaf">Checkout - step 2</a>
+                                                <li><a href="checkout2.jsp">Checkout - step 2</a>
                                                 </li>
-                                                <li><a href="checkout3.leaf">Checkout - step 3</a>
+                                                <li><a href="checkout3.jsp">Checkout - step 3</a>
                                                 </li>
-                                                <li><a href="checkout4.leaf">Checkout - step 4</a>
+                                                <li><a href="checkout4.jsp">Checkout - step 4</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>Pages and blog</h5>
                                             <ul>
-                                                <li><a href="blog.leaf">Blog listing</a>
+                                                <li><a href="blog.jsp">Blog listing</a>
                                                 </li>
-                                                <li><a href="post.leaf">Blog Post</a>
+                                                <li><a href="post.jsp">Blog Post</a>
                                                 </li>
-                                                <li><a href="faq.leaf">FAQ</a>
+                                                <li><a href="faq.jsp">FAQ</a>
                                                 </li>
-                                                <li><a href="text.leaf">Text page</a>
+                                                <li><a href="text.jsp">Text page</a>
                                                 </li>
-                                                <li><a href="text-right.leaf">Text page - right sidebar</a>
+                                                <li><a href="text-right.jsp">Text page - right sidebar</a>
                                                 </li>
-                                                <li><a href="404.leaf">404 page</a>
+                                                <li><a href="404.jsp">404 page</a>
                                                 </li>
-                                                <li><a href="contact.leaf">Contact</a>
+                                                <li><a href="contact.jsp">Contact</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -366,7 +366,7 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.leaf" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
+                    <a href="basket.jsp" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
                 </div>
                 <!--/.nav-collapse -->
 
@@ -408,144 +408,31 @@
             <div class="container">
 
                 <div class="col-md-12">
+
                     <ul class="breadcrumb">
                         <li><a href="#">Home</a>
                         </li>
-                        <li>Contact</li>
+                        <li>Page not found</li>
                     </ul>
 
-                </div>
 
-                <div class="col-md-3">
-                    <!-- *** PAGES MENU ***
- _________________________________________________________ -->
-                    <div class="panel panel-default sidebar-menu">
+                    <div class="row" id="error-page">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="box">
 
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Pages</h3>
-                        </div>
+                                <p class="text-center">
+                                    <img src="img/logo.png" alt="Obaju template">
+                                </p>
 
-                        <div class="panel-body">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li>
-                                    <a href="text.leaf">Text page</a>
-                                </li>
-                                <li>
-                                    <a href="contact.leaf">Contact page</a>
-                                </li>
-                                <li>
-                                    <a href="faq.leaf">FAQ</a>
-                                </li>
+                                <h3>We are sorry - this page is not here anymore</h3>
+                                <h4 class="text-muted">Error 404 - Page not found</h4>
 
-                            </ul>
+                                <p class="text-center">To continue please use the <strong>Search form</strong> or <strong>Menu</strong> above.</p>
 
-                        </div>
-                    </div>
-
-                    <!-- *** PAGES MENU END *** -->
-
-
-                    <div class="banner">
-                        <a href="#">
-                            <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-9">
-
-
-                    <div class="box" id="contact">
-                        <h1>Contact</h1>
-
-                        <p class="lead">Are you curious about something? Do you have some kind of problem with our products?</p>
-                        <p>Please feel free to contact us, our customer service center is working for you 24/7.</p>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <h3><i class="fa fa-map-marker"></i> Address</h3>
-                                <p>13/25 New Avenue
-                                    <br>New Heaven
-                                    <br>45Y 73J
-                                    <br>England
-                                    <br>
-                                    <strong>Great Britain</strong>
+                                <p class="buttons"><a href="index.jsp" class="btn btn-primary"><i class="fa fa-home"></i> Go to Homepage</a>
                                 </p>
                             </div>
-                            <!-- /.col-sm-4 -->
-                            <div class="col-sm-4">
-                                <h3><i class="fa fa-phone"></i> Call center</h3>
-                                <p class="text-muted">This number is toll free if calling from Great Britain otherwise we advise you to use the electronic form of communication.</p>
-                                <p><strong>+33 555 444 333</strong>
-                                </p>
-                            </div>
-                            <!-- /.col-sm-4 -->
-                            <div class="col-sm-4">
-                                <h3><i class="fa fa-envelope"></i> Electronic support</h3>
-                                <p class="text-muted">Please feel free to write an email to us or to use our electronic ticketing system.</p>
-                                <ul>
-                                    <li><strong><a href="mailto:">info@fakeemail.com</a></strong>
-                                    </li>
-                                    <li><strong><a href="#">Ticketio</a></strong> - our ticketing support platform</li>
-                                </ul>
-                            </div>
-                            <!-- /.col-sm-4 -->
                         </div>
-                        <!-- /.row -->
-
-                        <hr>
-
-                        <div id="map">
-
-                        </div>
-
-                        <hr>
-                        <h2>Contact form</h2>
-
-                        <form>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="firstname">Firstname</label>
-                                        <input type="text" class="form-control" id="firstname">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="lastname">Lastname</label>
-                                        <input type="text" class="form-control" id="lastname">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="subject">Subject</label>
-                                        <input type="text" class="form-control" id="subject">
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label for="message">Message</label>
-                                        <textarea id="message" class="form-control"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-12 text-center">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send message</button>
-
-                                </div>
-                            </div>
-                            <!-- /.row -->
-                        </form>
-
-
                     </div>
 
 
@@ -566,13 +453,13 @@
                         <h4>Pages</h4>
 
                         <ul>
-                            <li><a href="text.leaf">About us</a>
+                            <li><a href="text.jsp">About us</a>
                             </li>
-                            <li><a href="text.leaf">Terms and conditions</a>
+                            <li><a href="text.jsp">Terms and conditions</a>
                             </li>
-                            <li><a href="faq.leaf">FAQ</a>
+                            <li><a href="faq.jsp">FAQ</a>
                             </li>
-                            <li><a href="contact.leaf">Contact us</a>
+                            <li><a href="contact.jsp">Contact us</a>
                             </li>
                         </ul>
 
@@ -583,7 +470,7 @@
                         <ul>
                             <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                             </li>
-                            <li><a href="register.leaf">Regiter</a>
+                            <li><a href="register.jsp">Regiter</a>
                             </li>
                         </ul>
 
@@ -599,23 +486,23 @@
                         <h5>Men</h5>
 
                         <ul>
-                            <li><a href="category.leaf">T-shirts</a>
+                            <li><a href="category.jsp">T-shirts</a>
                             </li>
-                            <li><a href="category.leaf">Shirts</a>
+                            <li><a href="category.jsp">Shirts</a>
                             </li>
-                            <li><a href="category.leaf">Accessories</a>
+                            <li><a href="category.jsp">Accessories</a>
                             </li>
                         </ul>
 
                         <h5>Ladies</h5>
                         <ul>
-                            <li><a href="category.leaf">T-shirts</a>
+                            <li><a href="category.jsp">T-shirts</a>
                             </li>
-                            <li><a href="category.leaf">Skirts</a>
+                            <li><a href="category.jsp">Skirts</a>
                             </li>
-                            <li><a href="category.leaf">Pants</a>
+                            <li><a href="category.jsp">Pants</a>
                             </li>
-                            <li><a href="category.leaf">Accessories</a>
+                            <li><a href="category.jsp">Accessories</a>
                             </li>
                         </ul>
 
@@ -637,7 +524,7 @@
                             <strong>Great Britain</strong>
                         </p>
 
-                        <a href="contact.leaf">Go to contact page</a>
+                        <a href="contact.jsp">Go to contact page</a>
 
                         <hr class="hidden-md hidden-lg">
 
@@ -701,7 +588,7 @@
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">Â© 2015 Your name goes here.</p>
+                    <p class="pull-left">© 2015 Your name goes here.</p>
 
                 </div>
                 <div class="col-md-6">
@@ -712,6 +599,7 @@
             </div>
         </div>
         <!-- *** COPYRIGHT END *** -->
+
 
 
 
@@ -733,30 +621,6 @@
     <script src="js/front.js"></script>
 
 
-
-
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
-
-    <script>
-        function initialize() {
-            var mapOptions = {
-                zoom: 15,
-                center: new google.maps.LatLng(49.1678136, 16.5671893),
-                mapTypeId: google.maps.MapTypeId.ROAD,
-                scrollwheel: false
-            }
-            var map = new google.maps.Map(document.getElementById('map'),
-                mapOptions);
-
-            var myLatLng = new google.maps.LatLng(49.1681989, 16.5650808);
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map
-            });
-        }
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
 
 
 </body>

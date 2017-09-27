@@ -14,7 +14,7 @@ public class JdbcKeywordDaoTest {
 	KeywordDao dao = (KeywordDao)factory.getDao(JdbcKeywordDao.class);
 	
 	@Test
-	public void testCreate() {R
+	public void testCreate() {
 		dao.create(new Keyword("테스트용", 1));
 	}
 	
