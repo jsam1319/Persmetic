@@ -1,11 +1,11 @@
 package kr.or.kosta.leaf.product_image.dao;
 
 /**
- * 이미지 제공하기 위한 
- * product_image 테이블 매칭 JdbcDao
+ * 검색, 추천 시 더욱 정확하고 빠른 정보를 제공하기 위한 
+ * Keyword 테이블 매칭 JdbcDao
  * 
  * ------ 2017-09-27------
- * CRUD 구현
+ * CRUD 구현(Update 불필요 -> 구현 X)
  * 
  * 
  * -----------------------
@@ -23,7 +23,6 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import kr.or.kosta.leaf.keyword.domain.Keyword;
-import kr.or.kosta.leaf.product_image.domain.ProductImage;
 
 
 /**
@@ -50,23 +49,21 @@ private DataSource dataSource;
 	}
 
 	@Override
-	public void create(ProductImage image) {
+	public void create(Keyword keyword) {
 		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = " INSERT INTO product_image(product_code, image_number, image_name, image_front) " +
-		             	   " VALUES   (?, ?, ?, ?)";
+		String sql = " INSERT INTO keyword(keyword_name, product_code) " +
+		             	   " VALUES   (?, ?)";
 		
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, image.getProductCode());
-			pstmt.setInt(2, image.getImageNumber());
-			pstmt.setString(3, image.getImageName());
-			pstmt.setString(4, image.getImageFront());
+			pstmt.setString(1, keyword.getKeywordName());
+			pstmt.setInt(2, keyword.getProductCode());
 			
 			pstmt.executeUpdate();
 			
@@ -77,7 +74,7 @@ private DataSource dataSource;
 			try {
 				con.rollback();
 			} catch (SQLException e1) {}
-			throw new RuntimeException("JdbcProductImageDao.create(Product) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcKeywordDao.create(Keyword) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if(pstmt != null) pstmt.close();
@@ -87,26 +84,90 @@ private DataSource dataSource;
 	}
 
 	@Override
-	public ProductImage read(int productCode, int imageNumber) {
+	public Keyword read(String keywordName, int productCode) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
 		
 		return null;
+=======
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+			
+		Keyword keyword = null;
+				
+		String sql = " SELECT keyword_name, product_code"
+						+ " FROM keyword " 
+				       	+ " WHERE keyword_name = ?" 
+				       	+ " AND product_code = ?";
+				             			  
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+				
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, keywordName);
+			pstmt.setInt(2, productCode);
+					
+			rs = pstmt.executeQuery();
+					
+			if(rs.next()) keyword = new Keyword(rs.getString("keyword_name"), rs.getInt("product_code"));
+					
+			con.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+				throw new RuntimeException("JdbcKeywordDao.read(String keywordName, int productCode) 실행 중 예외발생", e);
+			} finally {
+				try {
+					if(pstmt != null) pstmt.close();
+					if(con != null)   con.close(); // 커넥션풀에 반납
+				} catch (Exception e) {}
+			}
+				
+			return keyword;
+>>>>>>> branch 'master' of https://github.com/jsam1319/Persmetic
 	}
 
 	@Override
-	public void update(int productCode, int imageNumber, ProductImage image) {
+	public void delete(String keywordName, int productCode) {
 		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		
-	}
-
-	@Override
-	public void delete(int productCode, int imageNumber) {
-		// TODO Auto-generated method stub
+		String sql = " DELETE FROM keyword " +
+		             	   " WHERE keyword_name = ?"
+		             	+ " AND product_code = ?";
 		
-	}
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
 
-	
+			pstmt.setString(1, keywordName);
+			pstmt.setInt(2, productCode);
+			
+			pstmt.executeUpdate();
+			
+			con.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+			throw new RuntimeException("JdbcKeywordDao.delete(String keywordName, int productCode) 실행 중 예외발생", e);
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close(); // 커넥션풀에 반납
+			} catch (Exception e) {}
+		}
+	}
 }
 
 
