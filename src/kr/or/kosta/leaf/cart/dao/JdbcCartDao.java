@@ -121,8 +121,8 @@ private DataSource dataSource;
 	}	
 	
 	
-	/** 장바구니 리스트 */
-	public List<Cart> listAll() {
+	/** 회원별 장바구니 리스트 */
+	public List<Cart> listAll(int ctm_no) {
 		List<Cart> list = null;
 		
 		Connection con = null;
@@ -130,12 +130,14 @@ private DataSource dataSource;
 		ResultSet rs = null;
 
 		String sql = " SELECT product_code, ctm_no, cart_quanity, cart_price " + 
-					 " FROM cart ";
+					 " FROM cart " +
+					 " WHERE ctm_no = ? ";
 		
 		try {
 			list = new ArrayList<Cart>();
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ctm_no);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Cart cart = new Cart();
