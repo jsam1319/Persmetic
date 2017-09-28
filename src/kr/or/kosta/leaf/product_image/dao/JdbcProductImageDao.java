@@ -23,6 +23,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import kr.or.kosta.leaf.keyword.domain.Keyword;
+import kr.or.kosta.leaf.product_image.domain.ProductImage;
 
 
 /**
@@ -49,125 +50,32 @@ private DataSource dataSource;
 	}
 
 	@Override
-	public void create(Keyword keyword) {
-		// TODO Auto-generated method stub
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		
-		String sql = " INSERT INTO keyword(keyword_name, product_code) " +
-		             	   " VALUES   (?, ?)";
-		
-		try {
-			con = dataSource.getConnection();
-			con.setAutoCommit(false);
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, keyword.getKeywordName());
-			pstmt.setInt(2, keyword.getProductCode());
-			
-			pstmt.executeUpdate();
-			
-			con.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			try {
-				con.rollback();
-			} catch (SQLException e1) {}
-			throw new RuntimeException("JdbcKeywordDao.create(Keyword) 실행 중 예외발생", e);
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(con != null)   con.close(); // 커넥션풀에 반납
-			} catch (Exception e) {}
-		}
+	public void create(ProductImage image) {
+	
 	}
 
 	@Override
-	public Keyword read(String keywordName, int productCode) {
+	public ProductImage read(int productCode, int imageNumber) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		
-		
 		return null;
-=======
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-			
-		Keyword keyword = null;
-				
-		String sql = " SELECT keyword_name, product_code"
-						+ " FROM keyword " 
-				       	+ " WHERE keyword_name = ?" 
-				       	+ " AND product_code = ?";
-				             			  
-		try {
-			con = dataSource.getConnection();
-			con.setAutoCommit(false);
-				
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, keywordName);
-			pstmt.setInt(2, productCode);
-					
-			rs = pstmt.executeQuery();
-					
-			if(rs.next()) keyword = new Keyword(rs.getString("keyword_name"), rs.getInt("product_code"));
-					
-			con.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			try {
-				con.rollback();
-			} catch (SQLException e1) {}
-				throw new RuntimeException("JdbcKeywordDao.read(String keywordName, int productCode) 실행 중 예외발생", e);
-			} finally {
-				try {
-					if(pstmt != null) pstmt.close();
-					if(con != null)   con.close(); // 커넥션풀에 반납
-				} catch (Exception e) {}
-			}
-				
-			return keyword;
->>>>>>> branch 'master' of https://github.com/jsam1319/Persmetic
 	}
 
 	@Override
-	public void delete(String keywordName, int productCode) {
+	public void update(int productCode, int imageNumber, ProductImage image) {
 		// TODO Auto-generated method stub
-		Connection con = null;
-		PreparedStatement pstmt = null;
 		
-		String sql = " DELETE FROM keyword " +
-		             	   " WHERE keyword_name = ?"
-		             	+ " AND product_code = ?";
-		
-		try {
-			con = dataSource.getConnection();
-			con.setAutoCommit(false);
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, keywordName);
-			pstmt.setInt(2, productCode);
-			
-			pstmt.executeUpdate();
-			
-			con.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			try {
-				con.rollback();
-			} catch (SQLException e1) {}
-			throw new RuntimeException("JdbcKeywordDao.delete(String keywordName, int productCode) 실행 중 예외발생", e);
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(con != null)   con.close(); // 커넥션풀에 반납
-			} catch (Exception e) {}
-		}
 	}
+
+	@Override
+	public void delete(int productCode, int imageNumber) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	
+	
 }
 
 
