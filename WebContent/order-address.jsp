@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
-<!-- ì í ì»¤ë° -->
 
 <head>
 
@@ -23,7 +22,7 @@
 
     <!-- styles -->
     <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/owl.carousel.css" rel="stylesheet">
     <link href="css/owl.theme.css" rel="stylesheet">
@@ -408,104 +407,115 @@
                     <ul class="breadcrumb">
                         <li><a href="#">Home</a>
                         </li>
-                        <li>Shopping cart</li>
+                        <li>ì£¼ë¬¸(ì£¼ììë ¥)</li>
                     </ul>
                 </div>
 
-                <div class="col-md-12" id="basket">
+                <div class="col-md-9" id="checkout">
 
                     <div class="box">
+                        <form method="post" action="order-delivery.leaf">
+                            <h1>ì£¼ë¬¸íê¸°</h1>
+                            <ul class="nav nav-pills nav-justified">
+                                <li class="active"><a href="#"><i class="fa fa-map-marker"></i><br>ì£¼ììë ¥</a>
+                                </li>
+                                <li class="disabled"><a href="#"><i class="fa fa-money"></i><br>ê²°ì ë°©ì</a>
+                                </li>
+                            </ul>
 
-                        <form method="post" action="order-address.leaf">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="firstname">ì£¼ë¬¸ë²í¸</label>
+                                            <input type="text" class="form-control" id="firstname">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="lastname">ì£¼ë¬¸ì</label>
+                                            <input type="text" class="form-control" id="lastname">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
 
-                            <h1>ì¥ë°êµ¬ë</h1>
-                            <p class="text-muted">xê°ì ìíì´ ë´ê²¨ ììµëë¤.</p>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th colspan="2" class="text-center">ìíëª</th>
-                                            <th class="text-center">ìë</th>
-                                            <th class="text-center">íë§¤ê°</th>
-                                            <th class="text-center">í©ê³</th>
-                                            <th class="text-center">ìíì­ì </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                          <td>
-                                             <input type="checkbox">
-                                          </td>
-                                            <td>
-                                                <a href="#">
-                                                    <img src="img/detailsquare.jpg" alt="White Blouse Armani">
-                                                </a>
-                                            </td>
-                                            <td><a href="#">White Blouse Armani</a>
-                                            </td>
-                                            <td class="text-center"> 
-                                                <input type="number" value="2" class="border-ra">
-                                            </td>
-                                            <td class="text-center">123ì</td>
-                                            <td class="text-center">246ì</td>
-                                            <td class="text-center"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                               <input type="checkbox">
-                                            </td>
-                                            <td>
-                                                <a href="#">
-                                                    <img src="img/basketsquare.jpg" alt="Black Blouse Armani">
-                                                </a>
-                                            </td>
-                                            <td><a href="#">Black Blouse Armani</a>
-                                            </td>
-                                            <td class="text-center">
-                                                <input type="number" value="1"  class="border-ra">
-                                            </td>
-                                            <td class="text-center">200ì</td>
-                                            <td class="text-center">2000ì</td>
-                                            <td class="text-center"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr >
-                                            <th colspan="6" class="text-right">ì´ í©ê³</th>
-                                            <th colspan="1" class="text-center">10000ì</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="company">ì íë²í¸</label>
+                                            <input type="text" class="form-control" id="company">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="street">ì£¼ë¬¸ì¼</label>
+                                            <input type="text" class="form-control" id="street">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
 
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="form-group">
+                                            <label for="city">ì£¼ì</label>
+                                            <input type="text" class="form-control" id="city">
+                                         </div>
+                                    </div>
+                                     <div class="col-sm-1">
+                                          <div class="form-group"><br>
+                                            <button type="button" class="btn btn-primary" style="margin-top: 5px;">ì£¼ì ì°¾ê¸°
+                                            </button>
+                                         </div>
+                                    </div>
+                                  </div>
+                                <!-- /.row -->
                             </div>
-                            <!-- /.table-responsive -->
 
                             <div class="box-footer">
                                 <div class="pull-left">
-                                    <a href="category.leaf" class="btn btn-default"><i class="fa fa-chevron-left"></i>ì¼í ê³ìíê¸°</a>
+                                    <a href="basket.leaf" class="btn btn-default"><i class="fa fa-chevron-left"></i>ì¥ë°êµ¬ëë¡ ê°ê¸°</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button class="btn btn-default" style="margin-right: 10px"></i>ì í ìí ì£¼ë¬¸íê¸°</button>
-                                    <button type="submit" class="btn btn-primary">ì£¼ë¬¸íë¬ê°ê¸°<i class="fa fa-chevron-right"></i>
+                                    <button type="submit" class="btn btn-primary">ë¤ìë¨ê³ë¡<i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                             </div>
-
                         </form>
-
                     </div>
                     <!-- /.box -->
-
-
-           
 
 
                 </div>
                 <!-- /.col-md-9 -->
 
+                <div class="col-md-3">
+
+                    <div class="box" id="order-summary">
+                        <div class="box-header">
+                            <h3>ì£¼ë¬¸ ìì½</h3>
+                        </div>
+                        <p class="text-muted">ë°°ì¡ ë° ì¶ê° ë¹ì©ì ìë ¥í ê°ì ê¸°ì¤ì¼ë¡ ê³ì°ë©ëë¤.</p>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>ì£¼ë¬¸ ì´ í©ê³</td>
+                                        <th>0ì</th>
+                                    </tr>
+                                    <tr class="total">
+                                        <td>ì´ í©ê³</td>
+                                        <th>0ì</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
                 <!-- /.col-md-3 -->
 
             </div>
@@ -657,7 +667,7 @@
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">Â© 2015 Your name goes here.</p>
+                    <p class="pull-left">ÃÂ© 2015 Your name goes here.</p>
 
                 </div>
                 <div class="col-md-6">
@@ -687,6 +697,9 @@
     <script src="js/bootstrap-hover-dropdown.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
+
+
+
 
 
 
