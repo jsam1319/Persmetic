@@ -323,13 +323,9 @@
                                             <ul>
                                                 <li><a href="basket.leaf">Shopping cart</a>
                                                 </li>
-                                                <li><a href="checkout1.leaf">Checkout - step 1</a>
+                                                <li><a href="order-address.leaf">Checkout - step 1</a>
                                                 </li>
-                                                <li><a href="checkout2.leaf">Checkout - step 2</a>
-                                                </li>
-                                                <li><a href="checkout3.leaf">Checkout - step 3</a>
-                                                </li>
-                                                <li><a href="checkout4.leaf">Checkout - step 4</a>
+                                                <li><a href="order-delivery.leaf">Checkout - step 3</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -411,80 +407,78 @@
                     <ul class="breadcrumb">
                         <li><a href="#">Home</a>
                         </li>
-                        <li>Checkout - Delivery method</li>
+                        <li>주문(주소입력)</li>
                     </ul>
                 </div>
 
                 <div class="col-md-9" id="checkout">
 
                     <div class="box">
-                        <form method="post" action="checkout3.leaf">
-                            <h1>Checkout - Delivery method</h1>
+                        <form method="post" action="order-delivery.leaf">
+                            <h1>주문하기</h1>
                             <ul class="nav nav-pills nav-justified">
-                                <li><a href="checkout1.leaf"><i class="fa fa-map-marker"></i><br>Address</a>
+                                <li class="active"><a href="#"><i class="fa fa-map-marker"></i><br>주소입력</a>
                                 </li>
-                                <li class="active"><a href="#"><i class="fa fa-truck"></i><br>Delivery Method</a>
-                                </li>
-                                <li class="disabled"><a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
-                                </li>
-                                <li class="disabled"><a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                                <li class="disabled"><a href="#"><i class="fa fa-money"></i><br>결제방식</a>
                                 </li>
                             </ul>
 
                             <div class="content">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="box shipping-method">
-
-                                            <h4>USPS Next Day</h4>
-
-                                            <p>Get it right on next day - fastest option possible.</p>
-
-                                            <div class="box-footer text-center">
-
-                                                <input type="radio" name="delivery" value="delivery1">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="firstname">주문번호</label>
+                                            <input type="text" class="form-control" id="firstname">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="box shipping-method">
-
-                                            <h4>USPS Next Day</h4>
-
-                                            <p>Get it right on next day - fastest option possible.</p>
-
-                                            <div class="box-footer text-center">
-
-                                                <input type="radio" name="delivery" value="delivery2">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="box shipping-method">
-
-                                            <h4>USPS Next Day</h4>
-
-                                            <p>Get it right on next day - fastest option possible.</p>
-
-                                            <div class="box-footer text-center">
-
-                                                <input type="radio" name="delivery" value="delivery3">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="lastname">주문자</label>
+                                            <input type="text" class="form-control" id="lastname">
                                         </div>
                                     </div>
                                 </div>
                                 <!-- /.row -->
 
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="company">전화번호</label>
+                                            <input type="text" class="form-control" id="company">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="street">주문일</label>
+                                            <input type="text" class="form-control" id="street">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="form-group">
+                                            <label for="city">주소</label>
+                                            <input type="text" class="form-control" id="city">
+                                         </div>
+                                    </div>
+                                     <div class="col-sm-1">
+                                          <div class="form-group"><br>
+                                            <button type="button" class="btn btn-primary" style="margin-top: 5px;">주소 찾기
+                                            </button>
+                                         </div>
+                                    </div>
+                                  </div>
+                                <!-- /.row -->
                             </div>
-                            <!-- /.content -->
 
                             <div class="box-footer">
                                 <div class="pull-left">
-                                    <a href="basket.leaf" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to Addresses</a>
+                                    <a href="basket.leaf" class="btn btn-default"><i class="fa fa-chevron-left"></i>장바구니로 가기</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary">Continue to Payment Method<i class="fa fa-chevron-right"></i>
+                                    <button type="submit" class="btn btn-primary">다음단계로<i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                             </div>
@@ -500,28 +494,20 @@
 
                     <div class="box" id="order-summary">
                         <div class="box-header">
-                            <h3>Order summary</h3>
+                            <h3>주문 요약</h3>
                         </div>
-                        <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+                        <p class="text-muted">배송 및 추가 비용은 입력한 값을 기준으로 계산됩니다.</p>
 
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td>Order subtotal</td>
-                                        <th>$446.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Shipping and handling</td>
-                                        <th>$10.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Tax</td>
-                                        <th>$0.00</th>
+                                        <td>주문 총 합계</td>
+                                        <th>0원</th>
                                     </tr>
                                     <tr class="total">
-                                        <td>Total</td>
-                                        <th>$456.00</th>
+                                        <td>총 합계</td>
+                                        <th>0원</th>
                                     </tr>
                                 </tbody>
                             </table>

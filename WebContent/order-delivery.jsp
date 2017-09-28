@@ -320,16 +320,12 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>Order process</h5>
-                                            <ul>
+                                             <ul>
                                                 <li><a href="basket.leaf">Shopping cart</a>
                                                 </li>
-                                                <li><a href="checkout1.leaf">Checkout - step 1</a>
+                                                <li><a href="order-address.leaf">Checkout - step 1</a>
                                                 </li>
-                                                <li><a href="checkout2.leaf">Checkout - step 2</a>
-                                                </li>
-                                                <li><a href="checkout3.leaf">Checkout - step 3</a>
-                                                </li>
-                                                <li><a href="checkout4.leaf">Checkout - step 4</a>
+                                                <li><a href="order-delivery.leaf">Checkout - step 3</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -411,85 +407,90 @@
                     <ul class="breadcrumb">
                         <li><a href="#">Home</a>
                         </li>
-                        <li>Checkout - Order review</li>
+                        <li>주문(결제방식)</li>
                     </ul>
                 </div>
 
                 <div class="col-md-9" id="checkout">
 
                     <div class="box">
-                        <form method="post" action="checkout4.leaf">
-                            <h1>Checkout - Order review</h1>
+                        <form method="post" action="order-delivery.leaf">
+                            <h1>주문하기</h1>
                             <ul class="nav nav-pills nav-justified">
-                                <li><a href="checkout1.leaf"><i class="fa fa-map-marker"></i><br>Address</a>
+                                <li><a href="order-address.leaf"><i class="fa fa-map-marker"></i><br>주소입력</a>
                                 </li>
-                                <li><a href="checkout2.leaf"><i class="fa fa-truck"></i><br>Delivery Method</a>
-                                </li>
-                                <li><a href="checkout3.leaf"><i class="fa fa-money"></i><br>Payment Method</a>
-                                </li>
-                                <li class="active"><a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                                <li class="active"><a href="#"><i class="fa fa-money"></i><br>결제방식</a>
                                 </li>
                             </ul>
 
                             <div class="content">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">Product</th>
-                                                <th>Quantity</th>
-                                                <th>Unit price</th>
-                                                <th>Discount</th>
-                                                <th>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">
-                                                        <img src="img/detailsquare.jpg" alt="White Blouse Armani">
-                                                    </a>
-                                                </td>
-                                                <td><a href="#">White Blouse Armani</a>
-                                                </td>
-                                                <td>2</td>
-                                                <td>$123.00</td>
-                                                <td>$0.00</td>
-                                                <td>$246.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">
-                                                        <img src="img/basketsquare.jpg" alt="Black Blouse Armani">
-                                                    </a>
-                                                </td>
-                                                <td><a href="#">Black Blouse Armani</a>
-                                                </td>
-                                                <td>1</td>
-                                                <td>$200.00</td>
-                                                <td>$0.00</td>
-                                                <td>$200.00</td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th colspan="5">Total</th>
-                                                <th>$446.00</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="box payment-method">
 
+                                            <h4>신용카드</h4>
+
+                                            <p>Credit card</p>
+
+                                            <div class="box-footer text-center">
+
+                                                <input type="radio" name="payment" value="payment1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="box payment-method">
+
+                                            <h4>실시간 계좌이체</h4>
+
+                                            <p>Real-time account transfer</p>
+
+                                            <div class="box-footer text-center">
+
+                                                <input type="radio" name="payment" value="payment2">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="box payment-method">
+
+                                            <h4>무통장입금</h4>
+
+                                            <p>make a deposit</p>
+
+                                            <div class="box-footer text-center">
+
+                                                <input type="radio" name="payment" value="payment3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="col-sm-6">
+                                        <div class="box payment-method">
+
+                                            <h4>휴대폰결제</h4>
+
+                                            <p>Cell phone payment</p>
+
+                                            <div class="box-footer text-center">
+
+                                                <input type="radio" name="payment" value="payment3">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- /.table-responsive -->
+                                <!-- /.row -->
+
                             </div>
                             <!-- /.content -->
 
                             <div class="box-footer">
                                 <div class="pull-left">
-                                    <a href="checkout3.leaf" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to Payment method</a>
+                                    <a href="basket.leaf" class="btn btn-default"><i class="fa fa-chevron-left"></i>뒤로 가기</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary">Place an order<i class="fa fa-chevron-right"></i>
+                                    <button type="submit" class="btn btn-primary">결제하기<i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                             </div>
@@ -501,32 +502,24 @@
                 </div>
                 <!-- /.col-md-9 -->
 
-                <div class="col-md-3">
+                    <div class="col-md-3">
 
                     <div class="box" id="order-summary">
                         <div class="box-header">
-                            <h3>Order summary</h3>
+                            <h3>주문 요약</h3>
                         </div>
-                        <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+                        <p class="text-muted">배송 및 추가 비용은 입력한 값을 기준으로 계산됩니다.</p>
 
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td>Order subtotal</td>
-                                        <th>$446.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Shipping and handling</td>
-                                        <th>$10.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Tax</td>
-                                        <th>$0.00</th>
+                                        <td>주문 총 합계</td>
+                                        <th>0원</th>
                                     </tr>
                                     <tr class="total">
-                                        <td>Total</td>
-                                        <th>$456.00</th>
+                                        <td>총 합계</td>
+                                        <th>0원</th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -535,6 +528,7 @@
                     </div>
 
                 </div>
+
                 <!-- /.col-md-3 -->
 
             </div>
