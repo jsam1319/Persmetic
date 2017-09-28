@@ -80,7 +80,7 @@
                         <i class="fa fa-search"></i>
                     </button>
                     <a class="btn btn-default navbar-toggle" href="basket.leaf">
-                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 items in cart</span>
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Shopping Cart</span>
                     </a>
                 </div>
             </div>
@@ -187,7 +187,7 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.leaf" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
+                    <a href="basket.leaf" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Shopping Cart</span></a>
                 </div>
                 <!--/.nav-collapse -->
 
