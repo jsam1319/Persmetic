@@ -3,6 +3,17 @@
 	<!-- 메인 페이지 세부 컨트롤러 -->
 	<bean name="/index" class="kr.or.kosta.leaf.main.controller.MainController"/>
 	
+	<!-- 장바구니 페이지 세부 컨트롤러 -->
+	<bean name="/cart" class="kr.or.kosta.leaf.cart.controller.CartController"/>
+	<bean name="/cart_create" class="kr.or.kosta.leaf.cart.controller.CartCreateController"/>
+	
+	<!-- 주문항목 세부 컨트롤러 -->
+	<bean name="/orderitem" class="kr.or.kosta.leaf.order_item.controller.OrderItemController"/>
+	
+	<!-- 주문 페이지 세부 컨트롤러 -->
+	<bean name="/totalorder" class="kr.or.kosta.leaf.total_order.controller.TotalOrderController"/>
+	
+	
 <!-- 	회원 관련 세부 컨트롤러 
 	<bean name="/user/list" class="kr.or.kosta.shoppingmall.user.controller.UserListController"/>
 	<bean name="/user/login_action" class="kr.or.kosta.shoppingmall.user.controller.UserLoginController"/>

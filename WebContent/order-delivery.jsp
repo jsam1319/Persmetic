@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -46,24 +47,85 @@
 
     <div id="all">
 
-        <div id="content">
-            <div class="container">
+    <div id="content">
+        <div class="container">
 
-                <div class="col-md-12">
-                    <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
-                        </li>
-                        <li>주문(결제방식)</li>
-                    </ul>
-                </div>
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a>
+                    </li>
+                    <li>주문/결제</li>
+                </ul>
+            </div>
 
-                <div class="col-md-9" id="checkout">
+            <div class="col-md-12" id="checkout">
+
+                    <div class="box">
+
+                        <form method="post" action="order-address.leaf">
+
+                            <h1>주문항목</h1>
+                              <p class="text-muted">${requestScope.list.size() }개의 상품을 주문합니다.</p>
+                            
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>선택</th>
+                                            <th>이미지</th>
+                                            <th colspan="2">상품명</th>
+                                            <th>수량</th>
+                                            <th>판매가</th>
+                                            <th >합계</th>
+                                            <th>상품삭제</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                 <c:choose>
+                                    <c:when test="${empty list }">
+                                      <tr>
+                                        <td colspan="8" style="text-align: center; color: red;">주문할 상품이 존재하지 않습니다.</td>
+                                      </tr>
+                                    </c:when>
+                                    <c:otherwise>
+                                    <c:forEach var="cart" items="${requestScope.list }">
+                                      <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td>이미지</td>
+                                        <td colspan="2"><a href="mailto:">${cart.ctmNo }</a></td>
+                                        <td>${cart.cartQuantity }</td>
+                                        <td>${cart.cartPrice }원</td>
+                                        <td><span name="totalPrice">${cart.cartPrice*cart.cartQuantity}</span>원</td>
+                                        <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                      </tr>
+                                    </c:forEach>
+                                    </c:otherwise>
+                                  </c:choose>
+                                    </tbody>
+                            
+                                    <tfoot>
+                                        <tr><th colspan="8"></th></tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                            <!-- /.table-responsive -->
+
+
+                        </form>
+
+                    </div>
+
+
+  <div class="col-md-9" id="checkout">
+
 
                     <div class="box">
                         <form method="post" action="order-delivery.leaf">
-                            <h1>주문하기</h1>
+                            <h1>결제방식</h1>
                             <ul class="nav nav-pills nav-justified">
-                                <li><a href="order-address.leaf"><i class="fa fa-map-marker"></i><br>주소입력</a>
+                                <li><a href="order-address.leaf"><i class="fa fa-map-marker"></i><br>배송지정보</a>
                                 </li>
                                 <li class="active"><a href="#"><i class="fa fa-money"></i><br>결제방식</a>
                                 </li>
@@ -133,7 +195,7 @@
 
                             <div class="box-footer">
                                 <div class="pull-left">
-                                    <a href="basket.leaf" class="btn btn-default"><i class="fa fa-chevron-left"></i>뒤로 가기</a>
+                                    <a href="order-address.leaf" class="btn btn-default"><i class="fa fa-chevron-left"></i>뒤로 가기</a>
                                 </div>
                                 <div class="pull-right">
                                     <button type="submit" class="btn btn-primary">결제하기<i class="fa fa-chevron-right"></i>
@@ -340,7 +402,7 @@
         <!-- *** COPYRIGHT END *** -->
 
 
-
+      </div>
     </div>
     <!-- /#all -->
 

@@ -122,7 +122,7 @@ private DataSource dataSource;
 	
 	
 	/** 주문항목 리스트 */
-	public List<OrderItem> listAll() {
+	public List<OrderItem> listAll(int orderNo) {
 		List<OrderItem> list = null;
 		
 		Connection con = null;
@@ -136,6 +136,7 @@ private DataSource dataSource;
 			list = new ArrayList<OrderItem>();
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, orderNo);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				OrderItem orderItem = new OrderItem();
