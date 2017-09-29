@@ -1,12 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title> </title>
-</head>
-<body>
 
+
+      <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/bootstrap-hover-dropdown.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/front.js"></script>
  <!-- *** TOPBAR ***
  _________________________________________________________ -->
     <div id="top">
@@ -225,7 +227,3 @@
 
 
 
-
-
-</body>
-</html>
