@@ -79,6 +79,49 @@ private DataSource dataSource;
 	}
 	
 
+	/** 통계를 위한 주문항목 상품보기 */
+	public List<OrderItem> read(int productCode) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<OrderItem> items = new ArrayList<OrderItem>();
+
+		String sql = " SELECT order_no, product_code, order_price, order_count " +
+					 " FROM order_item " +
+					 " WHERE product_code = ? ";
+
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, productCode);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				OrderItem orderItem = new OrderItem();
+				orderItem.setOrderNo(rs.getInt("order_no"));
+				orderItem.setProductCode(rs.getInt("product_code"));
+				orderItem.setOrderPrice(rs.getInt("order_price"));
+				orderItem.setOrderCount(rs.getInt("order_count"));
+				
+				items.add(orderItem);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("JdbcOrderItemDao.read(int orderNo, int productCode) 실행 중 예외발생", e);
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return items;
+	}	
+	
 	/** 주문항목 상품보기 */
 	public OrderItem read(int orderNo, int productCode) {
 		Connection con = null;
@@ -120,9 +163,8 @@ private DataSource dataSource;
 		return null;
 	}	
 	
-	
 	/** 주문항목 리스트 */
-	public List<OrderItem> listAll(int orderNo) {
+	public List<OrderItem> listAll() {
 		List<OrderItem> list = null;
 		
 		Connection con = null;
@@ -136,7 +178,6 @@ private DataSource dataSource;
 			list = new ArrayList<OrderItem>();
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, orderNo);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				OrderItem orderItem = new OrderItem();
