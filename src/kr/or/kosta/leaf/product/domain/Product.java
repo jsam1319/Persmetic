@@ -8,103 +8,128 @@ package kr.or.kosta.leaf.product.domain;
  */
 
 public class Product {
-	private int product_code;
-	private String product_name;
-	private String product_explain;
-	private String product_brand;
-	private String product_tone;
-	private String product_color;
-	private int product_price;
-	private int product_sow;
-	private int product_hits;
-	private int category_no;
-	
+	private int productCode;
+	private String productName;
+	private String productExplain;
+	private String productBrand;
+	private String productTone;
+	private String productColor;
+	private int productPrice;
+	private int productSow;
+	private int productHits;
+	private int categoryNo; 
+	private String productImage;
 	
 	
 	public Product() {}
 	
-	public Product(int product_code, String product_name, String product_explain, String product_brand, String product_tone, String product_color, int product_price, int product_sow) {
-		this(product_code, product_name, product_explain, product_brand, product_tone, product_color, product_price, product_sow, 0, 0);
+	public Product(int productCode, String productName, String productExplain, String productBrand, String productColor,  String productTone,int productPrice, int productSow) {
+		this(productCode, productName, productExplain, productBrand, productColor, productTone, productPrice, productSow, 0, 1, null);
 	}
 	
-	public Product(int product_code, String product_name, String product_explain, String product_brand, String product_tone,String product_color, int product_price, int product_sow, int category_no) {
-		this(product_code, product_name, product_explain, product_brand, product_tone, product_color, product_price, product_sow, 0, category_no);
+	public Product(int productCode, String productName, String productExplain, String productBrand, String productColor, String productTone, int productPrice, int productSow, int productHits, int categoryNo, String productImage) {
+		this.productCode = productCode;
+		this.productName = productName;
+		this.productExplain= productExplain;
+		this.productBrand = productBrand;
+		this.productTone = productTone;
+		this.productColor = productColor;
+		this.productPrice = productPrice;
+		this.productSow = productSow;
+		this.productHits = productHits;
+		this.categoryNo = categoryNo;
+		this.productImage = productImage;
+	}
+
+	public int getProductCode() {
+		return productCode;
+	}
+
+	public void setProductCode(int productCode) {
+		this.productCode = productCode;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getProductExplain() {
+		return productExplain;
+	}
+
+	public void setProductExplain(String productExplain) {
+		this.productExplain = productExplain;
+	}
+
+	public String getProductBrand() {
+		return productBrand;
+	}
+
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
+	}
+
+	public String getProductTone() {
+		return productTone;
+	}
+
+	public void setProductTone(String productTone) {
+		this.productTone = productTone;
+	}
+
+	public String getProductColor() {
+		return productColor;
+	}
+
+	public void setProductColor(String productColor) {
+		this.productColor = productColor;
+	}
+
+	public int getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
+	}
+
+	public int getProductSow() {
+		return productSow;
+	}
+
+	public void setProductSow(int productSow) {
+		this.productSow = productSow;
+	}
+
+	public int getProductHits() {
+		return productHits;
+	}
+
+	public void setProductHits(int productHits) {
+		this.productHits = productHits;
+	}
+
+	public int getCategoryNo() {
+		return categoryNo;
+	}
+
+	public void setCategoryNo(int categoryNo) {
+		this.categoryNo = categoryNo;
+	}
+
+	public String getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
 	}
 	
-	public Product(int product_code, String product_name, String product_explain, String product_brand, String product_tone, String product_color, int product_price, int product_sow, int product_hits, int category_no) {
-		this.product_code = product_code;
-		this.product_name = product_name;
-		this.product_explain= product_explain;
-		this.product_brand = product_brand;
-		this.product_tone = product_tone;
-		this.product_color = product_color;
-		this.product_price = product_price;
-		this.product_sow = product_sow;
-		this.product_hits = product_hits;
-		this.category_no = category_no;
-	}
 	
-	
-	public int getProduct_code() {
-		return product_code;
-	}
-	public void setProduct_code(int product_code) {
-		this.product_code = product_code;
-	}
-	public String getProduct_name() {
-		return product_name;
-	}
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
-	public String getProduct_explain() {
-		return product_explain;
-	}
-	public void setProduct_explain(String product_explain) {
-		this.product_explain = product_explain;
-	}
-	public String getProduct_brand() {
-		return product_brand;
-	}
-	public void setProduct_brand(String product_brand) {
-		this.product_brand = product_brand;
-	}
-	public String getProduct_tone() {
-		return product_tone;
-	}
-	public void setProduct_tone(String product_tone) {
-		this.product_tone = product_tone;
-	}
-	public String getProduct_color() {
-		return product_color;
-	}
-	public void setProduct_color(String product_color) {
-		this.product_color = product_color;
-	}
-	public int getProduct_price() {
-		return product_price;
-	}
-	public void setProduct_price(int product_price) {
-		this.product_price = product_price;
-	}
-	public int getProduct_sow() {
-		return product_sow;
-	}
-	public void setProduct_sow(int product_sow) {
-		this.product_sow = product_sow;
-	}
-	public int getProduct_hits() {
-		return product_hits;
-	}
-	public void setProduct_hits(int product_hits) {
-		this.product_hits = product_hits;
-	}
-	public int getCategory_no() {
-		return category_no;
-	}
-	public void setCategory_no(int category_no) {
-		this.category_no = category_no;
-	}
 	
 
 }

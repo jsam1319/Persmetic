@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import kr.or.kosta.leaf.common.db.DaoFactory;
 import kr.or.kosta.leaf.common.web.Params;
 import kr.or.kosta.leaf.product.domain.Product;
 
@@ -52,8 +51,9 @@ public class JdbcProductDao implements ProductDao {
 				"        		 	       PRODUCT_TONE,\r\n" + 
 				"        		 	       PRODUCT_PRICE, \r\n" + 
 				"        		 	       PRODUCT_SOW, \r\n" + 
-				"          		 	       CATEGORY_NO)" +
-				"VALUES ((SELECT max(PRODUCT_CODE) from PRODUCT)+1, ?, ?, ?, ?, ?, ?, ?, ?)";
+				"        		 	       CATEGORY_NO, \r\n" + 
+				"          		 	       PRODUCT_IMAGE)" +
+				"VALUES ((SELECT max(PRODUCT_CODE) from PRODUCT)+1, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			con = dataSource.getConnection();
@@ -61,14 +61,15 @@ public class JdbcProductDao implements ProductDao {
 
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, product.getProduct_name());
-			pstmt.setString(2, product.getProduct_explain());
-			pstmt.setString(3, product.getProduct_brand());
-			pstmt.setString(4, product.getProduct_color());
-			pstmt.setString(5, product.getProduct_tone());
-			pstmt.setInt(6, product.getProduct_price());
-			pstmt.setInt(7, product.getProduct_sow());
-			pstmt.setInt(8, product.getCategory_no());
+			pstmt.setString(1, product.getProductName());
+			pstmt.setString(2, product.getProductExplain());
+			pstmt.setString(3, product.getProductBrand());
+			pstmt.setString(4, product.getProductColor());
+			pstmt.setString(5, product.getProductTone());
+			pstmt.setInt(6, product.getProductPrice());
+			pstmt.setInt(7, product.getProductSow());
+			pstmt.setInt(8, product.getCategoryNo());
+			pstmt.setString(9, product.getProductImage());
 			
 			pstmt.executeUpdate();
 
@@ -100,7 +101,7 @@ public class JdbcProductDao implements ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = " SELECT PRODUCT_CODE, PRODUCT_NAME, PRODUCT_EXPLAIN, PRODUCT_BRAND, PRODUCT_COLOR, PRODUCT_TONE, PRODUCT_PRICE,  PRODUCT_SOW, CATEGORY_NO \r\n" + 
+		String sql = " SELECT PRODUCT_CODE, PRODUCT_NAME, PRODUCT_EXPLAIN, PRODUCT_BRAND, PRODUCT_COLOR, PRODUCT_TONE, PRODUCT_PRICE,  PRODUCT_SOW, CATEGORY_NO, PRODUCT_IMAGE \r\n" + 
 				"FROM PRODUCT \r\n" + 
 				"WHERE PRODUCT_CODE = ?";
 
@@ -112,15 +113,16 @@ public class JdbcProductDao implements ProductDao {
 			
 			if (rs.next()) {
 				Product product = new Product();
-				product.setProduct_code(rs.getInt("product_code"));
-				product.setProduct_name(rs.getString("product_name"));
-				product.setProduct_explain(rs.getString("product_explain"));
-				product.setProduct_brand(rs.getString("product_brand"));
-				product.setProduct_color(rs.getString("product_color"));
-				product.setProduct_tone(rs.getString("product_tone"));
-				product.setProduct_price(rs.getInt("product_price"));
-				product.setProduct_sow(rs.getInt("product_sow"));
-				product.setCategory_no(rs.getInt("category_no"));
+				product.setProductCode(rs.getInt("productCode"));
+				product.setProductName(rs.getString("productName"));
+				product.setProductExplain(rs.getString("productExplain"));
+				product.setProductBrand(rs.getString("productBrand"));
+				product.setProductColor(rs.getString("productColor"));
+				product.setProductTone(rs.getString("productTone"));
+				product.setProductPrice(rs.getInt("productPrice"));
+				product.setProductSow(rs.getInt("productSow"));
+				product.setCategoryNo(rs.getInt("categoryNo"));
+				product.setProductImage(rs.getString("productImage"));
 				return product;
 			}
 			System.out.println("search_code 완료!");
@@ -178,13 +180,12 @@ public class JdbcProductDao implements ProductDao {
 	}
 
 
-	//Product product = new Product(14, "test", "test", "test", "test", "test", 1000, 100, 100);
 	
 	/** 상품정보 수정 */
 	public void update(Product product) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE PRODUCT SET PRODUCT_NAME =?, PRODUCT_EXPLAIN=?, PRODUCT_BRAND=?, PRODUCT_COLOR=?, PRODUCT_TONE=?, PRODUCT_PRICE=?, PRODUCT_SOW=? WHERE PRODUCT_CODE=?";
+		String sql = "UPDATE PRODUCT SET PRODUCT_NAME =?, PRODUCT_EXPLAIN=?, PRODUCT_BRAND=?, PRODUCT_COLOR=?, PRODUCT_TONE=?, PRODUCT_PRICE=?, PRODUCT_SOW=?, PRODUCT_IMAGE=? WHERE PRODUCT_CODE=?";
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
@@ -192,14 +193,16 @@ public class JdbcProductDao implements ProductDao {
 
 			System.out.println(con);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, product.getProduct_name());
-			pstmt.setString(2, product.getProduct_explain());
-			pstmt.setString(3, product.getProduct_brand());
-			pstmt.setString(4, product.getProduct_color());
-			pstmt.setString(5, product.getProduct_tone());
-			pstmt.setInt(6, product.getProduct_price());
-			pstmt.setInt(7, product.getProduct_sow());
-			pstmt.setInt(8, product.getProduct_code());
+			pstmt.setString(1, product.getProductName());
+			pstmt.setString(2, product.getProductExplain());
+			pstmt.setString(3, product.getProductBrand());
+			pstmt.setString(4, product.getProductColor());
+			pstmt.setString(5, product.getProductTone());
+			pstmt.setInt(6, product.getProductPrice());
+			pstmt.setInt(7, product.getProductSow());
+			pstmt.setString(8, product.getProductImage());
+			pstmt.setInt(9, product.getProductCode());
+			
 			
 			System.out.println(pstmt.executeUpdate());
 			
@@ -263,28 +266,31 @@ public class JdbcProductDao implements ProductDao {
 	
 	
 	private Product createProduct(ResultSet rs) throws SQLException {
-		int product_code = rs.getInt("product_code");
-		String product_name = rs.getString("product_name");
-		String product_explain = rs.getString("product_explain");
-		String product_brand = rs.getString("product_brand");
-		String product_color = rs.getString("product_color");
-		String product_tone = rs.getString("product_tone");
-		int product_price = rs.getInt("product_price");
-		int product_sow = rs.getInt("product_sow");
-		int product_hits = rs.getInt("product_hits");
-		int category_no = rs.getInt("category_no");
+		int productCode = rs.getInt("productCode");
+		String productName = rs.getString("productName");
+		String productExplain = rs.getString("productExplain");
+		String productBrand = rs.getString("productBrand");
+		String productColor = rs.getString("productColor");
+		String productTone = rs.getString("productTone");
+		int productPrice = rs.getInt("productPrice");
+		int productSow = rs.getInt("productSow");
+		int productHits = rs.getInt("productHits");
+		int categoryNo = rs.getInt("categoryNo");
+		String productImage = rs.getString("productImage");
 		
 		Product product = new Product();
-		product.setProduct_code(product_code);
-		product.setProduct_name(product_name);
-		product.setProduct_explain(product_explain);
-		product.setProduct_brand(product_brand);
-		product.setProduct_color(product_color);
-		product.setProduct_tone(product_tone);
-		product.setProduct_price(product_price);
-		product.setProduct_sow(product_sow);
-		product.setProduct_hits(product_hits);
-		product.setCategory_no(category_no);
+		
+		product.setProductCode(productCode);
+		product.setProductName(productName);
+		product.setProductExplain(productExplain);
+		product.setProductBrand(productBrand);
+		product.setProductColor(productColor);
+		product.setProductTone(productTone);
+		product.setProductPrice(productPrice);
+		product.setProductSow(productSow);
+		product.setProductHits(productHits);
+		product.setCategoryNo(categoryNo);
+		product.setProductImage(productImage);
 		
 		return product;
 	}
@@ -308,7 +314,8 @@ public class JdbcProductDao implements ProductDao {
 		sb.append("        PRODUCT_PRICE,");
 		sb.append("        PRODUCT_SOW,");
 		sb.append("        PRODUCT_HITS,");
-		sb.append("        CATEGORY_NO");
+		sb.append("        CATEGORY_NO,");
+		sb.append("        PRODUCT_IMAGE");
 		sb.append(" FROM   (SELECT CEIL(rownum / ?) request_page,");
 		sb.append("                PRODUCT_CODE,");
 		sb.append("                PRODUCT_NAME,");
@@ -319,7 +326,8 @@ public class JdbcProductDao implements ProductDao {
 		sb.append("                PRODUCT_PRICE,");
 		sb.append("                PRODUCT_SOW,");
 		sb.append("                PRODUCT_HITS,");
-		sb.append("                CATEGORY_NO");
+		sb.append("                CATEGORY_NO,");
+		sb.append("                PRODUCT_IMAGE");
 		sb.append("         FROM   (SELECT PRODUCT_CODE,");
 		sb.append("                        PRODUCT_NAME,");
 		sb.append("                        PRODUCT_EXPLAIN,");
@@ -329,7 +337,8 @@ public class JdbcProductDao implements ProductDao {
 		sb.append("                        PRODUCT_PRICE,");
 		sb.append("                        PRODUCT_SOW,");
 		sb.append("                        PRODUCT_HITS,");
-		sb.append("                        CATEGORY_NO");
+		sb.append("                        CATEGORY_NO,");
+		sb.append("                        PRODUCT_IMAGE");
 		sb.append("                 FROM   PRODUCT");
 		
 		// 검색 유형별 WHERE 절 동적 추가
@@ -354,7 +363,7 @@ public class JdbcProductDao implements ProductDao {
 					break;
 			}
 		}
-		sb.append(" ORDER BY PRODUCT_CODE ASC))");
+		sb.append(" ORDER BY PRODUCT_CODE DESC))");
 		sb.append(" WHERE  request_page = ?");
 		
 		try {
@@ -400,23 +409,27 @@ public class JdbcProductDao implements ProductDao {
 		ResultSet rs = null;
 
 		StringBuilder sb = new StringBuilder();
-		sb.append(" SELECT COUNT(article_id) count");
-		sb.append(" FROM   article");
+		sb.append(" SELECT COUNT(PRODUCT_CODE) count");
+		sb.append(" FROM   PRODUCT");
 		
 		// 검색 유형별 WHERE 절 동적 추가
 		String type = params.getType();
 		String value = params.getValue();
 		if(type != null){
 			switch (params.getType()) {
-				case "writer":
-					sb.append(" WHERE  writer  = ?");
+				case "name":    
+					sb.append(" WHERE  PRODUCT_NAME  LIKE ?");
 					break;
-				case "subject":
-					sb.append(" WHERE  subject LIKE ?");
-					value = "%" +value + "%";
+				case "brand":  
+					sb.append(" WHERE  PRODUCT_BRAND LIKE ?");
+					value = "%" + value + "%";
 					break;
-				case "content":
-					sb.append(" WHERE  content LIKE ?");
+				case "color":   
+					sb.append(" WHERE  PRODUCT_COLOR LIKE ?");
+					value = "%" + value + "%";
+					break;
+				case "tone":   
+					sb.append(" WHERE  PRODUCT_TONE LIKE ?");
 					value = "%" + value + "%";
 					break;
 			}
@@ -439,7 +452,7 @@ public class JdbcProductDao implements ProductDao {
 			System.out.println("pageCount 완료");
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("JdbcUserDao.pageCount(Params params) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcProductDao.pageCount(Params params) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if(rs != null)    rs.close();
@@ -450,19 +463,4 @@ public class JdbcProductDao implements ProductDao {
 		return count;
 	}
 	
-
-	public static void main(String[] args) {
-		ProductDao dao = (ProductDao) DaoFactory.getInstance().getDao(JdbcProductDao.class);
-		
-		//Product pro = new Product(0 , "testname", "testexplain", "testbrand", "testcolor", "testtone", 7000, 1000, 1);
-		
-		//dao.create(pro);
-		
-		//dao.delete(code);
-		
-		Product product = new Product(14, "test", "test", "test", "test", "test", 1000, 100);
-		dao.update(product);
-		
-		//dao.hitCount(14);
-	}
 }
