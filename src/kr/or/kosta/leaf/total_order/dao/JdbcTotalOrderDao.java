@@ -56,14 +56,14 @@ private DataSource dataSource;
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, totalOrder.getOrder_no());
-			pstmt.setInt(2, totalOrder.getOrder_totalprice());
-			pstmt.setString(3, totalOrder.getOrder_address());
-			pstmt.setString(4, totalOrder.getOrder_recipient());
-			pstmt.setString(5, totalOrder.getOrder_date());
-			pstmt.setString(6, totalOrder.getOrder_payoption());
-			pstmt.setString(7, totalOrder.getOrder_yn());
-			pstmt.setInt(8, totalOrder.getCtm_no());
+			pstmt.setInt(1, totalOrder.getOrderNo());
+			pstmt.setInt(2, totalOrder.getOrderTotalprice());
+			pstmt.setString(3, totalOrder.getOrderAddress());
+			pstmt.setString(4, totalOrder.getOrderRecipient());
+			pstmt.setString(5, totalOrder.getOrderDate());
+			pstmt.setString(6, totalOrder.getOrderPayoption());
+			pstmt.setString(7, totalOrder.getOrderYn());
+			pstmt.setInt(8, totalOrder.getCtmNo());
 			
 			pstmt.executeUpdate();
 			
@@ -103,14 +103,14 @@ private DataSource dataSource;
 
 			if (rs.next()) {
 				TotalOrder totalOrder = new TotalOrder();
-				totalOrder.setOrder_no(rs.getInt("order_no"));
-				totalOrder.setOrder_totalprice(rs.getInt("order_totalprice"));
-				totalOrder.setOrder_address(rs.getString("order_address"));
-				totalOrder.setOrder_recipient(rs.getString("order_recipient"));
-				totalOrder.setOrder_date(rs.getString("order_date"));
-				totalOrder.setOrder_payoption(rs.getString("order_payoption"));
-				totalOrder.setOrder_yn(rs.getString(rs.getString("order_yn")));
-				totalOrder.setCtm_no(rs.getInt("ctm_no"));
+				totalOrder.setOrderNo(rs.getInt("order_no"));
+				totalOrder.setOrderTotalprice(rs.getInt("order_totalprice"));
+				totalOrder.setOrderAddress(rs.getString("order_address"));
+				totalOrder.setOrderRecipient(rs.getString("order_recipient"));
+				totalOrder.setOrderDate(rs.getString("order_date"));
+				totalOrder.setOrderPayoption(rs.getString("order_payoption"));
+				totalOrder.setOrderYn(rs.getString(rs.getString("order_yn")));
+				totalOrder.setCtmNo(rs.getInt("ctm_no"));
 				return totalOrder;
 			}
 		} catch (Exception e) {
@@ -148,14 +148,14 @@ private DataSource dataSource;
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				TotalOrder totalOrder = new TotalOrder();
-				totalOrder.setOrder_no(rs.getInt("order_no"));
-				totalOrder.setOrder_totalprice(rs.getInt("order_totalprice"));
-				totalOrder.setOrder_address(rs.getString("order_address"));
-				totalOrder.setOrder_recipient(rs.getString("order_recipient"));
-				totalOrder.setOrder_date(rs.getString("order_date"));
-				totalOrder.setOrder_payoption(rs.getString("order_payoption"));
-				totalOrder.setOrder_yn(rs.getString(rs.getString("order_yn")));
-				totalOrder.setCtm_no(rs.getInt("ctm_no"));
+				totalOrder.setOrderNo(rs.getInt("order_no"));
+				totalOrder.setOrderTotalprice(rs.getInt("order_totalprice"));
+				totalOrder.setOrderAddress(rs.getString("order_address"));
+				totalOrder.setOrderRecipient(rs.getString("order_recipient"));
+				totalOrder.setOrderDate(rs.getString("order_date"));
+				totalOrder.setOrderPayoption(rs.getString("order_payoption"));
+				totalOrder.setOrderYn(rs.getString(rs.getString("order_yn")));
+				totalOrder.setCtmNo(rs.getInt("ctm_no"));
 				list.add(totalOrder);
 			}
 		} catch (Exception e) {

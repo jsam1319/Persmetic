@@ -55,10 +55,10 @@ private DataSource dataSource;
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, orderItem.getOrder_no());
-			pstmt.setInt(2, orderItem.getProduct_code());
-			pstmt.setInt(3, orderItem.getOrder_price());
-			pstmt.setInt(4, orderItem.getOrder_count());
+			pstmt.setInt(1, orderItem.getOrderNo());
+			pstmt.setInt(2, orderItem.getProductCode());
+			pstmt.setInt(3, orderItem.getOrderPrice());
+			pstmt.setInt(4, orderItem.getOrderCount());
 			
 			pstmt.executeUpdate();
 			
@@ -99,10 +99,10 @@ private DataSource dataSource;
 
 			if (rs.next()) {
 				OrderItem orderItem = new OrderItem();
-				orderItem.setOrder_no(rs.getInt("order_no"));
-				orderItem.setProduct_code(rs.getInt("product_code"));
-				orderItem.setOrder_price(rs.getInt("order_price"));
-				orderItem.setOrder_count(rs.getInt("order_count"));
+				orderItem.setOrderNo(rs.getInt("order_no"));
+				orderItem.setProductCode(rs.getInt("product_code"));
+				orderItem.setOrderPrice(rs.getInt("order_price"));
+				orderItem.setOrderCount(rs.getInt("order_count"));
 				return orderItem;
 			}
 		} catch (Exception e) {
@@ -139,10 +139,10 @@ private DataSource dataSource;
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				OrderItem orderItem = new OrderItem();
-				orderItem.setOrder_no(rs.getInt("order_no"));
-				orderItem.setProduct_code(rs.getInt("product_code"));
-				orderItem.setOrder_price(rs.getInt("order_price"));
-				orderItem.setOrder_count(rs.getInt("order_count"));
+				orderItem.setOrderNo(rs.getInt("order_no"));
+				orderItem.setProductCode(rs.getInt("product_code"));
+				orderItem.setOrderPrice(rs.getInt("order_price"));
+				orderItem.setOrderCount(rs.getInt("order_count"));
 				list.add(orderItem);
 			}
 		} catch (Exception e) {

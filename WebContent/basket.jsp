@@ -1,8 +1,23 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
 <head>
+<script>
+window.onload = total;
+
+// 총 상품 합계
+function total(){
+   var prices=document.getElementsByName("totalPrice");
+   var sum = 0;
+   
+   for(var i=0; i<prices.length; i++){
+   	sum = sum + parseInt(prices[i].innerHTML);
+   }
+	document.getElementById("total").innerHTML = sum + "원";
+}
+</script>
 
     <meta charset="utf-8">
     <meta name="robots" content="all,follow">
@@ -62,63 +77,51 @@
                         <form method="post" action="order-address.leaf">
 
                             <h1>장바구니</h1>
-                            <p class="text-muted">x개의 상품이 담겨 있습니다.</p>
+                              <p class="text-muted">${requestScope.list.size() }개의 상품이 담겨 있습니다.</p>
+                            
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th></th>
-                                            <th colspan="2" class="text-center">상품명</th>
-                                            <th class="text-center">수량</th>
-                                            <th class="text-center">판매가</th>
-                                            <th class="text-center">합계</th>
-                                            <th class="text-center">상품삭제</th>
+                                            <th>선택</th>
+                                            <th>이미지</th>
+                                            <th colspan="2">상품명</th>
+                                            <th>수량</th>
+                                            <th>판매가</th>
+                                            <th >합계</th>
+                                            <th>상품삭제</th>
                                         </tr>
                                     </thead>
+                                    
                                     <tbody>
-                                        <tr>
-                                          <td>
-                                             <input type="checkbox">
-                                          </td>
-                                            <td>
-                                                <a href="#">
-                                                    <img src="img/detailsquare.jpg" alt="White Blouse Armani">
-                                                </a>
-                                            </td>
-                                            <td><a href="#">White Blouse Armani</a>
-                                            </td>
-                                            <td class="text-center"> 
-                                                <input type="number" value="2" class="border-ra">
-                                            </td>
-                                            <td class="text-center">123원</td>
-                                            <td class="text-center">246원</td>
-                                            <td class="text-center"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                               <input type="checkbox">
-                                            </td>
-                                            <td>
-                                                <a href="#">
-                                                    <img src="img/basketsquare.jpg" alt="Black Blouse Armani">
-                                                </a>
-                                            </td>
-                                            <td><a href="#">Black Blouse Armani</a>
-                                            </td>
-                                            <td class="text-center">
-                                                <input type="number" value="1"  class="border-ra">
-                                            </td>
-                                            <td class="text-center">200원</td>
-                                            <td class="text-center">2000원</td>
-                                            <td class="text-center"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
+                                 <c:choose>
+                                    <c:when test="${empty list }">
+                                      <tr>
+                                        <td colspan="8" style="text-align: center; color: red;">담긴 상품이 존재하지 않습니다.</td>
+                                      </tr>
+                                    </c:when>
+                                    <c:otherwise>
+                                    <c:forEach var="cart" items="${requestScope.list }">
+                                      <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td>이미지</td>
+                                        <td colspan="2"><a href="mailto:">${cart.ctmNo }</a></td>
+                                        <td>${cart.cartQuantity }</td>
+                                        <td>${cart.cartPrice }원</td>
+                                        <td><span name="totalPrice">${cart.cartPrice*cart.cartQuantity}</span>원</td>
+                                        <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                      </tr>
+                                    </c:forEach>
+                                    </c:otherwise>
+                                  </c:choose>
                                     </tbody>
+                            
+
+                                 
                                     <tfoot>
-                                        <tr >
-                                            <th colspan="6" class="text-right">총 합계</th>
-                                            <th colspan="1" class="text-center">10000원</th>
+                                        <tr>
+                                            <th colspan="7" class="text-right">총 합계</th>
+                                            <th colspan="1" class="text-center"><span id="total">원</span></th>
                                         </tr>
                                     </tfoot>
                                 </table>

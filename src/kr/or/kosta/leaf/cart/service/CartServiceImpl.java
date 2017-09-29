@@ -9,12 +9,11 @@ import kr.or.kosta.leaf.common.db.DaoFactory;
 
 public class CartServiceImpl implements CartService {
 	
-	private static int ctm_no;
 	CartDao cartDao = (CartDao)DaoFactory.getInstance().getDao(JdbcCartDao.class);
 	
 	@Override
-	public List<Cart> listAll(int ctm_no) {
-		return cartDao.listAll(ctm_no);
+	public List<Cart> listAll(int ctmNo) {
+		return cartDao.listAll(ctmNo);
 	}
 	
 	@Override
@@ -34,7 +33,7 @@ public class CartServiceImpl implements CartService {
 	
 	public static void main(String[] args) {
 		CartService service = new CartServiceImpl();
-		List<Cart> list = service.listAll(ctm_no);
+		List<Cart> list = service.listAll(2);	//파라미터 ctmNo
 		System.out.println(list);
 	}
 }

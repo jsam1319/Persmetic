@@ -11,10 +11,10 @@ import kr.or.kosta.leaf.cart.domain.Cart;
  *
  */
 public interface CartService {
-
-	/** 회원별 장바구니 리스트 */
-	public List<Cart> listAll(int ctm_no);
 	
+	/** 회원별 장바구니 리스트 */
+	public List<Cart> listAll(int ctmNo);
+
 	/** 장바구니 상품 등록 */
 	public void create(Cart cart);
 	

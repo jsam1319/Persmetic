@@ -23,7 +23,7 @@ public interface CartDao {
 	public Cart read(int productCode, int ctmNo);
 	
 	/** 회원별 장바구니 리스트 */
-	public List<Cart> listAll(int ctm_no);
+	public List<Cart> listAll(int ctmNo);
 	
 	/** 장바구니 상품 삭제 */
 	public void delete(int productCode, int ctmNo);

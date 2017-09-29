@@ -12,56 +12,57 @@ package kr.or.kosta.leaf.cart.domain;
 
 public class Cart {
 
-	int product_code;
-	int ctm_no;
-	int cart_quanity;
-	int cart_price;
+	int productCode;
+	int ctmNo;
+	int cartQuantity;
+	int cartPrice;
 	
 	public Cart() {}
 	
-	public Cart(int product_code, int ctm_no, int cart_quanity, int cart_price) {
+	public Cart(int productCode, int ctmNo, int cartQuantity, int cartPrice) {
 		super();
-		this.product_code = product_code;
-		this.ctm_no = ctm_no;
-		this.cart_quanity = cart_quanity;
-		this.cart_price = cart_price;
-	}
-	
-	public int getProduct_code() {
-		return product_code;
+		this.productCode = productCode;
+		this.ctmNo = ctmNo;
+		this.cartQuantity = cartQuantity;
+		this.cartPrice = cartPrice;
 	}
 
-	public void setProduct_code(int product_code) {
-		this.product_code = product_code;
+	public int getProductCode() {
+		return productCode;
 	}
 
-	public int getCtm_no() {
-		return ctm_no;
+	public void setProductCode(int productCode) {
+		this.productCode = productCode;
 	}
 
-	public void setCtm_no(int ctm_no) {
-		this.ctm_no = ctm_no;
+	public int getCtmNo() {
+		return ctmNo;
 	}
 
-	public int getCart_quanity() {
-		return cart_quanity;
+	public void setCtmNo(int ctmNo) {
+		this.ctmNo = ctmNo;
 	}
 
-	public void setCart_quanity(int cart_quanity) {
-		this.cart_quanity = cart_quanity;
+	public int getCartQuantity() {
+		return cartQuantity;
 	}
 
-	public int getCart_price() {
-		return cart_price;
+	public void setCartQuantity(int cartQuantity) {
+		this.cartQuantity = cartQuantity;
 	}
 
-	public void setCart_price(int cart_price) {
-		this.cart_price = cart_price;
+	public int getCartPrice() {
+		return cartPrice;
+	}
+
+	public void setCartPrice(int cartPrice) {
+		this.cartPrice = cartPrice;
 	}
 
 	@Override
 	public String toString() {
-		return "Cart [product_code=" + product_code + ", ctm_no=" + ctm_no + ", cart_quanity=" + cart_quanity
-				+ ", cart_price=" + cart_price + "]";
+		return "Cart [productCode=" + productCode + ", ctmNo=" + ctmNo + ", cartQuantity=" + cartQuantity
+				+ ", cartPrice=" + cartPrice + "]";
 	}
+	
 }

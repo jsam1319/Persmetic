@@ -15,21 +15,20 @@ import kr.or.kosta.leaf.total_order.domain.TotalOrder;
  */
 
 public interface TotalOrderDao {
-	
 	/* DB CRUD*/
+	/** 주문 상품 등록 */
 	public void create(TotalOrder totalOrder);
 	
+	/** 주문 상품 조회 */
 	public TotalOrder read(int orderNo);
 	
+	/** 주문 상품 리스트 */
 	public List<TotalOrder> listAll();
 	
+	/** 주문 전 상품 삭제 */
 	public void delete(int orderNo);
 	
-//	public void update(int productCode, int imageNumber, ProductImage image);
-	
-
 }
-
 
 
 

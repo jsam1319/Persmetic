@@ -12,99 +12,98 @@ package kr.or.kosta.leaf.total_order.domain;
 
 public class TotalOrder {
 
-	int order_no;
-	int order_totalprice;
-	String order_address;
-	String order_recipient;
-	String order_date;
-	String order_payoption;
-	String order_yn;
-	int ctm_no;
+	int orderNo;
+	int orderTotalprice;
+	String orderAddress;
+	String orderRecipient;
+	String orderDate;
+	String orderPayoption;
+	String orderYn;
+	int ctmNo;
 	
 	public TotalOrder() {}
 	
-	public TotalOrder(int order_no, int order_totalprice, String order_address, String order_recipient,
-			String order_date, String order_payoption, String order_yn, int ctm_no) {
+	public TotalOrder(int orderNo, int orderTotalprice, String orderAddress, String orderRecipient, String orderDate,
+			String orderPayoption, String orderYn, int ctmNo) {
 		super();
-		this.order_no = order_no;
-		this.order_totalprice = order_totalprice;
-		this.order_address = order_address;
-		this.order_recipient = order_recipient;
-		this.order_date = order_date;
-		this.order_payoption = order_payoption;
-		this.order_yn = order_yn;
-		this.ctm_no = ctm_no;
+		this.orderNo = orderNo;
+		this.orderTotalprice = orderTotalprice;
+		this.orderAddress = orderAddress;
+		this.orderRecipient = orderRecipient;
+		this.orderDate = orderDate;
+		this.orderPayoption = orderPayoption;
+		this.orderYn = orderYn;
+		this.ctmNo = ctmNo;
 	}
 
-	public int getOrder_no() {
-		return order_no;
+	public int getOrderNo() {
+		return orderNo;
 	}
 
-	public void setOrder_no(int order_no) {
-		this.order_no = order_no;
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
 	}
 
-	public int getOrder_totalprice() {
-		return order_totalprice;
+	public int getOrderTotalprice() {
+		return orderTotalprice;
 	}
 
-	public void setOrder_totalprice(int order_totalprice) {
-		this.order_totalprice = order_totalprice;
+	public void setOrderTotalprice(int orderTotalprice) {
+		this.orderTotalprice = orderTotalprice;
 	}
 
-	public String getOrder_address() {
-		return order_address;
+	public String getOrderAddress() {
+		return orderAddress;
 	}
 
-	public void setOrder_address(String order_address) {
-		this.order_address = order_address;
+	public void setOrderAddress(String orderAddress) {
+		this.orderAddress = orderAddress;
 	}
 
-	public String getOrder_recipient() {
-		return order_recipient;
+	public String getOrderRecipient() {
+		return orderRecipient;
 	}
 
-	public void setOrder_recipient(String order_recipient) {
-		this.order_recipient = order_recipient;
+	public void setOrderRecipient(String orderRecipient) {
+		this.orderRecipient = orderRecipient;
 	}
 
-	public String getOrder_date() {
-		return order_date;
+	public String getOrderDate() {
+		return orderDate;
 	}
 
-	public void setOrder_date(String order_date) {
-		this.order_date = order_date;
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
 	}
 
-	public String getOrder_payoption() {
-		return order_payoption;
+	public String getOrderPayoption() {
+		return orderPayoption;
 	}
 
-	public void setOrder_payoption(String order_payoption) {
-		this.order_payoption = order_payoption;
+	public void setOrderPayoption(String orderPayoption) {
+		this.orderPayoption = orderPayoption;
 	}
 
-	public String getOrder_yn() {
-		return order_yn;
+	public String getOrderYn() {
+		return orderYn;
 	}
 
-	public void setOrder_yn(String order_yn) {
-		this.order_yn = order_yn;
+	public void setOrderYn(String orderYn) {
+		this.orderYn = orderYn;
 	}
 
-	public int getCtm_no() {
-		return ctm_no;
+	public int getCtmNo() {
+		return ctmNo;
 	}
 
-	public void setCtm_no(int ctm_no) {
-		this.ctm_no = ctm_no;
+	public void setCtmNo(int ctmNo) {
+		this.ctmNo = ctmNo;
 	}
 
 	@Override
 	public String toString() {
-		return "TotalOrder [order_no=" + order_no + ", order_totalprice=" + order_totalprice + ", order_address="
-				+ order_address + ", order_recipient=" + order_recipient + ", order_date=" + order_date
-				+ ", order_payoption=" + order_payoption + ", order_yn=" + order_yn + ", ctm_no=" + ctm_no + "]";
+		return "TotalOrder [orderNo=" + orderNo + ", orderTotalprice=" + orderTotalprice + ", orderAddress="
+				+ orderAddress + ", orderRecipient=" + orderRecipient + ", orderDate=" + orderDate + ", orderPayoption="
+				+ orderPayoption + ", orderYn=" + orderYn + ", ctmNo=" + ctmNo + "]";
 	}
-
 }

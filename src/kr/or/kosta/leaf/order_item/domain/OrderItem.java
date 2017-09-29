@@ -12,57 +12,57 @@ package kr.or.kosta.leaf.order_item.domain;
 
 public class OrderItem {
 
-	int order_no;
-	int product_code;
-	int order_price;
-	int order_count;
+	int orderNo;
+	int productCode;
+	int orderPrice;
+	int orderCount;
 
 	public OrderItem() {}
 	
-	public OrderItem(int order_no, int product_code, int order_price, int order_count) {
+	public OrderItem(int orderNo, int productCode, int orderPrice, int orderCount) {
 		super();
-		this.order_no = order_no;
-		this.product_code = product_code;
-		this.order_price = order_price;
-		this.order_count = order_count;
+		this.orderNo = orderNo;
+		this.productCode = productCode;
+		this.orderPrice = orderPrice;
+		this.orderCount = orderCount;
 	}
 
-	public int getOrder_no() {
-		return order_no;
+	public int getOrderNo() {
+		return orderNo;
 	}
 
-	public void setOrder_no(int order_no) {
-		this.order_no = order_no;
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
 	}
 
-	public int getProduct_code() {
-		return product_code;
+	public int getProductCode() {
+		return productCode;
 	}
 
-	public void setProduct_code(int product_code) {
-		this.product_code = product_code;
+	public void setProductCode(int productCode) {
+		this.productCode = productCode;
 	}
 
-	public int getOrder_price() {
-		return order_price;
+	public int getOrderPrice() {
+		return orderPrice;
 	}
 
-	public void setOrder_price(int order_price) {
-		this.order_price = order_price;
+	public void setOrderPrice(int orderPrice) {
+		this.orderPrice = orderPrice;
 	}
 
-	public int getOrder_count() {
-		return order_count;
+	public int getOrderCount() {
+		return orderCount;
 	}
 
-	public void setOrder_count(int order_count) {
-		this.order_count = order_count;
+	public void setOrderCount(int orderCount) {
+		this.orderCount = orderCount;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderItem [order_no=" + order_no + ", product_code=" + product_code + ", order_price=" + order_price
-				+ ", order_count=" + order_count + "]";
+		return "OrderItem [orderNo=" + orderNo + ", productCode=" + productCode + ", orderPrice=" + orderPrice
+				+ ", orderCount=" + orderCount + "]";
 	}
 
 }

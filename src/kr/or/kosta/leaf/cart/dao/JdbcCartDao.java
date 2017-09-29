@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
+
 import kr.or.kosta.leaf.cart.domain.Cart;
 
 
@@ -47,7 +48,7 @@ private DataSource dataSource;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = " INSERT INTO cart(product_code, ctm_no, cart_quanity, cart_price) " +
+		String sql = " INSERT INTO cart(product_code, ctm_no, cart_quantity, cart_price) " +
 		             	   " VALUES   (?, ?, ?, ?)";
 		
 		try {
@@ -55,10 +56,10 @@ private DataSource dataSource;
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, cart.getProduct_code());
-			pstmt.setInt(2, cart.getCtm_no());
-			pstmt.setInt(3, cart.getCart_quanity());
-			pstmt.setInt(4, cart.getCart_price());
+			pstmt.setInt(1, cart.getProductCode());
+			pstmt.setInt(2, cart.getCtmNo());
+			pstmt.setInt(3, cart.getCartQuantity());
+			pstmt.setInt(4, cart.getCartPrice());
 			
 			pstmt.executeUpdate();
 			
@@ -85,7 +86,7 @@ private DataSource dataSource;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = " SELECT product_code, ctm_no, cart_quanity, cart_price " +
+		String sql = " SELECT product_code, ctm_no, cart_quantity, cart_price " +
 					 " FROM cart " +
 					 " WHERE product_code = ? " +
 					 " AND ctm_no = ?";
@@ -99,10 +100,10 @@ private DataSource dataSource;
 
 			if (rs.next()) {
 				Cart cart = new Cart();
-				cart.setProduct_code(rs.getInt("product_code"));
-				cart.setCtm_no(rs.getInt("ctm_no"));
-				cart.setCart_quanity(rs.getInt("cart_quanity"));
-				cart.setCart_price(rs.getInt("cart_price"));
+				cart.setProductCode(rs.getInt("product_code"));
+				cart.setCtmNo(rs.getInt("ctm_no"));
+				cart.setCartQuantity(rs.getInt("cart_quanity"));
+				cart.setCartPrice(rs.getInt("cart_price"));
 				return cart;
 			}
 		} catch (Exception e) {
@@ -122,14 +123,14 @@ private DataSource dataSource;
 	
 	
 	/** 회원별 장바구니 리스트 */
-	public List<Cart> listAll(int ctm_no) {
+	public List<Cart> listAll(int ctmNo) {
 		List<Cart> list = null;
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = " SELECT product_code, ctm_no, cart_quanity, cart_price " + 
+		String sql = " SELECT product_code, ctm_no, cart_quantity, cart_price " + 
 					 " FROM cart " +
 					 " WHERE ctm_no = ? ";
 		
@@ -137,15 +138,18 @@ private DataSource dataSource;
 			list = new ArrayList<Cart>();
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, ctm_no);
+			System.out.println(sql);
+			pstmt.setInt(1, ctmNo);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Cart cart = new Cart();
-				cart.setProduct_code(rs.getInt("product_code"));
-				cart.setCtm_no(rs.getInt("ctm_no"));
-				cart.setCart_quanity(rs.getInt("cart_quanity"));
-				cart.setCart_price(rs.getInt("cart_price"));
+				cart.setProductCode(rs.getInt("product_code"));
+				cart.setCtmNo(rs.getInt("ctm_no"));
+				cart.setCartQuantity(rs.getInt("cart_quantity"));
+				cart.setCartPrice(rs.getInt("cart_price"));
 				list.add(cart);
+				
+				System.out.println(cart);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
