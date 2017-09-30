@@ -18,7 +18,7 @@ public class DaoFactory {
 	private static DaoFactory instance = new DaoFactory();
 	
 	private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-	private static final String URL = "jdbc:oracle:thin:@localhost:1521";
+	private static final String URL = "jdbc:oracle:thin:@106.242.203.66:8500";
 	private static final String USER = "leaf";
 	private static final String PASSWORD = "leaf";
 	private static final int INIT_SIZE = 5;

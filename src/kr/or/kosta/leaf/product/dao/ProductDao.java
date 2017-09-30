@@ -8,6 +8,13 @@ import kr.or.kosta.leaf.product.domain.Product;
 /**
  * 상품 정보, 등록을 위한 Dao Interface
  *
+ * ************************
+ * 2017-09-30 - 이재현
+ * 메소드 명 변경(search_product -> read)
+ * 
+ * ************************
+ *
+ *
  * @author 박연주
  *
  */
@@ -17,7 +24,7 @@ public interface ProductDao {
 	public void create(Product product);
 	
 	/** 상품 상세보기(번호로 정보 찾기) */
-	public Product search_code(int productCode);
+	public Product read(int productCode);
 	
 	/** 상품정보 삭제 */
 	public void delete(int productcode);

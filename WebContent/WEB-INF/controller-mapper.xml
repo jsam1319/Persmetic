@@ -6,6 +6,7 @@
 	<!-- 장바구니 페이지 세부 컨트롤러 -->
 	<bean name="/cart" class="kr.or.kosta.leaf.cart.controller.CartController"/>
 	<bean name="/cart_create" class="kr.or.kosta.leaf.cart.controller.CartCreateController"/>
+	<bean name="/cart_delete" class="kr.or.kosta.leaf.cart.controller.CartDeleteController"/>
 	
 	<!-- 주문항목 세부 컨트롤러 -->
 	<bean name="/orderitem" class="kr.or.kosta.leaf.order_item.controller.OrderItemController"/>

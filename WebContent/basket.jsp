@@ -5,10 +5,13 @@
 
 <head>
 <script>
-window.onload = total;
+window.onload = function() {
+	total();
+	setDeleteButton();
+};
 
 // 총 상품 합계
-function total(){
+total = function(){
    var prices=document.getElementsByName("totalPrice");
    var sum = 0;
    
@@ -16,6 +19,15 @@ function total(){
    	sum = sum + parseInt(prices[i].innerHTML);
    }
 	document.getElementById("total").innerHTML = sum + "원";
+}
+
+setDeleteButton = function() {
+	var buttons = $("a[name=cart_delete]");
+	console.log(buttons);
+
+	for(var i=0; i<buttons.length; i++) {
+		console.log(buttons.get(i).href);
+	}
 }
 </script>
 
@@ -104,12 +116,12 @@ function total(){
                                     <c:forEach var="cart" items="${requestScope.list }">
                                       <tr>
                                         <td><input type="checkbox"></td>
-                                        <td>이미지</td>
-                                        <td colspan="2"><a href="mailto:">${cart.ctmNo }</a></td>
-                                        <td>${cart.cartQuantity }</td>
+                                        <td><img src="${cart.productImage}"></td>
+                                        <td colspan="2"><a href="mailto:">${cart.productName }</a></td>
+                                        <td><input type="number" value="${cart.cartQuantity }"></td>
                                         <td>${cart.cartPrice }원</td>
                                         <td><span name="totalPrice">${cart.cartPrice*cart.cartQuantity}</span>원</td>
-                                        <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                        <td><a href="cart_delete.leaf?product_code=${cart.productCode }&ctm_no=2" name="cart_delete"><i class="fa fa-trash-o"></i></a></td>
                                       </tr>
                                     </c:forEach>
                                     </c:otherwise>

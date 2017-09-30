@@ -15,6 +15,13 @@ import kr.or.kosta.leaf.product.domain.Product;
 /**
  * 상품(product) 테이블 관련 DAO 클래스
  * 
+ * ************************
+ * 2017-09-30 - 이재현
+ * 메소드 명 변경(search_product -> read)
+ * read 내 에러 변경(rs.getString(productCode) -> rs.getString(product_code)
+ * 
+ * ************************
+ * 
  * @author 박연주
  *
  */
@@ -96,39 +103,50 @@ public class JdbcProductDao implements ProductDao {
 
 
 	/** 상품 상세보기(번호로 정보 찾기) */
-	public Product search_code(int productCode) {
+	public Product read(int productCode) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = " SELECT PRODUCT_CODE, PRODUCT_NAME, PRODUCT_EXPLAIN, PRODUCT_BRAND, PRODUCT_COLOR, PRODUCT_TONE, PRODUCT_PRICE,  PRODUCT_SOW, CATEGORY_NO, PRODUCT_IMAGE \r\n" + 
+		String sql = " SELECT PRODUCT_CODE, "
+									 + " PRODUCT_NAME, "
+									 + " PRODUCT_EXPLAIN, "
+									 + " PRODUCT_BRAND, "
+									 + " PRODUCT_COLOR, "
+									 + " PRODUCT_TONE, "
+									 + " PRODUCT_PRICE,  "
+									 + " PRODUCT_SOW, "
+									 + " CATEGORY_NO, "
+									 + " PRODUCT_IMAGE \r\n" + 
 				"FROM PRODUCT \r\n" + 
 				"WHERE PRODUCT_CODE = ?";
 
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
+			
 			pstmt.setInt(1, productCode);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
 				Product product = new Product();
-				product.setProductCode(rs.getInt("productCode"));
-				product.setProductName(rs.getString("productName"));
-				product.setProductExplain(rs.getString("productExplain"));
-				product.setProductBrand(rs.getString("productBrand"));
-				product.setProductColor(rs.getString("productColor"));
-				product.setProductTone(rs.getString("productTone"));
-				product.setProductPrice(rs.getInt("productPrice"));
-				product.setProductSow(rs.getInt("productSow"));
-				product.setCategoryNo(rs.getInt("categoryNo"));
-				product.setProductImage(rs.getString("productImage"));
+				product.setProductCode(rs.getInt("product_code"));
+				product.setProductName(rs.getString("product_name"));
+				product.setProductExplain(rs.getString("product_explain"));
+				product.setProductBrand(rs.getString("product_brand"));
+				product.setProductColor(rs.getString("product_color"));
+				product.setProductTone(rs.getString("product_tone"));
+				product.setProductPrice(rs.getInt("product_price"));
+				product.setProductSow(rs.getInt("product_sow"));
+				product.setCategoryNo(rs.getInt("category_no"));
+				product.setProductImage(rs.getString("product_image"));
+				
 				return product;
 			}
-			System.out.println("search_code 완료!");
+			System.out.println("read 완료!");
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("JdbcProductDao(search_code) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcProductDao read(ProductCode) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if (rs != null)
@@ -266,17 +284,17 @@ public class JdbcProductDao implements ProductDao {
 	
 	
 	private Product createProduct(ResultSet rs) throws SQLException {
-		int productCode = rs.getInt("productCode");
-		String productName = rs.getString("productName");
-		String productExplain = rs.getString("productExplain");
-		String productBrand = rs.getString("productBrand");
-		String productColor = rs.getString("productColor");
-		String productTone = rs.getString("productTone");
-		int productPrice = rs.getInt("productPrice");
-		int productSow = rs.getInt("productSow");
-		int productHits = rs.getInt("productHits");
-		int categoryNo = rs.getInt("categoryNo");
-		String productImage = rs.getString("productImage");
+		int productCode = rs.getInt("product_code");
+		String productName = rs.getString("product_name");
+		String productExplain = rs.getString("product_explain");
+		String productBrand = rs.getString("product_brand");
+		String productColor = rs.getString("product_color");
+		String productTone = rs.getString("product_tone");
+		int productPrice = rs.getInt("product_price");
+		int productSow = rs.getInt("product_sow");
+		int productHits = rs.getInt("product_hits");
+		int categoryNo = rs.getInt("category_no");
+		String productImage = rs.getString("product_image");
 		
 		Product product = new Product();
 		
