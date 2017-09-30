@@ -15,6 +15,16 @@ import kr.or.kosta.leaf.customer.domain.Customer;
 import kr.or.kosta.leaf.customer.service.CustomerService;
 import kr.or.kosta.leaf.customer.service.CustomerServiceImpl;
 
+/**
+ * 
+ * ********************
+ * 2017-09-30 - 이재현
+ * Cookie 저장 값 수정(id + Name -> no)
+ * *********************
+ * 
+ * @author 박보라
+ *
+ */
 
 public class CertifyController implements Controller {
 
@@ -36,14 +46,17 @@ public class CertifyController implements Controller {
 			if(customer != null){
 			    String ctmInfo = null;
 				try {
-					ctmInfo = URLEncoder.encode(customer.getCtm_id() + "," + customer.getCtm_name(), "utf-8");
+					ctmInfo = URLEncoder.encode(String.valueOf(customer.getCtmNo()), "utf-8");
 				} catch (UnsupportedEncodingException e) {
 					throw new ServletException("CustomerAuthController.handleRequest() 실행중 예외 발생", e);
 				}
 				Cookie loginCookie = new Cookie("customer", ctmInfo);
+				
 				loginCookie.setPath("/");
 				response.addCookie(loginCookie);
+				
 			    if(referer != null)  location = referer;
+			    
 			    System.out.println("아이디 :" + ctmId);
 			    System.out.println("비번 :" + ctmPasswd);
 			    
@@ -51,7 +64,6 @@ public class CertifyController implements Controller {
 			  location = "/login.leaf";
 			}
 		}else {// 로그아웃
-			String customer = null;
 			Cookie[] cookies = request.getCookies();
 			if (cookies != null) {
 				for (Cookie cookie : cookies) {

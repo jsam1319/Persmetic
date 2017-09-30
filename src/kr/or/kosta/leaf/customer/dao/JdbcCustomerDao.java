@@ -65,17 +65,17 @@ public class JdbcCustomerDao implements CustomerDao {
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, Customer.getCtm_no());
-			pstmt.setString(2, Customer.getCtm_name());
-			pstmt.setString(3, Customer.getCtm_division());
-			pstmt.setString(4, Customer.getCtm_id());
-			pstmt.setString(5, Customer.getCtm_passwd());
-			pstmt.setInt(6, Customer.getCtm_age());
-			pstmt.setString(7, Customer.getCtm_gender());
-			pstmt.setString(8, Customer.getCtm_address());
-			pstmt.setString(9, Customer.getCtm_tone());
-			pstmt.setString(10, Customer.getCtm_job());
-			pstmt.setString(11, Customer.getCtm_email());
+			pstmt.setInt(1, Customer.getCtmNo());
+			pstmt.setString(2, Customer.getCtmName());
+			pstmt.setString(3, Customer.getCtmDivision());
+			pstmt.setString(4, Customer.getCtmId());
+			pstmt.setString(5, Customer.getCtmPasswd());
+			pstmt.setInt(6, Customer.getCtmAge());
+			pstmt.setString(7, Customer.getCtmGender());
+			pstmt.setString(8, Customer.getCtmAddress());
+			pstmt.setString(9, Customer.getCtmTone());
+			pstmt.setString(10, Customer.getCtmJob());
+			pstmt.setString(11, Customer.getCtmEmail());
 
 			pstmt.executeUpdate();
 
@@ -373,18 +373,18 @@ public class JdbcCustomerDao implements CustomerDao {
 		String ctm_email = rs.getString("ctm_email");
 
 		Customer Customer = new Customer();
-		Customer.setCtm_no(ctm_no);
-		Customer.setCtm_name(ctm_name);
-		Customer.setCtm_division(ctm_division);
-		Customer.setCtm_id(ctm_id);
-		Customer.setCtm_passwd(ctm_passwd);
-		Customer.setCtm_regdate(ctm_regdate);
-		Customer.setCtm_age(ctm_age);
-		Customer.setCtm_gender(ctm_gender);
-		Customer.setCtm_address(ctm_address);
-		Customer.setCtm_tone(ctm_tone);
-		Customer.setCtm_job(ctm_job);
-		Customer.setCtm_email(ctm_email);
+		Customer.setCtmNo(ctm_no);
+		Customer.setCtmName(ctm_name);
+		Customer.setCtmDivision(ctm_division);
+		Customer.setCtmId(ctm_id);
+		Customer.setCtmPasswd(ctm_passwd);
+		Customer.setCtmRegdate(ctm_regdate);
+		Customer.setCtmAge(ctm_age);
+		Customer.setCtmGender(ctm_gender);
+		Customer.setCtmAddress(ctm_address);
+		Customer.setCtmTone(ctm_tone);
+		Customer.setCtmJob(ctm_job);
+		Customer.setCtmEmail(ctm_email);
 		return Customer;
 	}
 	

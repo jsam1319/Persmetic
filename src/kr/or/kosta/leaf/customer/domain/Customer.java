@@ -2,153 +2,156 @@ package kr.or.kosta.leaf.customer.domain;
 
 public class Customer {
 
-	private int ctm_no;
-	private String ctm_name;
-	private String ctm_division;
-	private String ctm_id;
-	private String ctm_passwd;
-	private String ctm_regdate;
-	private int ctm_age;
-	private String ctm_gender;
-	private String ctm_address;
-	private String ctm_tone;
-	private String ctm_job;
-	private String ctm_email;
-	private String ctm_snsid;
+	private int ctmNo;
+	private String ctmName;
+	private String ctmDivision;
+	private String ctmId;
+	private String ctmPasswd;
+	private String ctmRegdate;
+	private int ctmAge;
+	private String ctmGender;
+	private String ctmAddress;
+	private String ctmTone;
+	private String ctmJob;
+	private String ctmEmail;
+	private String ctmSnsid;
 
 	public Customer() {
 	}
 
-	public Customer(int ctm_no, String ctm_name, String ctm_division, String ctm_id, String ctm_passwd, String ctm_regdate,
-			int ctm_age, String ctm_gender, String ctm_address, String ctm_tone, String ctm_job, String ctm_email, String ctm_snsid) {
-		this.ctm_no = ctm_no;
-		this.ctm_name = ctm_name;
-		this.ctm_division = ctm_division;
-		this.ctm_id = ctm_id;
-		this.ctm_passwd = ctm_passwd;
-		this.ctm_regdate = ctm_regdate;
-		this.ctm_age = ctm_age;
-		this.ctm_gender = ctm_gender;
-		this.ctm_address = ctm_address;
-		this.ctm_tone = ctm_tone;
-		this.ctm_job = ctm_job;
-		this.ctm_email = ctm_email;
-		this.ctm_snsid = ctm_snsid;
-	}
-
-	public int getCtm_no() {
-		return ctm_no;
-	}
-
-	public void setCtm_no(int ctm_no) {
-		this.ctm_no = ctm_no;
-	}
-
-	public String getCtm_name() {
-		return ctm_name;
-	}
-
-	public void setCtm_name(String ctm_name) {
-		this.ctm_name = ctm_name;
-	}
-
-	public String getCtm_division() {
-		return ctm_division;
-	}
-
-	public void setCtm_division(String ctm_division) {
-		this.ctm_division = ctm_division;
-	}
-
-	public String getCtm_id() {
-		return ctm_id;
-	}
-
-	public void setCtm_id(String ctm_id) {
-		this.ctm_id = ctm_id;
-	}
-
-	public String getCtm_passwd() {
-		return ctm_passwd;
-	}
-
-	public void setCtm_passwd(String ctm_passwd) {
-		this.ctm_passwd = ctm_passwd;
-	}
-
-	public String getCtm_regdate() {
-		return ctm_regdate;
-	}
-
-	public void setCtm_regdate(String ctm_regdate) {
-		this.ctm_regdate = ctm_regdate;
-	}
-
-	public int getCtm_age() {
-		return ctm_age;
-	}
-
-	public void setCtm_age(int ctm_age) {
-		this.ctm_age = ctm_age;
-	}
-
-	public String getCtm_gender() {
-		return ctm_gender;
-	}
-
-	public void setCtm_gender(String ctm_gender) {
-		this.ctm_gender = ctm_gender;
-	}
-
-	public String getCtm_address() {
-		return ctm_address;
-	}
-
-	public void setCtm_address(String ctm_address) {
-		this.ctm_address = ctm_address;
-	}
-
-	public String getCtm_tone() {
-		return ctm_tone;
-	}
-
-	public void setCtm_tone(String ctm_tone) {
-		this.ctm_tone = ctm_tone;
-	}
-
-	public String getCtm_job() {
-		return ctm_job;
-	}
-
-	public void setCtm_job(String ctm_job) {
-		this.ctm_job = ctm_job;
-	}
-
-	public String getCtm_email() {
-		return ctm_email;
-	}
-
-	public void setCtm_email(String ctm_email) {
-		this.ctm_email = ctm_email;
+	public Customer(int ctmNo, String ctmName, String ctmDivision, String ctmId, String ctmPasswd, String ctmRegdate,
+			int ctmAge, String ctmGender, String ctmAddress, String ctmTone, String ctmJob, String ctmEmail, String ctmSnsid) {
+		this.ctmNo = ctmNo;
+		this.ctmName = ctmName;
+		this.ctmDivision = ctmDivision;
+		this.ctmId = ctmId;
+		this.ctmPasswd = ctmPasswd;
+		this.ctmRegdate = ctmRegdate;
+		this.ctmAge = ctmAge;
+		this.ctmGender = ctmGender;
+		this.ctmAddress = ctmAddress;
+		this.ctmTone = ctmTone;
+		this.ctmJob = ctmJob;
+		this.ctmEmail = ctmEmail;
+		this.ctmSnsid = ctmSnsid;
 	}
 
 	
-	public String getCtm_snsid() {
-		return ctm_snsid;
+	public int getCtmNo() {
+		return ctmNo;
 	}
 
-	public void setCtm_snsid(String ctm_snsid) {
-		this.ctm_snsid = ctm_snsid;
+	public String getCtmName() {
+		return ctmName;
+	}
+
+	public String getCtmDivision() {
+		return ctmDivision;
+	}
+
+	public String getCtmId() {
+		return ctmId;
+	}
+
+	public String getCtmPasswd() {
+		return ctmPasswd;
+	}
+
+	public String getCtmRegdate() {
+		return ctmRegdate;
+	}
+
+	public int getCtmAge() {
+		return ctmAge;
+	}
+
+	public String getCtmGender() {
+		return ctmGender;
+	}
+
+	public String getCtmAddress() {
+		return ctmAddress;
+	}
+
+	public String getCtmTone() {
+		return ctmTone;
+	}
+
+	public String getCtmJob() {
+		return ctmJob;
+	}
+
+	public String getCtmEmail() {
+		return ctmEmail;
+	}
+
+	public String getCtmSnsid() {
+		return ctmSnsid;
+	}
+
+	public void setCtmNo(int ctmNo) {
+		this.ctmNo = ctmNo;
+	}
+
+	public void setCtmName(String ctmName) {
+		this.ctmName = ctmName;
+	}
+
+	public void setCtmDivision(String ctmDivision) {
+		this.ctmDivision = ctmDivision;
+	}
+
+	public void setCtmId(String ctmId) {
+		this.ctmId = ctmId;
+	}
+
+	public void setCtmPasswd(String ctmPasswd) {
+		this.ctmPasswd = ctmPasswd;
+	}
+
+	public void setCtmRegdate(String ctmRegdate) {
+		this.ctmRegdate = ctmRegdate;
+	}
+
+	public void setCtmAge(int ctmAge) {
+		this.ctmAge = ctmAge;
+	}
+
+	public void setCtmGender(String ctmGender) {
+		this.ctmGender = ctmGender;
+	}
+
+	public void setCtmAddress(String ctmAddress) {
+		this.ctmAddress = ctmAddress;
+	}
+
+	public void setCtmTone(String ctmTone) {
+		this.ctmTone = ctmTone;
+	}
+
+	public void setCtmJob(String ctmJob) {
+		this.ctmJob = ctmJob;
+	}
+
+	public void setCtmEmail(String ctmEmail) {
+		this.ctmEmail = ctmEmail;
+	}
+
+	public void setCtmSnsid(String ctmSnsid) {
+		this.ctmSnsid = ctmSnsid;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [ctm_no=" + ctm_no + ", ctm_name=" + ctm_name + ", ctm_division=" + ctm_division + ", ctm_id="
-				+ ctm_id + ", ctm_passwd=" + ctm_passwd + ", ctm_regdate=" + ctm_regdate + ", ctm_age=" + ctm_age
-				+ ", ctm_gender=" + ctm_gender + ", ctm_address=" + ctm_address + ", ctm_tone=" + ctm_tone
-				+ ", ctm_job=" + ctm_job + ", ctm_email=" + ctm_email + ", ctm_snsid=" + ctm_snsid + "]";
+		return "Customer [ctmNo=" + ctmNo + ", ctmName=" + ctmName + ", ctmDivision=" + ctmDivision + ", ctmId=" + ctmId
+				+ ", ctmPasswd=" + ctmPasswd + ", ctmRegdate=" + ctmRegdate + ", ctmAge=" + ctmAge + ", ctmGender="
+				+ ctmGender + ", ctmAddress=" + ctmAddress + ", ctmTone=" + ctmTone + ", ctmJob=" + ctmJob
+				+ ", ctmEmail=" + ctmEmail + ", ctmSnsid=" + ctmSnsid + "]";
 	}
 
+	
+
+	
 	
 	
 }

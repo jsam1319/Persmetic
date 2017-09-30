@@ -14,15 +14,14 @@
                  <c:choose>
                     <c:when test="${empty cookie.customer }">
                     <li><a  data-toggle="modal" data-target="#login-modal">Login</a> </li>
+                     <li><a href="register.leaf">Register</a>   </li>
                       </c:when>
         <c:otherwise>
-              <span   style="color: white;"><strong>${u:decode(cookie.customer.value) }</strong>님</span>
               <li><a href="${pageContext.servletContext.contextPath}/customer/certify.leaf"  >Logout</a> </li>
-              
+              <li><a href="${pageContext.servletContext.contextPath}/customer-order.leaf">MyPage</a></li>
                     </c:otherwise>
       </c:choose>  
-                    <li><a href="register.leaf">Register</a>
-                    </li>
+                
                     <li><a href="contact.leaf">Contact</a>
                     </li>
                     <li><a href="#">Recently viewed</a>

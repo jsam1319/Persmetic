@@ -15,7 +15,7 @@
     <meta name="keywords" content="">
 
     <title>
-        Obaju : e-commerce template
+      Permestic
     </title>
 
     <meta name="keywords" content="">

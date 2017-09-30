@@ -15,7 +15,7 @@
     <init-param>
       <param-name>controllerMapperLocation</param-name>
   <!--     <param-value>C:\Users\kosta\Dropbox\Public\Java\Model2WebStudy\WebContent\WEB-INF/controller-mapper.properties</param-value> -->
-      <param-value>C:\Users\kosta\git\Leaf\Project_ShoppingMall\WebContent\WEB-INF\controller-mapper.xml</param-value>
+      <param-value>C:\Users\JaeHyun\Documents\Persmetic\WebContent\WEB-INF\controller-mapper.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
