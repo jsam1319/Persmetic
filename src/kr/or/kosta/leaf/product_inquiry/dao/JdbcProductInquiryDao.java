@@ -116,16 +116,7 @@ public class JdbcProductInquiryDao implements ProductInquiryDao {
 			}
 		}
 	}
-	
-	public static void main(String[] args) {
-		ProductInquiryDao dao = (ProductInquiryDao) DaoFactory.getInstance().getDao(JdbcProductInquiryDao.class);
-		
-		//ProductInquiry inq = new ProductInquiry("문의제목", "문의내용", 1, 2);
-		
-	//	dao.create(inq);
-		
-		dao.delete(2);
-	}
+
 	
 	
 

@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import kr.or.kosta.leaf.common.db.DaoFactory;
 import kr.or.kosta.leaf.common.web.Params;
 import kr.or.kosta.leaf.review.domain.Review;
 
@@ -133,16 +134,12 @@ public class JdbcReviewDao implements ReviewDao {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			
-
-			System.out.println(con);
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, review.getReviewGrade());
 			pstmt.setString(2, review.getReviewTitle());
 			pstmt.setString(3, review.getReviewContents());
 			pstmt.setInt(4, review.getReviewNo());
-			
-			System.out.println(pstmt.executeUpdate());
 			
 			System.out.println("update 완료!");
 			con.commit();
@@ -295,5 +292,6 @@ public class JdbcReviewDao implements ReviewDao {
 		}
 		return count;
 	}
+
 	
 }
