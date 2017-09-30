@@ -14,12 +14,13 @@ public class Customer {
 	private String ctm_tone;
 	private String ctm_job;
 	private String ctm_email;
+	private String ctm_snsid;
 
 	public Customer() {
 	}
 
 	public Customer(int ctm_no, String ctm_name, String ctm_division, String ctm_id, String ctm_passwd, String ctm_regdate,
-			int ctm_age, String ctm_gender, String ctm_address, String ctm_tone, String ctm_job, String ctm_email) {
+			int ctm_age, String ctm_gender, String ctm_address, String ctm_tone, String ctm_job, String ctm_email, String ctm_snsid) {
 		this.ctm_no = ctm_no;
 		this.ctm_name = ctm_name;
 		this.ctm_division = ctm_division;
@@ -32,6 +33,7 @@ public class Customer {
 		this.ctm_tone = ctm_tone;
 		this.ctm_job = ctm_job;
 		this.ctm_email = ctm_email;
+		this.ctm_snsid = ctm_snsid;
 	}
 
 	public int getCtm_no() {
@@ -130,13 +132,23 @@ public class Customer {
 		this.ctm_email = ctm_email;
 	}
 
+	
+	public String getCtm_snsid() {
+		return ctm_snsid;
+	}
+
+	public void setCtm_snsid(String ctm_snsid) {
+		this.ctm_snsid = ctm_snsid;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [ctm_no=" + ctm_no + ", ctm_name=" + ctm_name + ", ctm_division=" + ctm_division + ", ctm_id="
 				+ ctm_id + ", ctm_passwd=" + ctm_passwd + ", ctm_regdate=" + ctm_regdate + ", ctm_age=" + ctm_age
 				+ ", ctm_gender=" + ctm_gender + ", ctm_address=" + ctm_address + ", ctm_tone=" + ctm_tone
-				+ ", ctm_job=" + ctm_job + ", ctm_email=" + ctm_email + "]";
+				+ ", ctm_job=" + ctm_job + ", ctm_email=" + ctm_email + ", ctm_snsid=" + ctm_snsid + "]";
 	}
 
+	
 	
 }

@@ -14,6 +14,8 @@
 	<!-- 주문 페이지 세부 컨트롤러 -->
 	<bean name="/totalorder" class="kr.or.kosta.leaf.total_order.controller.TotalOrderController"/>
 	
+	<!-- 로그인 페이지 세부 컨트롤러 -->
+	<bean name="/customer/certify" class="kr.or.kosta.leaf.customer.controller.CertifyController" />
 	
 <!-- 	회원 관련 세부 컨트롤러 
 	<bean name="/user/list" class="kr.or.kosta.shoppingmall.user.controller.UserListController"/>

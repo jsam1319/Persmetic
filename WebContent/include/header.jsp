@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="u" uri="../WEB-INF/util-functions.tld" %>
 
 
  <!-- *** TOPBAR ***
@@ -7,8 +9,18 @@
         <div class="container">
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-                    </li>
+                
+                
+                 <c:choose>
+                    <c:when test="${empty cookie.customer }">
+                    <li><a  data-toggle="modal" data-target="#login-modal">Login</a> </li>
+                      </c:when>
+        <c:otherwise>
+              <span   style="color: white;"><strong>${u:decode(cookie.customer.value) }</strong>님</span>
+              <li><a href="${pageContext.servletContext.contextPath}/customer/certify.leaf"  >Logout</a> </li>
+              
+                    </c:otherwise>
+      </c:choose>  
                     <li><a href="register.leaf">Register</a>
                     </li>
                     <li><a href="contact.leaf">Contact</a>
@@ -18,21 +30,23 @@
                 </ul>
             </div>
         </div>
+        
+        
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
             <div class="modal-dialog modal-sm">
 
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="Login">Customer login</h4>
+                        <h4 class="modal-title" id="Login">Member login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="customer-orders.leaf" method="post">
+                        <form action="${pageContext.servletContext.contextPath}/customer/certify.leaf" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" placeholder="email">
+                                <input type="text" class="form-control" id="ctm_id" name="ctm_id" placeholder="Id">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" placeholder="password">
+                                <input type="password" class="form-control" id="ctm_passwd" name="ctm_passwd" placeholder="Password">
                             </div>
 
                             <p class="text-center">
@@ -41,8 +55,6 @@
 
                         </form>
 
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.leaf"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
 
                     </div>
                 </div>
@@ -50,6 +62,9 @@
         </div>
 
     </div>
+    
+    
+    
 
     <!-- *** TOP BAR END *** -->
 
@@ -216,6 +231,3 @@
     <!-- /#navbar -->
 
     <!-- *** NAVBAR END *** -->
-
-
-

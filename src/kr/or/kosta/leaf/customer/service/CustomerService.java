@@ -19,18 +19,18 @@ public interface CustomerService {
 	public List<Customer> listAll();
 	
 	/** 사용자아이디를 이용한 사용자 상세 정보 조회 */
-	public Customer read(String ctm_id);
+	public Customer read(String ctmId);
 	
 	/** 회원 여부 반환 */
-	public Customer isMember(String ctm_id, String ctm_passwd);
+	public Customer isMember(String ctmId, String ctmPasswd);
 	
 	/** 회원 탈퇴 - 비밀번호 확인 */
-	public boolean deleteConfirm(String ctm_id, String ctm_passwd);
+	public boolean deleteConfirm(String ctmId, String ctmPasswd);
 	
 	/** 회원삭제 */
-	public void deleteCustomer(String ctm_id);	
+	public void deleteCustomer(String ctmId);	
 	
 	/** ID 중복 체크 */
-	public boolean checkId(String ctm_id);
+	public boolean checkId(String ctmId);
 	
 }

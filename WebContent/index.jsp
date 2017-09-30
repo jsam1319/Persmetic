@@ -1,4 +1,6 @@
+<%@page import="kr.or.kosta.leaf.customer.domain.Customer"%>
 <%@ page contentType="text/html; charset=utf-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -527,12 +529,16 @@
                         <h4>User section</h4>
 
                         <ul>
-                            <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+         <li>>Login</a>
                             </li>
-                            <li><a href="register.leaf">Regiter</a>
+                   <li><a href="register.leaf">Regiter</a>
                             </li>
                         </ul>
+                        
+                         
 
+            <button type="submit" class="btn btn-success">LOGIN</button>
+        
                         <hr class="hidden-md hidden-lg hidden-sm">
 
                     </div>

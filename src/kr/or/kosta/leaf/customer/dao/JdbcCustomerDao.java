@@ -151,7 +151,7 @@ public class JdbcCustomerDao implements CustomerDao {
 
 	/** 사용자아이디를 이용한 사용자 상세 정보 조회 */
 	@Override
-	public Customer read(String ctm_id) {
+	public Customer read(String ctmId) {
 		Customer Customer = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -174,14 +174,14 @@ public class JdbcCustomerDao implements CustomerDao {
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, ctm_id);
+			pstmt.setString(1, ctmId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				Customer = createCustomer(rs);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("JdbcCustomerDao.read(String ctm_id) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcCustomerDao.read(String ctmId) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if (rs != null)
@@ -198,38 +198,38 @@ public class JdbcCustomerDao implements CustomerDao {
 
 	/** 회원 여부 반환 */
 	@Override
-	public Customer isMember(String ctm_id, String ctm_passwd) {
-		Customer Customer = null;
+	public Customer isMember(String ctmId, String ctmPasswd) {
+		Customer customer = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "SELECT ctm_no, " 
+		String sql = " SELECT ctm_no, " 
 		           + "       ctm_name, " 
 				   + "       ctm_division, " 
 		           + "       ctm_id, "
 				   + "       ctm_passwd, " 
-		           + "       TO_CHAR(ctm_regdate, 'YYYY/MM/DD') ctm_regdate , "
+		           + "       TO_CHAR(ctm_regdate, 'YYYY/MM/DD') ctm_regdate, "
 				   + "       ctm_age, " 
 		           + "       ctm_gender, " 
 				   + "       ctm_address, " 
 		           + "       ctm_tone, "
 				   + "       ctm_job, " 
 		           + "       ctm_email" 
-				   + "FROM   customer " 
-				   + "WHERE  ctm_id = ? AND ctm_passwd = ?";
+				   + " FROM   customer " 
+				   + " WHERE  ctm_id = ? AND ctm_passwd = ?";
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, ctm_id);
-			pstmt.setString(2, ctm_passwd);
+			pstmt.setString(1, ctmId);
+			pstmt.setString(2, ctmPasswd);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				Customer = createCustomer(rs);
+				customer = createCustomer(rs);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("JdbcCustomerDao.isMember(ctm_id, ctm_passwd) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcCustomerDao.isMember(ctmId, ctmPasswd) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if (rs != null)
@@ -241,12 +241,12 @@ public class JdbcCustomerDao implements CustomerDao {
 			} catch (Exception e) {
 			}
 		}
-		return Customer;
+		return customer;
 	}
 
 	/** 회원 탈퇴 - 비밀번호 확인 */
 	@Override
-	public boolean deleteConfirm(String ctm_id, String ctm_passwd) {
+	public boolean deleteConfirm(String ctmId, String ctmPasswd) {
 
 		boolean confirmPw = false;
 		Connection con = null;
@@ -262,8 +262,8 @@ public class JdbcCustomerDao implements CustomerDao {
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setString(1, ctm_id);
-			pstmt.setString(2, ctm_passwd);
+			pstmt.setString(1, ctmId);
+			pstmt.setString(2, ctmPasswd);
 
 			rs = pstmt.executeQuery();
 
@@ -272,7 +272,7 @@ public class JdbcCustomerDao implements CustomerDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("JdbcCustomerDao.deleteConfirm(ctm_id, ctm_passwd) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcCustomerDao.deleteConfirm(ctmId, ctmPasswd) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if (rs != null)
@@ -289,7 +289,7 @@ public class JdbcCustomerDao implements CustomerDao {
 
 	/** 회원삭제 */
 	@Override
-	public void deleteCustomer(String ctm_id) {
+	public void deleteCustomer(String ctmId) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
@@ -301,7 +301,7 @@ public class JdbcCustomerDao implements CustomerDao {
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setString(1, ctm_id);
+			pstmt.setString(1, ctmId);
 			
 			pstmt.executeUpdate();
 			
@@ -312,7 +312,7 @@ public class JdbcCustomerDao implements CustomerDao {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {}
-			throw new RuntimeException("JdbcCustomerDao.deleteCustomer(String ctm_id) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcCustomerDao.deleteCustomer(String ctmId) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if(pstmt != null) pstmt.close();
@@ -322,7 +322,7 @@ public class JdbcCustomerDao implements CustomerDao {
 	}
 	
 	/** ID 중복 체크 */
-	   public boolean checkId(String ctm_id) {
+	   public boolean checkId(String ctmId) {
 	      Connection con = null;
 	      PreparedStatement pstmt = null;
 	      ResultSet rs = null;
@@ -336,12 +336,12 @@ public class JdbcCustomerDao implements CustomerDao {
 	      try {
 	         con = dataSource.getConnection();
 	         pstmt = con.prepareStatement(sql);
-	         pstmt.setString(1, ctm_id);
+	         pstmt.setString(1, ctmId);
 	         rs = pstmt.executeQuery();
 	         
 	         confirmId = rs.next();
 	      } catch(Exception e) {
-	    	  throw new RuntimeException("JdbcCustomerDao.checkId(String ctm_id) 실행 중 예외발생", e);
+	    	  throw new RuntimeException("JdbcCustomerDao.checkId(String ctmId) 실행 중 예외발생", e);
 	      } finally {
 	         try {
 	            if (rs != null)
