@@ -87,7 +87,7 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="basket.leaf">
+                    <a class="btn btn-default navbar-toggle" href="cart.leaf?ctm_no=${cookie.customer.value}">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Shopping Cart</span>
                     </a>
                 </div>
@@ -195,7 +195,7 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.leaf" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Shopping Cart</span></a>
+                    <a href="cart.leaf?ctm_no=${cookie.customer.value}" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Shopping Cart</span></a>
                 </div>
                 <!--/.nav-collapse -->
 

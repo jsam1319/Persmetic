@@ -121,7 +121,7 @@ setDeleteButton = function() {
                                         <td><input type="number" value="${cart.cartQuantity }"></td>
                                         <td>${cart.cartPrice }원</td>
                                         <td><span name="totalPrice">${cart.cartPrice*cart.cartQuantity}</span>원</td>
-                                        <td><a href="cart_delete.leaf?product_code=${cart.productCode }&ctm_no=2" name="cart_delete"><i class="fa fa-trash-o"></i></a></td>
+                                        <td><a href="cart_delete.leaf?product_code=${cart.productCode }&ctm_no=${cookie.customer.value}" name="cart_delete"><i class="fa fa-trash-o"></i></a></td>
                                       </tr>
                                     </c:forEach>
                                     </c:otherwise>
