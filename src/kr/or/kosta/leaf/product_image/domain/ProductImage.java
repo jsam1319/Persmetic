@@ -14,53 +14,30 @@ package kr.or.kosta.leaf.product_image.domain;
 
 public class ProductImage {
 
-	int productCode;
-	int imageNumber;
+	int imageNo;
 	String imageName;
-	String imageFront;
 	
-	public ProductImage(int productCode, int imageNumber, String imageName, String imageFront) {
-		super();
-		this.productCode = productCode;
-		this.imageNumber = imageNumber;
-		this.imageName = imageName;
-		this.imageFront = imageFront;
-	}
 	public ProductImage() {
-
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	public int getProductCode() {
-		return productCode;
+	public ProductImage(int imageNo, String imageName) {
+		super();
+		this.imageNo = imageNo;
+		this.imageName = imageName;
 	}
-	public int getImageNumber() {
-		return imageNumber;
+	public int getImageNo() {
+		return imageNo;
 	}
 	public String getImageName() {
 		return imageName;
 	}
-	public String getImageFront() {
-		return imageFront;
-	}
-	public void setProductCode(int productCode) {
-		this.productCode = productCode;
-	}
-	public void setImageNumber(int imageNumber) {
-		this.imageNumber = imageNumber;
+	public void setImageNo(int imageNo) {
+		this.imageNo = imageNo;
 	}
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
 	}
-	public void setImageFront(String imageFront) {
-		this.imageFront = imageFront;
-	}
-	
-	@Override
-	public String toString() {
-		return "ProductImage [productCode=" + productCode + ", imageNumber=" + imageNumber + ", imageName=" + imageName
-				+ ", imageFront=" + imageFront + "]";
-	}
-
 	
 	
 }

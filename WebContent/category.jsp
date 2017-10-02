@@ -72,47 +72,44 @@
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked category-menu">
                                 <li>
-                                    <a href="category.leaf">Men <span class="badge pull-right">42</span></a>
+                                    <a href="category.leaf">Face <span class="badge pull-right">42</span></a>
                                     <ul>
-                                        <li><a href="category.leaf">T-shirts</a>
+                                        <li><a href="category.leaf">파운데이션</a>
                                         </li>
-                                        <li><a href="category.leaf">Shirts</a>
+                                        <li><a href="category.leaf">쿠션</a>
                                         </li>
-                                        <li><a href="category.leaf">Pants</a>
+                                        <li><a href="category.leaf">파우터&컴팩트</a>
                                         </li>
-                                        <li><a href="category.leaf">Accessories</a>
+                                        <li><a href="category.leaf">메이크업 베이스 & 컨실러</a>
+                                        </li>
+                                        </li>
+                                        <li><a href="category.leaf">블러셔 & 하이라이터</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="active">
-                                    <a href="category.leaf">Ladies  <span class="badge pull-right">123</span></a>
+                                    <a href="category.leaf">Eye <span class="badge pull-right">123</span></a>
                                     <ul>
-                                        <li><a href="category.leaf">T-shirts</a>
+                                        <li><a href="category.leaf">마스카라</a>
                                         </li>
-                                        <li><a href="category.leaf">Skirts</a>
+                                        <li><a href="category.leaf">아이라이너</a>
                                         </li>
-                                        <li><a href="category.leaf">Pants</a>
+                                        <li><a href="category.leaf">아이쉐도우</a>
                                         </li>
-                                        <li><a href="category.leaf">Accessories</a>
+                                        <li><a href="category.leaf">아이브로우</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="category.leaf">Kids  <span class="badge pull-right">11</span></a>
+                                    <a href="category.leaf">Lip  <span class="badge pull-right">11</span></a>
                                     <ul>
-                                        <li><a href="category.leaf">T-shirts</a>
+                                        <li><a href="category.leaf">립스틱</a>
                                         </li>
-                                        <li><a href="category.leaf">Skirts</a>
-                                        </li>
-                                        <li><a href="category.leaf">Pants</a>
-                                        </li>
-                                        <li><a href="category.leaf">Accessories</a>
+                                        <li><a href="category.leaf">립틴트 & 립 글로스</a>
                                         </li>
                                     </ul>
                                 </li>
-
                             </ul>
-
                         </div>
                     </div>
 

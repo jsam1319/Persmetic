@@ -19,11 +19,11 @@ public interface ProductImageDao {
 	/* DB CRUD*/
 	public void create(ProductImage image);
 	
-	public ProductImage read(int productCode, int imageNumber);
+	public ProductImage read(int imageNo);
 	
-	public void update(int productCode, int imageNumber, ProductImage image);
+	public void update(int imageNo, ProductImage image);
 	
-	public void delete(int productCode, int imageNumber);
+	public void delete(int imageNo);
 	
 
 }

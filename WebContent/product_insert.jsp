@@ -39,13 +39,6 @@
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script>
-window.onload=function(){
-	CKEDITOR.replace( 'contents',{
-	    'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
-	    +'realUrl=http://localhost/uploadphoto/'
-	    +'&realDir=C:/Users/kosta/git/Persmetic/WebContent/uploadphoto/'
-	}); 
-}
 
 
 </script>
@@ -72,16 +65,13 @@ window.onload=function(){
           <div class="container">
 
             <div class="row">
-              <div class="col-md-3">
-                <form action="ckeditor/upload.jsp" method="post" enctype="multipart/form-data" name=""></form>
-                <!-- <img class="img-fluid d-block mb-4 w-100 img-thumbnail"
-                  src="img/image.png"> -->
-                  <output id="image"></output>
-                <input type="file" name="photoadd">
-                </form>
+              
+            <form method="post" id="product_form">
+            <div class="col-md-3" id="front_image" >
+                 <input type="file" name="front" accept="image/*" id="upload">
               </div>
               <div class="col-md-9">
-
+            
                 <div class="col-md-12">
                   <div class="form-group">  
                     <label for="name">상품명 </label> <input type="text"
@@ -91,22 +81,11 @@ window.onload=function(){
 
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="price">가격 </label> <input type="text"
+                    <label for="price">가격 </label> <input type="number"
                       class="form-control" name="price" id="price">
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="short_ex">상품간단설명 </label>
-                    <textarea class="form-control" rows="2"
-                      name="short_ex" id="short_ex"></textarea>
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <label></label>
-                </div>
 
                 <div class="col-md-3">
                   <div class="form-inline" style="margin-bottom: 5px">
@@ -146,8 +125,15 @@ window.onload=function(){
                     </select>
                   </div>
                 </div>
+             
+              
+              <div class="col-md-1">
+                 <div class="form-inline" style="margin-bottom: 5px; margin-left: 40px">
+                 재고
+                  <input type="number" name="sow">
+                 </div>
               </div>
-
+ </div>
               <div class="col-md-10">
                 <div class="form-group">
                   <label for="subject">키워드 </label> <input type="text"
@@ -174,11 +160,79 @@ window.onload=function(){
             value="저장"> <input type="button"
             class="btn btn-primary" value="취소" onclick="history.back(1)">
         </div>
-
+      </form>
 
       </div>
     </div>
   </div>
+
+<script>
+
+$(document).ready(function() {
+	var frontImage = "";
+	
+	CKEDITOR.replace( 'contents',{
+	    'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
+	    +'realUrl=http://localhost/uploadphoto/'
+	    +'&realDir=C:/Users/kosta/git/Persmetic/WebContent/uploadphoto/'
+	}); 
+	
+	var imageUp = $('input[type=file]');
+	var formData = new FormData();
+
+	imageUp.change(function() {
+		var fileName = $('input[type=file]')[0].files[0].name;
+		frontImage = fileName;
+		
+		$("#front_image").html("");
+		$("#front_image").append("<img style=\"max-width: 100%; height: auto;\" src=\"/uploadphoto/" + fileName + "\">");
+	
+		
+		/* console.log($('input[type=file]')[0].files[0]);
+		formData.append('upload', $('input[type=file]')[0].files[0]);
+		formData.append('type', 'front');
+			
+		console.log(formData);
+		$.ajax({
+			url: '/insert_item/upload.leaf',
+			dataType: 'text',
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: 'POST',
+			success: function(msg){
+				},
+			error: function(msg) {
+				console.log(msg);
+			}
+		}); */
+		
+	})	
+	
+	console.log($("#btnSubmit"));
+		$("#btnSubmit").click(function() {
+			var param = $("#product_form").serialize();
+			param = param + CKEDITOR.instances.contents.getData();
+			param = param + "&front=" + $("upload").val();
+			console.log(param);
+			
+			$.ajax({
+				url: 'insert_item/create.leaf',
+				data: param,
+				type: 'POST',
+				success: function(msg) {
+					alert(msg);
+				}
+			});
+			
+			return false;
+		})
+})
+
+
+
+</script>
+
 
 </body>
 </html>

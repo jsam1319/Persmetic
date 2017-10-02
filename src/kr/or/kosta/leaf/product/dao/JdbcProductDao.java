@@ -59,8 +59,9 @@ public class JdbcProductDao implements ProductDao {
 				"        		 	       PRODUCT_PRICE, \r\n" + 
 				"        		 	       PRODUCT_SOW, \r\n" + 
 				"        		 	       CATEGORY_NO, \r\n" + 
-				"          		 	       PRODUCT_IMAGE)" +
-				"VALUES ((SELECT max(PRODUCT_CODE) from PRODUCT)+1, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				"          		 	       PRODUCT_IMAGE,"
+				+ "						   PRODUCT_TYPE)" +
+			"VALUES ((SELECT max(PRODUCT_CODE) from PRODUCT)+1, ?, ?, ?, ?, ?, ?, ?, 1, ?, '1')";
 
 		try {
 			con = dataSource.getConnection();
@@ -75,8 +76,7 @@ public class JdbcProductDao implements ProductDao {
 			pstmt.setString(5, product.getProductTone());
 			pstmt.setInt(6, product.getProductPrice());
 			pstmt.setInt(7, product.getProductSow());
-			pstmt.setInt(8, product.getCategoryNo());
-			pstmt.setString(9, product.getProductImage());
+			pstmt.setString(8, product.getProductImage());
 			
 			pstmt.executeUpdate();
 

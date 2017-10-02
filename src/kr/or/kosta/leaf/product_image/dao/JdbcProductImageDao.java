@@ -54,18 +54,15 @@ private DataSource dataSource;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = " INSERT INTO product_image(product_code, image_number, image_name, image_front) " +
-		             	   " VALUES   (?, ?, ?, ?)";
+		String sql = " INSERT INTO product_image(image_no, image_name) " +
+		             	   " VALUES   ((SELECT max(image_no) + 1 FROM product_image) , ?)";
 		
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, image.getProductCode());
-			pstmt.setInt(2, image.getImageNumber());
-			pstmt.setString(3,  image.getImageName());
-			pstmt.setString(4, image.getImageFront());
+			pstmt.setString(1,  image.getImageName());
 			
 			pstmt.executeUpdate();
 			
@@ -86,30 +83,28 @@ private DataSource dataSource;
 	}
 
 	@Override
-	public ProductImage read(int productCode, int imageNumber) {
+	public ProductImage read(int imageNo) {
 		// TODO Auto-generated method stub
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = " SELECT product_code, image_number, image_name, image_front "
+		String sql = " SELECT product_code, image_no, image_name, image_front "
 		             	 +" FROM product_image "
-		             	 +" WHERE product_code = ? "
-		             	 +" AND image_number = ?";
+		             	 +" WHERE image_no = ?";
 		
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, productCode);
-			pstmt.setInt(2, imageNumber);
+			pstmt.setInt(1, imageNo);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) 
-				return new ProductImage(rs.getInt("product_code"), rs.getInt("image_number"), rs.getString("image_name"), rs.getString("image_front"));
+				return new ProductImage(rs.getInt("image_no"), rs.getString("image_name"));
 			
 			con.commit();
 		} catch (Exception e) {
@@ -129,7 +124,7 @@ private DataSource dataSource;
 	}
 
 	@Override
-	public void update(int productCode, int imageNumber, ProductImage image) {
+	public void update(int imageNo, ProductImage image) {
 		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -137,8 +132,7 @@ private DataSource dataSource;
 		
 		String sql = "UPDATE product_image " + 
 						   " SET image_name = ? " + 
-						   " AND image_front = ? " +
-						  " WHERE product_code = ? AND image_number = ? ";
+						  " WHERE image_no = ? ";
 						  
 		
 		try {
@@ -146,10 +140,10 @@ private DataSource dataSource;
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, productCode);
-			pstmt.setInt(2, imageNumber);
-			pstmt.setString(3, image.getImageName());
-			pstmt.setString(4, image.getImageFront());
+			pstmt.setString(1, image.getImageName());
+			pstmt.setInt(2, imageNo);
+			
+	
 			
 			pstmt.executeUpdate();
 			
@@ -170,22 +164,20 @@ private DataSource dataSource;
 	}
 
 	@Override
-	public void delete(int productCode, int imageNumber) {
+	public void delete(int imageNo) {
 		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
 		String sql = " DELETE FROM product_image " +
-						  " WHERE product_code = ? " +
-						  " AND image_number = ?";
+						  " WHERE image_no = ?";
 		
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, productCode);
-			pstmt.setInt(2, imageNumber);
+			pstmt.setInt(1, imageNo);
 			
 			pstmt.executeUpdate();
 			
