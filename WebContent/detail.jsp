@@ -243,14 +243,9 @@
                     <div class="row" id="productMain">
                         <div class="col-sm-6">
                             <div id="mainImage">
-                                <img src="img/detailbig1.jpg" alt="" class="img-responsive">
+                                <img src="http://localhost/uploadphoto/${product.productImage }" alt="" class="img-responsive">
                             </div>
 
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon -->
 
                             <div class="ribbon new">
                                 <div class="theribbon">NEW</div>
@@ -262,7 +257,7 @@
                         <!-- 상품 정보 -->
                         <div class="col-sm-6">
                             <div class="box">
-                                <h2 class="text-center">상품명</h2>
+                                <h2 class="text-center">${product.productName}</h2>
                                 <hr width="300">
                                 <p class="text-center">
                                 <i class="fa fa-star"></i>
@@ -271,9 +266,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <hr width="300">
-                                <p class="goToDescription scroll-to">상세설명
-                                </p>
-                                <p class="price">가격</p> <!-- 텍스트 크기 줄이기 -->
+                                <p class="price">${product.productPrice}</p> <!-- 텍스트 크기 줄이기 -->
 
                                 <p class="text-center buttons">
                                     <a href="basket.leaf" class="btn btn-default"><i class="fa fa-shopping-cart"></i> 장바구니</a> 
@@ -301,7 +294,7 @@
                      </ul>
                      <div id="myTabContent" class="tab-content">
                          <div role="tabpanel" class="tab-pane fade active in" id="explain" aria-labelledby="explain-tab">
-                          <p>상품정보내용</p>
+                          <p>${product.productExplain }</p>
                          </div>
                          <div role="tabpanel" class="tab-pane fade" id="qna" aria-labelledby="qna">
                           <p>상품문의내용</p>

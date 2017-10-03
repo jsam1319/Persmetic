@@ -1,6 +1,11 @@
 package kr.or.kosta.leaf.product.controller;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,36 +13,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.kosta.leaf.common.controller.Controller;
 import kr.or.kosta.leaf.common.controller.ModelAndView;
+import kr.or.kosta.leaf.common.web.Params;
 import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.product.service.ProductService;
 import kr.or.kosta.leaf.product.service.ProductServiceImpl;
 
-public class ProductCreateController implements Controller {
+public class ProductListController implements Controller {
 
-	ProductService productService = new ProductServiceImpl();
 	ModelAndView mav = new ModelAndView();
+	ProductService service = new ProductServiceImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		Product product = new Product();
+		int page = Integer.parseInt(request.getParameter("page"));
 		
-		product.setProductName(request.getParameter("name"));
-		product.setProductPrice(Integer.parseInt(request.getParameter("price")));
-		product.setProductBrand(request.getParameter("brand"));
-		product.setProductColor(request.getParameter("color"));
-		product.setProductTone(request.getParameter("tone"));
-		product.setProductExplain(request.getParameter("contents"));
-		product.setProductImage(request.getParameter("front"));
-		product.setProductSow(Integer.parseInt(request.getParameter("sow")));
+		Params params = new Params(page, null, null, 10, 5);
 		
+		List<Product> products = service.ListByParams(params);
 		
-		productService.create(product);
-		
+		mav.addObject("list", products);
+		mav.setView("category.leaf");
 		
 		return mav;
 	}
-
 }

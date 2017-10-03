@@ -22,6 +22,8 @@ public class ProductImageController implements Controller {
 		ProductImageService productImageService = new ProductImageServiceImpl();
 		System.out.println("image : " + request.getParameter("image_name"));
 		ProductImage productImage = new ProductImage(-1, request.getParameter("image_name"));		
+		
+		FileUpload.uploadFile(request);
 		productImageService.uploadImage(productImage);
 
 		return null;
