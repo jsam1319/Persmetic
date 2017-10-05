@@ -255,20 +255,21 @@
 	 $("#reportrange").on('apply.daterangepicker', function(ev, picker) {
 		var total = $('#reportrange span').html();
 	 
-	 	startStr = total.split("-")[0];
-	 	endStr = total.split("-")[1];
+	 	startDate = total.split("-")[0];
+	 	endDate = total.split("-")[1];
+	 	alert(startDate);
 	 	
-	 	startDate = {
-	 		"year" : startStr.split("/")[0],
-	 		"month" : startStr.split("/")[1],
-	 		"day" : startStr.split("/")[2]
-	 	} 
-	 	
-	 	endDate = {
-	 		"year" : endStr.split("/")[0],
-		 	"month" : endStr.split("/")[1],
-		 	"day" : endStr.split("/")[2]
-	 	}
+	 	$.ajax({
+	 		url : "stats.leaf",
+	 		type : 'POST',
+	 		data : {
+	 			"startDate" : startDate,
+	 			"endDate" : endDate
+	 		},
+	 		success : function(msg) {
+	 			console.log(msg)
+	 		}
+	 	});
 	 	
 
 	 });

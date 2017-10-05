@@ -24,7 +24,7 @@ public interface OrderItemDao {
 	public OrderItem read(int orderNo, int productCode);
 	
 	/** 통계를 위한 주문항목 조회 */
-	public List<OrderItem> read(int productCode);
+	public List<OrderItem> read(int orderNo);
 	
 	/** 주문항목 리스트 */
 	public List<OrderItem> listAll();

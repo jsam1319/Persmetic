@@ -80,7 +80,7 @@ private DataSource dataSource;
 	
 
 	/** 통계를 위한 주문항목 상품보기 */
-	public List<OrderItem> read(int productCode) {
+	public List<OrderItem> read(int orderNo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -88,12 +88,13 @@ private DataSource dataSource;
 
 		String sql = " SELECT order_no, product_code, order_price, order_count " +
 					 " FROM order_item " +
-					 " WHERE product_code = ? ";
+					 " WHERE order_no = ? ";
 
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, productCode);
+			
+			pstmt.setInt(1, orderNo);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -109,7 +110,7 @@ private DataSource dataSource;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("JdbcOrderItemDao.read(int orderNo, int productCode) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcOrderItemDao.read(int orderNo) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if (rs != null) rs.close();
