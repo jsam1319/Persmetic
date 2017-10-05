@@ -42,6 +42,21 @@
 <script src="js/bootstrap-hover-dropdown.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/front.js"></script>
+<!-- 
+<script src="js/moment/min/moment.min.js"></script>
+<script src="js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="js/bootstrap-daterangepicker/daterangepicker.css"></script>
+ -->
+
+
+<!-- Include Required Prerequisites -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+ 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
 
 <link rel="shortcut icon" href="favicon.png">
@@ -184,11 +199,18 @@
             </div>
           </div>
         </div>
-        <span style="">
 
-          <div class="col-md-8">
-            <div id="container"></div>
 
+	
+		<!-- Graph -->
+       <div class="col-md-8">
+          <div id="container"></div>
+		
+		<div id="datepicker"></div>
+		<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+		    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+		    <span></span> <b class="caret"></b>
+		</div>
 
       <table style="margin-top: 20px" class="table table-hover">
         <thead >
@@ -216,31 +238,104 @@
       </table>
 
 
-          </div>
-          <li style="list-style-type: none;">
-            <ul>
-              <button type="button" class="btn btn-primary">Primary</button>
-            </ul>
-            <ul>
-              <button type="button" class="btn btn-primary">Primary</button>
-            </ul>
-            <ul>
-              <button type="button" class="btn btn-primary">Primary</button>
-            </ul>
-            <ul>
-              <button type="button" class="btn btn-primary">Primary</button>
-            </ul>
-            <ul>
-              <button type="button" class="btn btn-primary">Primary</button>
-            </ul>
-        </li>
-        </span>
-      </div>
+          
     </div>
   </div>
 
 
   <script>
+  
+  $(document).ready(function() {
+	 var startStr = "";
+	 var endStr = "";
+	 
+	 var startDate;
+	 var endDate;
+	 
+	 $("#reportrange").on('apply.daterangepicker', function(ev, picker) {
+		var total = $('#reportrange span').html();
+	 
+	 	startStr = total.split("-")[0];
+	 	endStr = total.split("-")[1];
+	 	
+	 	startDate = {
+	 		"year" : startStr.split("/")[0],
+	 		"month" : startStr.split("/")[1],
+	 		"day" : startStr.split("/")[2]
+	 	} 
+	 	
+	 	endDate = {
+	 		"year" : endStr.split("/")[0],
+		 	"month" : endStr.split("/")[1],
+		 	"day" : endStr.split("/")[2]
+	 	}
+	 	
+
+	 });
+	  
+	 var datepicker = $(function() {
+
+		    var start = moment().subtract(29, 'days');
+		    var end = moment();
+		    
+
+		    function cb(start, end) {
+		        $('#reportrange span').html(start.format('YYYY/MM/D') + ' - ' + end.format('YYYY/MM/D'));
+		    }
+
+		    $('#reportrange').daterangepicker({
+		        startDate: start,
+		        endDate: end,
+		        ranges: {
+		           '오늘': [moment(), moment()],
+		           '어제': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+		           '최근 7일': [moment().subtract(6, 'days'), moment()],
+		           '최근 30일': [moment().subtract(29, 'days'), moment()],
+		           '이번 달': [moment().startOf('month'), moment().endOf('month')],
+		           '지난 달': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+		        },
+		        locale: {
+		            "format": "YYYY/MM/DD",
+		            "separator": " - ",
+		            "applyLabel": "적용",
+		            "cancelLabel": "취소",
+		            "fromLabel": "From",
+		            "toLabel": "To",
+		            "customRangeLabel": "사용자 설정",
+		            "weekLabel": "주",
+		            "daysOfWeek": [
+		                "일",
+		                "월",
+		                "화",
+		                "수",
+		                "목",
+		                "금",
+		                "토"
+		            ],
+		            "monthNames": [
+		                "1월",
+		                "2월",
+		                "3월",
+		                "4월",
+		                "5월",
+		                "6월",
+		                "7월",
+		                "8월",
+		                "9월",
+		                "10월",
+		                "11월",
+		                "12월"
+		            ],
+		            "firstDay": 1
+		        },
+		    }, cb);
+
+		    cb(start, end);
+		    
+		});
+	  
+  })
+  
 /* 			
   createChart = function(year, month, day, interval)
  */

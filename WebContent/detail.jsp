@@ -243,7 +243,7 @@
                     <div class="row" id="productMain">
                         <div class="col-sm-6">
                             <div id="mainImage">
-                                <img src="http://localhost/uploadphoto/${product.productImage }" alt="" class="img-responsive">
+                                <img src="http://localhost/uploadphoto/${product.productImage}" class="img-responsive">
                             </div>
 
 
