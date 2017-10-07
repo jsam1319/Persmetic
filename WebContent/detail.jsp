@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,9 +37,7 @@
     <script src="js/respond.min.js"></script>
 
     <link rel="shortcut icon" href="favicon.png">
-
-
-
+	
 </head>
 
 <body>
@@ -64,200 +63,30 @@
 
                 </div>
 
-                <div class="col-md-3">
-                    <!-- *** MENUS AND FILTERS ***
- _________________________________________________________ -->
-                    <div class="panel panel-default sidebar-menu">
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title">카테고리</h3>
-                        </div>
-
-                        <div class="panel-body">
-                            <ul class="nav nav-pills nav-stacked category-menu">
-                                <li>
-                                    <a href="category.leaf">제품 <span class="badge pull-right">42</span></a>
-                                    <ul>
-                                        <li><a href="category.leaf">페이스</a>
-                                        </li>
-                                        <li><a href="category.leaf">아이</a>
-                                        </li>
-                                        <li><a href="category.leaf">립</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="active">
-                                    <a href="category.leaf">톤  <span class="badge pull-right">123</span></a>
-                                    <ul>
-                                        <li><a href="category.leaf">봄</a>
-                                        </li>
-                                        <li><a href="category.leaf">여름</a>
-                                        </li>
-                                        <li><a href="category.leaf">가을</a>
-                                        </li>
-                                        <li><a href="category.leaf">겨울</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                
-
-                            </ul>
-
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default sidebar-menu">
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Brands</h3>
-                        </div>
-
-                        <div class="panel-body">
-
-                            <form>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">맥 (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">나스 (12)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">슈에무라 (15)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">크리니크 (14)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">샤넬 (12)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">바비브라운 (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">에뛰드하우스 (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">이니스프리 (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">더페이스샵 (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">미샤 (10)
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <button class="btn btn-default btn-sm btn-default">Apply</button>
-
-                            </form>
-
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default sidebar-menu">
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Colours</h3>
-                        </div>
-
-                        <div class="panel-body">
-
-                            <form>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour red"></span> Red (14)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour orange"></span> Orange (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour yellow"></span> Yellow (20)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour green"></span> Green (13)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour blue"></span> Blue (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour navy"></span> Navy (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour purple"></span> Purple (10)
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <button class="btn btn-default btn-sm btn-default">Apply</button>
-
-                            </form>
-
-                        </div>
-                    </div>
-
-                    <!-- *** MENUS AND FILTERS END *** -->
-
-                    <div class="banner">
-                        <a href="#">
-                            <img src="img/woman2.JPG" alt="sales 2014" class="img-responsive">
-                        </a>
-                    </div>
-                </div>
+               <!-- Side MenuBar -->
+               <jsp:include page="include/sideMenu.jsp"></jsp:include>
+               <!-- Side MenuBar End -->
 
                 <div class="col-md-9">
 
                     <div class="row" id="productMain">
                         <div class="col-sm-6">
                             <div id="mainImage">
-                                <img src="http://localhost/uploadphoto/${product.productImage }" alt="" class="img-responsive">
+                                <img src="http://localhost/uploadphoto/${product.productImage}" alt="" class="img-responsive" name="productImage">
                             </div>
 
 
-                            <div class="ribbon new">
+                            <!-- <div class="ribbon new">
                                 <div class="theribbon">NEW</div>
                                 <div class="ribbon-background"></div>
-                            </div>
+                            </div> -->
                             <!-- /.ribbon -->
 
                         </div>
                         <!-- 상품 정보 -->
                         <div class="col-sm-6">
                             <div class="box">
-                                <h2 class="text-center">${product.productName}</h2>
+                                <h2 class="text-center" name="productName">${product.productName}</h2>
                                 <hr width="300">
                                 <p class="text-center">
                                 <i class="fa fa-star"></i>
@@ -266,7 +95,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <hr width="300">
-                                <p class="price">${product.productPrice}</p> <!-- 텍스트 크기 줄이기 -->
+                                <p class="price">${product.productPrice}원</p> <!-- 텍스트 크기 줄이기 -->
 
                                 <p class="text-center buttons">
                                     <a href="basket.leaf" class="btn btn-default"><i class="fa fa-shopping-cart"></i> 장바구니</a> 
@@ -300,7 +129,24 @@
                           <p>상품문의내용</p>
                           </div>
                           <div role="tabpanel" class="tab-pane fade" id="review" aria-labelledby="review-tab">
-                           <p>구매후기내용</p>
+                           	<c:forEach items="${list}" var="i">
+                           	<!-- List -->
+                           	<div class="input-group">
+                           		<div class="col-md-2">
+									<p>${i.ctmNo}</p>
+									<p>${i.reviewGrade}</p>
+                           		</div>
+                           		<div class="col-md-8">
+                           			<p>${i.productCode}</p>
+                           			<p>${i.reviewTitle}</p>
+                           		</div>
+                           		<div class="col-md-2">
+                           			<p>${i.reviewDate}</p>
+                           		</div>
+                           	</div>
+                           		<hr>
+                           	</c:forEach>
+                           <input type="button" value="리뷰쓰기" id="reviewbtn" class="btn btn-primary">
                           </div>
                     </div>
                     </div>
@@ -476,9 +322,8 @@
 
     
 
-    <!-- *** SCRIPTS TO INCLUDE ***
- _________________________________________________________ -->
-    <script src="js/jquery-1.11.0.min.js"></script>
+    <!-- *** SCRIPTS TO INCLUDE *** -->
+        <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/waypoints.min.js"></script>
@@ -487,8 +332,14 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
 
-
-
+<script>
+//리뷰작성 버튼 클릭
+$(document).ready(function(){
+	$("#reviewbtn").click(function(){
+		location.href = "review_write.leaf?productCode=${product.productCode}"
+	})
+});
+</script>
 
 
 

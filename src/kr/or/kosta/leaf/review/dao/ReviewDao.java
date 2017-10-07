@@ -17,6 +17,9 @@ public interface ReviewDao {
 	/** 리뷰등록 */
 	public void create(Review review);
 	
+	/** 리뷰 내용보기  */
+	public Review read(int reviewNo);
+	
 	/** 리뷰 삭제 */
 	public void delete(int reviewno);
 	

@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import kr.or.kosta.leaf.common.db.DaoFactory;
 import kr.or.kosta.leaf.common.web.Params;
+import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.review.domain.Review;
 
 /**
@@ -85,6 +86,55 @@ public class JdbcReviewDao implements ReviewDao {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	/** 리뷰 내용보기  */
+	public Review read(int reviewNo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = " SELECT REVIEW_NO, CTM_NO, PRODUCT_CODE, REVIEW_GRADE, REVIEW_TITLE, REVIEW_CONTENTS, REVIEW_DATE " +
+				"FROM REVIEW \r\n" + 
+				"WHERE REVIEW_NO = ?";
+		 
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, reviewNo);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				Review review = new Review();
+				
+				review.setReviewNo(rs.getInt("review_no"));
+				review.setCtmNo(rs.getInt("ctm_no"));
+				review.setProductCode(rs.getInt("product_code"));
+				review.setReviewGrade(rs.getInt("review_grade"));
+				review.setReviewTitle(rs.getString("review_title"));
+				review.setReviewContents(rs.getString("review_contents"));
+				review.setReviewDate(rs.getString("review_date"));
+				
+				return review;
+			}
+			System.out.println("read 완료!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("JdbcReviewDao read(ReviewNo) 실행 중 예외발생", e);
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 	
 	/** 리뷰 삭제 */
