@@ -25,6 +25,11 @@ import javax.sql.DataSource;
 import kr.or.kosta.leaf.keyword.domain.Keyword;
 
 
+/**
+ * JDBC API를 이용한 사용자(users) 테이블 관련 영속성 처리 DAO 클래스
+ * DAO 패턴 적용
+ * @author 김기정
+ */
 public class JdbcKeywordDao implements KeywordDao{
 	
 private DataSource dataSource;
@@ -122,55 +127,6 @@ private DataSource dataSource;
 			return keyword;
 	}
 
-	@Override
-	public List<String> getKeywordNames(String keywordName) {
-		// TODO Auto-generated method stub
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		List<String> keywordNames = new ArrayList<String>();
-			
-		Keyword keyword = null;
-				
-		String sql = " SELECT DISTINCT keyword_name"
-						+ " FROM keyword " 
-				       	+ " WHERE keyword_name like ?";
-				             			  
-		try {
-			con = dataSource.getConnection();
-			con.setAutoCommit(false);
-				
-			pstmt = con.prepareStatement(sql);
-			
-			String keywordString = "%" + keywordName + "%";
-			
-			pstmt.setString(1, keywordString);
-					
-			rs = pstmt.executeQuery();
-					
-			while(rs.next()) {
-				keywordNames.add(rs.getString("keyword_name"));
-			}
-					
-			con.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			try {
-				con.rollback();
-			} catch (SQLException e1) {}
-				throw new RuntimeException("JdbcKeywordDao.read(String keywordName, int productCode) 실행 중 예외발생", e);
-			} finally {
-				try {
-					if(pstmt != null) pstmt.close();
-					if(con != null)   con.close(); // 커넥션풀에 반납
-				} catch (Exception e) {}
-			}
-				
-			return keywordNames;
-	}
-	
 	@Override
 	public void delete(String keywordName, int productCode) {
 		// TODO Auto-generated method stub
