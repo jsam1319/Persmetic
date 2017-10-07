@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,15 +47,65 @@
 <link href="css/custom.css" rel="stylesheet">
 
 <script src="js/respond.min.js"></script>
-<script src="js/regist.js"></script>
+
+<script>
+
+window.onload = function(){
+	document.getElementById("btnSubmit").onclick = function(){		
+		
+		if($("#repasswd").val().trim() != $("#passwd").val().trim()  ){
+			 $("#repwCheck").html("비밀번호가 일치하지 않습니다.");
+		}else{
+				 $("#repwCheck").html(""); 
+   					
+		}
+		
+		if($("#gender").val().trim() == '선택'){
+			 $("#genderCheck").html("성별을 선택하세요.");
+		      return false;			
+		}
+		if($("#job").val().trim() == '선택'){
+			 $("#jobCheck").html("직업을 선택하세요.");
+		      return false;			
+		}
+	}
+	
+
+	document.getElementById("btnId").onclick= function(){
+		var id = document.getElementById("id").value;
+		$.ajax({
+			method: "POST",
+			url: "/idCheck.leaf",
+			data: {"ctm_id":id},
+			
+			success:function(data) {
+				
+				$('#idchk').html(data);
+			    
+			},
+			
+			error : function(data) {
+				alert("error!");
+				alert(data);
+			}
+		});
+		
+	}
+
+}
+
+
+</script>
 
 
 <link rel="shortcut icon" href="favicon.png">
 
-
 </head>
 
 <body>
+<c:if test="${msg }">
+	<script>alert('${msg}')</script>
+</c:if>
  <jsp:include page="/include/header.jsp" />
 
   <div id="all">
@@ -65,7 +117,7 @@
 
           <ul class="breadcrumb">
             <li><a href="#">Home</a></li>
-            <li>New account / Sign in</li>
+            <li>Sign up</li>
           </ul>
 
         </div>
@@ -76,71 +128,70 @@
 
             <hr>
 
-            <form action="customer-orders.leaf" method="post"
+            <form action="${pageContext.servletContext.contextPath}/join.leaf" method="post"
               name="userInfo">
               <div class="form-inline" style="margin-bottom: 5px">
                 <label style="width: 100px">아이디</label> <input
-                  type="text" id="ctm_id" class="form-control"
-                   style="width: 250px" placeholder="아이디를 입력하세요."/>  <button
-                 id="btnId" class="button" style="width: 80px; height: 30px"
-                 >중복확인</button><span id="IDcheck"></span> <input type="hidden"
-                  name="idDuplication" value="idUncheck">
+                  type="text" name="ctm_id" id="id" class="form-control"
+                   style="width: 250px" placeholder="아이디를 입력하세요." required="required"/>  <input
+                type="button" id="btnId" class="button" style="width: 65px; height: 20px" value="중복확인" font-size="5pt"
+                 />&nbsp;<span id="idchk"></span>
+                  <input type="hidden" name="idDuplication" value="idUncheck">
               </div>
               <div class="form-inline" style="margin-bottom: 5px">
                 <label style="width: 100px">이름</label> <input
-                  type="text" id="ctm_name" class="form-control"
+                  type="text" name="ctm_name" id="name" class="form-control" required="required"
                   style="width: 250px"  placeholder="이름을 입력하세요." />
               </div>
               <div class="form-inline" style="margin-bottom: 5px">
                 <label style="width: 100px">비밀번호</label> <input
-                  type="password" id="ctm_passwd" class="form-control"
+                  type="password" name="ctm_passwd" id="passwd" class="form-control" required="required"
                   style="width: 250px" placeholder="비밀번호를 입력하세요." />
               </div>
               <div class="form-inline" style="margin-bottom: 5px">
                 <label style="width: 100px">비밀번호 확인</label> <input
-                  type="password" id="checkPw" class="form-control"
-                  style="width: 250px" placeholder="비밀번호를 다시한번 입력하세요." /><span id="repwCheck"></span>
+                  type="password"  id="repasswd" class="form-control"
+                  style="width: 250px" placeholder="비밀번호를 다시한번 입력하세요." required="required"/><span id="repwCheck"></span>
               </div>
               <div class="form-inline" style="margin-bottom: 5px">
                 <label style="width: 100px">이메일</label> <input
-                  type="text" id="ctm_email" class="form-control"
-                  style="width: 250px" placeholder="이메일을 입력하세요." />
+                  type="text" name="ctm_email" id="email" class="form-control"
+                  style="width: 250px" placeholder="이메일을 입력하세요." required="required" />
               </div>
               <div class="form-inline" style="margin-bottom: 5px">
                 <label style="width: 100px">나이</label> <input
-                  type="text" id="ctm_age" class="form-control"
-                  style="width: 250px" placeholder="나이를 입력하세요."/>
+                  type="text" name="ctm_age" id="age" class="form-control"
+                  style="width: 250px" placeholder="나이를 입력하세요." required="required"/>
               </div>
               <div class="form-inline" style="margin-bottom: 5px">
                 <label style="width: 100px">성별</label> <select
-                  id="ctm_gender">
-                  <option id="genderChoice">선택</option>
-                  <option id="M">남성</option>
-                  <option id="F">여성</option>
-                </select><span id="genderCheck"></span>
+                  name="ctm_gender" id="gender">
+                  <option value="선택">선택</option>
+                  <option value="M">M</option>
+                  <option value="F">F</option>
+                </select>&nbsp;<span id="genderCheck"></span>
               </div>
               <div>
                 <label style="width: 100px">직업</label> <select
-                  id="ctm_job">
-                  <option id="jobChoice">선택</option>
-                  <option>회사원</option>
-                  <option>강사</option>
-                  <option>학생</option>
-                  <option>기타</option>
-                </select><span id="jobCheck"></span>
+                  name="ctm_job" id="job">
+                  <option value="선택">선택</option>
+                  <option value="학생">학생</option>
+                  <option value="회사원">회사원</option>
+                  <option value="주부">주부</option>
+                  <option value="기타">기타</option>
+                </select>&nbsp;<span id="jobCheck"></span>
               </div>
               <div class="form-inline" style="margin-bottom: 5px">
                 <label style="width: 100px">주소</label> <input
-                  type="text" id="ctm_address" class="form-control"
-                  style="width: 300px" placeholder="주소를 입력하세요." />&nbsp;&nbsp;
+                  type="text" name="ctm_address" id="address" class="form-control"
+                  style="width: 300px" placeholder="주소를 입력하세요." required="required" />&nbsp;&nbsp;
                   <span><input class="button" type="button" value="우편번호"
                   /></span>
-              </div>
+              </div><br>
 
               <div class="text-center">
-                <input class="button" type="submit" value="가입하기"
-                  id="btnSubmit" /> <input class="button"
-                  type="button" value="취소" onclick="goFirstForm()">
+                 <button class="btn btn-default" type="submit" id="btnSubmit" >가입하기</button>
+              <button class="btn btn-default"  type="reset" onclick="location.href='index.leaf'">취소하기</button>
               </div>
             </form>
           </div>

@@ -48,7 +48,7 @@ public class JdbcCustomerDao implements CustomerDao {
 				   + "              ctm_tone," 
 				   + "              ctm_job," 
 				   + "              ctm_email)" 
-				   + " VALUES      (?,"
+				   + " VALUES      ((Select max(ctm_no)+1 FROM customer),"
 				   + "              ?," 
 				   + "              ?," 
 				   + "              ?," 
@@ -65,17 +65,17 @@ public class JdbcCustomerDao implements CustomerDao {
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, Customer.getCtmNo());
-			pstmt.setString(2, Customer.getCtmName());
-			pstmt.setString(3, Customer.getCtmDivision());
-			pstmt.setString(4, Customer.getCtmId());
-			pstmt.setString(5, Customer.getCtmPasswd());
-			pstmt.setInt(6, Customer.getCtmAge());
-			pstmt.setString(7, Customer.getCtmGender());
-			pstmt.setString(8, Customer.getCtmAddress());
-			pstmt.setString(9, Customer.getCtmTone());
-			pstmt.setString(10, Customer.getCtmJob());
-			pstmt.setString(11, Customer.getCtmEmail());
+			
+			pstmt.setString(1, Customer.getCtmName());
+			pstmt.setString(2, Customer.getCtmDivision());
+			pstmt.setString(3, Customer.getCtmId());
+			pstmt.setString(4, Customer.getCtmPasswd());
+			pstmt.setInt(5, Customer.getCtmAge());
+			pstmt.setString(6, Customer.getCtmGender());
+			pstmt.setString(7, Customer.getCtmAddress());
+			pstmt.setString(8, Customer.getCtmTone());
+			pstmt.setString(9, Customer.getCtmJob());
+			pstmt.setString(10, Customer.getCtmEmail());
 
 			pstmt.executeUpdate();
 
