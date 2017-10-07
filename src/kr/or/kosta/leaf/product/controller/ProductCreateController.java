@@ -24,14 +24,15 @@ public class ProductCreateController implements Controller {
 		
 		Product product = new Product();
 		
+		product.setCategoryNo(Integer.parseInt(request.getParameter("categoryno")));
 		product.setProductName(request.getParameter("name"));
 		product.setProductPrice(Integer.parseInt(request.getParameter("price")));
 		product.setProductBrand(request.getParameter("brand"));
 		product.setProductColor(request.getParameter("color"));
 		product.setProductTone(request.getParameter("tone"));
 		product.setProductExplain(request.getParameter("contents"));
-		product.setProductImage(request.getParameter("front"));
 		product.setProductSow(Integer.parseInt(request.getParameter("sow")));
+		product.setProductImage(request.getParameter("image"));
 		
 		
 		productService.create(product);

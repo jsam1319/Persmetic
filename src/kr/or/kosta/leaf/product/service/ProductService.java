@@ -9,8 +9,10 @@ public interface ProductService {
 
 	public void create(Product product);
 	
+	public Product read(int productCode);
+	
 	public List<Product> ListByParams(Params params); 
 	
-	public Product read(int productCode);
+	public int pageCount(Params params);
 	
 }

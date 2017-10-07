@@ -59,9 +59,9 @@ public class JdbcProductDao implements ProductDao {
 				"        		 	       PRODUCT_PRICE, \r\n" + 
 				"        		 	       PRODUCT_SOW, \r\n" + 
 				"        		 	       CATEGORY_NO, \r\n" + 
-				"          		 	       PRODUCT_IMAGE,"
-				+ "						   PRODUCT_TYPE)" +
-			"VALUES ((SELECT max(PRODUCT_CODE) from PRODUCT)+1, ?, ?, ?, ?, ?, ?, ?, 1, ?, '1')";
+				"          		 	       PRODUCT_IMAGE," +
+				"						   PRODUCT_TYPE)" +
+			"VALUES ((SELECT max(PRODUCT_CODE) from PRODUCT)+1, ?, ?, ?, ?, ?, ?, ?, ?, ?, '1')";
 
 		try {
 			con = dataSource.getConnection();
@@ -76,7 +76,8 @@ public class JdbcProductDao implements ProductDao {
 			pstmt.setString(5, product.getProductTone());
 			pstmt.setInt(6, product.getProductPrice());
 			pstmt.setInt(7, product.getProductSow());
-			pstmt.setString(8, product.getProductImage());
+			pstmt.setInt(8, product.getCategoryNo());
+			pstmt.setString(9, product.getProductImage());
 			
 			pstmt.executeUpdate();
 
@@ -102,7 +103,7 @@ public class JdbcProductDao implements ProductDao {
 	}
 
 
-	/** 상품 상세보기(번호로 정보 찾기) */
+	/** 상품 상세보기  */
 	public Product read(int productCode) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -203,7 +204,7 @@ public class JdbcProductDao implements ProductDao {
 	public void update(Product product) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE PRODUCT SET PRODUCT_NAME =?, PRODUCT_EXPLAIN=?, PRODUCT_BRAND=?, PRODUCT_COLOR=?, PRODUCT_TONE=?, PRODUCT_PRICE=?, PRODUCT_SOW=?, PRODUCT_IMAGE=? WHERE PRODUCT_CODE=?";
+		String sql = "UPDATE PRODUCT SET PRODUCT_NAME =?, PRODUCT_EXPLAIN=?, PRODUCT_BRAND=?, PRODUCT_COLOR=?, PRODUCT_TONE=?, PRODUCT_PRICE=?, PRODUCT_SOW=?, CATEGORY_NO=?, PRODUCT_IMAGE=? WHERE PRODUCT_CODE=?";
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
@@ -218,8 +219,9 @@ public class JdbcProductDao implements ProductDao {
 			pstmt.setString(5, product.getProductTone());
 			pstmt.setInt(6, product.getProductPrice());
 			pstmt.setInt(7, product.getProductSow());
-			pstmt.setString(8, product.getProductImage());
-			pstmt.setInt(9, product.getProductCode());
+			pstmt.setInt(8, product.getCategoryNo());
+			pstmt.setString(9, product.getProductImage());
+			pstmt.setInt(10, product.getProductCode());
 			
 			
 			System.out.println(pstmt.executeUpdate());
@@ -366,6 +368,7 @@ public class JdbcProductDao implements ProductDao {
 			switch (params.getType()) {
 				case "name":    
 					sb.append(" WHERE  PRODUCT_NAME  LIKE ?");
+					value = "%" + value + "%";
 					break;
 				case "brand":  
 					sb.append(" WHERE  PRODUCT_BRAND LIKE ?");

@@ -27,6 +27,11 @@
 	<!-- 상품 상세정보 -->
 	<bean name="/detail_item" class="kr.or.kosta.leaf.product.controller.ProductDetailController" />
 	
+	<!-- 리뷰 작성 -->
+	<bean name="/review_write" class="kr.or.kosta.leaf.review.controller.ReviewActionController" />
+	
+	<!-- 리뷰 리스트 -->
+	<bean name="/review/create" class="kr.or.kosta.leaf.review.controller.ReviewCreateController" />
 	
 <!-- 	회원 관련 세부 컨트롤러 
 	<bean name="/user/list" class="kr.or.kosta.shoppingmall.user.controller.UserListController"/>

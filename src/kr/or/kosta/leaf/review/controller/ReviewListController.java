@@ -1,4 +1,4 @@
-package kr.or.kosta.leaf.product.controller;
+package kr.or.kosta.leaf.review.controller;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -18,11 +18,14 @@ import kr.or.kosta.leaf.common.web.Params;
 import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.product.service.ProductService;
 import kr.or.kosta.leaf.product.service.ProductServiceImpl;
+import kr.or.kosta.leaf.review.domain.Review;
+import kr.or.kosta.leaf.review.service.ReviewService;
+import kr.or.kosta.leaf.review.service.ReviewServiceImpl;
 
-public class ProductListController implements Controller {
+public class ReviewListController implements Controller {
 
 	ModelAndView mav = new ModelAndView();
-	ProductService service = new ProductServiceImpl();
+	ReviewService service = new ReviewServiceImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -31,21 +34,17 @@ public class ProductListController implements Controller {
 		String pageNo = request.getParameter("page");
 			if(pageNo==null) pageNo="1";
 		int page = Integer.parseInt(pageNo);
-
-		//	private String type;      /** 사용자 검색 유형 */
-		//	private String value;     /** 사용자 검색 값 */
 		
-		Params params = new Params(page, null, null, 12, 5);
-		
-		List<Product> products = service.ListByParams(params);
+		Params params = new Params(page, null, null, 5, 5);
+		List<Review> reviews = service.listByPage(page);
 		
 		int totalRowCount = service.pageCount(params);
 		PageBuilder pageBuilder = new PageBuilder(params, totalRowCount);
 		pageBuilder.build();
 		
-		mav.addObject("list", products);
+		mav.addObject("list", reviews);
 		mav.addObject("pageBuilder", pageBuilder);
-		mav.setView("category.leaf");
+		mav.setView("detail.leaf");
 		
 		return mav;
 	}

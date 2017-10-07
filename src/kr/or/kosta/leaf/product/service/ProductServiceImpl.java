@@ -14,25 +14,23 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public void create(Product product) {
-		// TODO Auto-generated method stub
-
 		productDao.create(product);
 	}
 
 	@Override
 	public Product read(int productCode) {
-		// TODO Auto-generated method stub
 		return productDao.read(productCode);
 	}
 
 	@Override
 	public List<Product> ListByParams(Params params) {
-		// TODO Auto-generated method stub
 		return productDao.listByParams(params);
 	}
 	
+	@Override
+	public int pageCount(Params params) {
+		return productDao.pageCount(params);
+	}
 	
 	
-	
-
 }
