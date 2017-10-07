@@ -13,15 +13,19 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class FileUpload {
 
-	public static int uploadFile(HttpServletRequest request) {
+	public static String uploadFile(HttpServletRequest request) {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);  //multipart로 전송되었는가 체크
+		String fileName = "";
 		if (isMultipart) {
 			// 설정단계
 	 		File temporaryDir = new File("c:\\tmp\\");  //업로드된 파일의 임시 저장 폴더
-	 		String realDir = request.getSession().getServletContext().getRealPath("/") + "/uploadphoto";  //실제 저장될 파일경로
+	 		String realDir = "C:\\Users\\CafeAlle\\Documents\\Persmetic\\WebContent\\uploadphoto";
+//	 		String realDir = request.getSession().getServletContext().getRealPath("/") + "uploadphoto";  //실제 저장될 파일경로
 	 		String sFunc = request.getParameter("CKEditorFuncNum");
 	 		String realUrl = request.getParameter("realUrl");
 	 	
+	 		
+	 		
 	 		
 	 		// 디스크 기반의 파일 아이템 팩토리 생성
 			DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -44,17 +48,17 @@ public class FileUpload {
 			while (iter.hasNext()) {
 				FileItem fileItem = (FileItem) iter.next();
 				if (fileItem.isFormField()) {  // File 컴포넌트가 아닌 일반 컴포넌트일 경우
-					return -1;	// 파일 업로드 중 오류 발생
+					return null;	// 파일 업로드 중 오류 발생
 				}else{
 					if (fileItem.getSize() > 0) {  //파일이 업로드 되었나 안되었나 체크
 						String fieldName = fileItem.getFieldName();
-						String fileName = fileItem.getName();
+						fileName = fileItem.getName();
 						String contentType = fileItem.getContentType();
 						boolean isInMemory = fileItem.isInMemory();
 						long sizeInBytes = fileItem.getSize();
 					
-						System.out.println(fieldName);
-						System.out.println(fileName);
+						System.out.println("fieldName : " + fieldName);
+						System.out.println("fileName : "  + fileName);
 						System.out.println(sizeInBytes);
 						System.out.println("readDir : " + realDir);
 						
@@ -65,7 +69,7 @@ public class FileUpload {
 				 			fileItem.delete();   //temp폴더의 파일 제거
 				 		} catch(Exception ex) {
 				 			ex.printStackTrace();
-				 			return -1;
+				 			return null;
 				 		}
 					}
 				}
@@ -73,8 +77,8 @@ public class FileUpload {
 		} else {
 //	 		out.println("인코딩 타입이 multipart/form-data 가 아님.");
 		}
-		
-		return 1;
+
+		return fileName;
 	}
 	
 	public static void main(String args[]) {

@@ -16,9 +16,16 @@
                     <li><a  data-toggle="modal" data-target="#login-modal">Login</a> </li>
                      <li><a href="register.leaf">Register</a>   </li>
                       </c:when>
-        <c:otherwise>
-              <li><a href="${pageContext.servletContext.contextPath}/customer/certify.leaf"  >Logout</a> </li>
-              <li><a href="${pageContext.servletContext.contextPath}/customer-order.leaf">MyPage</a></li>
+        			<c:otherwise>
+			              <li><a href="${pageContext.servletContext.contextPath}/customer/certify.leaf">Logout</a> </li>
+			                <c:choose>
+			                	<c:when test="${cookie.customer.value eq 0}">
+			                		<li><a href="${pageContext.servletContext.contextPath}/admin.leaf">AdminPage</a></li>
+			                	</c:when>
+			                	<c:otherwise>
+			             			<li><a href="${pageContext.servletContext.contextPath}/customer-order.leaf">MyPage</a></li>
+			             		</c:otherwise>
+			             		</c:choose>
                     </c:otherwise>
       </c:choose>  
                 

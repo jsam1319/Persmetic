@@ -33,6 +33,8 @@
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+
 
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -42,6 +44,22 @@
 <script src="js/bootstrap-hover-dropdown.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/front.js"></script>
+<script src="js/date.js"></script>
+<!-- 
+<script src="js/moment/min/moment.min.js"></script>
+<script src="js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="js/bootstrap-daterangepicker/daterangepicker.css"></script>
+ -->
+
+
+<!-- Include Required Prerequisites -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+ 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
 
 <link rel="shortcut icon" href="favicon.png">
@@ -184,16 +202,22 @@
             </div>
           </div>
         </div>
-        <span style="">
 
-          <div class="col-md-8">
-            <div id="container"></div>
 
+	
+		<!-- Graph -->
+       <div class="col-md-8">
+          <div id="container"></div>
+		
+		<div id="datepicker"></div>
+		<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+		    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+		    <span></span> <b class="caret"></b>
+		</div>
 
       <table style="margin-top: 20px" class="table table-hover">
         <thead >
         <tr>
-          <th> 상품 번호 </th>
           <th> 상품 이름 </th>
           <th> 총 판매량 </th>
           <th> 평균 평점 </th>
@@ -201,13 +225,11 @@
         </thead>
         <tbody>
         <tr>
-          <td> 상품 번호 </td>
           <td> 상품 이름 </td>
           <td> 총 판매량 </td>
           <td> 평균 평점 </td>
         </tr>
         <tr>
-          <td> 상품 번호 </td>
           <td> 상품 이름 </td>
           <td> 총 판매량 </td>
           <td> 평균 평점 </td>
@@ -216,96 +238,279 @@
       </table>
 
 
-          </div>
-          <li style="list-style-type: none;">
-            <ul>
-              <button type="button" class="btn btn-primary">Primary</button>
-            </ul>
-            <ul>
-              <button type="button" class="btn btn-primary">Primary</button>
-            </ul>
-            <ul>
-              <button type="button" class="btn btn-primary">Primary</button>
-            </ul>
-            <ul>
-              <button type="button" class="btn btn-primary">Primary</button>
-            </ul>
-            <ul>
-              <button type="button" class="btn btn-primary">Primary</button>
-            </ul>
-        </li>
-        </span>
-      </div>
+          
     </div>
   </div>
 
 
   <script>
+  var chart;
+  
+  $(document).ready(function() {
+	 
+	  
+	 var startDate;
+	 var endDate;
+	 
+	 var json;
+	
+	 
+	 $("#reportrange").on('apply.daterangepicker', function(ev, picker) {
+		var total = $('#reportrange span').html();
+	 
+	 	startDate = total.split("-")[0];
+	 	endDate = total.split("-")[1];
+	 	
+	 	$.ajax({
+	 		url : "stats.leaf",
+	 		type : 'get',
+	 		dateType : 'jsonp',
+	 		jsonp : 'callback',
+	 		data : {
+	 			"startDate" : startDate,
+	 			"endDate" : endDate
+	 		},
+	 		success : function(msg) {
+	 			alert("Success");
+	 			json = JSON.parse(msg);
+	 			
+	 			drawChart(startDate);
+	 			console.log(json);
+	 			
+	 			
+	 			console.log(jsonToData(json));
+	 			
+	 			drawChart(startDate, jsonToData(json));
+	 		},
+	 		error : function(msg, status, thrown) {
+	 			console.log(status);
+	 			console.log(thrown);
+	 			console.log(msg);
+	 		}
+	 	});
+	 	
+
+	 });
+	  
+	 var datepicker = $(function() {
+
+		    var start = moment().subtract(29, 'days');
+		    var end = moment();
+		    
+
+		    function cb(start, end) {
+		        $('#reportrange span').html(start.format('YYYY/MM/DD') + ' - ' + end.format('YYYY/MM/DD'));
+		    }
+
+		    $('#reportrange').daterangepicker({
+		        startDate: start,
+		        endDate: end,
+		        ranges: {
+		           '오늘': [moment(), moment()],
+		           '어제': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+		           '최근 7일': [moment().subtract(6, 'days'), moment()],
+		           '최근 30일': [moment().subtract(29, 'days'), moment()],
+		           '이번 달': [moment().startOf('month'), moment().endOf('month')],
+		           '지난 달': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+		        },
+		        locale: {
+		            "format": "YYYY/MM/DD",
+		            "separator": " - ",
+		            "applyLabel": "적용",
+		            "cancelLabel": "취소",
+		            "fromLabel": "From",
+		            "toLabel": "To",
+		            "customRangeLabel": "사용자 설정",
+		            "weekLabel": "주",
+		            "daysOfWeek": [
+		                "일",
+		                "월",
+		                "화",
+		                "수",
+		                "목",
+		                "금",
+		                "토"
+		            ],
+		            "monthNames": [
+		                "1월",
+		                "2월",
+		                "3월",
+		                "4월",
+		                "5월",
+		                "6월",
+		                "7월",
+		                "8월",
+		                "9월",
+		                "10월",
+		                "11월",
+		                "12월"
+		            ],
+		            "firstDay": 1
+		        },
+		    }, cb);
+
+		    cb(start, end);
+		    
+		});
+	  
+  })
+  /* 
+	test = function(startDate, endDate, json) {
+	  var startObj = Date.parse(startDate);
+	  var endObj = Date.parse(endDate);
+	  
+	  i = startObj;
+	  console.log(json);
+	  console.log(chart);
+	  while(true) {
+		if(i.between(startObj, endObj)) {
+			var series = chart.series[0];
+			var temp = json[i.toString('yyyy-MM-dd')];
+			console.log(temp);
+			console.log("series : " + series);
+			
+			for(var j in temp) {
+				console.log(temp[j].name + " : " + temp[j].count);
+				if(series == undefined) {
+					chart.addSeries( {
+						name : temp[j].name,
+						data : [temp[j].count]
+					})	
+				}
+				
+				else {
+					series.addPoint( {
+						name : temp[j].name,
+						y : [temp[j].count]
+					})	
+				}
+				
+			}
+			console.log(chart);
+			i.addDays(1);
+		} 
+		else break;
+	  }
+  	} */
+
+
+
+jsonToData = function(json) {
+  	var dataSet = [];
+  		
+	for(var i in json) {
+		var year = i.split('-')[0];
+		var month = i.split('-')[1];
+		var day = i.split('-')[2];
+
+		var UTCdate = Date.UTC(year, month, day);
+		
+		for(var j in json[i]) {
+			if(indexOf(dataSet,json[i][j].name) == -1) {
+				var obj = new Object();
+				
+				obj.name = json[i][j].name;
+				obj.data = [[UTCdate, json[i][j].count]];
+				
+				dataSet.push(obj);
+			}
+			
+			else {
+				dataSet[indexOf(dataSet,json[i][j].name)].data.push([UTCdate, json[i][j].count])
+			}
+		}	
+	}
+	
+	return dataSet;
+ } 
+ 
+ indexOf = function(dataSet, nameValue) {
+	 for(var i in dataSet) {
+		 if(dataSet[i].name == nameValue) return i
+	 }
+	 
+	 return -1;
+ }
 /* 			
   createChart = function(year, month, day, interval)
  */
-  Highcharts.chart('container', {
+ var drawChart = function(startDate, data) { 
+	 chart = Highcharts.chart('container', {
 
-	    title: {
-	        text: '제품 별 판매 그래프'
-	    },
+		    title: {
+		        text: '제품 별 판매 그래프'
+		    },
 
-	    yAxis: {
-	        title: {
-	            text: '제품 별 판매'
-	        }
-	    },
-	    
-	    xAxis: {
-	        type: 'datetime'
-	    },
-	    
-	    legend: {
-	        layout: 'vertical',
-	        align: 'right',
-	        verticalAlign: 'middle'
-	    },
+		    yAxis: {
+		        title: {
+		            text: '제품 별 판매'
+		        }
+		    },
+		    tooltip: {
+	            xDateFormat: '%Y-%m-%d',
+	            shared: true
+	        },
+		    
+		    xAxis: {
+		        type: 'datetime',
+		        labels: {
+		            formatter: function() {
+		              return moment(this.value).format("YYYY-MM-DD");
+		            }
+		          }
+		    },
+		    
+		    legend: {
+		        layout: 'vertical',
+		        align: 'right',
+		        verticalAlign: 'middle'
+		    },
 
-	    plotOptions: {
-	        series: {
-	        	pointStart: Date.UTC(2015, 7, 1),
-	            pointInterval: 24 * 3600 * 1000 // one day
-	        }	
-	    },
+		    plotOptions: {
+		        series: {
+		        	pointStart: Date.UTC(startDate.split('-')[0], startDate.split('-')[1], startDate.split('-')[2]), 
+		            pointInterval: 24 * 3600 * 1000 // one day
+		        }	
+		    },
 
-	    series: [{
-	        name: 'Installation',
-	        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175, 1000000, 200000]
-	    }, {
-	        name: 'Manufacturing',
-	        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-	    }, {
-	        name: 'Sales & Distribution',
-	        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-	    }, {
-	        name: 'Project Development',
-	        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-	    }, {
-	        name: 'Other',
-	        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
-	    }],
+		    series: data,
 
-	    responsive: {
-	        rules: [{
-	            condition: {
-	                maxWidth: 500
-	            },
-	            chartOptions: {
-	                legend: {
-	                    layout: 'horizontal',
-	                    align: 'center',
-	                    verticalAlign: 'bottom'
-	                }
-	            }
-	        }]
-	    }
+		    responsive: {
+		        rules: [{
+		            condition: {
+		                maxWidth: 500
+		            },
+		            chartOptions: {
+		                legend: {
+		                    layout: 'horizontal',
+		                    align: 'center',
+		                    verticalAlign: 'bottom'
+		                }
+		            }
+		        }]
+		    }
 
-	});
+		});
+	 
+	 Highcharts.setOptions({
+		 lang: {
+		        months: [
+		            '1월', '2월', '3월', '4월',
+		            '5월', '6월', '7월', '8월',
+		            '9월', '10월', '11월', '12월'
+		        ],
+		        weekdays: [
+		            '일요일', '월요일', '화요일', '수요일',
+		            '목요일', '금요일', '토요일'
+		        ],
+		        shortMonths: [
+		        	"1","2","3","4","5","6","7","8","9","10","11","12"
+		        ]
+		    }
+	 })
+ } 
+ 
+  
 		</script>
 
 

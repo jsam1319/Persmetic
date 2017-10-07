@@ -1,7 +1,8 @@
 package kr.or.kosta.leaf.product_image.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +20,13 @@ public class ProductImageController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		ProductImageService productImageService = new ProductImageServiceImpl();
-		System.out.println("image : " + request.getParameter("image_name"));
-		ProductImage productImage = new ProductImage(-1, request.getParameter("image_name"));		
 		
-		FileUpload.uploadFile(request);
+		ProductImageService productImageService = new ProductImageServiceImpl();
+
+		String fileName = FileUpload.uploadFile(request);
+		
+		ProductImage productImage = new ProductImage(-1, fileName);		
+		
 		productImageService.uploadImage(productImage);
 
 		return null;
