@@ -129,6 +129,60 @@ private DataSource dataSource;
 	}
 	
 	
+	/** 주문 상품보기 */
+	public List<TotalOrder> read(String startDate, String endDate) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<TotalOrder> orders = new ArrayList<TotalOrder>();
+		
+		String sql = " SELECT order_no, order_totalprice, order_address, order_recipient " +
+					 " order_date, order_payoption, order_yn, ctm_no" +
+					 " FROM total_order " +
+					 " WHERE order_date between ? and ?";
+
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, startDate);
+			pstmt.setString(2, endDate);
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				TotalOrder totalOrder = new TotalOrder();
+				
+				totalOrder.setOrderNo(rs.getInt("order_no"));
+				totalOrder.setOrderTotalprice(rs.getInt("order_totalprice"));
+				totalOrder.setOrderAddress(rs.getString("order_address"));
+				totalOrder.setOrderRecipient(rs.getString("order_recipient"));
+				totalOrder.setOrderDate(rs.getString("order_date"));
+				totalOrder.setOrderPayoption(rs.getString("order_payoption"));
+				totalOrder.setOrderYn(rs.getString(rs.getString("order_yn")));
+				totalOrder.setCtmNo(rs.getInt("ctm_no"));
+				
+				orders.add(totalOrder);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("JdbcTotalOrderDao.read(String startDate, String endDate) 실행 중 예외발생", e);
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return orders;
+	}	
+	
+	
+	
 	
 	/** 주문 리스트 */
 	public List<TotalOrder> listAll() {
