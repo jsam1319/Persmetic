@@ -21,6 +21,8 @@ public interface KeywordDao {
 	/* DB CRUD*/
 	public void create(Keyword keyword);
 	
+	public List<String> getKeywordNames(String keywordName);
+	
 	public Keyword read(String keywordName, int productCode);
 	
 	public void delete(String keywordName, int productCode);

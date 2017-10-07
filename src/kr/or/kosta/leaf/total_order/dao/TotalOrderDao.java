@@ -22,9 +22,6 @@ public interface TotalOrderDao {
 	/** 주문 상품 조회 */
 	public TotalOrder read(int orderNo);
 	
-	/** 날짜로 주문 상품 조회 */
-	public List<TotalOrder> read(String startDate, String endDate);
-	
 	/** 주문 상품 리스트 */
 	public List<TotalOrder> listAll();
 	
