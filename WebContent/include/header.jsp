@@ -11,10 +11,10 @@
                 <ul class="menu">
                 
                 
-                <c:choose>
+                 <c:choose>
                     <c:when test="${empty cookie.customer }">
                     <li><a  data-toggle="modal" data-target="#login-modal">Login</a> </li>
-                     <li><a href="${pageContext.servletContext.contextPath}/register.leaf">Register</a>   </li>
+                     <li><a href="register.leaf">Register</a>   </li>
                       </c:when>
         			<c:otherwise>
 			              <li><a href="${pageContext.servletContext.contextPath}/customer/certify.leaf">Logout</a> </li>

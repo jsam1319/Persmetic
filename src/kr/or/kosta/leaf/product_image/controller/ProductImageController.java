@@ -25,6 +25,7 @@ public class ProductImageController implements Controller {
 
 		String fileName = FileUpload.uploadFile(request);
 		
+		/* 이미지 번호와 파일 이름 */
 		ProductImage productImage = new ProductImage(-1, fileName);		
 		
 		productImageService.uploadImage(productImage);
