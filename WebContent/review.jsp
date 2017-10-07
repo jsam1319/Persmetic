@@ -46,9 +46,9 @@ hr.bl {
 <script>
 $(document).ready(function(){
 	/** 리뷰 등록 */
-	$("#btnSubmit").click(function() {
-		var data = $("#review_form").serialize();	
-
+	$("#btnSubmit").click(function(){
+		var data = $("#review_form").serialize();
+		
 		$.ajax({
 			url : 'review/create.leaf',
 			data : param,
@@ -61,11 +61,9 @@ $(document).ready(function(){
 				alert(msg)
 			}
 		});
-
-		alert("리뷰등록완료!");
-		location.href = "/detail_item.leaf";
-		})
-
+		
+		alert("리뷰등록완료");
+		location.href="/detail_item.leaf";
 	})
 })
 </script>
