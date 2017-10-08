@@ -15,7 +15,7 @@
 
     <!-- your stylesheet with modifications -->
     <link href="css/custom.css" rel="stylesheet">
-
+   
     <script src="js/respond.min.js"></script>
 
     <link rel="shortcut icon" href="favicon.png">
@@ -35,7 +35,7 @@
    
 <div border="1px">
     <div align="center" style="margin: 90px" >
-      <img src="../img/regist.png" width="50px">
+      <img src="../img/register.png" width="50px">
       <h3>회원가입이 완료되었습니다.</h3><br>
       <p>아이디 : ${customer.ctmId }</p>
       <p>이름 : ${customer.ctmName }</p>

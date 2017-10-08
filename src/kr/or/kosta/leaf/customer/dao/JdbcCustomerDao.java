@@ -35,7 +35,7 @@ public class JdbcCustomerDao implements CustomerDao {
 	public void create(Customer Customer) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-
+    
 		String sql = " INSERT INTO customer " 
 		           + "             (ctm_no," 
 				   + "              ctm_name,"

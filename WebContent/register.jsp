@@ -180,7 +180,7 @@ window.onload = function(){
                   <option value="주부">주부</option>
                   <option value="기타">기타</option>
                 </select>&nbsp;<span id="jobCheck"></span>
-              </div>
+              </div> 
               <div class="form-inline" style="margin-bottom: 5px">
                 <label style="width: 100px">주소</label> <input
                   type="text" name="ctm_address" id="address" class="form-control"

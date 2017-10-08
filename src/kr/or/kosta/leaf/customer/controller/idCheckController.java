@@ -30,7 +30,7 @@ public class idCheckController implements Controller {
 		String ctmId = request.getParameter("ctm_id");
 		
 		if(customerService.checkId(ctmId)) {
-
+   
 			writer.println("사용중인 아이디 입니다.");
 			
 		}else {

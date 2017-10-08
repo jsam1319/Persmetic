@@ -26,7 +26,7 @@ public class CustomerJoinController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+  
 		ModelAndView mav = new ModelAndView();
 
 		request.setCharacterEncoding("UTF-8");

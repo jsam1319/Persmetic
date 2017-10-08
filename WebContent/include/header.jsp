@@ -9,7 +9,7 @@
         <div class="container">
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
-                
+                   
                 
                  <c:choose>
                     <c:when test="${empty cookie.customer }">
