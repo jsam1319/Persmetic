@@ -99,7 +99,7 @@
                                 <p class="price">${product.productPrice}원</p> <!-- 텍스트 크기 줄이기 -->
 
                                 <p class="text-center buttons">
-                                    <a href="basket.leaf" class="btn btn-default"><i class="fa fa-shopping-cart"></i> 장바구니</a> 
+                                    <a href="cart_create.leaf?ctm_no=${cookie.customer.value}" name="cart_create" class="btn btn-default"><i class="fa fa-trash-o"></i>장바구니</a>
                                     <a href="basket.leaf" class="btn btn-default"><i class="fa fa-heart"></i> 바로 구매하기</a> 
                                 </p>
 
@@ -320,12 +320,27 @@
     <script src="js/front.js"></script>
 
 <script>
+window.onload = function() {
+	setCreateButton();
+};
+
 //리뷰작성 버튼 클릭
 $(document).ready(function(){
 	$("#reviewbtn").click(function(){
 		location.href = "review_write.leaf?productCode=${product.productCode}"
 	})
 });
+
+
+setCreateButton = function() {
+	var buttons = $("a[name=cart_create]");
+	console.log(buttons);
+
+	for(var i=0; i<buttons.length; i++) {
+		console.log(buttons.get(i).href);
+	}
+}
+
 </script>
 
 
