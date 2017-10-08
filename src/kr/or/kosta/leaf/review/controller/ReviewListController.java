@@ -34,7 +34,7 @@ public class ReviewListController implements Controller {
 		String pageNo = request.getParameter("page");
 			if(pageNo==null) pageNo="1";
 		int page = Integer.parseInt(pageNo);
-		
+		System.out.println(page);
 		Params params = new Params(page, null, null, 5, 5);
 		List<Review> reviews = service.listByPage(page);
 		
@@ -44,7 +44,7 @@ public class ReviewListController implements Controller {
 		
 		mav.addObject("list", reviews);
 		mav.addObject("pageBuilder", pageBuilder);
-		mav.setView("detail.leaf");
+		mav.setView("review_list.leaf");
 		
 		return mav;
 	}

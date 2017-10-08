@@ -14,7 +14,7 @@
     <meta name="keywords" content="">
 
     <title>
-        Obaju : e-commerce template
+        	상품정보
     </title>
 
     <meta name="keywords" content="">
@@ -72,11 +72,8 @@
                     <div class="row" id="productMain">
                         <div class="col-sm-6">
                             <div id="mainImage">
-<<<<<<< HEAD
+
                                 <img src="http://localhost/uploadphoto/${product.productImage}" alt="" class="img-responsive" name="productImage">
-=======
-                                <img src="http://localhost/uploadphoto/${product.productImage}" class="img-responsive">
->>>>>>> branch 'master' of https://github.com/jsam1319/Persmetic
                             </div>
 
 
@@ -132,26 +129,12 @@
                          <div role="tabpanel" class="tab-pane fade" id="qna" aria-labelledby="qna">
                           <p>상품문의내용</p>
                           </div>
+                       
+                          <!-- Review탭 -->
                           <div role="tabpanel" class="tab-pane fade" id="review" aria-labelledby="review-tab">
-                           	<c:forEach items="${list}" var="i">
-                           	<!-- List -->
-                           	<div class="input-group">
-                           		<div class="col-md-2">
-									<p>${i.ctmNo}</p>
-									<p>${i.reviewGrade}</p>
-                           		</div>
-                           		<div class="col-md-8">
-                           			<p>${i.productCode}</p>
-                           			<p>${i.reviewTitle}</p>
-                           		</div>
-                           		<div class="col-md-2">
-                           			<p>${i.reviewDate}</p>
-                           		</div>
-                           	</div>
-                           		<hr>
-                           	</c:forEach>
-                           <input type="button" value="리뷰쓰기" id="reviewbtn" class="btn btn-primary">
+                           	<jsp:include page="include/review_list.jsp"></jsp:include>
                           </div>
+                          
                     </div>
                     </div>
                 </div>

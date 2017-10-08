@@ -24,7 +24,7 @@ public class ReviewActionController implements Controller{
 			throws ServletException, IOException {
 		
 		int productCode = Integer.parseInt(request.getParameter("productCode"));
-		System.out.println("reviewProductCode:"+productCode);
+		
 		Product product = productService.read(productCode);
 		
 		mav.addObject("product", product);

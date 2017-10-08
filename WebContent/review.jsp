@@ -4,11 +4,6 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title></title>
-</head>
-<body>
-<head>
-<meta charset="utf-8">
 <meta name="robots" content="all,follow">
 <meta name="googlebot" content="index,follow,snippet,archive">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,10 +43,10 @@ $(document).ready(function(){
 	/** 리뷰 등록 */
 	$("#btnSubmit").click(function(){
 		var data = $("#review_form").serialize();
-		
+		console.log(data)
 		$.ajax({
 			url : 'review/create.leaf',
-			data : param,
+			data : data,
 			dataType : 'json',
 			type : 'POST',
 			success : function(msg) {
@@ -59,6 +54,7 @@ $(document).ready(function(){
 			},
 			error : function(msg) {
 				alert(msg)
+				alert("리뷰등록실패")
 			}
 		});
 		
@@ -97,7 +93,7 @@ $(document).ready(function(){
 						<div class="row">
 
 							<form method="post" id="review_form">
-								<input type="text" name="ctmno" value="${sessionScope.id}">(닉네임)님
+							<%-- 	<input type="text" name="ctmno" value="${sessionScope.id}">(닉네임)님 --%>
 								<hr class="bl">
 								<div>
 									<div>
@@ -107,7 +103,9 @@ $(document).ready(function(){
 										<input type="file" name="image" accept="" id="upload">
 									</div>
 								</div> -->
-
+										<input type="hidden" name="productCode" id="productCode" value="${product.productCode}">
+										<input type="hidden" name="ctmNo" id="ctmNo" value="3">
+										<input type="hidden" name="grade" id="grade" value="10">
 										<div class="col-md-2">
 											<img
 												src="http://localhost/uploadphoto/${product.productImage}"
@@ -124,7 +122,7 @@ $(document).ready(function(){
 									</div>
 									<div>
 										<div class="col-md-2">별점</div>
-										<div class="col-md-10" id="grade" name="grade">
+										<div class="col-md-10" id="grade2" name="grade2">
 											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
 												class="fa fa-star"></i> <i class="fa fa-star"></i> <i
 												class="fa fa-star"></i>
