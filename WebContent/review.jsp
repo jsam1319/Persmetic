@@ -104,7 +104,8 @@ $(document).ready(function(){
 									</div>
 								</div> -->
 										<input type="hidden" name="productCode" id="productCode" value="${product.productCode}">
-										<input type="hidden" name="ctmNo" id="ctmNo" value="3">
+										<input type="hidden" name="ctmNo" id="ctmNo" value="${cookie.customer.value}">
+										<input type="text" name="ctmId" id="ctmId" value="${customer.ctmId}">
 										<input type="hidden" name="grade" id="grade" value="10">
 										<div class="col-md-2">
 											<img

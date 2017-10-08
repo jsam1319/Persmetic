@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.kosta.leaf.common.controller.Controller;
 import kr.or.kosta.leaf.common.controller.ModelAndView;
+import kr.or.kosta.leaf.customer.domain.Customer;
+import kr.or.kosta.leaf.customer.service.CustomerService;
+import kr.or.kosta.leaf.customer.service.CustomerServiceImpl;
 import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.product.service.ProductService;
 import kr.or.kosta.leaf.product.service.ProductServiceImpl;
@@ -17,6 +20,7 @@ import kr.or.kosta.leaf.review.service.ReviewServiceImpl;
 public class ReviewActionController implements Controller{
 	
 	ProductService productService = new ProductServiceImpl();
+	CustomerService customerService = new CustomerServiceImpl();
 	ModelAndView mav = new ModelAndView();
 	
 	@Override
@@ -24,10 +28,13 @@ public class ReviewActionController implements Controller{
 			throws ServletException, IOException {
 		
 		int productCode = Integer.parseInt(request.getParameter("productCode"));
+		String customerNo = request.getParameter("customerNo");
 		
 		Product product = productService.read(productCode);
+		Customer customer = customerService.read(customerNo);
 		
 		mav.addObject("product", product);
+		mav.addObject("customer", customer);
 		mav.setView("review.leaf");
 		
 		return mav;
