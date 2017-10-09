@@ -1,11 +1,7 @@
 package kr.or.kosta.leaf.review.controller;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,26 +21,32 @@ import kr.or.kosta.leaf.review.service.ReviewServiceImpl;
 public class ReviewListController implements Controller {
 
 	ModelAndView mav = new ModelAndView();
-	ReviewService service = new ReviewServiceImpl();
+	ReviewService reviewService = new ReviewServiceImpl();
+	ProductService productService = new ProductServiceImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		int productCode = Integer.parseInt(request.getParameter("product_code"));
+		Product product = productService.read(productCode);
+		
 		String pageNo = request.getParameter("page");
 			if(pageNo==null) pageNo="1";
 		int page = Integer.parseInt(pageNo);
-		System.out.println(page);
-		Params params = new Params(page, null, null, 5, 5);
-		List<Review> reviews = service.listByPage(page);
 		
-		int totalRowCount = service.pageCount(params);
+		Params params = new Params(page, null, null, 5, 5);
+		int totalRowCount = reviewService.pageCount(params);
+		
+		List<Review> reviews = reviewService.listByParams(params);
+		
 		PageBuilder pageBuilder = new PageBuilder(params, totalRowCount);
 		pageBuilder.build();
 		
 		mav.addObject("list", reviews);
+		mav.addObject("product", product);
 		mav.addObject("pageBuilder", pageBuilder);
-		mav.setView("review_list.leaf");
+		mav.setView("reviewList.leaf");
 		
 		return mav;
 	}

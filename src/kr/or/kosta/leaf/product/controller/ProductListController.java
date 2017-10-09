@@ -40,6 +40,7 @@ public class ProductListController implements Controller {
 		List<Product> products = service.ListByParams(params);
 		
 		int totalRowCount = service.pageCount(params);
+
 		PageBuilder pageBuilder = new PageBuilder(params, totalRowCount);
 		pageBuilder.build();
 		

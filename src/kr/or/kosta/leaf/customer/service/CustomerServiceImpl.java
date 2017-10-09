@@ -25,8 +25,8 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	/** 사용자아이디를 이용한 사용자 상세 정보 조회 */
 	@Override
-	public Customer read(String ctmId) {
-		return customerDao.read(ctmId);
+	public Customer read(int ctmNo) {
+		return customerDao.read(ctmNo);
 	}
 	
 	/** 회원 여부 반환 */

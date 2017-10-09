@@ -19,7 +19,7 @@ public interface CustomerService {
 	public List<Customer> listAll();
 	
 	/** 사용자아이디를 이용한 사용자 상세 정보 조회 */
-	public Customer read(String ctmId);
+	public Customer read(int ctmNo);
 	
 	/** 회원 여부 반환 */
 	public Customer isMember(String ctmId, String ctmPasswd);

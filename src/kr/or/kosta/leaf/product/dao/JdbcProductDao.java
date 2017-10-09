@@ -410,7 +410,7 @@ public class JdbcProductDao implements ProductDao {
 			System.out.println("listByParams 완료");
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("JdbcUserDao.listByParams(Params params) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcProductDao.listByParams(Params params) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if(rs != null)    rs.close();

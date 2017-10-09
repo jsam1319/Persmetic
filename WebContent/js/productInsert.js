@@ -44,17 +44,14 @@ $(document).ready(
 
 		
 		/** 상품등록 */
-		console.log($("#btnSubmit"));
-		
 		$("#btnSubmit").click(function() {
 			var param = $("#product_form").serialize();
-			
 			param = param + CKEDITOR.instances.contents.getData();
 			param = param + "&front="+ frontImage;
 			console.log(param);
 			
 			$.ajax({
-				url : 'insert_item/create.leaf',
+				url : '/insert_item/create.leaf',
 				data : param,
 				dataType : 'json',
 				type : 'POST',

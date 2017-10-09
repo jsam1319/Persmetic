@@ -28,10 +28,10 @@ public class ReviewActionController implements Controller{
 			throws ServletException, IOException {
 		
 		int productCode = Integer.parseInt(request.getParameter("productCode"));
-		String customerNo = request.getParameter("customerNo");
+		int ctmNo = Integer.parseInt(request.getParameter("ctmNo"));
 		
 		Product product = productService.read(productCode);
-		Customer customer = customerService.read(customerNo);
+		Customer customer = customerService.read(ctmNo);
 		
 		mav.addObject("product", product);
 		mav.addObject("customer", customer);

@@ -33,11 +33,7 @@
 
 <link rel="shortcut icon" href="favicon.png">
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<style>
-hr.bl {
-	color: black;
-}
-</style>
+
 <script>
 $(document).ready(function(){
 	/** 리뷰 등록 */
@@ -45,32 +41,49 @@ $(document).ready(function(){
 		var data = $("#review_form").serialize();
 		console.log(data)
 		$.ajax({
-			url : 'review/create.leaf',
+			url : '/review_create.leaf',
 			data : data,
 			dataType : 'json',
 			type : 'POST',
 			success : function(msg) {
-				location.href = "/detail_item.leaf"
+				alert("성공")
+			//	location.href = "/detail_item.leaf?product_code=${product.productCode}"
+				location.href = "/review_list.leaf"
 			},
 			error : function(msg) {
-				alert(msg)
-				alert("리뷰등록실패")
+				alert("실패")
 			}
 		});
-		
-		alert("리뷰등록완료");
-		location.href="/detail_item.leaf";
+		//alert("리뷰등록완료");
+		//location.href = "/detail_item.leaf?product_code=${product.productCode}"
+				location.href = "/review_list.leaf"
 	})
+	
+	$(".grade a").click(function(){
+		$(this).parent().children("a").removeClass("on");
+		$(this).addClass("on").prevAll("a").addClass("on");
+		return false;
+	})
+		
 })
 </script>
+<style>
+.grade {font-size:0; letter-spacing:-4px;}
+.grade a {
+	font-size:22px;
+	letter-spacing:0;
+    display:inline-block;
+    margin-left:5px;
+    color:#ccc;
+    text-decoration:none;
+}
+.grade a:first-child {margin-left:0;}
+.grade a.on {color:#777;}
+</style>
 
 <title>리뷰 등록</title>
 </head>
 <body>
-
-	<%-- <c:if test="${empty sessionScope.id}">
-  <meta http-equiv="Refresh" content="0;url=/login.leaf">
-</c:if> --%>
 
 
 	<!-- Title -->
@@ -94,7 +107,7 @@ $(document).ready(function(){
 
 							<form method="post" id="review_form">
 							<%-- 	<input type="text" name="ctmno" value="${sessionScope.id}">(닉네임)님 --%>
-								<hr class="bl">
+								<hr>
 								<div>
 									<div>
 										<!-- <div class="col-md-2">
@@ -104,9 +117,8 @@ $(document).ready(function(){
 									</div>
 								</div> -->
 										<input type="hidden" name="productCode" id="productCode" value="${product.productCode}">
-										<input type="hidden" name="ctmNo" id="ctmNo" value="${cookie.customer.value}">
-										<input type="text" name="ctmId" id="ctmId" value="${customer.ctmId}">
-										<input type="hidden" name="grade" id="grade" value="10">
+										<input type="hidden" name="ctmNo" id="ctmNo" value="${customer.ctmNo}">
+										<input type="hidden" name="ctmId" id="ctmId" value="${customer.ctmId}">
 										<div class="col-md-2">
 											<img
 												src="http://localhost/uploadphoto/${product.productImage}"
@@ -119,14 +131,18 @@ $(document).ready(function(){
 										</div>
 									</div>
 									<div class="col-md-12">
-										<hr class="bl">
+										<hr>
 									</div>
 									<div>
 										<div class="col-md-2">별점</div>
-										<div class="col-md-10" id="grade2" name="grade2">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i>
+										<div class="col-md-10">
+											<p class="grade">
+												<a href="#" class="on">★</a>
+												<a href="#" class="on">★</a>
+												<a href="#" class="on">★</a>
+												<a href="#" class="on">★</a>
+												<a href="#" class="on">★</a>
+											</p>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -158,7 +174,7 @@ $(document).ready(function(){
 										</div>
 									</div>
 									<div class="col-md-12">
-										<hr class="bl">
+										<hr>
 									</div>
 								</div>
 								<div class="col-md-12">

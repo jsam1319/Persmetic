@@ -28,14 +28,13 @@ public class ReviewCreateController implements Controller {
 		
 		Review review = new Review();
 		
-		review.setReviewNo(Integer.parseInt(request.getParameter("reviewno")));
-		review.setCtmNo(Integer.parseInt(request.getParameter("ctmno")));
+		review.setCtmNo(Integer.parseInt(request.getParameter("ctmNo")));
 		review.setProductCode(Integer.parseInt(request.getParameter("productCode")));
 		review.setReviewGrade(Integer.parseInt(request.getParameter("grade")));
 		review.setReviewTitle(request.getParameter("title"));
 		review.setReviewContents(request.getParameter("content"));
 		// review 사진등록
-		System.out.println(request.getParameter("title"));
+		System.out.println("리뷰타이틀:"+request.getParameter("title"));
 		
 		reviewService.create(review);
 		

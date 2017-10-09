@@ -9,9 +9,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import kr.or.kosta.leaf.common.db.DaoFactory;
 import kr.or.kosta.leaf.common.web.Params;
-import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.review.domain.Review;
 
 /**
@@ -215,13 +213,15 @@ public class JdbcReviewDao implements ReviewDao {
 	
 	
 	private Review createReview(ResultSet rs) throws SQLException {
-		int reviewNo = rs.getInt("reviewNo");
-		int ctmNo = rs.getInt("ctmNo");
-		int productCode = rs.getInt("productCode");
-		int reviewGrade = rs.getInt("reviewGrade");
-		String reviewTitle = rs.getString("reviewTitle");
-		String reviewContents = rs.getString("reviewContents");
-		String reviewDate = rs.getString("reviewDate");
+		int reviewNo = rs.getInt("REVIEW_NO");
+		int ctmNo = rs.getInt("CTM_NO");
+		int productCode = rs.getInt("PRODUCT_CODE");
+		int reviewGrade = rs.getInt("REVIEW_GRADE");
+		String reviewTitle = rs.getString("REVIEW_TITLE");
+		String reviewContents = rs.getString("REVIEW_CONTENTS");
+		String reviewDate = rs.getString("REVIEW_DATE");
+		String ctmId = rs.getString("CTM_ID");
+		String productName = rs.getString("PRODUCT_NAME");
 
 		Review review = new Review();
 		review.setReviewNo(reviewNo);
@@ -231,18 +231,65 @@ public class JdbcReviewDao implements ReviewDao {
 		review.setReviewTitle(reviewTitle);
 		review.setReviewContents(reviewContents);
 		review.setReviewDate(reviewDate);
+		review.setCtmId(ctmId);
+		review.setProductName(productName);
 
 		return review;
 	}
+
 	
-	
-	/** 선택 페이지에 대한 회원목록 반환 */
-	public List<Review> listByPage(int page) {
-		List<Review> list = null;	
+	/** 선택 페이지에 대한 리뷰목록 반환 */
+	public List<Review> listByParams(Params params) {
+		List<Review> list = null;		
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
+		StringBuilder sb = new StringBuilder();
+		sb.append(" SELECT a.*");
+		sb.append(" FROM   (SELECT CEIL(rownum / ?) request_page,");
+		sb.append("                at.*");
+		sb.append("         FROM   (SELECT r.*,");
+		sb.append("                        c.ctm_id,");
+		sb.append("                        p.product_name");
+		sb.append("                 FROM   review r, customer c, product p");
+		sb.append("                 	WHERE  r.ctm_no=c.ctm_no and r.product_code=p.product_code");
+		sb.append(" ORDER BY REVIEW_NO DESC)at)a");
+		sb.append(" WHERE  request_page = ?");
+		
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1, params.getPageSize());
+			pstmt.setInt(2, params.getPage());
+			
+			rs = pstmt.executeQuery();
+			list = new ArrayList<Review>();
+			
+			while(rs.next()){
+				Review review = createReview(rs);
+				list.add(review);
+			}
+			System.out.println("listByParams 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("JdbcReviewDao.listByParams(Params params) 실행 중 예외발생", e);
+		} finally {
+			try {
+				if(rs != null)    rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close();
+			} catch (Exception e) {}
+		}
+		return list;
+	}
+	
+	/*public List<Review> listByParams(Params params) {
+		List<Review> list = null;		
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		StringBuilder sb = new StringBuilder();
@@ -253,7 +300,7 @@ public class JdbcReviewDao implements ReviewDao {
 		sb.append("        REVIEW_TITLE,");
 		sb.append("        REVIEW_CONTENTS,");
 		sb.append("        REVIEW_DATE");
-		sb.append(" FROM   (SELECT CEIL(rownum / 5) request_page,");
+		sb.append(" FROM   (SELECT CEIL(rownum / ?) request_page,");
 		sb.append("                REVIEW_NO,");
 		sb.append("                CTM_NO,");
 		sb.append("                PRODUCT_CODE,");
@@ -267,15 +314,17 @@ public class JdbcReviewDao implements ReviewDao {
 		sb.append("                        REVIEW_GRADE,");
 		sb.append("                        REVIEW_TITLE,");
 		sb.append("                        REVIEW_CONTENTS,");
-		sb.append("                        TO_CHAR(REVIEW_DATE, 'YYYY/MM/DD HH24:MI:SS') REVIEW_DATE");
+		sb.append("                        REVIEW_DATE");
 		sb.append("                 FROM   REVIEW");
-		sb.append("                 ORDER BY REVIEW_NO DESC))");
+		sb.append(" ORDER BY REVIEW_NO DESC))");
 		sb.append(" WHERE  request_page = ?");
 		
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
-			pstmt.setInt(1, page);
+			pstmt.setInt(1, params.getPageSize());
+			pstmt.setInt(2, params.getPage());
+			
 			rs = pstmt.executeQuery();
 			list = new ArrayList<Review>();
 			
@@ -283,10 +332,10 @@ public class JdbcReviewDao implements ReviewDao {
 				Review review = createReview(rs);
 				list.add(review);
 			}
-				
-			System.out.println("listByPage 완료");
+			System.out.println("listByParams 완료");
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new RuntimeException("JdbcReviewDao.listByParams(Params params) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if(rs != null)    rs.close();
@@ -295,7 +344,8 @@ public class JdbcReviewDao implements ReviewDao {
 			} catch (Exception e) {}
 		}
 		return list;
-	}
+	}*/
+	
 	
 	
 	/** 출력페이지 계산을 위한 {검색유형, 검색값}에 대한 행의 수 반환 */
@@ -310,19 +360,9 @@ public class JdbcReviewDao implements ReviewDao {
 		sb.append(" SELECT COUNT(REVIEW_NO) count");
 		sb.append(" FROM   REVIEW");
 		
-		// 검색 유형별 WHERE 절 동적 추가
-		String type = params.getType();
-		String value = params.getValue();
-				
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
-
-			// 전체검색이 아닌경우 경우
-			if(type != null){
-				pstmt.setString(1, value);
-			}
-
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
@@ -332,7 +372,7 @@ public class JdbcReviewDao implements ReviewDao {
 			System.out.println("pageCount 완료");
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("JdbcUserDao.pageCount(Params params) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcReviewDao.pageCount(Params params) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if(rs != null)    rs.close();

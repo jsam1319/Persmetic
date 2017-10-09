@@ -10,7 +10,7 @@ public interface ReviewService {
 
 	public void create(Review review);
 	
-	public List<Review> listByPage(int page);
+	public List<Review> listByParams(Params params);
 
 	public int pageCount(Params params);
 	
