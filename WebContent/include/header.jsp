@@ -14,7 +14,7 @@
                  <c:choose>
                     <c:when test="${empty cookie.customer }">
                     <li><a  data-toggle="modal" data-target="#login-modal">Login</a> </li>
-                     <li><a href="register.leaf">Register</a>   </li>
+                     <li><a href="/register.leaf">Register</a>   </li>
                       </c:when>
         			<c:otherwise>
 			              <li><a href="${pageContext.servletContext.contextPath}/customer/certify.leaf">Logout</a> </li>
@@ -29,7 +29,7 @@
                     </c:otherwise>
       </c:choose>  
                 
-                    <li><a href="contact.leaf">Contact</a>
+                    <li><a href="/contact.leaf">Contact</a>
                     </li>
                     <li><a href="#">Recently viewed</a>
                     </li>
@@ -82,8 +82,8 @@
             <div class="navbar-header">
 
                 <a class="navbar-brand home" href="index.leaf" data-animate-hover="bounce">
-                    <img src="img/logo.png" alt="Obaju logo" class="hidden-xs">
-                    <img src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
+                    <img src="/img/logo.png" alt="Obaju logo" class="hidden-xs">
+                    <img src="/img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -94,7 +94,7 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="cart.leaf?ctm_no=${cookie.customer.value}">
+                    <a class="btn btn-default navbar-toggle" href="/cart.leaf?ctm_no=${cookie.customer.value}">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Shopping Cart</span>
                     </a>
                 </div>
@@ -104,7 +104,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="index.leaf">Home</a>
+                    <li class="active"><a href="/index.leaf">Home</a>
                     </li>
                     <li><a href="#">자가진단</a></li>
                     <li class="dropdown yamm-fw">

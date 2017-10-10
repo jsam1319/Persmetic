@@ -59,11 +59,12 @@ public class JdbcStatsDao implements StatsDao {
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
+			
 			pstmt.setString(1, startDate.trim());
  			pstmt.setString(2, endDate.trim());
 			
 			rs = pstmt.executeQuery();
-			System.out.println(sql);
+			
 			while (rs.next()) {
 				Stats stats = new Stats();
 				
