@@ -10,6 +10,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import kr.or.kosta.leaf.common.web.Params;
+import kr.or.kosta.leaf.customer.domain.Customer;
+import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.review.domain.Review;
 
 /**
@@ -239,8 +241,8 @@ public class JdbcReviewDao implements ReviewDao {
 
 	
 	/** 선택 페이지에 대한 리뷰목록 반환 */
-	public List<Review> listByParams(Params params) {
-		List<Review> list = null;		
+	public List<Review> listByParams(Params params, int productCode) {
+		List<Review> list = null;	
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -254,15 +256,18 @@ public class JdbcReviewDao implements ReviewDao {
 		sb.append("                        c.ctm_id,");
 		sb.append("                        p.product_name");
 		sb.append("                 FROM   review r, customer c, product p");
-		sb.append("                 	WHERE  r.ctm_no=c.ctm_no and r.product_code=p.product_code");
-		sb.append(" ORDER BY REVIEW_NO DESC)at)a");
+		sb.append("                 WHERE  r.ctm_no=c.ctm_no and r.product_code=p.product_code");
+		sb.append("                 AND		r.product_code=p.product_code");
+		sb.append("                 AND		p.product_code=?");
+		sb.append(" 				ORDER BY REVIEW_NO DESC)at)a");
 		sb.append(" WHERE  request_page = ?");
 		
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setInt(1, params.getPageSize());
-			pstmt.setInt(2, params.getPage());
+			pstmt.setInt(2, productCode);
+			pstmt.setInt(3, params.getPage());
 			
 			rs = pstmt.executeQuery();
 			list = new ArrayList<Review>();
@@ -285,71 +290,10 @@ public class JdbcReviewDao implements ReviewDao {
 		return list;
 	}
 	
-	/*public List<Review> listByParams(Params params) {
-		List<Review> list = null;		
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		StringBuilder sb = new StringBuilder();
-		sb.append(" SELECT REVIEW_NO,");
-		sb.append("        CTM_NO,");
-		sb.append("        PRODUCT_CODE,");
-		sb.append("        REVIEW_GRADE,");
-		sb.append("        REVIEW_TITLE,");
-		sb.append("        REVIEW_CONTENTS,");
-		sb.append("        REVIEW_DATE");
-		sb.append(" FROM   (SELECT CEIL(rownum / ?) request_page,");
-		sb.append("                REVIEW_NO,");
-		sb.append("                CTM_NO,");
-		sb.append("                PRODUCT_CODE,");
-		sb.append("                REVIEW_GRADE,");
-		sb.append("                REVIEW_TITLE,");
-		sb.append("                REVIEW_CONTENTS,");
-		sb.append("                REVIEW_DATE");
-		sb.append("         FROM   (SELECT REVIEW_NO,");
-		sb.append("                        CTM_NO,");
-		sb.append("                        PRODUCT_CODE,");
-		sb.append("                        REVIEW_GRADE,");
-		sb.append("                        REVIEW_TITLE,");
-		sb.append("                        REVIEW_CONTENTS,");
-		sb.append("                        REVIEW_DATE");
-		sb.append("                 FROM   REVIEW");
-		sb.append(" ORDER BY REVIEW_NO DESC))");
-		sb.append(" WHERE  request_page = ?");
-		
-		try {
-			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(sb.toString());
-			pstmt.setInt(1, params.getPageSize());
-			pstmt.setInt(2, params.getPage());
-			
-			rs = pstmt.executeQuery();
-			list = new ArrayList<Review>();
-			
-			while(rs.next()){
-				Review review = createReview(rs);
-				list.add(review);
-			}
-			System.out.println("listByParams 완료");
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("JdbcReviewDao.listByParams(Params params) 실행 중 예외발생", e);
-		} finally {
-			try {
-				if(rs != null)    rs.close();
-				if(pstmt != null) pstmt.close();
-				if(con != null)   con.close();
-			} catch (Exception e) {}
-		}
-		return list;
-	}*/
-	
 	
 	
 	/** 출력페이지 계산을 위한 {검색유형, 검색값}에 대한 행의 수 반환 */
-	public int pageCount(Params params) {
+	public int pageCount(Params params, int productCode) {
 		int count = 0;
 
 		Connection con = null;
@@ -359,10 +303,14 @@ public class JdbcReviewDao implements ReviewDao {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT COUNT(REVIEW_NO) count");
 		sb.append(" FROM   REVIEW");
+		sb.append(" WHERE	product_code=?");
 		
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
+			
+			pstmt.setInt(1, productCode);
+			
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
@@ -382,6 +330,53 @@ public class JdbcReviewDao implements ReviewDao {
 		}
 		return count;
 	}
+	
+	/** 상품별 리뷰목록 반환 */
+	   @Override
+	   public List<Review> listAll(int productCode) {
+	      List<Review> list = null;
+
+	      Connection con = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+	      
+	      String sql = "SELECT r.*, p.product_name, c.ctm_id\r\n" + 
+	      		"	    FROM review r, product p, customer c\r\n" + 
+	      		"	    WHERE r.product_code=p.product_code " +
+	      		"				AND r.ctm_no=c.ctm_no" +
+	      		"				AND r.product_code=?" +
+	      		"		ORDER BY review_no DESC";
+
+
+	      try {
+	         con = dataSource.getConnection();
+	         pstmt = con.prepareStatement(sql);
+	         
+	         pstmt.setInt(1, productCode);
+	         
+	         rs = pstmt.executeQuery();
+	         list = new ArrayList<Review>();
+
+	         while (rs.next()) {
+	        	Review review = createReview(rs);
+	            list.add(review);
+	         }
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         throw new RuntimeException("JdbcCustomerDao.listAll() 실행 중 예외발생", e);
+	      } finally {
+	         try {
+	            if (rs != null)
+	               rs.close();
+	            if (pstmt != null)
+	               pstmt.close();
+	            if (con != null)
+	               con.close();
+	         } catch (Exception e) {
+	         }
+	      }
+	      return list;
+	   }
 
 	
 }

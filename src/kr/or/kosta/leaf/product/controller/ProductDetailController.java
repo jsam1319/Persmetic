@@ -32,6 +32,7 @@ public class ProductDetailController implements Controller {
 
 		/** product Info */
 		int productCode = Integer.parseInt(request.getParameter("product_code"));
+		
 		Product product = productService.read(productCode);
 
 		mav.addObject("product", product);

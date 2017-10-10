@@ -14,8 +14,6 @@ import kr.or.kosta.leaf.customer.service.CustomerServiceImpl;
 import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.product.service.ProductService;
 import kr.or.kosta.leaf.product.service.ProductServiceImpl;
-import kr.or.kosta.leaf.review.service.ReviewService;
-import kr.or.kosta.leaf.review.service.ReviewServiceImpl;
 
 public class ReviewActionController implements Controller{
 	

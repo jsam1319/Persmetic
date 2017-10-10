@@ -21,18 +21,22 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<Review> listByParams(Params params){
-		return reviewDao.listByParams(params);
+	public List<Review> listByParams(Params params, int productCode){
+		return reviewDao.listByParams(params, productCode);
 	}
 	
 	@Override
-	public int pageCount(Params params) {
-		return reviewDao.pageCount(params);
+	public int pageCount(Params params, int productCode) {
+		return reviewDao.pageCount(params, productCode);
 	}
 	
 	@Override
 	public Review read(int reviewNo) {
 		return reviewDao.read(reviewNo);
+	}
+	
+	public List<Review> listAll(int productCode){
+		return reviewDao.listAll(productCode);
 	}
 	
 }

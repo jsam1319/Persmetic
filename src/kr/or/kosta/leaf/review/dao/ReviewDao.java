@@ -27,8 +27,10 @@ public interface ReviewDao {
 	public void update(Review review);
 	
 	/** 선택 페이지에 대한 리뷰목록 반환 */
-	public List<Review> listByParams(Params params);
+	public List<Review> listByParams(Params params, int productCode);
 
 	/** 출력페이지 계산을 위한 {검색유형, 검색값}에 대한 행의 수 반환 */
-	public int pageCount(Params params);
+	public int pageCount(Params params, int productCode);
+	
+	public List<Review> listAll(int productCode);
 }
