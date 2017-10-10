@@ -293,7 +293,7 @@ public class JdbcReviewDao implements ReviewDao {
 	
 	
 	/** 출력페이지 계산을 위한 {검색유형, 검색값}에 대한 행의 수 반환 */
-	public int pageCount(Params params, int productCode) {
+	public int count(int productCode) {
 		int count = 0;
 
 		Connection con = null;
@@ -330,53 +330,6 @@ public class JdbcReviewDao implements ReviewDao {
 		}
 		return count;
 	}
-	
-	/** 상품별 리뷰목록 반환 */
-	   @Override
-	   public List<Review> listAll(int productCode) {
-	      List<Review> list = null;
-
-	      Connection con = null;
-	      PreparedStatement pstmt = null;
-	      ResultSet rs = null;
-	      
-	      String sql = "SELECT r.*, p.product_name, c.ctm_id\r\n" + 
-	      		"	    FROM review r, product p, customer c\r\n" + 
-	      		"	    WHERE r.product_code=p.product_code " +
-	      		"				AND r.ctm_no=c.ctm_no" +
-	      		"				AND r.product_code=?" +
-	      		"		ORDER BY review_no DESC";
-
-
-	      try {
-	         con = dataSource.getConnection();
-	         pstmt = con.prepareStatement(sql);
-	         
-	         pstmt.setInt(1, productCode);
-	         
-	         rs = pstmt.executeQuery();
-	         list = new ArrayList<Review>();
-
-	         while (rs.next()) {
-	        	Review review = createReview(rs);
-	            list.add(review);
-	         }
-	      } catch (Exception e) {
-	         e.printStackTrace();
-	         throw new RuntimeException("JdbcCustomerDao.listAll() 실행 중 예외발생", e);
-	      } finally {
-	         try {
-	            if (rs != null)
-	               rs.close();
-	            if (pstmt != null)
-	               pstmt.close();
-	            if (con != null)
-	               con.close();
-	         } catch (Exception e) {
-	         }
-	      }
-	      return list;
-	   }
 
 	
 }

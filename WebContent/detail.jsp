@@ -301,7 +301,7 @@
 		
 		$(document).ready(function() {
 			  $("#review-tab").click(function(){
-				$("#review").load("${pageContext.servletContext.contextPath}/reviewList.leaf?page=1&product_code=${product.productCode}")
+				$("#review").load("reviewList.leaf?page=1&product_code=${product.productCode}")
 			})
 		});
 	</script>

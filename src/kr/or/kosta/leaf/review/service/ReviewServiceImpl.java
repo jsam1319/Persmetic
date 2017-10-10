@@ -26,8 +26,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 	@Override
-	public int pageCount(Params params, int productCode) {
-		return reviewDao.pageCount(params, productCode);
+	public int count(int productCode) {
+		return reviewDao.count(productCode);
 	}
 	
 	@Override
@@ -35,8 +35,5 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.read(reviewNo);
 	}
 	
-	public List<Review> listAll(int productCode){
-		return reviewDao.listAll(productCode);
-	}
 	
 }

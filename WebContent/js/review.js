@@ -49,7 +49,7 @@ $(document).ready(function() {
 			    .on("mouseleave", ".star-input>.input", function(){
 			    	var $checked = $star.find(":checked");
 			    		if($checked.length === 0){
-			     	 		$result.text("0");
+			    			$("#grade").val("0");
 			   		 	} else {
 			   		 	$("#grade").val($checked.next().text());
 			    		}

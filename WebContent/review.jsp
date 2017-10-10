@@ -39,11 +39,6 @@
 <script src="js/review.js"></script>
 
 
-<script>
-	
-</script>
-
-
 <title>리뷰 등록</title>
 </head>
 <body>
@@ -115,7 +110,7 @@
                           for="p4">4</label> <input type="radio"
                           name="star-input" value="5" id="p5"> <label
                           for="p5">5</label>
-                      </span><input type="hidden" id="grade" value="0">
+                      </span><input type="hidden" id="grade" name="grade" value="0">
                       </span>
                     </div>
                   </div>

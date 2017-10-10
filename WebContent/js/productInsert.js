@@ -44,7 +44,7 @@ $(document).ready(
 													
 				
 				$("#front_image").html("");
-				$("#front_image").append("<img style=\"max-width: 100%; id=\"upload\" height: auto;\" src=\"/uploadphoto/"
+				$("#front_image").append("<img style=\"max-width: 100%; id=\"upload\" height: 100%;\" src=\"/uploadphoto/"
 											+ fileName + "\">");
 			})
 

@@ -38,8 +38,6 @@ public class ReviewListController implements Controller {
 
 		int productCode = Integer.parseInt(request.getParameter("product_code"));
 		
-		
-		/** 페이징 */
 		String pageNo = request.getParameter("page");
 		if (pageNo == null)
 			pageNo = "1";
@@ -47,10 +45,9 @@ public class ReviewListController implements Controller {
 		
 		Params params = new Params(page, null, null, 5, 5);
 		
-		int totalRowCount = reviewService.pageCount(params, productCode);
-		
+		int count = reviewService.count(productCode);
+		System.out.println("[count]:"+count);
 		List<Review> reviews = reviewService.listByParams(params, productCode);
-		PageBuilder pageBuilder = new PageBuilder(params, totalRowCount);
 
 		/** JSON */
 		JSONObject totalObj = new JSONObject();
@@ -73,15 +70,14 @@ public class ReviewListController implements Controller {
 		}
 
 		totalObj.put("reviews", array);
-		totalObj.put("pageBuilder", pageBuilder);
+		
 		String string = totalObj.toJSONString();
 		
 		System.out.println(string);
 		
+		
 		response.getWriter().println(totalObj);
 
-		pageBuilder.build();
-		
 		return null;
 
 	}
