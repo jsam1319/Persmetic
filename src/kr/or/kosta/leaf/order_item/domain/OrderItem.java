@@ -16,6 +16,7 @@ public class OrderItem {
 	int productCode;
 	int orderPrice;
 	int orderCount;
+	
 
 	public OrderItem() {}
 	
@@ -58,6 +59,7 @@ public class OrderItem {
 	public void setOrderCount(int orderCount) {
 		this.orderCount = orderCount;
 	}
+	
 
 	@Override
 	public String toString() {

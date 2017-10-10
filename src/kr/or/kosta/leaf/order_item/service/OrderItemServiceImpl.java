@@ -13,7 +13,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 	
 	@Override
 	public List<OrderItem> listAll(int orderNo) {
-		return itemDao.listAll(orderNo);
+		return itemDao.listAll();
 	}
 	
 	@Override

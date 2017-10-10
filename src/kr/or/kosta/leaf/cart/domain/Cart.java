@@ -16,15 +16,17 @@ public class Cart {
 	int ctmNo;
 	int cartQuantity;
 	int cartPrice;
+	int cartNo;
 	
 	public Cart() {}
 	
-	public Cart(int productCode, int ctmNo, int cartQuantity, int cartPrice) {
+	public Cart(int productCode, int ctmNo, int cartQuantity, int cartPrice, int cartNo) {
 		super();
 		this.productCode = productCode;
 		this.ctmNo = ctmNo;
 		this.cartQuantity = cartQuantity;
 		this.cartPrice = cartPrice;
+		this.cartNo = cartNo;
 	}
 
 	public int getProductCode() {
@@ -59,10 +61,18 @@ public class Cart {
 		this.cartPrice = cartPrice;
 	}
 
+	public int getCartNo() {
+		return cartNo;
+	}
+
+	public void setCartNo(int cartNo) {
+		this.cartNo = cartNo;
+	}
+
 	@Override
 	public String toString() {
 		return "Cart [productCode=" + productCode + ", ctmNo=" + ctmNo + ", cartQuantity=" + cartQuantity
-				+ ", cartPrice=" + cartPrice + "]";
+				+ ", cartPrice=" + cartPrice + ", cartNo=" + cartNo + "]";
 	}
 	
 }

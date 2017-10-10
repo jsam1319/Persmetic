@@ -115,13 +115,11 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>선택</th>
                                             <th>이미지</th>
                                             <th colspan="2">상품명</th>
                                             <th>수량</th>
                                             <th>판매가</th>
-                                            <th >합계</th>
-                                            <th>상품삭제</th>
+                                            <th>합계</th>
                                         </tr>
                                     </thead>
                                     
@@ -135,13 +133,11 @@
                                     <c:otherwise>
                                     <c:forEach var="cart" items="${requestScope.list }">
                                       <tr>
-                                        <td><input type="checkbox"></td>
                                         <td>이미지</td>
                                         <td colspan="2"><a href="mailto:">${cart.ctmNo }</a></td>
                                         <td>${cart.cartQuantity }</td>
                                         <td>${cart.cartPrice }원</td>
                                         <td><span name="totalPrice">${cart.cartPrice*cart.cartQuantity}</span>원</td>
-                                        <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
                                       </tr>
                                     </c:forEach>
                                     </c:otherwise>

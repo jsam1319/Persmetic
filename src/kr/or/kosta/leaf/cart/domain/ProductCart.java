@@ -21,22 +21,20 @@ public class ProductCart extends Cart {
 	public ProductCart() {
 		super();
 		productName = "";
-		// TODO Auto-generated constructor stub
 	}
 
-	public ProductCart(int productCode, int ctmNo, int cartQuantity, int cartPrice) {
-		super(productCode, ctmNo, cartQuantity, cartPrice);
-		// TODO Auto-generated constructor stub
+	public ProductCart(int productCode, int ctmNo, int cartQuantity, int cartPrice, int cartNo) {
+		super(productCode, ctmNo, cartQuantity, cartPrice, cartNo);
 	}
 
-	public ProductCart(int productCode, int ctmNo, int cartQuantity, int cartPrice, String productName, String productImage) {
-		super(productCode, ctmNo, cartQuantity, cartPrice);
+	public ProductCart(int productCode, int ctmNo, int cartQuantity, int cartPrice, int cartNo, String productName, String productImage) {
+		super(productCode, ctmNo, cartQuantity, cartPrice, cartNo);
 		this.productName = productName;
 		this.productImage = productImage;
 	}
 	
 	public ProductCart(Cart cart, String productName, String productImage)  {
-		this(cart.productCode, cart.ctmNo, cart.cartQuantity, cart.cartPrice, productName, productImage);
+		this(cart.productCode, cart.ctmNo, cart.cartQuantity, cart.cartPrice, cart.cartNo, productName, productImage);
 	}
 
 	public String getProductName() {

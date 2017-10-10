@@ -38,16 +38,16 @@ public class CartCreateController implements Controller {
 		int ctmNo = Integer.parseInt(request.getParameter("ctm_no"));  
 		int cartQuantity = Integer.parseInt(request.getParameter("cart_quantity"));
 		int cartPrice = Integer.parseInt(request.getParameter("cart_price"));
+		int cartNo = Integer.parseInt(request.getParameter("cart_no"));
 		
 		Cart cart = new Cart();
 		cart.setProductCode(productCode);
 		cart.setCtmNo(ctmNo);
 		cart.setCartQuantity(cartQuantity);
 		cart.setCartPrice(cartPrice);
+		cart.setCartNo(cartNo);
 		
 		cartService.create(cart);
-		
-		mav.setView("/cart.leaf?ctm_no=" + ctmNo);
 		
 		return mav;
 	}
