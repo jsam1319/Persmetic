@@ -50,100 +50,64 @@
                 <div class="container" style="width:960px" >
                 
                     <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
-                        </li>
+                        <li><a href="#">Home</a></li>
                         <li>퍼스널컬러 Self-Test</li>
+                        <li>진단결과</li>
                     </ul>
                 </div>
             
               <div class="container" style="width:960px">
 
-                    <div class="box">
-
-                        <form method="post" >
-                        
- <div style="text-align: center; margin: 130px">
- <p><h1>Personal Color Self-Test</h1></p>
- <br>
-  <h4 style="color: #FE642E">평소에 여러분과 잘 어울리는 색에 가까운 컬러 팔레트는 어떤 것인가요?</h4>
- <h4 style="color: #FE642E">컬러 팔레트로 여러분의 퍼스널 컬러를 찾아보세요!</h4>
- <h4 style="color: #FE642E">스크롤 바를 내려서 몇가지 테스트를 해 보세요!</h4>
- <h4 style="color: #FE642E">(해당사항에 체크하세요!)</h4>
+<!-- 봄웜톤 -->
+ <div class="box" style="background-color:#FBF5EF">                   
+ <div style="text-align: center;">
+ <h1 style="color: #F79F81"><strong>Spring Warm</strong></h1>
+ <h4 style="color: #F79F81"><strong>비비드, 브라이트, 라이트, 페일 톤</strong></h4>
  </div>
-                             
- <div style="text-align: center; padding-bottom: 100px" >
- <image src="../img/bg11.png" width="550x" style="margin: 100px;" ></image>
-
-</div>
-
-
-  <div style="text-align: center; padding-bottom: 190px">
- <p><image src="../img/color2.PNG" width="600px"></image></p>
- <p><font size="4pt" color="#B40486">코랄vs핑크 , 나에게 딱! 맞는 립컬러는 무엇?</font></p>
- <input type="checkbox" ><font color="#FE2E64" size="3pt">코랄계열(Coral Base)</font> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox"><font color="#DF01D7" size="3pt">핑크계열(Pink Base)</font> 
- </div>
+ <div style="text-align: center;">
+ <img src="../img/spring.png" width="500px">
  
-   <div style="text-align: center; padding-bottom: 200px">
- <p><image src="../img/color3.PNG" width="600px"></image></p>
-  <p><font size="4pt" color="#B40486">갈색vs검은색 , 나에게 딱! 맞는 헤어컬러는 무엇?</font></p>
-   <input type="checkbox" ><font color="#DF7401" size="3pt">Bronze Hair</font> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox"><font color="black" size="3pt">Black Hair</font> 
  </div>
+   </div>
+
+<!-- 여름쿨톤 -->
+
+ <div class="box" style="background-color:#E0E0F8">               
+ <div style="text-align: center;">
+ <h1 style="color: #819FF7"><strong>Summer Cool</strong></h1>
+ <h4 style="color: #819FF7"><strong>페일, 라이트, 라이트그레이시, 딥 톤</strong></h4>
+ </div>
+ <div style="text-align: center;">
+ <img src="../img/summer.png" width="500px">
  
-  <div style="text-align: center; padding-bottom: 200px">
- <p><image src="../img/color4.PNG" width="600px"></image></p>
-   <p><font size="4pt" color="#B40486">골드vs실버 , 나에게 딱! 맞는 액세서리 컬러는 무엇?</font></p>
-      <input type="checkbox" ><font color="#DBA901" size="3pt">Gold line</font> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox"><font color="#A4A4A4" size="3pt">Silver Line</font> 
  </div>
+   </div>
+   
+<!-- 가을웜톤 -->
+
+ <div class="box" style="background-color:#F7BE81">               
+ <div style="text-align: center;">
+ <h1 style="color: #B45F04"><strong>Fall Warm</strong></h1>
+ <h4 style="color: #B45F04"><strong>베이지, 딥파스텔, 소프트 톤</strong></h4>
+ </div>
+ <div style="text-align: center;">
+ <img src="../img/fall.png" width="500px">
  
- <div style="text-align: center; padding-bottom: 200px">
- <p><image src="../img/color5.PNG" width="600px"></image></p>
- <p><font size="4pt" color="#B40486">밝은 갈색vs짙은갈색/검은색 , 내 눈동자 컬러는 무엇?</font></p>
-       <input type="checkbox" ><font color="#B45F04" size="3pt">Light Brown</font> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox"><font color="#3B0B0B" size="3pt"> Brown / Black</font> 
  </div>
+   </div>
+   
+<!-- 겨울쿨톤 -->
 
- <div style="text-align: center; padding-bottom: 150px">
- <p><image src="../img/color0.PNG" width="600px"></image></p>
-  <p><font size="4pt" color="#B40486">나에게 어울리는 컬러는?</font></p>
-       <input type="checkbox" ><font color="#F79F81" size="3pt">따뜻한분위기의 파스텔톤</font> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox"><font color="#0404B4" size="3pt">차가운분위기의 비비드톤</font>
+ <div class="box" style="background-color:#EFF2FB">               
+ <div style="text-align: center;">
+ <h1 style="color: #08298A"><strong>Cool Winter</strong></h1>
+ <h4 style="color: #08298A"><strong>비비드, 코발트블루  톤</strong></h4>
  </div>
+ <div style="text-align: center;">
+ <img src="../img/winter.png" width="500px">
  
- <div style="text-align: center">
- <h3 style="color: #F78181"><p>선택한 결과로 자신의 퍼스널컬러를 찾아보세요! </p></h3>
  </div>
- <br>
- <br>
- <br>
- <br>
- <br>
- <div style="text-align: center">
- <a href="color_result.jsp" target=_blank><img src="../img/result.png" width="270px" style="margin: 20px; margin-left: 400px"></a></h4>
- </div>
-
-                        </form>
-
-                    </div>
-                    <!-- /.box -->
-
-
-           
+   </div>     
 
 
                 </div>
