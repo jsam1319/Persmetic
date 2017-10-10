@@ -5,11 +5,49 @@
 
 <head>
 <script>
-window.onload = function() {
-	total();
-	setDeleteButton();
-};
+    window.onload = function() {
+     	total();
+     	setDeleteButton();
+     	
+     	var addButton = $("a[name=addToCart]");
 
+        addButton.click(function() {
+        	var checkbox = $("input[type=checkbox]");
+        	var str = "";
+        	//console.log(checkbox);
+        	
+        	for(var i=0; i<checkbox.length; i++) {
+        		if(checkbox[i].checked) {
+        			str = str + checkbox[i].id + ','; 
+        		}
+        	}
+        	
+        	//console.log(str);
+        	
+        	return false;
+        	
+          $.ajax({
+            url : "orderitem_create.leaf",
+            data : {
+          	  'order_no' : '4' ,
+              'product_code' : $(this).attr('value'),
+              'order_price' : '1',
+              'order_count' : '5'
+            },
+            success : function(request) {
+              console.log(request);
+              alert("주문항목 성공!");
+              return false;
+            },
+            error : function(request) {
+              console.log(request);
+              alert("실패");
+              return false;
+            }
+          })
+        })
+    }
+    
 // 총 상품 합계
 total = function(){
    var prices=document.getElementsByName("totalPrice");
@@ -29,7 +67,11 @@ setDeleteButton = function() {
 		console.log(buttons.get(i).href);
 	}
 }
+
 </script>
+
+
+
 
     <meta charset="utf-8">
     <meta name="robots" content="all,follow">
@@ -114,8 +156,8 @@ setDeleteButton = function() {
                                     </c:when>
                                     <c:otherwise>
                                     <c:forEach var="cart" items="${requestScope.list }">
-                                      <tr>
-                                        <td><input type="checkbox"></td>
+                                      <tr name="${cart.cartNo}">
+                                        <td><input id="${cart.cartNo}" type="checkbox" checked></td>
                                         <td><img src="${cart.productImage}"></td>
                                         <td colspan="2"><a href="mailto:">${cart.productName }</a></td>
                                         <td><input type="number" value="${cart.cartQuantity }"></td>
@@ -127,7 +169,6 @@ setDeleteButton = function() {
                                     </c:otherwise>
                                   </c:choose>
                                     </tbody>
-                            
 
                                  
                                     <tfoot>
@@ -147,8 +188,9 @@ setDeleteButton = function() {
                                 </div>
                                 <div class="pull-right">
                                     <button class="btn btn-default" style="margin-right: 10px"></i>선택 상품 주문하기</button>
-                                    <button type="submit" class="btn btn-primary">주문하러가기<i class="fa fa-chevron-right"></i>
-                                    </button>
+                                   
+                                    <a href="#" name="addToCart" class="btn btn-primary"><i
+                        class="fa fa-shopping-cart"></i>주문하러가기</a>
                                 </div>
                             </div>
 
@@ -339,3 +381,4 @@ setDeleteButton = function() {
  _________________________________________________________ -->
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/bootstrap.min.js">
+    

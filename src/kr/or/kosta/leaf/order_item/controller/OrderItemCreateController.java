@@ -24,6 +24,7 @@ public class OrderItemCreateController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)	throws ServletException {
 		ModelAndView mav = new ModelAndView();
+		response.setContentType("text/html;charset=utf-8"); 
 		
 		int orderNo = Integer.parseInt(request.getParameter("order_no"));
 		int productCode = Integer.parseInt(request.getParameter("product_code"));
@@ -36,10 +37,8 @@ public class OrderItemCreateController implements Controller {
 		item.setProductCode(productCode);
 		item.setOrderPrice(orderPrice);
 		item.setOrderCount(orderCount);
-		itemService.create(item);
 		
-		mav.addObject("item", item);
-		mav.setView("/order-address.leaf");
+		itemService.create(item);
 		
 		return mav;
 	}
