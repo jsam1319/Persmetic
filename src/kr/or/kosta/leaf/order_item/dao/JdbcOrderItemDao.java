@@ -47,18 +47,17 @@ private DataSource dataSource;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = " INSERT INTO total_order(order_no, product_code, order_price, order_count)" + 
-		             " VALUES   (?, ?, ?, ?)";
+		String sql = " INSERT INTO order_item(order_no, product_code, order_price, order_count)" + 
+		             " VALUES   ((SELECT MAX(order_no)+1 FROM order_item), ?, ?, ?)";
 		
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, orderItem.getOrderNo());
-			pstmt.setInt(2, orderItem.getProductCode());
-			pstmt.setInt(3, orderItem.getOrderPrice());
-			pstmt.setInt(4, orderItem.getOrderCount());
+			pstmt.setInt(1, orderItem.getProductCode());
+			pstmt.setInt(2, orderItem.getOrderPrice());
+			pstmt.setInt(3, orderItem.getOrderCount());
 			
 			pstmt.executeUpdate();
 			

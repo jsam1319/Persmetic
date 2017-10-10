@@ -18,33 +18,33 @@
   rel='stylesheet' type='text/css'>
 
 <!-- styles -->
-<link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/owl.carousel.css" rel="stylesheet">
-<link href="css/owl.theme.css" rel="stylesheet">
+<link href="/css/font-awesome.css" rel="stylesheet">
+<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="/css/animate.min.css" rel="stylesheet">
+<link href="/css/owl.carousel.css" rel="stylesheet">
+<link href="/css/owl.theme.css" rel="stylesheet">
 
 <!-- theme stylesheet -->
-<link href="css/style.default.css" rel="stylesheet"
+<link href="/css/style.default.css" rel="stylesheet"
   id="theme-stylesheet">
 
 <!-- your stylesheet with modifications -->
-<link href="css/custom.css" rel="stylesheet">
+<link href="/css/custom.css" rel="stylesheet">
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
 
 
-<script src="js/jquery-1.11.0.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.cookie.js"></script>
-<script src="js/waypoints.min.js"></script>
-<script src="js/modernizr.js"></script>
-<script src="js/bootstrap-hover-dropdown.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/front.js"></script>
-<script src="js/date.js"></script>
+<script src="/js/jquery-1.11.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.cookie.js"></script>
+<script src="/js/waypoints.min.js"></script>
+<script src="/js/modernizr.js"></script>
+<script src="/js/bootstrap-hover-dropdown.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/front.js"></script>
+<script src="/js/date.js"></script>
 <!-- 
 <script src="js/moment/min/moment.min.js"></script>
 <script src="js/bootstrap-daterangepicker/daterangepicker.js"></script>
@@ -70,7 +70,7 @@
 <body>
 
 
-  <jsp:include page="include/header.jsp"></jsp:include>
+  <jsp:include page="../include/header.jsp"></jsp:include>
 
 
   <div id="all">
@@ -92,7 +92,7 @@
                     class="badge pull-right">42</span></a>
                </li>
                 <li>
-                  <a href="#">주문내역</a>
+                  <a href="order-list.jsp">주문내역</a>
                 </li>
               
                 <li><a href="#">문의 답변
@@ -112,91 +112,17 @@
 
             <div class="panel-heading">
               <h3 class="panel-title">
-                Brands <a class="btn btn-xs btn-danger pull-right"
-                  href="#"><i class="fa fa-times-circle"></i> Clear</a>
+                날짜선택 
               </h3>
             </div>
-
+              <div id="datepicker"></div>
+                  <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                      <span></span> <b class="caret"></b>
+                  </div>
             <div class="panel-body">
 
-              <form>
-                <div class="form-group">
-                  <div class="checkbox">
-                    <label> <input type="checkbox">Armani
-                      (10)
-                    </label>
-                  </div>
-                  <div class="checkbox">
-                    <label> <input type="checkbox">Versace
-                      (12)
-                    </label>
-                  </div>
-                  <div class="checkbox">
-                    <label> <input type="checkbox">Carlo
-                      Bruni (15)
-                    </label>
-                  </div>
-                  <div class="checkbox">
-                    <label> <input type="checkbox">Jack
-                      Honey (14)
-                    </label>
-                  </div>
-                </div>
-
-                <button class="btn btn-default btn-sm btn-primary">
-                  <i class="fa fa-pencil"></i> Apply
-                </button>
-
-              </form>
-
-            </div>
-          </div>
-
-          <div class="panel panel-default sidebar-menu">
-
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                Colours <a class="btn btn-xs btn-danger pull-right"
-                  href="#"><i class="fa fa-times-circle"></i> Clear</a>
-              </h3>
-            </div>
-
-            <div class="panel-body">
-
-              <form>
-                <div class="form-group">
-                  <div class="checkbox">
-                    <label> <input type="checkbox"> <span
-                      class="colour white"></span> White (14)
-                    </label>
-                  </div>
-                  <div class="checkbox">
-                    <label> <input type="checkbox"> <span
-                      class="colour blue"></span> Blue (10)
-                    </label>
-                  </div>
-                  <div class="checkbox">
-                    <label> <input type="checkbox"> <span
-                      class="colour green"></span> Green (20)
-                    </label>
-                  </div>
-                  <div class="checkbox">
-                    <label> <input type="checkbox"> <span
-                      class="colour yellow"></span> Yellow (13)
-                    </label>
-                  </div>
-                  <div class="checkbox">
-                    <label> <input type="checkbox"> <span
-                      class="colour red"></span> Red (10)
-                    </label>
-                  </div>
-                </div>
-
-                <button class="btn btn-default btn-sm btn-primary">
-                  <i class="fa fa-pencil"></i> Apply
-                </button>
-
-              </form>
+              
 
             </div>
           </div>
@@ -208,11 +134,7 @@
        <div class="col-md-8">
           <div id="container"></div>
 		
-		<div id="datepicker"></div>
-		<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-		    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
-		    <span></span> <b class="caret"></b>
-		</div>
+		
 
       <table style="margin-top: 20px" class="table table-hover">
         <thead >
@@ -261,7 +183,7 @@
 	 	endDate = total.split("-")[1];
 	 	
 	 	$.ajax({
-	 		url : "stats.leaf",
+	 		url : "/stats.leaf",
 	 		type : 'get',
 	 		dateType : 'jsonp',
 	 		jsonp : 'callback',

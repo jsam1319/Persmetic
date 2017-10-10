@@ -112,7 +112,6 @@
 					</div>
 
 					<div class="row products">
-
 						<div class="col-md-12 col-sm-6">
 
 							<c:forEach items="${list}" var="i">
@@ -133,6 +132,7 @@
 												class="fa fa-shopping-cart"></i>장바구니</a>
 										</p>
 									</script>
+                 
 									</div>
 								</div>
 							</c:forEach>
@@ -364,9 +364,12 @@
 
 
 	<script>
+	
 		window.onload = function() {
 			var addButton = $("a[name=addToCart]");
 
+			alert("조상------->"+ $(this).attr('value').parent('p'));
+			
 			addButton.click(function() {
 				$.ajax({
 					url : "cart_create.leaf",
@@ -374,7 +377,8 @@
 						'product_code' : $(this).attr('value'),
 						'ctm_no' : "${cookie.customer.value}",
 						'cart_quantity' : '1',
-						'cart_price' : '5'
+						'cart_price' : '5',
+						'cart_no' : '2'
 					},
 					success : function(request) {
 						console.log(request);

@@ -48,8 +48,8 @@ private DataSource dataSource;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = " INSERT INTO cart(product_code, ctm_no, cart_quantity, cart_price) " +
-		             	   " VALUES   (?, ?, ?, ?)";
+		String sql = " INSERT INTO cart(product_code, ctm_no, cart_quantity, cart_price, cart_no) " +
+		             	   " VALUES (?, ?, ?, ?, (SELECT MAX(cart_no)+1 FROM cart) )";
 		
 		try {
 			con = dataSource.getConnection();
@@ -86,7 +86,7 @@ private DataSource dataSource;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = " SELECT product_code, ctm_no, cart_quantity, cart_price " +
+		String sql = " SELECT product_code, ctm_no, cart_quantity, cart_price, cart_no " +
 					 " FROM cart " +
 					 " WHERE product_code = ? " +
 					 " AND ctm_no = ?";
@@ -104,6 +104,7 @@ private DataSource dataSource;
 				cart.setCtmNo(rs.getInt("ctm_no"));
 				cart.setCartQuantity(rs.getInt("cart_quanity"));
 				cart.setCartPrice(rs.getInt("cart_price"));
+				cart.setCartNo(rs.getInt("cart_no"));
 				return cart;
 			}
 		} catch (Exception e) {
@@ -130,7 +131,7 @@ private DataSource dataSource;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = " SELECT product_code, ctm_no, cart_quantity, cart_price " + 
+		String sql = " SELECT product_code, ctm_no, cart_quantity, cart_price, cart_no " + 
 					 " FROM cart " +
 					 " WHERE ctm_no = ? ";
 		
@@ -147,6 +148,7 @@ private DataSource dataSource;
 				cart.setCtmNo(rs.getInt("ctm_no"));
 				cart.setCartQuantity(rs.getInt("cart_quantity"));
 				cart.setCartPrice(rs.getInt("cart_price"));
+				cart.setCartNo(rs.getInt("cart_no"));
 				list.add(cart);
 				
 				System.out.println(cart);

@@ -2,6 +2,7 @@ package kr.or.kosta.leaf.stats.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,34 +12,29 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import kr.or.kosta.leaf.common.controller.Controller;
 import kr.or.kosta.leaf.common.controller.ModelAndView;
 import kr.or.kosta.leaf.stats.domain.Stats;
-import kr.or.kosta.leaf.stats.service.StatsService;
+import kr.or.kosta.leaf.stats.service.StatsServiceImpl;
 import kr.or.kosta.leaf.stats.util.StatsUtil;
 
 public class StatsController implements Controller {
 	
-	StatsService service = new StatsService();
+	StatsServiceImpl service = new StatsServiceImpl();
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		PrintWriter writer = response.getWriter();
-		response.setCharacterEncoding("UTF-8");
 		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+	
 		JSONObject json = null;
 		
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
-		String callback = request.getParameter("callback");
-		System.out.println(callback);
-		
-		System.out.println(startDate + " ~ " + endDate);
 		
 		List<Stats> statses = service.getStatses(startDate, endDate);
 		Map<String, List<Stats>> map = new HashMap<String, List<Stats>>();
@@ -63,15 +59,10 @@ public class StatsController implements Controller {
 		
 		json = StatsUtil.mapToJson(map);
 		
-		System.out.println(json.toJSONString());
-
 		writer.print(json);
 		writer.flush();
 		writer.close();
 		
-		/*mav.addObject("json", json);
-		mav.setView("statsJson.leaf");
-		*/
 		return null;
 	}
 }
