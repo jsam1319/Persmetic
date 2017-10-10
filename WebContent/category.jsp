@@ -129,7 +129,7 @@
 										<p class="price">${i.productPrice}원</p>
 										<p class="buttons">
 											<a href="detail_item.leaf?${i.productCode}" class="btn btn-default">상세보기</a>&nbsp;&nbsp;
-											<a href="#" value="product_code" class="btn btn-primary"><i
+											<a href="#" value="${i.productCode}" name="addToCart" class="btn btn-primary"><i
 												class="fa fa-shopping-cart"></i>장바구니</a>
 										</p>
 									</script>
@@ -365,7 +365,7 @@
 
 	<script>
 		window.onload = function() {
-			var addButton = $("#addToCart");
+			var addButton = $("a[name=addToCart]");
 
 			addButton.click(function() {
 				$.ajax({
@@ -373,15 +373,16 @@
 					data : {
 						'product_code' : $(this).attr('value'),
 						'ctm_no' : "${cookie.customer.value}",
-						'cart_quantity' : '1'
+						'cart_quantity' : '1',
+						'cart_price' : '5'
 					},
 					success : function(request) {
-						console.log(data);
+						console.log(request);
 						alert("장바구니 넣기 성공!");
 						return false;
 					},
 					error : function(request) {
-						console.log(data);
+						console.log(request);
 						alert("ㅠ 실패");
 						return false;
 					}
