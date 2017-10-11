@@ -23,7 +23,6 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import kr.or.kosta.leaf.keyword.domain.Keyword;
-import kr.or.kosta.leaf.product.domain.Product;
 
 
 public class JdbcKeywordDao implements KeywordDao{
@@ -121,6 +120,48 @@ private DataSource dataSource;
 			}
 				
 			return keyword;
+	}
+	
+	@Override
+	public List<Keyword> getKeywords(int productCode) {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<Keyword> keywords = new ArrayList<Keyword>();
+			
+		String sql = " SELECT keyword_name, product_code "
+						+ " FROM keyword " 
+				       	+ " WHERE product_code = ?";
+				             			  
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+				
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, productCode);
+					
+			rs = pstmt.executeQuery();
+					
+			while(rs.next()) keywords.add(new Keyword(rs.getString("keyword_name"), rs.getInt("product_code")));
+					
+			con.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+				throw new RuntimeException("JdbcKeywordDao.read(String keywordName, int productCode) 실행 중 예외발생", e);
+			} finally {
+				try {
+					if(pstmt != null) pstmt.close();
+					if(con != null)   con.close(); // 커넥션풀에 반납
+				} catch (Exception e) {}
+			}
+				
+			return keywords;
 	}
 
 	@Override

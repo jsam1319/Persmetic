@@ -12,4 +12,6 @@ public interface KeywordService {
 	public void create(Keyword keyword);
 	
 	public void plusHitCount(String keywordName);
+	
+	public List<Keyword> getKeyword(int productCode);
 }

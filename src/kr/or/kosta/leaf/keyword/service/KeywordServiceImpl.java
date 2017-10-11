@@ -21,4 +21,8 @@ public class KeywordServiceImpl implements KeywordService {
 	public void plusHitCount(String keywordName) {
 		keywordDao.plusHitCount(keywordName);
 	}
+	
+	public List<Keyword> getKeyword(int productCode) {
+		return keywordDao.getKeywords(productCode);
+	}
 }

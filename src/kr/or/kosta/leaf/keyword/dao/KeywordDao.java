@@ -29,8 +29,9 @@ public interface KeywordDao {
 	public void delete(String keywordName, int productCode);
 	
 	public void plusHitCount(String keywordName);
-	
 
+	List<Keyword> getKeywords(int productCode);
+	
 }
 
 
