@@ -117,17 +117,17 @@
 							<c:forEach items="${list}" var="i">
 								<!--List -->
 								<div class="product col-md-4 col-sm-3">
-									<a href="detail_item.leaf?product_code=${i.productCode}&page=1" class="image"> <img
+									<a href="detail_item.leaf?product_code=${i.productCode}" class="image"> <img
 										src="http://localhost/uploadphoto/${i.productImage}"
 										alt="image" class="img-responsive">
 									</a>
 									<div class="content">
 										<h3>
-											<a href="detail_item.leaf?product_code=${i.productCode}">${i.productName}</a>
+											<a href="detail_item.leaf?${i.productCode}">${i.productName}</a>
 										</h3>
 										<p class="price">${i.productPrice}원</p>
 										<p class="buttons">
-										<a href="detail_item.leaf?product_code=${i.productCode}" class="btn btn-default">상세보기</a>&nbsp;&nbsp;
+											<a href="detail_item.leaf?product_code=${i.productCode}" class="btn btn-default">상세보기</a>&nbsp;&nbsp;
 											<a href="#" value="${i.productCode}" name="addToCart" class="btn btn-primary"><i
 												class="fa fa-shopping-cart"></i>장바구니</a>
 										</p>
@@ -362,33 +362,36 @@
 	<script src="js/front.js"></script>
 
 
-
 	<script>
 	
 		window.onload = function() {
+			
 			var addButton = $("a[name=addToCart]");
-
-			alert("조상------->"+ $(this).attr('value').parent('p'));
+			
 			
 			addButton.click(function() {
+				var pPrice = $(this).parent().siblings().filter("p.price");
+				var price = pPrice.html();
+				var priceNum = price.split("원")[0];
+				
+				
 				$.ajax({
 					url : "cart_create.leaf",
 					data : {
 						'product_code' : $(this).attr('value'),
 						'ctm_no' : "${cookie.customer.value}",
-						'cart_quantity' : '1',
-						'cart_price' : '5',
-						'cart_no' : '2'
+						'cart_quantity' : 1,
+						'cart_price' : priceNum
 					},
 					success : function(request) {
 						console.log(request);
 						alert("장바구니 넣기 성공!");
-						return false;
+						//return false;
 					},
 					error : function(request) {
 						console.log(request);
-						alert("ㅠ 실패");
-						return false;
+						alert("장바구니에 담겨있는 상품입니다.");
+						//return false;
 					}
 				})
 			})
