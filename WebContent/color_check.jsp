@@ -107,47 +107,47 @@ document.getElementById("button").onclick = function(){
  <p><font size="4pt" color="#B40486">코랄vs핑크 , 나에게 딱! 맞는 립컬러는 무엇?</font></p>
  <label for="coral"><input type="checkbox" name="warm" id="coral"><font color="#FE2E64" size="3pt">코랄계열(Coral Base)</font> </label>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox" name="cool"><font color="#DF01D7" size="3pt">핑크계열(Pink Base)</font> 
+  <label for="pink"><input type="checkbox" name="cool" id="pink"><font color="#DF01D7" size="3pt">핑크계열(Pink Base)</font></label> 
  </div>
  
    <div style="text-align: center; padding-bottom: 200px">
  <p><image src="../img/color3.PNG" width="600px"></image></p>
   <p><font size="4pt" color="#B40486">갈색vs검은색 , 나에게 딱! 맞는 헤어컬러는 무엇?</font></p>
-   <input type="checkbox" name="warm"><font color="#DF7401" size="3pt">Bronze Hair</font> 
+ <label for="bronzeHair"><input type="checkbox" name="warm" id="bronzeHair"><font color="#DF7401" size="3pt">Bronze Hair</font></label> 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox" name="cool"><font color="black" size="3pt">Black Hair</font> 
+ <label for="blackHair"><input type="checkbox" name="cool" id="blackHair"><font color="black" size="3pt">Black Hair</font></label>
  </div>
  
   <div style="text-align: center; padding-bottom: 200px">
  <p><image src="../img/color4.PNG" width="600px"></image></p>
    <p><font size="4pt" color="#B40486">골드vs실버 , 나에게 딱! 맞는 액세서리 컬러는 무엇?</font></p>
-      <input type="checkbox" name="warm"><font color="#DBA901" size="3pt">Gold line</font> 
+ <label for="gold"><input type="checkbox" name="warm" id="gold"><font color="#DBA901" size="3pt">Gold line</font></label>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox" name="cool"><font color="#A4A4A4" size="3pt">Silver Line</font> 
+  <label for="silver"><input type="checkbox" name="cool" id="silver"><font color="#A4A4A4" size="3pt">Silver Line</font></label> 
  </div>
  
  <div style="text-align: center; padding-bottom: 200px">
  <p><image src="../img/color5.PNG" width="600px"></image></p>
  <p><font size="4pt" color="#B40486">밝은 갈색vs짙은갈색/검은색 , 내 눈동자 컬러는 무엇?</font></p>
-       <input type="checkbox" name="warm"><font color="#B45F04" size="3pt">Light Brown</font> 
+ <label for="brownEyes"><input type="checkbox" name="warm" id="brownEyes"><font color="#B45F04" size="3pt">Light Brown</font></label> 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox" name="cool"><font color="#3B0B0B" size="3pt"> Brown / Black</font> 
+<label for="blackEyes"><input type="checkbox" name="cool" id="blackEyes"><font color="#3B0B0B" size="3pt"> Brown / Black</font></label>
  </div>
 
  <div style="text-align: center; padding-bottom: 150px">
  <p><image src="../img/color0.PNG" width="600px"></image></p>
   <p><font size="4pt" color="#B40486">나에게 어울리는 컬러는?</font></p>
-       <input type="checkbox" name="warm" ><font color="#F79F81" size="3pt">따뜻한분위기의 파스텔톤</font> 
+<label for="pastel"><input type="checkbox" name="warm" id="pastel"><font color="#F79F81" size="3pt">따뜻한분위기의 파스텔톤</font></label> 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox" name="cool"><font color="#0404B4" size="3pt">차가운분위기의 비비드톤</font>
+<label for="vivid"><input type="checkbox" name="cool" id="vivid"><font color="#0404B4" size="3pt">차가운분위기의 비비드톤</font></label>
  </div>
  
  <div style="text-align: center">

@@ -107,7 +107,7 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li class="active"><a href="/index.leaf">Home</a>
                     </li>
-                    <li><a href="#">자가진단</a></li>
+                    <li><a href="color_check.leaf">자가진단</a></li>
                     <li class="dropdown yamm-fw">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">제품별 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
