@@ -17,4 +17,5 @@ public interface ProductService {
 	
 	public int getMaxProductCode();
 	
+	public List<Product> listAll();
 }

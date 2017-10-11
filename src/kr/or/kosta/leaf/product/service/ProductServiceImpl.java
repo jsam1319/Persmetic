@@ -37,5 +37,9 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.getMaxProductCode();
 	}
 	
+	@Override
+	public List<Product> listAll() {
+		return productDao.listAll();
+	}
 	
 }

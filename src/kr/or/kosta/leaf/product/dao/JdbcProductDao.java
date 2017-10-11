@@ -101,6 +101,68 @@ public class JdbcProductDao implements ProductDao {
 			}
 		}
 	}
+	
+	@Override
+	public List<Product> listAll() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<Product> products = new ArrayList<Product>();
+
+		String sql = " SELECT PRODUCT_CODE, "
+									 + " PRODUCT_NAME, "
+									 + " PRODUCT_EXPLAIN, "
+									 + " PRODUCT_BRAND, "
+									 + " PRODUCT_COLOR, "
+									 + " PRODUCT_TONE, "
+									 + " PRODUCT_PRICE,  "
+									 + " PRODUCT_SOW, "
+									 + " CATEGORY_NO, "
+									 + " PRODUCT_IMAGE \r\n" + 
+							"FROM PRODUCT \r\n" ;
+
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Product product = new Product();
+				
+				product.setProductCode(rs.getInt("product_code"));
+				product.setProductName(rs.getString("product_name"));
+				product.setProductExplain(rs.getString("product_explain"));
+				product.setProductBrand(rs.getString("product_brand"));
+				product.setProductColor(rs.getString("product_color"));
+				product.setProductTone(rs.getString("product_tone"));
+				product.setProductPrice(rs.getInt("product_price"));
+				product.setProductSow(rs.getInt("product_sow"));
+				product.setCategoryNo(rs.getInt("category_no"));
+				product.setProductImage(rs.getString("product_image"));
+				
+				products.add(product);
+			}
+			System.out.println("read 완료!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("JdbcProductDao read(ProductCode) 실행 중 예외발생", e);
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return products;
+	}
 
 
 	/** 상품 상세보기  */
