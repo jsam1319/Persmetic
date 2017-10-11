@@ -374,7 +374,6 @@
 				var price = pPrice.html();
 				var priceNum = price.split("원")[0];
 				
-				
 				$.ajax({
 					url : "cart_create.leaf",
 					data : {

@@ -83,6 +83,12 @@
         }).open();
     }
  
+    
+  //  window.onload = function(){
+  //  	var prices=document.getElementsByName("totalPrice");
+  //  	alert(prices);
+  //  }
+    
 </script>   
 
    <!-- Header -->
@@ -131,19 +137,18 @@
                                       </tr>
                                     </c:when>
                                     <c:otherwise>
-                                    <c:forEach var="cart" items="${requestScope.list }">
+                                    <c:forEach var="item" items="${requestScope.list }">
                                       <tr>
                                         <td>이미지</td>
-                                        <td colspan="2"><a href="mailto:">${cart.ctmNo }</a></td>
-                                        <td>${cart.cartQuantity }</td>
-                                        <td>${cart.cartPrice }원</td>
-                                        <td><span name="totalPrice">${cart.cartPrice*cart.cartQuantity}</span>원</td>
+                                        <td colspan="2" value="${item.productCode }">${item.productName }</td>
+                                        <td><span name="totalPrice">${item.orderCount}</span>원</td>
+                                        <td>${item.orderPrice }원</td>
+                                        <td>${item.orderPrice*item.orderCount}</td>
                                       </tr>
                                     </c:forEach>
-                                    </c:otherwise>
+                                    </c:otherwise> 
                                   </c:choose>
                                     </tbody>
-                            
                                     <tfoot>
                                         <tr><th colspan="8"></th></tr>
                                     </tfoot>

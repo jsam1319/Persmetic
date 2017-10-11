@@ -5,48 +5,15 @@
 
 <head>
 <script>
-    window.onload = function() {
-     	total();
-     	setDeleteButton();
-     	
-     	var addButton = $("a[name=addToCart]");
-
-        addButton.click(function() {
-        	var checkbox = $("input[type=checkbox]");
-        	var str = "";
-        	//console.log(checkbox);
-        	
-        	for(var i=0; i<checkbox.length; i++) {
-        		if(checkbox[i].checked) {
-        			str = str + checkbox[i].id + ','; 
-        		}
-        	}
-        	
-        	//console.log(str);
-        	
-        	return false;
-        	
-          $.ajax({
-            url : "orderitem_create.leaf",
-            data : {
-          	  'order_no' : '4' ,
-              'product_code' : $(this).attr('value'),
-              'order_price' : '1',
-              'order_count' : '5'
-            },
-            success : function(request) {
-              console.log(request);
-              alert("주문항목 성공!");
-              return false;
-            },
-            error : function(request) {
-              console.log(request);
-              alert("실패");
-              return false;
-            }
-          })
-        })
-    }
+  window.onload = function() {
+   	total();
+   	setDeleteButton();
+   	code();
+   	$("#goOrder").click(function() {
+   		$(this).attr('href', "orderitem_create.leaf?ctm_no=${cookie.customer.value}&product_code=" + codes);
+   		console.log($(this).attr("href"));
+   	})
+}
     
 // 총 상품 합계
 total = function(){
@@ -67,6 +34,20 @@ setDeleteButton = function() {
 		console.log(buttons.get(i).href);
 	}
 }
+
+var codes = "";
+
+code = function(){
+	var pcode = document.getElementsByName("code");
+	for(var i=0; i<pcode.length; i++){
+		if(i==0) 
+			codes = codes + pcode[i].getAttribute("value");
+		else
+			codes = codes + "," + pcode[i].getAttribute("value");  //value : productCode값
+	}
+}
+
+
 
 </script>
 
@@ -128,8 +109,6 @@ setDeleteButton = function() {
 
                     <div class="box">
 
-                        <form method="post" action="order-address.leaf">
-
                             <h1>장바구니</h1>
                               <p class="text-muted">${requestScope.list.size() }개의 상품이 담겨 있습니다.</p>
                             
@@ -159,11 +138,11 @@ setDeleteButton = function() {
                                       <tr name="${cart.cartNo}">
                                         <td><input id="${cart.cartNo}" type="checkbox" checked></td>
                                         <td><img src="${cart.productImage}"></td>
-                                        <td colspan="2"><a href="mailto:">${cart.productName }</a></td>
+                                        <td colspan="2"  name="code" value="${cart.productCode }">${cart.productName }</a></td>
                                         <td><input type="number" value="${cart.cartQuantity }"></td>
                                         <td>${cart.cartPrice }원</td>
                                         <td><span name="totalPrice">${cart.cartPrice*cart.cartQuantity}</span>원</td>
-                                        <td><a href="cart_delete.leaf?product_code=${cart.productCode }&ctm_no=${cookie.customer.value}" name="cart_delete"><i class="fa fa-trash-o"></i></a></td>
+                                        <td><a href="cart_delete.leaf?product_code=${cart.productCode}&ctm_no=${cookie.customer.value}" name="cart_delete"><i class="fa fa-trash-o"></i></a></td>
                                       </tr>
                                     </c:forEach>
                                     </c:otherwise>
@@ -187,15 +166,11 @@ setDeleteButton = function() {
                                     <a href="category.leaf" class="btn btn-default"><i class="fa fa-chevron-left"></i>쇼핑 계속하기</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button class="btn btn-default" style="margin-right: 10px"></i>선택 상품 주문하기</button>
-                                   
-                                    <a href="#" name="addToCart" class="btn btn-primary"><i
-                        class="fa fa-shopping-cart"></i>주문하러가기</a>
+                                    <button class="btn btn-default" style="margin-right: 10px">선택 상품 주문하기</button>
+                                    
+                                      <a href="#" class="btn btn-primary" id="goOrder"><i class="fa fa-shopping-cart"></i>주문하러가기</a> 
                                 </div>
                             </div>
-
-                        </form>
-
                     </div>
                     <!-- /.box -->
 

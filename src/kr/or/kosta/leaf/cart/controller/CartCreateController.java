@@ -28,9 +28,6 @@ public class CartCreateController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		ModelAndView mav = new ModelAndView();
-		
 		response.setContentType("text/html;charset=utf-8"); 
 		
 		/* url Request에 따른 변수 초기화 */
@@ -38,18 +35,20 @@ public class CartCreateController implements Controller {
 		int ctmNo = Integer.parseInt(request.getParameter("ctm_no"));  
 		int cartQuantity = Integer.parseInt(request.getParameter("cart_quantity"));
 		int cartPrice = Integer.parseInt(request.getParameter("cart_price"));
-		int cartNo = Integer.parseInt(request.getParameter("cart_no"));
 		
 		Cart cart = new Cart();
 		cart.setProductCode(productCode);
 		cart.setCtmNo(ctmNo);
 		cart.setCartQuantity(cartQuantity);
 		cart.setCartPrice(cartPrice);
-		cart.setCartNo(cartNo);
 		
 		cartService.create(cart);
 		
-		return mav;
+		response.getWriter().println("Complete");
+		response.getWriter().flush();
+		response.getWriter().close();
+		
+		return null;
 	}
 
 }
