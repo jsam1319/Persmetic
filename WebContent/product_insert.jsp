@@ -140,7 +140,7 @@ div#front_image {
                   </div>
 
                   <div class="col-md-2">
-	                    <input type="text" name="duplicated-name-2" 
+	                    <input type="text" name="color" 
                       data-palette='["#D50000","#F361A6","#00B8D4","#00C853","#FFD600",
                                                     "#FF6D00","#FF1744","#FFB2D9","#00E5FF","#00E676","#FFEA00",
                                                     "#FF9100","#FF5252","#D9418C","#18FFFF","#69F0AE","#FFFF00","#FFAB40"]' value="">
@@ -218,7 +218,7 @@ div#front_image {
 
 <script>
 $(document).ready(function() {
-	$('[name="duplicated-name-2"]').paletteColorPicker();
+	$('[name="color"]').paletteColorPicker();
 
 })
 
