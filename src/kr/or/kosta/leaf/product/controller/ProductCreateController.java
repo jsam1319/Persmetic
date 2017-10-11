@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.kosta.leaf.common.controller.Controller;
 import kr.or.kosta.leaf.common.controller.ModelAndView;
+import kr.or.kosta.leaf.keyword.domain.Keyword;
+import kr.or.kosta.leaf.keyword.service.KeywordService;
+import kr.or.kosta.leaf.keyword.service.KeywordServiceImpl;
 import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.product.service.ProductService;
 import kr.or.kosta.leaf.product.service.ProductServiceImpl;
@@ -15,7 +18,7 @@ import kr.or.kosta.leaf.product.service.ProductServiceImpl;
 public class ProductCreateController implements Controller {
 
 	ProductService productService = new ProductServiceImpl();
-	ModelAndView mav = new ModelAndView();
+	KeywordService keywordService = new KeywordServiceImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -34,11 +37,15 @@ public class ProductCreateController implements Controller {
 		product.setProductSow(Integer.parseInt(request.getParameter("sow")));
 		product.setProductImage(request.getParameter("image"));
 		
-		
 		productService.create(product);
 		
+		String[] keywordNames = request.getParameter("keyword").split(",");
+		int productCode = productService.getMaxProductCode();
 		
-		return mav;
+		for (String keywordName : keywordNames) {
+			keywordService.create(new Keyword(keywordName, productCode));
+		}
+		
+		return null;
 	}
-
 }

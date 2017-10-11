@@ -484,4 +484,41 @@ public class JdbcProductDao implements ProductDao {
 		return count;
 	}
 	
+	public int getMaxProductCode() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT max(PRODUCT_CODE) max_no from PRODUCT";
+
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) return rs.getInt("max_no");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
+	}
+	
 }

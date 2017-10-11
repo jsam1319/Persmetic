@@ -52,8 +52,10 @@ $(document).ready(
 			/** 상품등록 */
 			$("#btnSubmit").click(function() {
 				var param = $("#product_form").serialize();
+				
 				param = param + CKEDITOR.instances.contents.getData();
-				param = param + "&front="+ frontImage;
+				param = param + "&image="+ frontImage;
+				
 				console.log(param);
 				
 				$.ajax({
@@ -62,14 +64,13 @@ $(document).ready(
 					dataType : 'json',
 					type : 'POST',
 					success : function(msg) {
-						location.href = "/list_item.leaf?page=1"
+						alert('상품등록 완료!');
 					},
 	    			error : function(msg) {
 	    				alert(msg)
 	    			}
 				});
 														
-				alert("상품등록완료!");
 				location.href = "/list_item.leaf?page=1";
 			})											
 		})

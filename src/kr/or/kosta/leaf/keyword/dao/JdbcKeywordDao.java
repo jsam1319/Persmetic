@@ -23,6 +23,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import kr.or.kosta.leaf.keyword.domain.Keyword;
+import kr.or.kosta.leaf.product.domain.Product;
 
 
 public class JdbcKeywordDao implements KeywordDao{
@@ -133,9 +134,10 @@ private DataSource dataSource;
 			
 		Keyword keyword = null;
 				
-		String sql = " SELECT DISTINCT keyword_name"
+		String sql = " SELECT DISTINCT keyword_name, hit_count"
 						+ " FROM keyword " 
-				       	+ " WHERE keyword_name like ?";
+				       	+ " WHERE keyword_name like ?"
+				       	+ " ORDER BY hit_count DESC";
 				             			  
 		try {
 			con = dataSource.getConnection();
@@ -170,6 +172,8 @@ private DataSource dataSource;
 				
 			return keywordNames;
 	}
+	
+	
 	
 	@Override
 	public void delete(String keywordName, int productCode) {

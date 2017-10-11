@@ -3,6 +3,7 @@ package kr.or.kosta.leaf.keyword.dao;
 import java.util.List;
 
 import kr.or.kosta.leaf.keyword.domain.Keyword;
+import kr.or.kosta.leaf.product.domain.Product;
 
 
 /**

@@ -32,5 +32,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.pageCount(params);
 	}
 	
+	@Override
+	public int getMaxProductCode() {
+		return productDao.getMaxProductCode();
+	}
+	
 	
 }
