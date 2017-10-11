@@ -35,141 +35,50 @@
     <link rel="shortcut icon" href="favicon.png">
 
 </head>
-<script type="text/javascript">
-window.onload = function(){
-
-	
-
-document.getElementById("button").onclick = function(){	
-
-	if($("input:checkbox[name=warm]:checked").length > $("input:checkbox[name=cool]:checked").length){
-		location.href="warm_result.jsp";
-
-	}else if ($("input:checkbox[name=cool]:checked").length > $("input:checkbox[name=warm]:checked").length){
-		location.href="cool_result.jsp";
-
-	}else{
-		  $("#question").show();
-	}
-	
-}
-}
-
-
-
-</script>
 
 <body style="background-color:#FBF8EF">
    <!-- Header -->
    <jsp:include page="include/header.jsp"/>
    <!-- Header End -->
 
-   
+    <div id="all" >
 
-        <div style="background-color:#FBF8EF" id="question">
+        <div id="content" style="background-color:#FBF8EF;"  >
         
-            <div class="container" >
+            <div class="container">
 
-                <div class="container" style="width:960px" >
+                <div class="container" style="width:980px " >
                 
                     <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
-                        </li>
+                        <li><a href="#">Home</a></li>
                         <li><a href="color_check.leaf">퍼스널컬러 Self-Test</a></li>
+                        <li>진단결과</li>
                     </ul>
                 </div>
-
             
               <div class="container" style="width:960px">
+   
+   
+ <!-- 쿨톤 -->
+<div class="box" style="width:960px; background-color:#FAFAFA" id="coolTone" >
+<h1 style="text-align: center; color: #0B2161"><strong>COOL TONE</strong></h1>
 
-                    <div class="box">
-
-
+ <div style="text-align: center;" >
+ <img src="../img/cool.png" width="880px">
  
- <div style="text-align: center; margin: 130px">
-
- <p><h1>Personal Color Self-Test</h1></p>
- <br>
-  <h4 style="color: #FE642E">평소에 여러분과 잘 어울리는 색에 가까운 컬러 팔레트는 어떤 것인가요?</h4>
- <h4 style="color: #FE642E">컬러 팔레트로 여러분의 퍼스널 컬러를 찾아보세요!</h4>
- <h4 style="color: #FE642E">스크롤 바를 내려서 몇가지 테스트를 해 보세요!</h4>
- <h4 style="color: #FE642E">(해당사항에 체크하세요!)</h4>
  </div>
-                             
- <div style="text-align: center; padding-bottom: 100px" >
- <image src="../img/bg11.png" width="550x" style="margin: 100px;" ></image>
-
-</div>
+   </div>    
 
 
-  <div style="text-align: center; padding-bottom: 190px">
- <p><image src="../img/color2.PNG" width="600px"></image></p>
- <p><font size="4pt" color="#B40486">코랄vs핑크 , 나에게 딱! 맞는 립컬러는 무엇?</font></p>
- <label for="coral"><input type="checkbox" name="warm" id="coral"><font color="#FE2E64" size="3pt">코랄계열(Coral Base)</font> </label>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox" name="cool"><font color="#DF01D7" size="3pt">핑크계열(Pink Base)</font> 
- </div>
- 
-   <div style="text-align: center; padding-bottom: 200px">
- <p><image src="../img/color3.PNG" width="600px"></image></p>
-  <p><font size="4pt" color="#B40486">갈색vs검은색 , 나에게 딱! 맞는 헤어컬러는 무엇?</font></p>
-   <input type="checkbox" name="warm"><font color="#DF7401" size="3pt">Bronze Hair</font> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox" name="cool"><font color="black" size="3pt">Black Hair</font> 
- </div>
- 
-  <div style="text-align: center; padding-bottom: 200px">
- <p><image src="../img/color4.PNG" width="600px"></image></p>
-   <p><font size="4pt" color="#B40486">골드vs실버 , 나에게 딱! 맞는 액세서리 컬러는 무엇?</font></p>
-      <input type="checkbox" name="warm"><font color="#DBA901" size="3pt">Gold line</font> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox" name="cool"><font color="#A4A4A4" size="3pt">Silver Line</font> 
- </div>
- 
- <div style="text-align: center; padding-bottom: 200px">
- <p><image src="../img/color5.PNG" width="600px"></image></p>
- <p><font size="4pt" color="#B40486">밝은 갈색vs짙은갈색/검은색 , 내 눈동자 컬러는 무엇?</font></p>
-       <input type="checkbox" name="warm"><font color="#B45F04" size="3pt">Light Brown</font> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox" name="cool"><font color="#3B0B0B" size="3pt"> Brown / Black</font> 
- </div>
-
- <div style="text-align: center; padding-bottom: 150px">
- <p><image src="../img/color0.PNG" width="600px"></image></p>
-  <p><font size="4pt" color="#B40486">나에게 어울리는 컬러는?</font></p>
-       <input type="checkbox" name="warm" ><font color="#F79F81" size="3pt">따뜻한분위기의 파스텔톤</font> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="checkbox" name="cool"><font color="#0404B4" size="3pt">차가운분위기의 비비드톤</font>
- </div>
- 
- <div style="text-align: center">
- <h3 style="color: #F78181"><p>선택한 결과로 자신의 퍼스널컬러를 찾아보세요! </p></h3>
- </div>
- <br>
- <br>
- <br>
- <br>
- <br>
- <div style="text-align: center">
- <input type="image" name="submit" id="button" src="../img/result.png" width="270px" style="margin: 20px; margin-left: 400px">
- </div>
-               
-                     
-                    </div>
                 </div>
-                 
-            </div>
-         
-        </div>
+                <!-- /.col-md-9 -->
 
+                <!-- /.col-md-3 -->
+
+            </div>
+            <!-- /.container -->
+        </div>
+       </div>
 
         <!-- *** FOOTER ***
  _________________________________________________________ -->
