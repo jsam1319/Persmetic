@@ -126,15 +126,15 @@ div#front_image {
                       <select class="form-control" name="brand">
                         <option value="브랜드">브랜드</option>
                         <option value="나스">나스</option>
-                        <option value="더페이스샵">더페이스샵</option>
-                        <option value="미샤">미샤</option>
+                        <option value="디올">디올</option>
+                        <option value="랑콤">랑콤</option>
                         <option value="맥">맥</option>
                         <option value="바비브라운">바비브라운</option>
-                        <option value="슈에무라">슈에무라</option>
                         <option value="샤넬">샤넬</option>
-                        <option value="에뛰드">에뛰드</option>
-                        <option value="이니스프리">이니스프리</option>
+                        <option value="에스티로더">에스티로더</option>
+                        <option value="입생로랑">입생로랑</option>
                         <option value="크리니크">크리니크</option>
+                        <option value="페리페라">페리페라</option>
                       </select>
                     </div>
                   </div>

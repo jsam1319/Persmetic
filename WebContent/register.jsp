@@ -103,10 +103,9 @@ window.onload = function(){
 </head>
 
 <body>
-<c:if test="${msg }">
-	<script>alert('${msg}')</script>
-</c:if>
- <jsp:include page="/include/header.jsp" />
+     <!-- Header -->
+   <jsp:include page="include/header.jsp"/>
+   <!-- Header End -->
 
   <div id="all">
 

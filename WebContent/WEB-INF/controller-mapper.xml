@@ -17,6 +17,12 @@
 	<!-- 로그인 페이지 세부 컨트롤러 -->
 	<bean name="/customer/certify" class="kr.or.kosta.leaf.customer.controller.CertifyController" />
 	
+	<!-- 회원가입 페이지 세부 컨트롤러 -->
+	<bean name="/join" class="kr.or.kosta.leaf.customer.controller.CustomerJoinController" />
+	
+		<!-- id중복체크 세부 컨트롤러 -->
+	<bean name="/idCheck" class="kr.or.kosta.leaf.customer.controller.idCheckController" />
+	
 	<!--  상품 컨트롤러  -->
 	<bean name="/insert_item/upload" class="kr.or.kosta.leaf.product_image.controller.ProductImageController" />
 	<bean name="/insert_item/create" class="kr.or.kosta.leaf.product.controller.ProductCreateController" />
