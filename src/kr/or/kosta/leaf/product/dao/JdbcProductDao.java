@@ -437,7 +437,7 @@ public class JdbcProductDao implements ProductDao {
 	}
 	
 	
-	/** {선택페이지, 검색유형, 검색값, 한페이지당 출력 행수}에 대한 상품목록 반환 */
+	/** 카테고리에 대한 상품목록 반환 */
 	public List<Product> listByParams(Params params, int categoryNo) {
 		List<Product> list = null;		
 		
@@ -472,6 +472,52 @@ public class JdbcProductDao implements ProductDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException("JdbcProductDao.listByParams(Params params) 실행 중 예외발생", e);
+		} finally {
+			try {
+				if(rs != null)    rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close();
+			} catch (Exception e) {}
+		}
+		return list;
+	}
+	
+
+	/** 톤에 대한 상품목록 반환 */
+	public List<Product> listByTone(Params params, String tone) {
+		List<Product> list = null;		
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(" SELECT a.*");
+		sb.append(" FROM (SELECT CEIL(rownum / ?) request_page, at.*");
+		sb.append(" 	  FROM (SELECT *");
+		sb.append("		    	FROM product");
+		sb.append("		    	WHERE product_tone=?");
+		sb.append("		    	ORDER BY product_code DESC)at)a");
+		sb.append(" WHERE request_page = ?");
+		
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1, params.getPageSize());
+			pstmt.setString(2, tone);
+			pstmt.setInt(3, params.getPage());
+			
+			rs = pstmt.executeQuery();
+			list = new ArrayList<Product>();
+			
+			while(rs.next()){
+				Product prduct = createProduct(rs);
+				list.add(prduct);
+			}
+			System.out.println("listByParams 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("JdbcProductDao.listByTone(Params params) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if(rs != null)    rs.close();

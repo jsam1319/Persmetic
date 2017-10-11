@@ -64,16 +64,9 @@
             <div class="row">
 
               <form method="post" id="review_form">
-                <%-- 	<input type="text" name="ctmno" value="${sessionScope.id}">(닉네임)님 --%>
                 <hr>
                 <div>
                   <div>
-                    <!-- <div class="col-md-2">
-									<div id="review_image"></div>
-									<div>
-										<input type="file" name="image" accept="" id="upload">
-									</div>
-								</div> -->
                     <input type="hidden" name="productCode"
                       id="productCode" value="${product.productCode}">
                     <input type="hidden" name="ctmNo" id="ctmNo"
@@ -130,13 +123,6 @@
                     <hr>
                   </div>
                   <div>
-                    <div class="col-md-2">사진첨부</div>
-                    <div class="col-md-10">첨부하기 버튼</div>
-                  </div>
-                  <div class="col-md-12">
-                    <hr>
-                  </div>
-                  <div>
                     <div class="col-md-2">한줄요약</div>
                     <div class="col-md-10">
                       <input type="text" class="form-control" id="title"
@@ -149,9 +135,9 @@
                 </div>
                 <div class="col-md-12">
                   <div class="center-block" style='width: 250px'>
-                    <input type="submit" class="btn btn-primary"
+                    <input type="submit" class="btn btn-default"
                       id="btnSubmit" value="등록"> <input
-                      type="button" class="btn btn-primary" value="취소"
+                      type="button" class="btn btn-default" value="취소"
                       onclick="history.back(1)">
                   </div>
                 </div>

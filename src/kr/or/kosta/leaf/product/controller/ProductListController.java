@@ -11,6 +11,7 @@ import kr.or.kosta.leaf.common.controller.Controller;
 import kr.or.kosta.leaf.common.controller.ModelAndView;
 import kr.or.kosta.leaf.common.web.PageBuilder;
 import kr.or.kosta.leaf.common.web.Params;
+import kr.or.kosta.leaf.product.domain.ListDomain;
 import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.product.service.ProductService;
 import kr.or.kosta.leaf.product.service.ProductServiceImpl;
@@ -28,20 +29,43 @@ public class ProductListController implements Controller {
 			if(pageNo==null) pageNo="1";
 		int page = Integer.parseInt(pageNo);
 		
-		int categoryNo = Integer.parseInt(request.getParameter("category_no"));
-
-		Params params = new Params(page, null, null, 12, 5);
 		
-		List<Product> products = service.listByParams(params, categoryNo);
+		if(request.getParameter("category_no") != null) {
+			int categoryNo = Integer.parseInt(request.getParameter("category_no"));
+			
+			Params params = new Params(page, null, null, 12, 5);
+			
+			int totalRowCount = service.pageCount(params);
+			
+			List<Product> products = service.listByParams(params, categoryNo);
+			ListDomain category = new ListDomain(categoryNo);
+			
+			PageBuilder pageBuilder = new PageBuilder(params, totalRowCount);
+			pageBuilder.build();
+			
+			mav.addObject("category", category);
+			mav.addObject("list", products);
+			mav.addObject("pageBuilder", pageBuilder);
+			mav.setView("category.leaf");
 		
-		int totalRowCount = service.pageCount(params);
-
-		PageBuilder pageBuilder = new PageBuilder(params, totalRowCount);
-		pageBuilder.build();
-		
-		mav.addObject("list", products);
-		mav.addObject("pageBuilder", pageBuilder);
-		mav.setView("category.leaf");
+		}else if(request.getParameter("tone") != null) {
+			String tone = request.getParameter("tone");
+			
+			Params params = new Params(page, null, null, 12, 5);
+			
+			List<Product> products = service.listByTone(params, tone);
+			ListDomain productTone = new ListDomain(tone);
+			
+			int totalRowCount = service.pageCount(params);
+			
+			PageBuilder pageBuilder = new PageBuilder(params, totalRowCount);
+			pageBuilder.build();
+			
+			mav.addObject("tone", productTone);
+			mav.addObject("list", products);
+			mav.addObject("pageBuilder", pageBuilder);
+			mav.setView("category.leaf");
+		}
 		
 		return mav;
 	}

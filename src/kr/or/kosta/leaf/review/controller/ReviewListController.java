@@ -46,7 +46,7 @@ public class ReviewListController implements Controller {
 		Params params = new Params(page, null, null, 5, 5);
 		
 		int count = reviewService.count(productCode);
-		System.out.println("[count]:"+count);
+		
 		List<Review> reviews = reviewService.listByParams(params, productCode);
 
 		/** JSON */
@@ -73,7 +73,6 @@ public class ReviewListController implements Controller {
 		
 		String string = totalObj.toJSONString();
 		
-		System.out.println(string);
 		
 		
 		response.getWriter().println(totalObj);

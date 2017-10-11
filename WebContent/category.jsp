@@ -60,8 +60,7 @@
 
 				<div class="col-md-12">
 					<ul class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li>Ladies</li>
+						<li><a href="index.leaf">Home</a></li>
 					</ul>
 				</div>
 
@@ -115,16 +114,16 @@
 						<div class="col-md-12 col-sm-6">
 
 							<c:forEach items="${list}" var="i">
-								<!--List --> <script>console.log(${i.categoryNo})</script>
+								<!--List -->
 								<div class="product col-md-4 col-sm-3">
 									<a href="detail_item.leaf?product_code=${i.productCode}" class="image"> <img
-										src="http://localhost/uploadphoto/${i.productImage}"
+										src="/uploadphoto/${i.productImage}"
 										alt="image" class="img-responsive">
 									</a>
 									<div class="content">
-										<h3>
+										<h5>
 											<a href="detail_item.leaf?product_code=${i.productCode}">${i.productName}</a>
-										</h3>
+										</h5>
 										<p class="price">${i.productPrice}원</p>
 										<p class="buttons">
 											<a href="detail_item.leaf?product_code=${i.productCode}" class="btn btn-default">상세보기</a>&nbsp;&nbsp;
@@ -145,7 +144,7 @@
 
 
 					 <!-- Paging -->
-					<div class="pages">
+					<%-- <div class="pages">
 
 						<nav aria-label="Page navigation">
 								<ul class="pagination">
@@ -182,7 +181,7 @@
 
 								</ul>
 							</nav>
-					</div>
+					</div> --%>
 
 					<!-- /.Paging --> 
 
@@ -252,7 +251,65 @@
 					}
 				})
 			})
+			
+			
+		/* 	$(function(){
+				$("#category").change(function(){
+					var sel = $("#category2");
+					var value = $(this).val();
+					sel.children().remove();
+					sel.append('<option value="">카테고리</option>');
+					
+					if(value == '100'){
+						sel.append('<option value="110">파운데이션</option>');
+						sel.append('<option value="120">쿠션</option>');
+						sel.append('<option value="130">파우더&컴팩트</option>');
+						sel.append('<option value="140">메이크업 베이스&컨실러</option>');
+						sel.append('<option value="150">블러셔&하이라이터</option>');
+					}else if(value == '200'){
+						sel.append('<option value="210">마스카라</option>');
+						sel.append('<option value="220">아이섀도</option>');
+						sel.append('<option value="230">아이브로우</option>');
+					}else if(value == '300'){
+						sel.append('<option value="310">립스틱</option>');
+						sel.append('<option value="320">틴트&립글로즈</option>');
+					}
+
+					
+				})
+				
+			}) */
+			
+		/* 	print();
+	 	
+	 	 	function print(){
+	 			var ctg = "<li>";
+	 			console.log(${category.categoryNo})
+	 			if("${tone.productTone}"==null){
+		 			switch(${category.categoryNo}){
+		 			case 110 :	ctg+="파운데이션"; break;
+		 			case 120 :	ctg+="쿠션"; break;
+		 			case 130 :	ctg+="파우더&컴팩트"; break;
+		 			case 140 :	ctg+="메이크업 베이스&컨실러"; break;
+		 			case 150 :	ctg+="블러셔&하이라이터"; break;
+		 			case 210 :	ctg+="마스카라"; break;
+		 			case 220 :	ctg+="아이섀도"; break;
+		 			case 230 :	ctg+="아이브로우"; break;
+		 			case 310 :	ctg+="립스틱"; break;
+		 			case 320 :	ctg+="틴트&립글로즈"; break;
+		 			default	:	return; break;
+		 			}
+		 		}else{
+		 			ctg += "${tone.productTone}";
+		 		}
+	 			ctg+="</li>";
+	 			console.log(ctg)
+	 			$(".breadcrumb").append(ctg);
+		} */
+		
+		
 		}
+		
 	</script>
 
 

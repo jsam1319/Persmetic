@@ -42,4 +42,9 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.listAll();
 	}
 	
+	@Override
+	public List<Product> listByTone(Params params, String tone){
+		return productDao.listByTone(params, tone);
+	}
+	
 }

@@ -114,7 +114,7 @@
                                 <div class="yamm-content">
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <h5>페이스</h5>
+                                            <h5><a href="list_item.leaf?category_no=110">페이스</a></h5>
                                             <ul>
 										<li><a href="list_item.leaf?category_no=110">파운데이션</a></li>
 										<li><a href="list_item.leaf?category_no=120">쿠션</a></li>
@@ -124,7 +124,7 @@
 									</ul>
                                         </div>
                                         <div class="col-sm-3">
-                                            <h5>아이</h5>
+                                            <h5><a href="list_item.leaf?category_no=210">아이</a></h5>
                                             <ul>
 										<li><a href="list_item.leaf?category_no=210">마스카라</a></li>
 										<li><a href="list_item.leaf?category_no=220">아이섀도</a></li>
@@ -132,7 +132,7 @@
 									</ul>
                                         </div>
                                         <div class="col-sm-3">
-                                            <h5>립</h5>
+                                            <h5><a href="list_item.leaf?category_no=310">립</a></h5>
                                             <ul>
 										<li><a href="list_item.leaf?category_no=310">립스틱</a></li>
 										<li><a href="list_item.leaf?category_no=320">립틴트 & 립글로즈</a></li>
@@ -154,13 +154,13 @@
                                         <div class="col-sm-3">
                                             <h5>톤</h5>
                                             <ul>
-                                                <li><a href="category.leaf">봄</a>
+                                                <li><a href="list_item.leaf?tone=봄웜">봄</a>
                                                 </li>
-                                                <li><a href="category.leaf">여름</a>
+                                                <li><a href="list_item.leaf?tone=여름쿨">여름</a>
                                                 </li>
-                                                <li><a href="category.leaf">가을</a>
+                                                <li><a href="list_item.leaf?tone=가을웜">가을</a>
                                                 </li>
-                                                <li><a href="category.leaf">겨울</a>
+                                                <li><a href="list_item.leaf?tone=겨울쿨">겨울</a>
                                                 </li>
                                             </ul>
                                         </div>

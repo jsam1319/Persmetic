@@ -257,7 +257,7 @@ public class JdbcReviewDao implements ReviewDao {
 		sb.append("                        c.ctm_id,");
 		sb.append("                        p.product_name");
 		sb.append("                 FROM   review r, customer c, product p");
-		sb.append("                 WHERE  r.ctm_no=c.ctm_no and r.product_code=p.product_code");
+		sb.append("                 WHERE  r.ctm_no=c.ctm_no");
 		sb.append("                 AND		r.product_code=p.product_code");
 		sb.append("                 AND		p.product_code=?");
 		sb.append(" 				ORDER BY REVIEW_NO DESC)at)a");

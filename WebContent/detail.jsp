@@ -53,10 +53,9 @@
 
 				<div class="col-md-12">
 					<ul class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">카테고리1</a></li>
-						<li><a href="#">카테고리2</a></li>
-						<li>제품명</li>
+						<li><a href="index.leaf">Home</a></li>
+						<li><a id="category1" href="list_item.leaf?category_no=${product.categoryNo}"></a></li>
+						<li>${product.productName}</li>
 					</ul>
 
 				</div>
@@ -81,7 +80,9 @@
 								<h2 class="text-center" name="productName">${product.productName}</h2>
 								<hr width="300">
 								<p class="text-center"></p>
-                                <div class="text-center"><p id="grade"></p></div>
+                                <div class="text-center"><p id="grade">
+                                <i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i>
+                                </p></div>
                                
 								<hr width="300">
 								<p class="price">${product.productPrice}원</p>
@@ -116,7 +117,7 @@
 								<p>${product.productExplain }</p>
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="qna"
-								aria-labelledby="qna">
+								aria-labelledby="qna-tab">
 								<p>상품문의내용</p>
 							</div>
 
@@ -161,6 +162,7 @@
 		/** 장바구니버튼 클릭 이벤트*/
 		window.onload = function() {
 			setCreateButton();
+			print();
 		};
 		setCreateButton = function() {
 			var buttons = $("a[name=cart_create]");
@@ -185,6 +187,26 @@
 			  }
 			  $("#grade").html(grade); */
 		});
+		
+	 	
+ 	 	function print(){
+ 			var ctg = "";
+	 		switch(${product.categoryNo}){
+	 		case 110 :	ctg+="파운데이션"; break;
+	 		case 120 :	ctg+="쿠션"; break;
+	 		case 130 :	ctg+="파우더&컴팩트"; break;
+			case 140 :	ctg+="메이크업 베이스&컨실러"; break;
+ 			case 150 :	ctg+="블러셔&하이라이터"; break;
+	 		case 210 :	ctg+="마스카라"; break;
+	 		case 220 :	ctg+="아이섀도"; break;
+	 		case 230 :	ctg+="아이브로우"; break;
+	 		case 310 :	ctg+="립스틱"; break;
+	 		case 320 :	ctg+="틴트&립글로즈"; break;
+	 		default	:	return; break;
+	 		}
+ 			console.log(ctg)
+ 			$("#category1").append(ctg);
+	}
 	</script>
 
 

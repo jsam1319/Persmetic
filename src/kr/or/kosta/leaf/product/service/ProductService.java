@@ -19,4 +19,6 @@ public interface ProductService {
 	
 	public List<Product> listAll();
 	
+	public List<Product> listByTone(Params params, String tone);
+	
 }

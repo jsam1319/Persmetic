@@ -47,4 +47,7 @@ public interface ProductDao {
 	/** 상품 상세보기  */
 	public List<Product> listAll();
 	
+	/** 톤에 대한 상품목록 반환 */
+	public List<Product> listByTone(Params params, String tone);
+	
 }

@@ -39,9 +39,21 @@
 										<li><a href="list_item.leaf?category_no=310">립스틱</a></li>
 										<li><a href="list_item.leaf?category_no=320">립틴트 & 립글로즈</a></li>
 									</ul></li>
+								 <li class="active">
+                                    <a href="category.leaf">톤  <span class="badge pull-right">123</span></a>
+                                    <ul>
+                                        <li><a href="list_item.leaf?tone=봄웜">봄</a>
+                                        </li>
+                                        <li><a href="list_item.leaf?tone=여름쿨">여름</a>
+                                        </li>
+                                        <li><a href="list_item.leaf?tone=가을웜">가을</a>
+                                        </li>
+                                        <li><a href="list_item.leaf?tone=겨울쿨">겨울</a>
+                                        </li>
                             </ul>
 
                         </div>
+                        
                     </div>
 
                     <!-- *** MENUS AND FILTERS END *** -->

@@ -67,12 +67,10 @@ function reviewList(data){
 			grade += "<i class='fa fa-star'></i>"
 			}
 			list += "<div class='col-md-10'><div class='col-md-2'>";
-			list += "<p>" + json.reviews[i].reviewNo + "</p>";
 			list += "<p>" + json.reviews[i].ctmId + "</p>";
 			list += "<p>" + grade + "</p>";
 			list += "</div>"
 			list += "<div class='col-md-4'>"
-			list += "<p>" + json.reviews[i].productCode + "</p>";
 			list += "<p>" + json.reviews[i].productName + "</p>";
 			list += "<p>" + json.reviews[i].reviewTitle + "</p>";
 			list += "</div>"
