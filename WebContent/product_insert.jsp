@@ -40,9 +40,10 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="js/productInsert.js"></script>
-<script src="js/flatcolorpicker.js"></script>
-<script src="js/jquery.xcolor.min.js"></script>
-<link href="css/flatcolorpicker.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/palette-color-picker.css">
+<script src="js/palette-color-picker.js"></script>
+
+
 
 
 
@@ -139,8 +140,13 @@ div#front_image {
                   </div>
 
                   <div class="col-md-2">
-                  <input type="text" class="form-control flatcolorpicker" title="Pick color" data-placement="bottom">
+	                    <input type="text" name="duplicated-name-2" 
+                      data-palette='["#D50000","#F361A6","#00B8D4","#00C853","#FFD600",
+                                                    "#FF6D00","#FF1744","#FFB2D9","#00E5FF","#00E676","#FFEA00",
+                                                    "#FF9100","#FF5252","#D9418C","#18FFFF","#69F0AE","#FFFF00","#FFAB40"]' value="">
+                    </div>
                     <div class="form-inline" style="margin-bottom: 5px">
+                    
                     
                 <!--       <select class="form-control" name="color">
                         <option value="000">컬러 </option> 
@@ -153,7 +159,6 @@ div#front_image {
                         <option value="남색">남색</option>
                         <option value="보라">보라</option>
                       </select> -->
-                    </div>
                   </div>
 
                   <div class="col-md-2">
@@ -212,6 +217,10 @@ div#front_image {
 </body>
 
 <script>
-	
+$(document).ready(function() {
+	$('[name="duplicated-name-2"]').paletteColorPicker();
+
+})
+
 </script>
 </html>

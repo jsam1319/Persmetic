@@ -35,12 +35,14 @@ $(document).ready(function() {
 					},
 					error: function(msg) {
 						console.log(msg);
+						
+						$("#front_image").html("");
+						$("#front_image").append("<img style=\"max-width: 280px; max-height: 280px; id=\"upload\" height: 100%;\" src=\"/uploadphoto/"
+													+ fileName + "\">");
+						
+			
 					}
 				}); 
-						
-				$("#front_image").html("");
-				$("#front_image").append("<img style=\"max-width: 280px; max-height: 280px; id=\"upload\" height: 100%;\" src=\"/uploadphoto/"
-											+ fileName + "\">");
 			})
 
 			
