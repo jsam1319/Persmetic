@@ -116,39 +116,27 @@
                                         <div class="col-sm-3">
                                             <h5>페이스</h5>
                                             <ul>
-                                                <li><a href="category.leaf">파운데이션</a>
-                                                </li>
-                                                <li><a href="category.leaf">쿠션</a>
-                                                </li>
-                                                <li><a href="category.leaf">파우더 & 컴팩트</a>
-                                                </li>
-                                                <li><a href="category.leaf">메이크업 베이스 & 컨실러</a>
-                                                </li>
-                                                <li><a href="category.leaf">블러셔 & 하이라이터</a>
-                                                </li>
-                                            </ul>
+										<li><a href="list_item.leaf?category_no=110">파운데이션</a></li>
+										<li><a href="list_item.leaf?category_no=120">쿠션</a></li>
+										<li><a href="list_item.leaf?category_no=130">파우터&컴팩트</a></li>
+										<li><a href="list_item.leaf?category_no=140">메이크업 베이스 & 컨실러</a></li>
+										<li><a href="list_item.leaf?category_no=150">블러셔 & 하이라이터</a></li>
+									</ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>아이</h5>
                                             <ul>
-                                                <li><a href="category.leaf">마스카라</a>
-                                                </li>
-                                                <li><a href="category.leaf">아이라이너</a>
-                                                </li>
-                                                <li><a href="category.leaf">아이섀도</a>
-                                                </li>
-                                                <li><a href="category.leaf">아이브로우</a>
-                                                </li>
-                                            </ul>
+										<li><a href="list_item.leaf?category_no=210">마스카라</a></li>
+										<li><a href="list_item.leaf?category_no=220">아이섀도</a></li>
+										<li><a href="list_item.leaf?category_no=230">아이브로우</a></li>
+									</ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>립</h5>
                                             <ul>
-                                                <li><a href="category.leaf">립스틱</a>
-                                                </li>
-                                                <li><a href="category.leaf">립틴트 & 립글로스</a>
-                                                </li>
-                                            </ul>
+										<li><a href="list_item.leaf?category_no=310">립스틱</a></li>
+										<li><a href="list_item.leaf?category_no=320">립틴트 & 립글로즈</a></li>
+									</ul>
                                         </div>
                                     </div>
                                 </div>

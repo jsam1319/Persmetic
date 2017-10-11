@@ -23,8 +23,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> ListByParams(Params params) {
-		return productDao.listByParams(params);
+	public List<Product> listByParams(Params params, int categoryNo) {
+		return productDao.listByParams(params, categoryNo);
 	}
 	
 	@Override

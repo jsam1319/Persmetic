@@ -36,7 +36,7 @@ public interface ProductDao {
 	public void hitCount(int productcode);
 	
 	/** {선택페이지, 검색유형, 검색값, 한페이지당 출력 행수}에 대한 상품목록 반환 */
-	public List<Product> listByParams(Params params);
+	public List<Product> listByParams(Params params, int categoryNo);
 	
 	/** 출력페이지 계산을 위한 {검색유형, 검색값}에 대한 행의 수 반환 */
 	public int pageCount(Params params);

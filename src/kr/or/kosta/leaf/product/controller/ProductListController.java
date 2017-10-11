@@ -1,11 +1,7 @@
 package kr.or.kosta.leaf.product.controller;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -31,13 +27,14 @@ public class ProductListController implements Controller {
 		String pageNo = request.getParameter("page");
 			if(pageNo==null) pageNo="1";
 		int page = Integer.parseInt(pageNo);
-
-		//	private String type;      /** 사용자 검색 유형 */
-		//	private String value;     /** 사용자 검색 값 */
 		
+		int categoryNo = Integer.parseInt(request.getParameter("category_no"));
+
 		Params params = new Params(page, null, null, 12, 5);
 		
-		List<Product> products = service.ListByParams(params);
+		List<Product> products = service.listByParams(params, categoryNo);
+		
+		System.out.println("[products,toString]:"+products.toString());
 		
 		int totalRowCount = service.pageCount(params);
 

@@ -11,11 +11,12 @@ public interface ProductService {
 	
 	public Product read(int productCode);
 	
-	public List<Product> ListByParams(Params params); 
+	public List<Product> listByParams(Params params, int categoryNo); 
 	
 	public int pageCount(Params params);
 	
 	public int getMaxProductCode();
 	
 	public List<Product> listAll();
+	
 }
