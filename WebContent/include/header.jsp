@@ -83,15 +83,14 @@
             <div class="navbar-header">
 
                 <a class="navbar-brand home" href="index.leaf" data-animate-hover="bounce">
-                    <img src="/img/logo.png" alt="Obaju logo" class="hidden-xs">
-                    <img src="/img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
+                    <img src="/img/persmetic.PNG" alt="Persmetic logo" class="hidden-xs" >
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-align-justify"></i>
                     </button>
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
@@ -105,7 +104,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="/index.leaf">Home</a>
+                    <li ><a href="/index.leaf">Home</a>
                     </li>
                     <li><a href="color_check.leaf">자가진단</a></li>
                     <li class="dropdown yamm-fw">
@@ -177,15 +176,10 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-3" style="width: 580px">
                                             <div class="banner">
                                                 <a href="#">
-                                                    <img src="img/banner.jpg" class="img img-responsive" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="banner">
-                                                <a href="#">
-                                                    <img src="img/banner2.jpg" class="img img-responsive" alt="">
+                                                    <img src="img/tone3.png" class="img img-responsive" alt="" width="1000px" >
                                                 </a>
                                             </div>
                                         </div>
@@ -203,7 +197,7 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="cart.leaf?ctm_no=${cookie.customer.value}" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Shopping Cart</span></a>
+                    <a href="cart.leaf?ctm_no=${cookie.customer.value}" class="btn navbar-btn btn-primary"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Shopping Cart</span></a>
                 </div>
                 <!--/.nav-collapse -->
 
