@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.kosta.leaf.common.controller.Controller;
 import kr.or.kosta.leaf.common.controller.ModelAndView;
-import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.product.service.ProductService;
 import kr.or.kosta.leaf.product.service.ProductServiceImpl;
 import kr.or.kosta.leaf.review.domain.Review;

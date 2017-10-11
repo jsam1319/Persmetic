@@ -10,10 +10,11 @@ public interface ReviewService {
 
 	public void create(Review review);
 	
-	public List<Review> listByParams(Params params);
+	public List<Review> listByParams(Params params, int productCode);
 
-	public int pageCount(Params params);
+	public int count(int productCode);
 	
 	public Review read(int reviewNo);
+	
 	
 }

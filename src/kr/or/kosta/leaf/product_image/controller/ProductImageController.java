@@ -20,15 +20,18 @@ public class ProductImageController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
 		ProductImageService productImageService = new ProductImageServiceImpl();
-
-		String fileName = FileUpload.uploadFile(request);
+		
+		String path = FileUpload.uploadFile(request);
+		String fileName = (String) request.getAttribute("fileName");
+		System.out.println(path);
+		System.out.println("Controller.fileName : " + fileName);
 		
 		/* 이미지 번호와 파일 이름 */
 		ProductImage productImage = new ProductImage(-1, fileName);		
 		
 		productImageService.uploadImage(productImage);
+		response.getWriter().println(path);
 
 		return null;
 	}

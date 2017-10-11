@@ -72,10 +72,11 @@ div#front_image {
 
 							<form method="post" id="product_form">
 								<div class="col-md-3">
-									<div id="front_image"></div>
-									<div>
-										<input type="file" name="front" accept="image/*" id="upload">
-									</div>
+									<div id="front_image">
+             	                       <input type="file" name="front" accept="image/*" id="upload">
+                                    </div>
+									
+									
 								</div>
 								<div class="col-md-9">
 									<div class="col-md-3">
@@ -189,4 +190,8 @@ div#front_image {
 
 
 </body>
+
+<script>
+
+</script>
 </html>

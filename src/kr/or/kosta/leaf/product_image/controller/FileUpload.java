@@ -19,11 +19,10 @@ public class FileUpload {
 		if (isMultipart) {
 			// 설정단계
 	 		File temporaryDir = new File("c:\\tmp\\");  //업로드된 파일의 임시 저장 폴더
-	 		String realDir = "C:\\Users\\CafeAlle\\Documents\\Persmetic\\WebContent\\uploadphoto";
-//	 		String realDir = request.getSession().getServletContext().getRealPath("/") + "uploadphoto";  //실제 저장될 파일경로
+//	 		String realDir = "C:\\Users\\CafeAlle\\Documents\\Persmetic\\WebContent\\uploadphoto";
+	 		String realDir = request.getSession().getServletContext().getRealPath("/") + "uploadphoto";  //실제 저장될 파일경로
 	 		String sFunc = request.getParameter("CKEditorFuncNum");
 	 		String realUrl = request.getParameter("realUrl");
-	 	
 	 		
 	 		
 	 		
@@ -53,6 +52,7 @@ public class FileUpload {
 					if (fileItem.getSize() > 0) {  //파일이 업로드 되었나 안되었나 체크
 						String fieldName = fileItem.getFieldName();
 						fileName = fileItem.getName();
+						request.setAttribute("fileName", fileName);
 						String contentType = fileItem.getContentType();
 						boolean isInMemory = fileItem.isInMemory();
 						long sizeInBytes = fileItem.getSize();
@@ -60,13 +60,15 @@ public class FileUpload {
 						System.out.println("fieldName : " + fieldName);
 						System.out.println("fileName : "  + fileName);
 						System.out.println(sizeInBytes);
-						System.out.println("readDir : " + realDir);
+						System.out.println("realDir : " + realDir);
+						System.out.println("realUrl : " + realUrl);
 						
 				 		try {
 				 			File uploadedFile = new File(realDir, fileName);
-				 			System.out.println(uploadedFile.getAbsolutePath());
 				 			fileItem.write(uploadedFile);  //실제 디렉토리에 카피
 				 			fileItem.delete();   //temp폴더의 파일 제거
+				 			
+				 			return "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" + sFunc + ",'http://localhost/uploadphoto/" + fileName + "', 'Complete!');</script>";
 				 		} catch(Exception ex) {
 				 			ex.printStackTrace();
 				 			return null;
@@ -77,8 +79,7 @@ public class FileUpload {
 		} else {
 //	 		out.println("인코딩 타입이 multipart/form-data 가 아님.");
 		}
-
-		return fileName;
+		return null;
 	}
 	
 	public static void main(String args[]) {

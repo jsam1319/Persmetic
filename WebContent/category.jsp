@@ -117,17 +117,17 @@
 							<c:forEach items="${list}" var="i">
 								<!--List -->
 								<div class="product col-md-4 col-sm-3">
-									<a href="detail_item.leaf?product_code=${i.productCode}" class="image"> <img
+									<a href="detail_item.leaf?product_code=${i.productCode}&page=1" class="image"> <img
 										src="http://localhost/uploadphoto/${i.productImage}"
 										alt="image" class="img-responsive">
 									</a>
 									<div class="content">
 										<h3>
-											<a href="detail_item.leaf?${i.productCode}">${i.productName}</a>
+											<a href="detail_item.leaf?product_code=${i.productCode}">${i.productName}</a>
 										</h3>
 										<p class="price">${i.productPrice}원</p>
 										<p class="buttons">
-											<a href="detail_item.leaf?${i.productCode}" class="btn btn-default">상세보기</a>&nbsp;&nbsp;
+										<a href="detail_item.leaf?product_code=${i.productCode}" class="btn btn-default">상세보기</a>&nbsp;&nbsp;
 											<a href="#" value="${i.productCode}" name="addToCart" class="btn btn-primary"><i
 												class="fa fa-shopping-cart"></i>장바구니</a>
 										</p>
