@@ -17,7 +17,7 @@
 <meta name="keywords" content="">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/css/bootstrap.min.css" rel="stylesheet">
+
 
 <link
   href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
@@ -25,7 +25,6 @@
 
 <!-- styles -->
 <link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/owl.carousel.css" rel="stylesheet">
 <link href="css/owl.theme.css" rel="stylesheet">
@@ -36,10 +35,16 @@
 <link href="css/custom.css" rel="stylesheet">
 <script src="js/respond.min.js"></script>
 <link rel="shortcut icon" href="favicon.png">
-
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="js/productInsert.js"></script>
+<script src="js/flatcolorpicker.js"></script>
+<script src="js/jquery.xcolor.min.js"></script>
+<link href="css/flatcolorpicker.css" rel="stylesheet" type="text/css" />
+
+
 
 <!-- 태그 처리 (키워드) -->
 <script src="js/tagsinput/bootstrap-tagsinput.js"></script>
@@ -89,31 +94,14 @@ div#front_image {
                   <div class="col-md-12">
                     <div class="form-inline" style="margin-bottom: 5px">
                       카테고리 <select class="form-control" id="category">
+                        <option value="000">카테고리</option>
                         <option value="100">FACE</option>
                         <option value="200">EYE</option>
                         <option value="300">LIP</option>
                       </select>
-                      <select class="form-control" name="categoryno" id="category100">
-                        <option value="110">파운데이션</option>
-                        <option value="120">쿠션</option>
-                        <option value="130">파우더&컴팩트</option>
-                        <option value="140">메이크업 베이스&컨실러</option>
-                        <option value="150">블러셔&하이라이터</option>
-                        <option value="210">마스카라</option>
-                        <option value="220">아이셰도</option>
-                        <option value="230">아이브로우</option>
-                        <option value="310">립스틱</option>
-                        <option value="320">틴트&립글로즈</option>
+                      <select class="form-control" name="categoryno" id="category2">
+                        <option value="">카테고리</option>
                       </select>
-                    <!--   <select class="form-control" name="categoryno" id="category200">
-                        <option value="210">마스카라</option>
-                        <option value="220">아이셰도</option>
-                        <option value="230">아이브로우</option>
-                      </select>
-                      <select class="form-control" name="categoryno" id="category300">
-                        <option value="310">립스틱</option>
-                        <option value="320">틴트&립글로즈</option>
-                      </select> -->
                     </div>
                   </div>
                   <div class="col-md-12">
@@ -151,9 +139,12 @@ div#front_image {
                   </div>
 
                   <div class="col-md-2">
+                  <input type="text" class="form-control flatcolorpicker" title="Pick color" data-placement="bottom">
                     <div class="form-inline" style="margin-bottom: 5px">
-                      <select class="form-control" name="color">
-                        <option value="컬러">컬러 </option>
+                    
+                <!--       <select class="form-control" name="color">
+                        <option value="000">컬러 </option> 
+                        <option value="100">빨강</option>
                         <option value="빨강">빨강</option>
                         <option value="주황">주황</option>
                         <option value="노랑">노랑</option>
@@ -161,7 +152,7 @@ div#front_image {
                         <option value="파랑">파랑</option>
                         <option value="남색">남색</option>
                         <option value="보라">보라</option>
-                      </select>
+                      </select> -->
                     </div>
                   </div>
 

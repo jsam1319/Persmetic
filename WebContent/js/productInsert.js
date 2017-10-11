@@ -1,6 +1,6 @@
 
-$(document).ready(
-		function() {
+$(document).ready(function() {
+	
 			/** CKEDITOR 사진 등록 */
 			var frontImage = "";
 
@@ -11,8 +11,8 @@ $(document).ready(
 						'&realDir' : 'C:/Users/kosta/git/Persmetic/WebContent/uploadphoto/' 
 			});
 			
-			console.log(CKEDITOR);
 		
+			
 			/** 상품 대표 이미지 등록 */
 			var imageUp = $('input[type=file]');
 			var formData = new FormData();
@@ -20,13 +20,9 @@ $(document).ready(
 			imageUp.change(function() {
 				var fileName = $('input[type=file]')[0].files[0].name;
 				frontImage = fileName;
-			//	console.log($("#upload").attr("src"));
-			//	console.log($('input[type=file]')[0].files[0]);
 				formData.append('upload', $('input[type=file]')[0].files[0]);
 														
-			//	console.log(formData);
 
-			//	alert(fileName);
 				$.ajax({
 					url: '/insert_item/upload.leaf?image_name=' + fileName,
 					dataType: 'json',
@@ -41,13 +37,13 @@ $(document).ready(
 						console.log(msg);
 					}
 				}); 
-													
-				
+						
 				$("#front_image").html("");
-				$("#front_image").append("<img style=\"max-width: 100%; id=\"upload\" height: 100%;\" src=\"/uploadphoto/"
+				$("#front_image").append("<img style=\"max-width: 280px; max-height: 280px; id=\"upload\" height: 100%;\" src=\"/uploadphoto/"
 											+ fileName + "\">");
 			})
 
+			
 			
 			/** 상품등록 */
 			$("#btnSubmit").click(function() {
@@ -55,8 +51,6 @@ $(document).ready(
 				
 				param = param + CKEDITOR.instances.contents.getData();
 				param = param + "&image="+ frontImage;
-				
-				console.log(param);
 				
 				$.ajax({
 					url : '/insert_item/create.leaf',
@@ -72,5 +66,36 @@ $(document).ready(
 				});
 														
 				location.href = "/list_item.leaf?page=1";
-			})											
+			})		
+			
+			
+			/** 카테고리 다중 옵션 */
+			$(function(){
+				$("#category").change(function(){
+					var sel = $("#category2");
+					var value = $(this).val();
+					sel.children().remove();
+					sel.append('<option value="">카테고리</option>');
+					
+					if(value == '100'){
+						sel.append('<option value="110">파운데이션</option>');
+						sel.append('<option value="120">쿠션</option>');
+						sel.append('<option value="130">파우더&컴팩트</option>');
+						sel.append('<option value="140">메이크업 베이스&컨실러</option>');
+						sel.append('<option value="150">블러셔&하이라이터</option>');
+					}else if(value == '200'){
+						sel.append('<option value="210">마스카라</option>');
+						sel.append('<option value="220">아이섀도</option>');
+						sel.append('<option value="230">아이브로우</option>');
+					}else if(value == '300'){
+						sel.append('<option value="310">립스틱</option>');
+						sel.append('<option value="320">틴트&립글로즈</option>');
+					}
+
+					
+				})
+				
+			})
+			
+			
 		})
