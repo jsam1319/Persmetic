@@ -10,4 +10,6 @@ public interface KeywordService {
 	public List<String> getKeywordNames(String keywordName) ;
 	
 	public void create(Keyword keyword);
+	
+	public void plusHitCount(String keywordName);
 }

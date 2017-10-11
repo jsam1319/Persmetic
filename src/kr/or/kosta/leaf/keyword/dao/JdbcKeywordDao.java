@@ -210,6 +210,42 @@ private DataSource dataSource;
 			} catch (Exception e) {}
 		}
 	}
+	
+	@Override
+	public void plusHitCount(String keywordName) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = " UPDATE keyword " +
+		             	   " SET hit_count = hit_count + 1"
+		             	+ " WHERE keyword_name = ? ";
+
+		
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, keywordName);
+
+			
+			pstmt.executeUpdate();
+			
+			con.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+			throw new RuntimeException(" plusHitCount(Keyword keyword) 실행 중 예외발생", e);
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close(); // 커넥션풀에 반납
+			} catch (Exception e) {}
+		}
+	}
 }
 
 

@@ -39,6 +39,11 @@
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="js/productInsert.js"></script>
+
+<!-- 태그 처리 (키워드) -->
+<script src="js/tagsinput/bootstrap-tagsinput.js"></script>
+<link href="js/tagsinput//bootstrap-tagsinput.css" rel="stylesheet">
+
 <style>
 div#front_image {
 	width: 280px;
@@ -157,10 +162,8 @@ div#front_image {
 									</div>
 								</div>
 								<div class="col-md-10">
-									<div class="form-group">
 										<label for="subject">키워드 </label> <input type="text"
-											class="form-control" name="keyword" id="keyword">
-									</div>
+											class="form-control" data-role="tagsinput" name="keyword" id="keyword">
 								</div>
 						</div>
 					</div>

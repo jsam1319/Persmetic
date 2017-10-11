@@ -28,6 +28,8 @@ public interface KeywordDao {
 	
 	public void delete(String keywordName, int productCode);
 	
+	public void plusHitCount(String keywordName);
+	
 
 }
 
