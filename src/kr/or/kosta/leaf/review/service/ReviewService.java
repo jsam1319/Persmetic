@@ -12,10 +12,9 @@ public interface ReviewService {
 	
 	public List<Review> listByParams(Params params, int productCode);
 
-	public int pageCount(Params params, int productCode);
+	public int count(int productCode);
 	
 	public Review read(int reviewNo);
 	
-	public List<Review> listAll(int productCode);
 	
 }

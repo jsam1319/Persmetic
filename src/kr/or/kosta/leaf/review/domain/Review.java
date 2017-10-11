@@ -18,16 +18,17 @@ public class Review {
 	private String reviewDate;
 	private String ctmId;
 	private String productName;
+	private int searchCount;
 	
 
 	
 	public Review() {}
 	
-	public Review(int ctmNo, int productCode, int reviewGrade, String reviewTitle, String reviewContents) {
-		this(0, ctmNo, productCode, reviewGrade, reviewTitle, reviewContents, null, null, null);
+	public Review(int ctmNo, int productCode, int reviewGrade, String reviewTitle, String reviewContents, int searchCount) {
+		this(0, ctmNo, productCode, reviewGrade, reviewTitle, reviewContents, null, null, null, searchCount);
 	}
 	
-	public Review(int reviewNo, int ctmNo, int productCode, int reviewGrade, String reviewTitle, String reviewContents, String reviewDate, String ctmId, String productName) {
+	public Review(int reviewNo, int ctmNo, int productCode, int reviewGrade, String reviewTitle, String reviewContents, String reviewDate, String ctmId, String productName, int searchCount) {
 		this.reviewNo = reviewNo;
 		this.ctmNo = ctmNo;
 		this.productCode = productCode;
@@ -37,6 +38,7 @@ public class Review {
 		this.reviewDate = reviewDate;
 		this.ctmId = ctmId;
 		this.productName = productName;
+		this.searchCount = searchCount;
 	}
 
 	
@@ -112,11 +114,20 @@ public class Review {
 		this.productName = productName;
 	}
 
+	public int getSearchCount() {
+		return searchCount;
+	}
+
+	public void setSearchCount(int searchCount) {
+		this.searchCount = searchCount;
+	}
+
 	@Override
 	public String toString() {
 		return "Review [reviewNo=" + reviewNo + ", ctmNo=" + ctmNo + ", productCode=" + productCode + ", reviewGrade="
 				+ reviewGrade + ", reviewTitle=" + reviewTitle + ", reviewContents=" + reviewContents + ", reviewDate="
-				+ reviewDate + ", ctmId=" + ctmId + ", productName=" + productName + "]";
+				+ reviewDate + ", ctmId=" + ctmId + ", productName=" + productName + ", searchCount=" + searchCount
+				+ "]";
 	}
 	
 	

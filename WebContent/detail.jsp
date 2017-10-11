@@ -137,126 +137,6 @@
 						</div>
 					</div>
 					
-					<!-- 상품 설명 탭 -->
-					<%-- <div class="box" id="details">
-						<ul id="explainTap" class="nav nav-tabs" role="tablist">
-							<li><a href="#explain">상품정보</a></li>
-							<li><a href="#qna">상품문의</a></li>
-							<li><a href="#review">구매후기</a></li>
-						</ul>
-						<section id="explain">
-						<div id="myTabContent" class="tab-content">
-							<div role="tabpanel">
-								<p>${product.productExplain }</p>
-								<p>productExplain</p>
-							</div>
-							</div>
-							</section>
-							<section id="qna">
-							<div role="tabpanel">
-								<p>상품문의내용</p>
-							</div>
-							</section>
-
-							<!-- Review탭 -->
-							<section id="review">
-							<div role="tabpanel">
-							<div id="all">
-<!-- +++++++++++++++++++++ productCode, ctmName 가져오기 / 리스트띄우기 -->
-		<div id="content">
-			<div class="container">
-					<div class="row reviews">
-						<!-- review -->
-						<div>
-						<hr>
-						<c:set var="productCode" value="${product.productCode}"/>
-							<c:forEach items="${list}" var="i">
-						<c:set var="ckproductCode" value="${i.productCode}"/>
-								<c:if test="${productCode eq ckproductCode}">
-								<div>
-								<div class="col-md-1">
-									<p>${i.ctmName}</p>
-									<p>grade:${i.reviewGrade}</p>
-								</div>
-								<div class="col-md-5">
-									<p>productCode:${i.productCode}</p>
-									<p>title:${i.reviewTitle}</p>
-								</div>
-								<div class="col-md-2">
-									<p>date:${i.reviewDate}</p>
-								</div>
-								</div>
-								<div class="col-md-12">
-								<hr >
-								</div>
-								</c:if>
-							</c:forEach>
-
-						</div>
-						<!-- /.review -->
-						<c:choose>
-							<c:when test="${!empty cookie.customer}">
-							<div class="col-md-12">
-								<input type="button" value="리뷰쓰기" id="reviewbtn"
-									class="btn btn-primary">
-									</div>
-							</c:when>
-						</c:choose>
-					</div>
-					<!-- /.products -->
-
-					<!-- Paging -->
-					<div class="pages">
-
-						<nav aria-label="Page navigation">
-							<ul class="pagination">
-								<c:if test="${pageBuilder.isShowFirst()}">
-									<li><a href="${pageBuilder.getQueryString(1)}"> << </a></li>
-								</c:if>
-
-								<c:if test="${pageBuilder.isShowPrevious()}">
-									<li class="prev"><a
-										href="${pageBuilder.getQueryString(pageBuilder.getPreviousStartPage())}">
-											< </a></li>
-								</c:if>
-
-								<c:forEach var="i" begin="${pageBuilder.currentStartPage }"
-									end="${pageBuilder.currentEndPage}" varStatus="status">
-									<c:choose>
-										<c:when test="${i==params.page}">
-											<li class="active"><a>${i}</a></li>
-										</c:when>
-										<c:otherwise>
-											<li><a href="${pageBuilder.getQueryString(i)}">${i}</a></li>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-
-								<c:if test="${pageBuilder.isShowNext()}">
-									<li class="next"><a
-										href="${pageBuilder.getQueryString(pageBuilder.getNextStartPage())}">
-											> </a></li>
-								</c:if>
-
-								<c:if test="${pageBuilder.isShowLast()}">
-									<li><a
-										href="${pageBuilder.getQueryString(pageBuilder.getTotalPageCount())}">
-											>> </a></li>
-								</c:if>
-
-							</ul>
-						</nav>
-					</div>
-
-					<!-- /.Paging -->
-			</div>
-			<!-- /.container -->
-		</div>
-	</div>
-							</div>
-							</section>
-
-						</div> --%>
 					</div>
 				</div>
 				<!-- /.col-md-9 -->
@@ -301,7 +181,7 @@
 		
 		$(document).ready(function() {
 			  $("#review-tab").click(function(){
-				$("#review").load("${pageContext.servletContext.contextPath}/reviewList.leaf?page=1&product_code=${product.productCode}")
+				$("#review").load("reviewList.leaf?page=1&product_code=${product.productCode}")
 			})
 		});
 	</script>
