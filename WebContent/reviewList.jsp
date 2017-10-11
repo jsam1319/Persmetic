@@ -13,7 +13,7 @@
 
 <!-- theme stylesheet -->
 <link href="css/style.default.css" rel="stylesheet"
-	id="theme-stylesheet">
+  id="theme-stylesheet">
 
 <!-- your stylesheet with modifications -->
 <link href="css/custom.css" rel="stylesheet">
@@ -25,48 +25,44 @@
 <link rel="shortcut icon" href="favicon.png">
 <title></title>
 </head>
+<style>
+.moreviewbtn {
+  margin-left: 350px;
+}
+</style>
 <body>
-	<div id="all">
-		<div id="content">
-			<div class="container">
-					<div class="row reviews">
-						<!-- review -->
-						<div>
-						<h2>Review</h2>
-						<hr>
-                      <div id="listView"></div>
-						</div>
-						<!-- /.review -->
-						<c:choose>
-							<c:when test="${!empty cookie.customer}">
-							<div class="col-md-12">
-								<input type="button" value="리뷰쓰기" id="reviewbtn"
-									class="btn btn-primary">
-									</div>
-							</c:when>
-						</c:choose>
-					</div>
-					<!-- /.products -->
-					
-					<!-- paging -->
-					<div class="pages">
-						<nav aria-label="Page navigation">
-							<ul class="pagination">
-							<!--************2) 버튼 페이지 수 대로 출력 -페이지 갯수 구해서 for문 돌리기 -->
-								<input type="button" class="page" value="1">
-								<input type="button" class="page" value="2">
-								<input type="button" class="page" value="3">
-								<input type="button" class="page" value="4">
-								<input type="button" class="page" value="5">
-							</ul>
-						</nav>
-					</div>
-					<!-- /.paging -->
-
-			</div>
-			<!-- /.container -->
-		</div>
-	</div>
+  <div id="all">
+    <div id="content">
+      <div class="container">
+        <div class="row reviews">
+          <!-- review -->
+          <div>
+            <h2>Review</h2>
+            <hr>
+            <div id="listView" class='col-md-12'>
+            </div>
+            <div class="moreviewbtn">
+               <input type='button' class='moreview btn btn-primary' value='더보기'>
+          </div>
+          </div>
+          <!-- /.review -->
+          
+          <!-- reviewRegistButton -->
+          <c:choose>
+            <c:when test="${!empty cookie.customer}">
+              <div class="col-md-12">
+                <input type="button" value="리뷰쓰기" id="reviewbtn"
+                  class="btn btn-primary">
+              </div>
+            </c:when>
+          </c:choose>
+          <!-- /.reviewRegistButton -->
+          
+        </div>
+      </div>
+      <!-- /.container -->
+    </div>
+  </div>
 
 
 

@@ -3,6 +3,7 @@ package kr.or.kosta.leaf.keyword.dao;
 import java.util.List;
 
 import kr.or.kosta.leaf.keyword.domain.Keyword;
+import kr.or.kosta.leaf.product.domain.Product;
 
 
 /**
@@ -26,6 +27,8 @@ public interface KeywordDao {
 	public Keyword read(String keywordName, int productCode);
 	
 	public void delete(String keywordName, int productCode);
+	
+	public void plusHitCount(String keywordName);
 	
 
 }

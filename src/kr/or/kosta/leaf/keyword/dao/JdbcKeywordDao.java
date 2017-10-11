@@ -23,6 +23,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import kr.or.kosta.leaf.keyword.domain.Keyword;
+import kr.or.kosta.leaf.product.domain.Product;
 
 
 public class JdbcKeywordDao implements KeywordDao{
@@ -133,9 +134,10 @@ private DataSource dataSource;
 			
 		Keyword keyword = null;
 				
-		String sql = " SELECT DISTINCT keyword_name"
+		String sql = " SELECT DISTINCT keyword_name, hit_count"
 						+ " FROM keyword " 
-				       	+ " WHERE keyword_name like ?";
+				       	+ " WHERE keyword_name like ?"
+				       	+ " ORDER BY hit_count DESC";
 				             			  
 		try {
 			con = dataSource.getConnection();
@@ -171,6 +173,8 @@ private DataSource dataSource;
 			return keywordNames;
 	}
 	
+	
+	
 	@Override
 	public void delete(String keywordName, int productCode) {
 		// TODO Auto-generated method stub
@@ -199,6 +203,42 @@ private DataSource dataSource;
 				con.rollback();
 			} catch (SQLException e1) {}
 			throw new RuntimeException("JdbcKeywordDao.delete(String keywordName, int productCode) 실행 중 예외발생", e);
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close(); // 커넥션풀에 반납
+			} catch (Exception e) {}
+		}
+	}
+	
+	@Override
+	public void plusHitCount(String keywordName) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = " UPDATE keyword " +
+		             	   " SET hit_count = hit_count + 1"
+		             	+ " WHERE keyword_name = ? ";
+
+		
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, keywordName);
+
+			
+			pstmt.executeUpdate();
+			
+			con.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+			throw new RuntimeException(" plusHitCount(Keyword keyword) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if(pstmt != null) pstmt.close();

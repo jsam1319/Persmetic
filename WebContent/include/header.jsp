@@ -1,8 +1,9 @@
+
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="u" uri="../WEB-INF/util-functions.tld" %>
-
-
+<!DOCTYPE html>
+<script src="js/jquery-1.11.0.min.js"></script>
  <!-- *** TOPBAR ***
  _________________________________________________________ -->
     <div id="top">
@@ -219,8 +220,11 @@
 
                 <form class="navbar-form" role="search">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
+                        <input type="text" class="form-control" placeholder="Search" data-toggle="dropdown" name="search">
+                        <ul class="dropdown-menu" style="width: 90%;" >
+                          <li style="margin-left: 3%">검색어를 입력하세요!</li>
+                        </ul>
+                        <span class="input-group-btn" onclick="searchEvent">
 
       <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
 
@@ -237,3 +241,68 @@
     <!-- /#navbar -->
 
     <!-- *** NAVBAR END *** -->
+    
+     <script type="text/javascript">
+    $(document).ready(function() {
+    	
+    	$("input[name=search]").keypress(function(event) {
+    		 var keycode = (event.keyCode ? event.keyCode : event.which);
+    	        if(keycode == '13'){
+    	           searchEvent();
+    	           return false;
+    	    }
+    	});
+    	
+    	
+      $("input[name=search]").keyup(function(event) {
+    	  $.ajax({
+          url : "/auto_complete.leaf",
+          data : {
+            'keyword' : $(this).val(),
+          },
+          success : function(msg){
+            console.log(msg);
+            appendLi(msg);
+          },
+          error : function(msg) {
+        	 
+            alert("fail")
+          }
+          
+        });
+        
+      })
+      
+    }) 
+    
+    appendLi = function(string) {
+      var keywordNames = string.split(",");
+      
+      if(keywordNames[0].trim().length < 1) {
+        $(".dropdown-menu").html("");
+        $(".dropdown-menu").append("<li style=\"margin-left: 3%\">추천 검색어가 없습니다.</li>");
+        
+      }
+      
+      else {
+        $(".dropdown-menu").html("");
+        
+        for(var i in keywordNames) {
+          $(".dropdown-menu").append(createLi(keywordNames[i]));
+        }
+      }
+    }
+    
+    createLi = function(keywordName) {
+      var Li = "<li style=\"margin-left: 3%\"><a href=\"/search.leaf?keyword=" + keywordName + "\">" + keywordName + "</a></li>";
+      
+      return Li;
+    }
+    
+    searchEvent = function() {
+    	var keyword = $("input[name=search]").val();
+    	
+    	location.href = "/search.leaf?keyword=" + keyword;
+    }
+    
+    </script>

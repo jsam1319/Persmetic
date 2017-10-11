@@ -41,4 +41,6 @@ public interface ProductDao {
 	/** 출력페이지 계산을 위한 {검색유형, 검색값}에 대한 행의 수 반환 */
 	public int pageCount(Params params);
 
+	/** 최근 생성된 제품의 코드 반환하는 메소드 */
+	public int getMaxProductCode();
 }

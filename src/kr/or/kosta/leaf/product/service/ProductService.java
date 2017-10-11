@@ -15,4 +15,6 @@ public interface ProductService {
 	
 	public int pageCount(Params params);
 	
+	public int getMaxProductCode();
+	
 }

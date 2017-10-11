@@ -2,15 +2,14 @@ package kr.or.kosta.leaf.keyword.service;
 
 import java.util.List;
 
-import kr.or.kosta.leaf.common.db.DaoFactory;
-import kr.or.kosta.leaf.keyword.dao.JdbcKeywordDao;
-import kr.or.kosta.leaf.keyword.dao.KeywordDao;
+import kr.or.kosta.leaf.keyword.domain.Keyword;
 
-public class KeywordService {
+public interface KeywordService {
 
-	KeywordDao keywordDao = (KeywordDao)DaoFactory.getInstance().getDao(JdbcKeywordDao.class);
 	
-	public List<String> getKeywordNames(String keywordName) {
-		return keywordDao.getKeywordNames(keywordName);
-	}
+	public List<String> getKeywordNames(String keywordName) ;
+	
+	public void create(Keyword keyword);
+	
+	public void plusHitCount(String keywordName);
 }

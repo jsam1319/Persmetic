@@ -39,8 +39,8 @@ public class ReviewListController implements Controller {
 		int productCode = Integer.parseInt(request.getParameter("product_code"));
 		
 		String pageNo = request.getParameter("page");
-		if (pageNo == null)
-			pageNo = "1";
+		if (pageNo == null) pageNo = "1";
+		
 		int page = Integer.parseInt(pageNo);
 		
 		Params params = new Params(page, null, null, 5, 5);
@@ -52,7 +52,7 @@ public class ReviewListController implements Controller {
 		/** JSON */
 		JSONObject totalObj = new JSONObject();
 		JSONArray array = new JSONArray();
-
+		
 		for (Review review : reviews) {
 			JSONObject obj = new JSONObject();
 
