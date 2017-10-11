@@ -49,6 +49,7 @@ $(document).ready(function() {
 			
 			/** 상품등록 */
 			$("#btnSubmit").click(function() {
+				var categoryNo = document.getElementById("category2").value;
 				var param = $("#product_form").serialize();
 				
 				param = param + CKEDITOR.instances.contents.getData();
@@ -67,7 +68,7 @@ $(document).ready(function() {
 	    			}
 				});
 														
-				location.href = "/list_item.leaf?page=1";
+				location.href = "/index.leaf";
 			})		
 			
 			

@@ -179,11 +179,11 @@
 			})
 			
 			/** grade 찍기 */
-			var grade="";
+			/* var grade="";
 			  for(var g=0; g<${product.grade}; g++){
 				  grade += "<i class='fa fa-star'></i>"
 			  }
-			  $("#grade").html(grade);
+			  $("#grade").html(grade); */
 		});
 	</script>
 

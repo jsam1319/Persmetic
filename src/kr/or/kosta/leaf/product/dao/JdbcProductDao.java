@@ -168,7 +168,7 @@ public class JdbcProductDao implements ProductDao {
 	
 	
 	/** 상품 상세보기  */
-	public Product read(int productCode) {
+	/*public Product read(int productCode) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -221,10 +221,10 @@ public class JdbcProductDao implements ProductDao {
 			}
 		}
 		return null;
-	}
+	}*/
 
 	/** 상품 상세보기  */
-	/*public Product read(int productCode) {
+	public Product read(int productCode) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -281,7 +281,7 @@ public class JdbcProductDao implements ProductDao {
 			}
 		}
 		return null;
-	}*/
+	}
 	
 	
 	

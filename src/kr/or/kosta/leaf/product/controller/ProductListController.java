@@ -34,8 +34,6 @@ public class ProductListController implements Controller {
 		
 		List<Product> products = service.listByParams(params, categoryNo);
 		
-		System.out.println("[products,toString]:"+products.toString());
-		
 		int totalRowCount = service.pageCount(params);
 
 		PageBuilder pageBuilder = new PageBuilder(params, totalRowCount);

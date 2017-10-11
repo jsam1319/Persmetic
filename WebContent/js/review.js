@@ -9,11 +9,11 @@ $(document).ready(function() {
   				dataType : 'json',
   				type : 'POST',
   				success : function(msg) {
-  					alert("성공")
-  					location.href = "/detail_item.leaf?product_code=${product.productCode}"
+  					alert("상품평이 등록되었습니다.")
+  					//location.href = "/detail_item.leaf?product_code=${product.productCode}"
   				},
   				error : function(msg) {
-  					alert("실패")
+  					//alert("실패")
   				}
   			});
   				alert("리뷰등록완료");
