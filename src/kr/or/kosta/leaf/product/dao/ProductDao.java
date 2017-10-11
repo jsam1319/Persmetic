@@ -44,5 +44,7 @@ public interface ProductDao {
 	/** 최근 생성된 제품의 코드 반환하는 메소드 */
 	public int getMaxProductCode();
 
+	/** 상품 상세보기  */
 	public List<Product> listAll();
+	
 }

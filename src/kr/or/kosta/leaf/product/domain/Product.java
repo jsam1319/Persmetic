@@ -19,15 +19,16 @@ public class Product {
 	private int productHits;
 	private int categoryNo; 
 	private String productImage;
+	private String grade;
 	
 	
 	public Product() {}
 	
-	public Product(int productCode, String productName, String productExplain, String productBrand, String productColor,  String productTone,int productPrice, int productSow) {
-		this(productCode, productName, productExplain, productBrand, productColor, productTone, productPrice, productSow, 0, 1, null);
+	public Product(int productCode, String productName, String productExplain, String productBrand, String productColor,  String productTone,int productPrice, int productSow, String grade) {
+		this(productCode, productName, productExplain, productBrand, productColor, productTone, productPrice, productSow, 0, 1, null, grade);
 	}
 	
-	public Product(int productCode, String productName, String productExplain, String productBrand, String productColor, String productTone, int productPrice, int productSow, int productHits, int categoryNo, String productImage) {
+	public Product(int productCode, String productName, String productExplain, String productBrand, String productColor, String productTone, int productPrice, int productSow, int productHits, int categoryNo, String productImage, String grade) {
 		this.productCode = productCode;
 		this.productName = productName;
 		this.productExplain= productExplain;
@@ -39,6 +40,7 @@ public class Product {
 		this.productHits = productHits;
 		this.categoryNo = categoryNo;
 		this.productImage = productImage;
+		this.grade = grade;
 	}
 
 	public int getProductCode() {
@@ -127,6 +129,23 @@ public class Product {
 
 	public void setProductImage(String productImage) {
 		this.productImage = productImage;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productCode=" + productCode + ", productName=" + productName + ", productExplain="
+				+ productExplain + ", productBrand=" + productBrand + ", productTone=" + productTone + ", productColor="
+				+ productColor + ", productPrice=" + productPrice + ", productSow=" + productSow + ", productHits="
+				+ productHits + ", categoryNo=" + categoryNo + ", productImage=" + productImage + ", grade=" + grade
+				+ "]";
 	}
 	
 	

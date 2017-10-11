@@ -10,8 +10,6 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import kr.or.kosta.leaf.common.web.Params;
-import kr.or.kosta.leaf.customer.domain.Customer;
-import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.review.domain.Review;
 
 /**
@@ -136,6 +134,9 @@ public class JdbcReviewDao implements ReviewDao {
 		}
 		return null;
 	}
+	
+	
+	
 	
 	/** 리뷰 삭제 */
 	public void delete(int reviewno) {
@@ -330,6 +331,7 @@ public class JdbcReviewDao implements ReviewDao {
 		}
 		return count;
 	}
+	
 
 	
 }

@@ -102,6 +102,7 @@ public class JdbcProductDao implements ProductDao {
 		}
 	}
 	
+	/** 상품 전체 리스트 */
 	@Override
 	public List<Product> listAll() {
 		Connection con = null;
@@ -163,10 +164,66 @@ public class JdbcProductDao implements ProductDao {
 		
 		return products;
 	}
-
-
+	
+	
 	/** 상품 상세보기  */
 	public Product read(int productCode) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM product p, (SELECT ROUND(AVG(r.review_grade), 0) gradeAvg\r\n" + 
+				"            FROM review r\r\n" + 
+				"            WHERE product_code=?\r\n" + 
+				"            group by r.product_code)\r\n" + 
+				"where product_code = ?";
+
+
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, productCode);
+			pstmt.setInt(2, productCode);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				Product product = new Product();
+				product.setProductCode(rs.getInt("product_code"));
+				product.setProductName(rs.getString("product_name"));
+				product.setProductExplain(rs.getString("product_explain"));
+				product.setProductBrand(rs.getString("product_brand"));
+				product.setProductColor(rs.getString("product_color"));
+				product.setProductTone(rs.getString("product_tone"));
+				product.setProductPrice(rs.getInt("product_price"));
+				product.setProductSow(rs.getInt("product_sow"));
+				product.setCategoryNo(rs.getInt("category_no"));
+				product.setProductImage(rs.getString("product_image"));
+				product.setGrade(rs.getString("gradeAvg"));
+				
+				return product;
+			}
+			System.out.println("read 완료!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("JdbcProductDao read(ProductCode) 실행 중 예외발생", e);
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	/** 상품 상세보기  */
+	/*public Product read(int productCode) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -223,8 +280,9 @@ public class JdbcProductDao implements ProductDao {
 			}
 		}
 		return null;
-	}
-
+	}*/
+	
+	
 	
 	/** 상품정보 삭제 */
 	public void delete(int productcode) {

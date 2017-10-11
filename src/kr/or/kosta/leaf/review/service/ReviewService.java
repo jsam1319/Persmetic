@@ -3,7 +3,6 @@ package kr.or.kosta.leaf.review.service;
 import java.util.List;
 
 import kr.or.kosta.leaf.common.web.Params;
-import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.review.domain.Review;
 
 public interface ReviewService {
@@ -15,6 +14,7 @@ public interface ReviewService {
 	public int count(int productCode);
 	
 	public Review read(int reviewNo);
+	
 	
 	
 }

@@ -74,24 +74,15 @@
 								<img src="http://localhost/uploadphoto/${product.productImage}"
 									alt="" class="img-responsive" name="productImage">
 							</div>
-
-
-							<!-- <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-							<!-- /.ribbon -->
-
 						</div>
 						<!-- 상품 정보 -->
 						<div class="col-sm-6">
 							<div class="box">
 								<h2 class="text-center" name="productName">${product.productName}</h2>
 								<hr width="300">
-								<p class="text-center">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
+								<p class="text-center"></p>
+                                <div class="text-center"><p id="grade"></p></div>
+                               
 								<hr width="300">
 								<p class="price">${product.productPrice}원</p>
 								<!-- 텍스트 크기 줄이기 -->
@@ -167,6 +158,7 @@
 	<script src="js/front.js"></script>
 
 	<script>
+		/** 장바구니버튼 클릭 이벤트*/
 		window.onload = function() {
 			setCreateButton();
 		};
@@ -179,10 +171,19 @@
 			}
 		}
 		
+		
 		$(document).ready(function() {
+			/** 리뷰 페이지 load */
 			  $("#review-tab").click(function(){
 				$("#review").load("reviewList.leaf?page=1&product_code=${product.productCode}")
 			})
+			
+			/** grade 찍기 */
+			var grade="";
+			  for(var g=0; g<${product.grade}; g++){
+				  grade += "<i class='fa fa-star'></i>"
+			  }
+			  $("#grade").html(grade);
 		});
 	</script>
 

@@ -4,9 +4,6 @@ import java.util.List;
 
 import kr.or.kosta.leaf.common.db.DaoFactory;
 import kr.or.kosta.leaf.common.web.Params;
-import kr.or.kosta.leaf.product.dao.JdbcProductDao;
-import kr.or.kosta.leaf.product.dao.ProductDao;
-import kr.or.kosta.leaf.product.domain.Product;
 import kr.or.kosta.leaf.review.dao.JdbcReviewDao;
 import kr.or.kosta.leaf.review.dao.ReviewDao;
 import kr.or.kosta.leaf.review.domain.Review;
@@ -34,6 +31,7 @@ public class ReviewServiceImpl implements ReviewService {
 	public Review read(int reviewNo) {
 		return reviewDao.read(reviewNo);
 	}
+	
 	
 	
 }
