@@ -123,7 +123,7 @@
 									</a>
 									<div class="content">
 										<h3>
-											<a href="detail_item.leaf?${i.productCode}">${i.productName}</a>
+											<a href="detail_item.leaf?product_code=${i.productCode}">${i.productName}</a>
 										</h3>
 										<p class="price">${i.productPrice}원</p>
 										<p class="buttons">
