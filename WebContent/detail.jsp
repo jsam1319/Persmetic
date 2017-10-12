@@ -83,7 +83,7 @@
                                 <div class="text-center"><p id="grade">
                                 <i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i>
                                 </p></div>
-                               
+                                <hr width="300">
 								<hr width="300">
 								<p class="price">${product.productPrice}원</p>
 								<!-- 텍스트 크기 줄이기 -->
@@ -171,9 +171,9 @@
 				$.ajax({
 					url : 'cart_create.leaf',
 					data : {
-							'product_code' : ${product.productCode},
+							'product_code' : "${product.productCode}",
 							'cart_quantity' : 1,
-							'cart_price' : ${product.productPrice}
+							'cart_price' : "${product.productPrice}"
 					},
 					success : function() {
 						alert("장바구니 담기 완료!");
@@ -182,15 +182,19 @@
 								url : "log.leaf",
 								data : {
 									'type' : 'CART_INSERT',
-									'content' : ${product.productCode}
+									'content' : $("a[name=cart_create]")
 								},
 								success : function(msg) {
 									console.log(msg);
 								}
 							}) 
 						})
+					},
+					error : function(request) {
+						console.log(request);
+						alert("장바구니에 담겨있는 상품입니다.");
+						//return false;
 					}
-					
 				})
 			})
 
@@ -217,7 +221,7 @@
 	 	
  	 	function print(){
  			var ctg = "";
-	 		switch(${product.categoryNo}){
+	 		switch("${product.categoryNo}"){
 	 		case 110 :	ctg+="파운데이션"; break;
 	 		case 120 :	ctg+="쿠션"; break;
 	 		case 130 :	ctg+="파우더&컴팩트"; break;
