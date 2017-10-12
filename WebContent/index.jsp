@@ -76,13 +76,9 @@
 
             <!-- *** HOT PRODUCT SLIDESHOW ***
  _________________________________________________________ -->
+          <div id="hot">
 
-
-                <div class="container">
-                    <div class="product-slider" id="suggest">
-                        
-                    </div>
-                    <!-- /.product-slider -->
+                <div class="container" id="suggest">
                 </div>
                 <!-- /.container -->
 
@@ -148,14 +144,12 @@ $(document).ready( function() {
 	}
 })
 
-
-
 appendProduct = function(json) {
 	for(var i in json.products) {
 		var product = json.products[i];
 		var div = "";
 		
-		div += 	 "<div class=\"item\">\r\n" + "<div class=\"product col-md-3 col-sm-3\">\r\n" + 
+		div += 	 "<div class=\"product col-md-2 col-sm-3\">\r\n" + 
 				 "	<a href=\"detail_item.leaf?product_code=" + product.productCode + "\" class=\"image\"> \r\n" + 
 				 "		<img src=\"uploadphoto/" + product.productImage + "\" alt=\"image\" class=\"img-responsive\">\r\n" + 
 				 "	</a>\r\n" + 
@@ -171,12 +165,14 @@ appendProduct = function(json) {
 				 "		</p>\r\n" + 
 				 "                 \r\n" + 
 				 "	</div>\r\n" + 
-				 "</div>" +
-				 "</div>";
+				 "</div>"
 		
 		$("#suggest").append(div);
 	}
 }
+
+
+
 
 
 </script>
