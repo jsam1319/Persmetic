@@ -15,9 +15,17 @@ public class ProductOrderItem extends OrderItem {
 
 	String productName;
 	String productImage;
+	int productPrice;
 
 	
-	
+	public int getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
+	}
+
 	public ProductOrderItem() {
 		super();
 		productName = "";
@@ -27,14 +35,15 @@ public class ProductOrderItem extends OrderItem {
 		super(orderNo, productCode, orderPrice, orderCount);
 	}
 
-	public ProductOrderItem(int orderNo, int productCode, int orderPrice, int orderCount, String productName, String productImage) {
+	public ProductOrderItem(int orderNo, int productCode, int orderPrice, int orderCount, String productName, String productImage , int productPrice) {
 		super(orderNo, productCode, orderPrice, orderCount);
 		this.productName = productName;
 		this.productImage = productImage;
+		this.productPrice = productPrice;
 	}
 	
-	public ProductOrderItem(OrderItem orderitem, String productName, String productImage) {
-		this(orderitem.orderNo, orderitem.productCode, orderitem.orderPrice, orderitem.orderCount, productName, productImage);
+	public ProductOrderItem(OrderItem orderitem, String productName, String productImage, int productPrice) {
+		this(orderitem.orderNo, orderitem.productCode, orderitem.orderPrice, orderitem.orderCount, productName, productImage, productPrice);
 	}
 
 	public String getProductName() {

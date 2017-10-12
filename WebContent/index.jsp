@@ -76,286 +76,11 @@
 
             <!-- *** HOT PRODUCT SLIDESHOW ***
  _________________________________________________________ -->
-            <div id="hot">
 
-                </div>
 
                 <div class="container">
-                    <div class="product-slider">
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.leaf">
-                                                <img src="img/product1.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.leaf">
-                                                <img src="img/product1_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.leaf" class="invisible">
-                                    <img src="img/product1.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="detail.leaf">Fur coat with very but very very long name</a></h3>
-                                    <p class="price">$143.00</p>
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.leaf">
-                                                <img src="img/product2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.leaf">
-                                                <img src="img/product2_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.leaf" class="invisible">
-                                    <img src="img/product2.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="detail.leaf">White Blouse Armani</a></h3>
-                                    <p class="price"><del>$280</del> $143.00</p>
-                                </div>
-                                <!-- /.text -->
-
-                                <div class="ribbon sale">
-                                    <div class="theribbon">SALE</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                                <div class="ribbon new">
-                                    <div class="theribbon">NEW</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                                <div class="ribbon gift">
-                                    <div class="theribbon">GIFT</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.leaf">
-                                                <img src="img/product3.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.leaf">
-                                                <img src="img/product3_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.leaf" class="invisible">
-                                    <img src="img/product3.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="detail.leaf">Black Blouse Versace</a></h3>
-                                    <p class="price">$143.00</p>
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.leaf">
-                                                <img src="img/product3.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.leaf">
-                                                <img src="img/product3_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.leaf" class="invisible">
-                                    <img src="img/product3.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="detail.leaf">Black Blouse Versace</a></h3>
-                                    <p class="price">$143.00</p>
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.leaf">
-                                                <img src="img/product2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.leaf">
-                                                <img src="img/product2_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.leaf" class="invisible">
-                                    <img src="img/product2.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="detail.leaf">White Blouse Versace</a></h3>
-                                    <p class="price">$143.00</p>
-                                </div>
-                                <!-- /.text -->
-
-                                <div class="ribbon new">
-                                    <div class="theribbon">NEW</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.leaf">
-                                                <img src="img/product1.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.leaf">
-                                                <img src="img/product1_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.leaf" class="invisible">
-                                    <img src="img/product1.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="detail.leaf">Fur coat</a></h3>
-                                    <p class="price">$143.00</p>
-                                </div>
-                                <!-- /.text -->
-
-                                <div class="ribbon gift">
-                                    <div class="theribbon">GIFT</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                            </div>
-                            <!-- /.product -->
-                        </div>
-                        <!-- /.col-md-4 -->
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.leaf">
-                                                <img src="img/product2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.leaf">
-                                                <img src="img/product2_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.leaf" class="invisible">
-                                    <img src="img/product2.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="detail.leaf">White Blouse Armani</a></h3>
-                                    <p class="price"><del>$280</del> $143.00</p>
-                                </div>
-                                <!-- /.text -->
-
-                                <div class="ribbon sale">
-                                    <div class="theribbon">SALE</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                                <div class="ribbon new">
-                                    <div class="theribbon">NEW</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                                <div class="ribbon gift">
-                                    <div class="theribbon">GIFT</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.leaf">
-                                                <img src="img/product3.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.leaf">
-                                                <img src="img/product3_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.leaf" class="invisible">
-                                    <img src="img/product3.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="detail.leaf">Black Blouse Versace</a></h3>
-                                    <p class="price">$143.00</p>
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
+                    <div class="product-slider" id="suggest">
+                        
                     </div>
                     <!-- /.product-slider -->
                 </div>
@@ -399,5 +124,60 @@
 
 
 </body>
+<script>
 
+$(document).ready( function() {
+	if('${empty cookie.customer}' == 'true') return false;
+	else {
+		$.ajax({
+			url : '/suggest.leaf',
+			data : {
+				'ctm_no' : ${cookie.customer.value}
+			},
+			success : function(msg) {
+				var json = JSON.parse(msg);
+				console.log(json);
+				appendProduct(json);
+			},
+			error : function(msg, a, b) {
+				console.log(msg);
+				console.log(a);
+				console.log(b);
+			}
+		});	
+	}
+})
+
+
+
+appendProduct = function(json) {
+	for(var i in json.products) {
+		var product = json.products[i];
+		var div = "";
+		
+		div += 	 "<div class=\"item\">\r\n" + "<div class=\"product col-md-3 col-sm-3\">\r\n" + 
+				 "	<a href=\"detail_item.leaf?product_code=" + product.productCode + "\" class=\"image\"> \r\n" + 
+				 "		<img src=\"uploadphoto/" + product.productImage + "\" alt=\"image\" class=\"img-responsive\">\r\n" + 
+				 "	</a>\r\n" + 
+				 "	\r\n" + 
+				 "	<div class=\"content\">\r\n" + 
+				 "		<h3>\r\n" + 
+				 "			<a href=\"detail_item.leaf?product_code=" + product.productCode + "\"</a>\r\n" + 
+				 "		</h3>\r\n" + 
+				 "		<p class=\"name\">" + product.productName + " </p>\r\n" + 
+				 "		<p class=\"price\">" + product.productPrice + " </p>\r\n" + 
+				 "		<p class=\"buttons\">\r\n" + 
+				 "			<a href=\"detail_item.leaf?product_code=" + product.productCode + "\" class=\"btn btn-default\">상세보기</a>\r\n" + 
+				 "		</p>\r\n" + 
+				 "                 \r\n" + 
+				 "	</div>\r\n" + 
+				 "</div>" +
+				 "</div>";
+		
+		$("#suggest").append(div);
+	}
+}
+
+
+</script>
 </html>

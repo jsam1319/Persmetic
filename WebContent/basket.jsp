@@ -9,8 +9,9 @@
    	total();
    	setDeleteButton();
    	code();
+   	
    	$("#goOrder").click(function() {
-   		$(this).attr('href', "orderitem_create.leaf?ctm_no=${cookie.customer.value}&product_code=" + codes);
+   		$(this).attr('href', "orderitem_create.leaf?product_code=" + codes + "&quantity="+ quantitiys);
    		console.log($(this).attr("href"));
    	})
 }
@@ -43,7 +44,19 @@ code = function(){
 		if(i==0) 
 			codes = codes + pcode[i].getAttribute("value");
 		else
-			codes = codes + "," + pcode[i].getAttribute("value");  //value : productCode값
+			codes = codes + "," + pcode[i].getAttribute("value"); 
+	}
+}
+
+var quantitiys = "";
+
+createQuantity = function(){
+	var qcode = document.getElementsByName("quantity");
+	for(var i=0; i<qcode.length; i++){
+		if(i==0) 
+			quantitys = quantitys + pcode[i].getAttribute("value");
+		else
+			quantitys = quantitys + "," + pcode[i].getAttribute("value");  
 	}
 }
 
@@ -139,7 +152,7 @@ code = function(){
                                         <td><input id="${cart.cartNo}" type="checkbox" checked></td>
                                         <td><img src="${cart.productImage}"></td>
                                         <td colspan="2"  name="code" value="${cart.productCode }">${cart.productName }</a></td>
-                                        <td><input type="number" value="${cart.cartQuantity }"></td>
+                                        <td><input type="number" name="quantity" value="${cart.cartQuantity }"></td>
                                         <td>${cart.cartPrice }원</td>
                                         <td><span name="totalPrice">${cart.cartPrice*cart.cartQuantity}</span>원</td>
                                         <td><a href="cart_delete.leaf?product_code=${cart.productCode}&ctm_no=${cookie.customer.value}" name="cart_delete"><i class="fa fa-trash-o"></i></a></td>
