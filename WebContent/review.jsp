@@ -58,7 +58,6 @@
 
         <div class="row">
 
-
           <div class="container">
 
             <div class="row">
@@ -135,7 +134,7 @@
                 </div>
                 <div class="col-md-12">
                   <div class="center-block" style='width: 250px'>
-                    <input type="submit" class="btn btn-default"
+                    <input type="button" class="btn btn-default"
                       id="btnSubmit" value="등록"> <input
                       type="button" class="btn btn-default" value="취소"
                       onclick="history.back(1)">

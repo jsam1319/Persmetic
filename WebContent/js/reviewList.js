@@ -20,7 +20,7 @@ $(document).ready(function() {
 	listPrint();
 	
 	
-	/** 페이지 버튼 값 가져오기 */
+	/** 더보기 페이지 값 가져오기 */
 	$('.moreview').each(function(i){
 			$(this).click(function(e){
 				e.preventDefault();
@@ -33,7 +33,7 @@ $(document).ready(function() {
 	/** 더보기 내용 출력 ajax */
 	function listPrint(){
 		$.ajax({
-			url: "review_list.leaf",
+			url: "/review_list.leaf",
 			dataType: "json",
 			data: {
 				"product_code" : productCode,
@@ -43,6 +43,7 @@ $(document).ready(function() {
 				reviewList(data);
 			},
 			error : function(data, a, b){
+				console.log(data);
 				console.log(a);
 				console.log(b);
 			}
@@ -52,7 +53,8 @@ $(document).ready(function() {
 	
 	/** 리뷰등록 버튼 클릭 */
 	$("#reviewbtn").click(function() {
-		location.href = "review_write.leaf?productCode="+productCode+"&ctmNo=${cookie.customer.value}"
+		var ctmNo = document.getElementById("customerNo").value;
+		location.href = "review_write.leaf?productCode="+productCode+"&ctmNo="+ctmNo;
 	})
 });
 

@@ -50,4 +50,7 @@ public interface ProductDao {
 	/** 톤에 대한 상품목록 반환 */
 	public List<Product> listByTone(Params params, String tone);
 	
+	/** 카테고리별 상품 갯수 */
+	/*public int productCount(int min, int max);*/
+	
 }

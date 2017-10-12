@@ -47,4 +47,8 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.listByTone(params, tone);
 	}
 	
+	/*@Override
+	public int productCount(int min, int max) {
+		return productDao.productCount(min, max);
+	}*/
 }

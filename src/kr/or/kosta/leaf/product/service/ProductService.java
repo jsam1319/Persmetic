@@ -21,4 +21,6 @@ public interface ProductService {
 	
 	public List<Product> listByTone(Params params, String tone);
 	
+	/*public int productCount(int min, int max);*/
+	
 }

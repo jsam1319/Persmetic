@@ -1,7 +1,9 @@
 $(document).ready(function() {
 		/** 리뷰 등록 */
 		$("#btnSubmit").click(function() {
+			var productCode = document.getElementById("productCode").value
 			var data = $("#review_form").serialize();
+			console.log(productCode)
 			console.log(data)
 			$.ajax({
 				url : '/review_create.leaf',
@@ -10,16 +12,17 @@ $(document).ready(function() {
   				type : 'POST',
   				success : function(msg) {
   					alert("상품평이 등록되었습니다.")
-  					//location.href = "/detail_item.leaf?product_code=${product.productCode}"
+  					window.location.href = "/detail_item.leaf?product_code="+productCode
   				},
   				error : function(msg) {
-  					//alert("실패")
+  					console.log(msg)
   				}
   			});
   				alert("리뷰등록완료");
-  				location.href = "/detail_item.leaf?product_code=${product.productCode}"
+  				window.location.href = "/detail_item.leaf?product_code="+productCode
   		})
   		
+
   		
   		/** 별점 처리 */
   		var starRating = function(){

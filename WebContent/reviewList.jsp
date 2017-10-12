@@ -47,6 +47,9 @@
           </div>
           <!-- /.review -->
           
+          
+          <input type="hidden" id="customerNo" value="${cookie.customer.value}">
+          
           <!-- reviewRegistButton -->
           <c:choose>
             <c:when test="${!empty cookie.customer}">

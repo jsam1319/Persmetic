@@ -37,7 +37,7 @@ public class ReviewListController implements Controller {
 		response.setContentType("application/json");
 
 		int productCode = Integer.parseInt(request.getParameter("product_code"));
-		
+		System.out.println(productCode);
 		String pageNo = request.getParameter("page");
 		if (pageNo == null) pageNo = "1";
 		
@@ -73,7 +73,7 @@ public class ReviewListController implements Controller {
 		
 		String string = totalObj.toJSONString();
 		
-		
+		System.out.println(string);
 		
 		response.getWriter().println(totalObj);
 

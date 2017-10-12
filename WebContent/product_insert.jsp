@@ -121,7 +121,7 @@ div#front_image {
                   </div>
 
 
-                  <div class="col-md-3">
+                  <div class="col-md-2">
                     <div class="form-inline" style="margin-bottom: 5px">
                       <select class="form-control" name="brand">
                         <option value="브랜드">브랜드</option>
@@ -139,7 +139,7 @@ div#front_image {
                     </div>
                   </div>
 
-                  <div class="col-md-2">
+                  <div class="col-md-4">
 	                    <input type="text" name="color" 
                       data-palette='["#D50000","#F361A6","#00B8D4","#00C853","#FFD600",
                                                     "#FF6D00","#FF1744","#FFB2D9","#00E5FF","#00E676","#FFEA00",

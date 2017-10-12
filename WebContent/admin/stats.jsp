@@ -88,15 +88,16 @@
 
             <div class="panel-body">
               <ul class="nav nav-pills nav-stacked category-menu">
-                <li class="active"><a href="#">통계<span
-                    class="badge pull-right">42</span></a>
+                <li class="active"><a href="#">통계</a>
                </li>
+                <li>
+                  <a href="../product_insert.leaf">상품등록</a>
+                </li>
                 <li>
                   <a href="order-list.jsp">주문내역</a>
                 </li>
               
                 <li><a href="#">문의 답변
-                    <span class="badge pull-right">123</span>
                 </a>
                   <ul>
                     <li><a href="#">1:1 답변</a></li>
