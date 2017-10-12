@@ -3,6 +3,7 @@ package kr.or.kosta.leaf.cart.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,9 +33,14 @@ public class CartCreateController implements Controller {
 		
 		/* url Request에 따른 변수 초기화 */
 		int productCode = Integer.parseInt(request.getParameter("product_code")); 
-		int ctmNo = Integer.parseInt(request.getParameter("ctm_no"));  
+		int ctmNo = 0;
 		int cartQuantity = Integer.parseInt(request.getParameter("cart_quantity"));
 		int cartPrice = Integer.parseInt(request.getParameter("cart_price"));
+		
+		for (Cookie cookie : request.getCookies()) {
+			if(cookie.getName().equals("customer")) 
+				ctmNo = Integer.parseInt(cookie.getValue());
+		}
 		
 		Cart cart = new Cart();
 		cart.setProductCode(productCode);

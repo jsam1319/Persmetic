@@ -139,11 +139,11 @@
                                     <c:otherwise>
                                     <c:forEach var="item" items="${requestScope.list }">
                                       <tr>
-                                        <td>이미지</td>
+                                        <td><img alt="" src="/uploadphoto/${item.productImage }"></td>
                                         <td colspan="2" value="${item.productCode }">${item.productName }</td>
-                                        <td><span name="totalPrice">${item.orderCount}</span>원</td>
-                                        <td>${item.orderPrice }원</td>
-                                        <td>${item.orderPrice*item.orderCount}</td>
+                                        <td><span name="totalPrice">${item.orderCount}</span></td>
+                                        <td>${item.orderPrice}원</td>
+                                        <td>${item.orderPrice*item.orderCount}원</td>
                                       </tr>
                                     </c:forEach>
                                     </c:otherwise> 
@@ -180,13 +180,13 @@
                       <div class="col-sm-6">
                           <div class="form-group">
                               <label for="firstname">주문번호</label>
-                              <input type="text" class="form-control" id="firstname">
+                              <input type="text" disabled class="form-control" id="firstname">
                           </div>
                       </div>
                       <div class="col-sm-6">
                           <div class="form-group">
                               <label for="lastname">주문자</label>
-                              <input type="text" class="form-control" id="lastname">
+                              <input type="text" class="form-control" id="lastname" value="${requestScope.user.ctmName}">
                           </div>
                       </div>
                   </div>
@@ -202,7 +202,7 @@
                       <div class="col-sm-6">
                           <div class="form-group">
                               <label for="street">주문일</label>
-                              <input type="text" class="form-control" id="street">
+                              <input type="text" class="form-control" id="street" value="2017/10/12">
                           </div>
                       </div>
                   </div>
@@ -302,7 +302,7 @@
                         <ul>
                             <li><a href="text.leaf">About us</a>
                             </li>
-                            <li><a href="text.leaf">Terms and conditions</a>
+                            <li><a href="text.leaf">Terms and conditions</a> 
                             </li>
                             <li><a href="faq.leaf">FAQ</a>
                             </li>

@@ -136,28 +136,6 @@
 		
 		
 
-      <table style="margin-top: 20px" class="table table-hover">
-        <thead >
-        <tr>
-          <th> 상품 이름 </th>
-          <th> 총 판매량 </th>
-          <th> 평균 평점 </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td> 상품 이름 </td>
-          <td> 총 판매량 </td>
-          <td> 평균 평점 </td>
-        </tr>
-        <tr>
-          <td> 상품 이름 </td>
-          <td> 총 판매량 </td>
-          <td> 평균 평점 </td>
-        </tr>
-        </tbody>
-      </table>
-
 
           
     </div>

@@ -242,6 +242,17 @@
 					success : function(request) {
 						console.log(request);
 						alert("장바구니 넣기 성공!");
+						
+						$.ajax({
+							url : "log.leaf",
+							data : {
+								'type' : 'CART_INSERT',
+								'content' : $(this).attr('value')
+							},
+							success : function(msg) {
+								console.log(msg);
+							}
+						})
 						//return false;
 					},
 					error : function(request) {

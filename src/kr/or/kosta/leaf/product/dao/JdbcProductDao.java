@@ -261,7 +261,7 @@ public class JdbcProductDao implements ProductDao {
 				product.setProductSow(rs.getInt("product_sow"));
 				product.setCategoryNo(rs.getInt("category_no"));
 				product.setProductImage(rs.getString("product_image"));
-				
+				System.out.println(product);
 				return product;
 			}
 			System.out.println("read 완료!");

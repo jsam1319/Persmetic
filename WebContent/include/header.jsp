@@ -21,7 +21,7 @@
 			              <li><a href="${pageContext.servletContext.contextPath}/customer/certify.leaf">Logout</a> </li>
 			                <c:choose>
 			                	<c:when test="${cookie.customer.value eq 0}">
-			                		<li><a href="${pageContext.servletContext.contextPath}/admin.leaf">AdminPage</a></li>
+			                		<li><a href="${pageContext.servletContext.contextPath}/admin/stats.leaf">AdminPage</a></li>
 			                	</c:when>
 			                	<c:otherwise>
 			             			<li><a href="${pageContext.servletContext.contextPath}/customer-order.leaf">MyPage</a></li>
@@ -82,7 +82,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="index.leaf" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="/index.leaf" data-animate-hover="bounce">
                     <img src="/img/persmetic.PNG" alt="Persmetic logo" class="hidden-xs" >
                 </a>
                 <div class="navbar-buttons">

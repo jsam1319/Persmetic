@@ -3,6 +3,7 @@ package kr.or.kosta.leaf.log.service;
 import java.util.List;
 
 import kr.or.kosta.leaf.log.domain.Log;
+import kr.or.kosta.leaf.log.domain.LogType;
 
 public interface LogService {
 	

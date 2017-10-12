@@ -61,6 +61,12 @@ public class ProductOrderItem extends OrderItem {
 	public void setProductImage(String productImage) {
 		this.productImage = productImage;
 	}
+
+	@Override
+	public String toString() {
+		return "ProductOrderItem [productName=" + productName + ", productImage=" + productImage + ", productPrice="
+				+ productPrice + "]";
+	}
 	
 	
 }

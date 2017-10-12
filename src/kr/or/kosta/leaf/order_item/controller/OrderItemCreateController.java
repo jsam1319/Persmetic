@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.or.kosta.leaf.common.controller.Controller;
 import kr.or.kosta.leaf.common.controller.ModelAndView;
+import kr.or.kosta.leaf.customer.service.CustomerService;
+import kr.or.kosta.leaf.customer.service.CustomerServiceImpl;
 import kr.or.kosta.leaf.order_item.domain.OrderItem;
 import kr.or.kosta.leaf.order_item.domain.ProductOrderItem;
 import kr.or.kosta.leaf.order_item.service.OrderItemService;
@@ -27,6 +30,7 @@ public class OrderItemCreateController implements Controller {
 	
 	private OrderItemService itemService = new OrderItemServiceImpl();
 	private ProductService productService = new ProductServiceImpl();
+	private CustomerService customerService = new CustomerServiceImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)	throws ServletException {
@@ -45,15 +49,21 @@ public class OrderItemCreateController implements Controller {
 			ProductOrderItem item = new ProductOrderItem();
 			item.setProductCode(Integer.parseInt(codes[i]));
 			item.setOrderCount(Integer.parseInt(quantitiys[i]));
+			item.setProductImage(productService.read(Integer.parseInt(codes[i])).getProductImage());
 			item.setProductName(productService.read(Integer.parseInt(codes[i])).getProductName());
 			item.setProductPrice(productService.read(Integer.parseInt(codes[i])).getProductPrice());
-			item.setOrderPrice(item.getOrderCount() * item.getOrderPrice());
+			item.setOrderPrice(item.getOrderCount() * item.getProductPrice());
 			
-			items.add(item);
+		}
+		int ctmNo = 0;
+		
+		for (Cookie cookie : request.getCookies()) {
+			if(cookie.getName().equals("customer"))
+				ctmNo = Integer.parseInt(cookie.getValue());
 		}
 		
-		
 		mav.addObject("list", items);
+		mav.addObject("user", customerService.read(ctmNo));
 		mav.setView("order-address.leaf");
 		
 		return mav;

@@ -89,7 +89,7 @@
 								<!-- 텍스트 크기 줄이기 -->
 
 								<p class="text-center buttons">
-									<a href="cart_create.leaf?ctm_no=${cookie.customer.value}"
+									<a href="#" 
 										name="cart_create" class="btn btn-default"><i
 										class="fa fa-trash-o"></i>장바구니</a> <a href="basket.leaf"
 										class="btn btn-default"><i class="fa fa-heart"></i> 바로
@@ -166,7 +166,40 @@
 		};
 		setCreateButton = function() {
 			var buttons = $("a[name=cart_create]");
-			console.log(buttons);
+			
+			buttons.click(function() {
+				$.ajax({
+					url : 'cart_create.leaf',
+					data : {
+							'product_code' : ${product.productCode},
+							'cart_quantity' : 1,
+							'cart_price' : ${product.productPrice}
+					},
+					success : function() {
+						alert("장바구니 담기 완료!");
+						$.ajax({
+							url :$.ajax({
+								url : "log.leaf",
+								data : {
+									'type' : 'CART_INSERT',
+									'content' : $(this).attr('value')
+								},
+								success : function(msg) {
+									console.log(msg);
+								}
+							}) "log.leaf",
+							data : {
+								'type' : 'CART_INSERT',
+								'content' : $(this).attr('value')
+							},
+							success : function(msg) {
+								console.log(msg);
+							}
+						})
+					}
+					
+				})
+			})
 
 			for (var i = 0; i < buttons.length; i++) {
 				console.log(buttons.get(i).href);
