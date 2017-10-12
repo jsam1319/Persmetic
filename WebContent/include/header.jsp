@@ -124,7 +124,7 @@
 									</ul>
                                         </div>
                                         <div class="col-sm-3">
-                                            <h5><a href="list_item.leaf?category_no=210">아이</a></h5>
+                                            <h5><a href="list_item.leaf?category_no=220">아이</a></h5>
                                             <ul>
 										<li><a href="list_item.leaf?category_no=210">마스카라</a></li>
 										<li><a href="list_item.leaf?category_no=220">아이섀도</a></li>
