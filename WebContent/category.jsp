@@ -247,7 +247,7 @@
 							url : "log.leaf",
 							data : {
 								'type' : 'CART_INSERT',
-								'content' : $(this).attr('value')
+								'content' : $("a[name=addToCart]").attr('value')
 							},
 							success : function(msg) {
 								console.log(msg);

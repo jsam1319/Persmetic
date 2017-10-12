@@ -182,19 +182,12 @@
 								url : "log.leaf",
 								data : {
 									'type' : 'CART_INSERT',
-									'content' : $(this).attr('value')
+									'content' : ${product.productCode}
 								},
 								success : function(msg) {
 									console.log(msg);
 								}
-							}) "log.leaf",
-							data : {
-								'type' : 'CART_INSERT',
-								'content' : $(this).attr('value')
-							},
-							success : function(msg) {
-								console.log(msg);
-							}
+							}) 
 						})
 					}
 					

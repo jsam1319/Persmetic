@@ -54,6 +54,8 @@ public class OrderItemCreateController implements Controller {
 			item.setProductPrice(productService.read(Integer.parseInt(codes[i])).getProductPrice());
 			item.setOrderPrice(item.getOrderCount() * item.getProductPrice());
 			
+			items.add(item);
+			System.out.println("item : " + item);
 		}
 		int ctmNo = 0;
 		

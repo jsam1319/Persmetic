@@ -108,14 +108,33 @@ public class SimilarityUtil {
 	}
 	 
 	public int[] getSuggest(Product product) {
+		System.out.println(product);
+		
 		int productCode = product.getProductCode()-4;
 		
-		double[] reserve = similarity[productCode];
+		double[] reserve = new double[similarity[productCode].length];
+		for (int i=0; i<reserve.length; i++) {
+			reserve[i] = similarity[productCode][i];
+		}
+		
+		LogService ls = new LogServiceImpl();
+		List<Log> logs = ls.listLog(ctmNo);
+		
 		for (int i=0; i<reserve.length; i++) {
 			reserve[i] = reserve[i] * getRandomNum();
 		}
 		
-		double[] copy = Arrays.copyOf(reserve, reserve.length);
+		for (Log log : logs) {
+			if(log.getLogType() == LogType.BUY) {
+				String[] split = log.getLogContent().split(",");
+				
+				for (String string : split) {
+					reserve[Integer.parseInt(string)] = 0;
+				}
+			}
+		}
+		
+		
 		int[] most = new int[5];
 		
 		double mine = reserve[productCode];
@@ -124,7 +143,16 @@ public class SimilarityUtil {
 		for(int i=0; i<reserve.length; i++) {
 			reserve[i] = reserve[i] + mine;
 		}
+		
+		double[] copy = new double[reserve.length];
+		
+		for (int i=0; i<reserve.length; i++) {
+			copy[i] = reserve[i];
+		}	
+		
+		
 		Arrays.sort(reserve);
+		
 		
 		for(int i=0; i<5; i++) {
 			most[i] = search(copy, reserve[reserve.length-1-i]) + 4;
@@ -140,6 +168,36 @@ public class SimilarityUtil {
 		}
 		
 		return -1;
+	}
+	
+	public int getMostItem(int ctmNo) {
+		LogService ls = new LogServiceImpl();
+		List<Log> logs = ls.listLog(ctmNo);
+		
+		int temp[] = new int[100];
+		
+		for (Log log : logs) {
+			if(log.getLogType() == LogType.CART_INSERT) {
+				temp[Integer.parseInt(log.getLogContent())]++;
+			}
+			
+			else if(log.getLogType() == LogType.BUY) {
+				String[] split = log.getLogContent().split(",");
+				
+				for (String string : split) {
+					System.out.println(string);
+					temp[Integer.parseInt(string)]++;
+				}
+			}
+		}
+		int max = 0;
+		
+		for(int i=0; i<100; i++) {
+			if(temp[i] > max) max = i;
+		}
+		
+		System.out.println("MAX : " + max);
+		return max;
 	}
 	
 	

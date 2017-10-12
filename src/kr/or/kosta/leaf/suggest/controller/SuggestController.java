@@ -3,6 +3,7 @@ package kr.or.kosta.leaf.suggest.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -37,8 +38,8 @@ public class SuggestController implements Controller {
 		int ctmNo = Integer.parseInt(request.getParameter("ctm_no"));
 		
 		SimilarityUtil util = new SimilarityUtil(ctmNo);
-		int index[] = util.getSuggest(productService.read(10));
-		
+		int index[] = util.getSuggest(productService.read(util.getMostItem(ctmNo)));
+		System.out.println("INDEX : " + Arrays.toString(index));
 		List<Product> products = new ArrayList<Product>();
 		for(int i=0; i<index.length; i++) {
 			products.add(productService.read(index[i]));

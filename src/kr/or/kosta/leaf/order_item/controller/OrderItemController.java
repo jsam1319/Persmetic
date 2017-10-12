@@ -38,7 +38,7 @@ public class OrderItemController implements Controller {
 		for (OrderItem orderitem : items) {
 			Product product = itemService.getProduct(orderitem.getProductCode());
 			
-			productItems.add(new ProductOrderItem(orderitem, product.getProductName(), product.getProductImage()));
+			productItems.add(new ProductOrderItem(orderitem, product.getProductName(), product.getProductImage(), product.getProductPrice()));
 		}
 		
 		ModelAndView mav = new ModelAndView();

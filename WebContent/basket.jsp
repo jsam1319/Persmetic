@@ -5,14 +5,31 @@
 
 <head>
 <script>
+
+
+
   window.onload = function() {
+	
    	total();
    	setDeleteButton();
    	code();
+   	createQuantity();
    	
    	$("#goOrder").click(function() {
-   		$(this).attr('href', "orderitem_create.leaf?product_code=" + codes + "&quantity="+ quantitiys);
-   		console.log($(this).attr("href"));
+   		$(this).attr('href', "orderitem_create.leaf?product_code=" + codes + "&quantity="+ quantitys);
+   		
+   		$.ajax({
+			url :$.ajax({
+				url : "log.leaf",
+				data : {
+					'type' : 'BUY',
+					'content' : codes
+				},
+				success : function(msg) {
+					console.log(msg);
+				}
+			}) 
+		})
    	})
 }
     
@@ -36,7 +53,9 @@ setDeleteButton = function() {
 	}
 }
 
+
 var codes = "";
+
 
 code = function(){
 	var pcode = document.getElementsByName("code");
@@ -48,16 +67,18 @@ code = function(){
 	}
 }
 
-var quantitiys = "";
+
+var quantitys = "";
 
 createQuantity = function(){
 	var qcode = document.getElementsByName("quantity");
 	for(var i=0; i<qcode.length; i++){
 		if(i==0) 
-			quantitys = quantitys + pcode[i].getAttribute("value");
+			quantitys = quantitys + qcode[i].getAttribute("value");
 		else
-			quantitys = quantitys + "," + pcode[i].getAttribute("value");  
+			quantitys = quantitys + "," + qcode[i].getAttribute("value");  
 	}
+	
 }
 
 
