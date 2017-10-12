@@ -49,21 +49,20 @@ private DataSource dataSource;
 		
 		String sql = " INSERT INTO total_order(order_no, order_totalprice, order_address, order_recipient," + 
 					 " order_date, order_payoption, order_yn, ctm_no) " +
-		             " VALUES   (?, ?, ?, ?, ?, ?, ?, ?)";
+		             " VALUES   ((SELECT MAX(order_no) FROM total_order), ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, totalOrder.getOrderNo());
-			pstmt.setInt(2, totalOrder.getOrderTotalprice());
-			pstmt.setString(3, totalOrder.getOrderAddress());
-			pstmt.setString(4, totalOrder.getOrderRecipient());
-			pstmt.setString(5, totalOrder.getOrderDate());
-			pstmt.setString(6, totalOrder.getOrderPayoption());
-			pstmt.setString(7, totalOrder.getOrderYn());
-			pstmt.setInt(8, totalOrder.getCtmNo());
+			pstmt.setInt(1, totalOrder.getOrderTotalprice());
+			pstmt.setString(2, totalOrder.getOrderAddress());
+			pstmt.setString(3, totalOrder.getOrderRecipient());
+			pstmt.setString(4, totalOrder.getOrderDate());
+			pstmt.setString(5, totalOrder.getOrderPayoption());
+			pstmt.setString(6, totalOrder.getOrderYn());
+			pstmt.setInt(7, totalOrder.getCtmNo());
 			
 			pstmt.executeUpdate();
 			

@@ -171,7 +171,7 @@ createQuantity = function(){
                                     <c:forEach var="cart" items="${requestScope.list }">
                                       <tr name="${cart.cartNo}">
                                         <td><input id="${cart.cartNo}" type="checkbox" checked></td>
-                                        <td><img src="${cart.productImage}"></td>
+                                        <td><img src="uploadphoto/${cart.productImage}"></td>
                                         <td colspan="2"  name="code" value="${cart.productCode }">${cart.productName }</a></td>
                                         <td><input type="number" name="quantity" value="${cart.cartQuantity }"></td>
                                         <td>${cart.cartPrice }원</td>
