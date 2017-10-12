@@ -5,27 +5,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
-                        <h4>Pages</h4>
-
-                        <ul>
-                            <li><a href="text.leaf">About us</a>
-                            </li>
-                            <li><a href="text.leaf">Terms and conditions</a>
-                            </li>
-                            <li><a href="faq.leaf">FAQ</a>
-                            </li>
-                            <li><a href="contact.leaf">Contact us</a>
-                            </li>
-                        </ul>
-
-                        <hr>
-
                         <h4>User section</h4>
-
                         <ul>
                             <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                             </li>
                             <li><a href="register.leaf">Regiter</a>
+                            </li>
+                        </ul>
+                        
+                        <hr>
+                        
+                         <h4>Persnal color</h4>
+                        <ul>
+                            <li><a href="color_check.leaf">자가진단</a>
                             </li>
                         </ul>
 
@@ -36,28 +28,55 @@
 
                     <div class="col-md-3 col-sm-6">
 
-                        <h4>Top categories</h4>
-
-                        <h5>Men</h5>
-
+                        <h4>Product categories</h4>
+                        <h5>Face</h5>
                         <ul>
-                            <li><a href="category.leaf">T-shirts</a>
+                            <li><a href="list_item.leaf?category_no=110">파운데이션</a>
                             </li>
-                            <li><a href="category.leaf">Shirts</a>
+                            <li><a href="list_item.leaf?category_no=120">쿠션</a>
                             </li>
-                            <li><a href="category.leaf">Accessories</a>
+                            <li><a href="list_item.leaf?category_no=130">파우더 & 컴팩트</a>
+                            </li>
+                            <li><a href="list_item.leaf?category_no=140">메이크업 베이스 & 컨실러</a>
+                            </li>
+                            <li><a href="list_item.leaf?category_no=150">블러셔 & 하이라이터</a>
+                            </li>
+                        </ul>
+                        
+                        <h5>Eyes</h5>
+                        <ul>
+                            <li><a href="list_item.leaf?category_no=210">마스카라</a>
+                            </li>
+                            <li><a href="list_item.leaf?category_no=220">아이새도</a>
+                            </li>
+                            <li><a href="list_item.leaf?category_no=230">아이브로우</a>
+                            </li>
+                        </ul>
+                        
+                        <h5>Lips</h5>
+                        <ul>
+                            <li><a href="list_item.leaf?category_no=310">립스틱</a>
+                            </li>
+                            <li><a href="list_item.leaf?category_no=320">립틴트 & 립글로즈</a>
                             </li>
                         </ul>
 
-                        <h5>Ladies</h5>
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <div class="col-md-3 col-sm-6">
+
+                        <h4>Tone categories</h4>
+
                         <ul>
-                            <li><a href="category.leaf">T-shirts</a>
+                            <li><a href="list_item.leaf?tone=봄웜">봄</a>
                             </li>
-                            <li><a href="category.leaf">Skirts</a>
+                            <li><a href="list_item.leaf?tone=여름쿨">여름</a>
                             </li>
-                            <li><a href="category.leaf">Pants</a>
+                            <li><a href="list_item.leaf?tone=가을웜">가을</a>
                             </li>
-                            <li><a href="category.leaf">Accessories</a>
+                            <li><a href="list_item.leaf?tone=겨울쿨">겨울</a>
                             </li>
                         </ul>
 
@@ -66,50 +85,9 @@
                     </div>
                     <!-- /.col-md-3 -->
 
-                    <div class="col-md-3 col-sm-6">
-
-                        <h4>Where to find us</h4>
-
-                        <p><strong>Obaju Ltd.</strong>
-                            <br>13/25 New Avenue
-                            <br>New Heaven
-                            <br>45Y 73J
-                            <br>England
-                            <br>
-                            <strong>Great Britain</strong>
-                        </p>
-
-                        <a href="contact.leaf">Go to contact page</a>
-
-                        <hr class="hidden-md hidden-lg">
-
-                    </div>
-                    <!-- /.col-md-3 -->
-
 
 
                     <div class="col-md-3 col-sm-6">
-
-                        <h4>Get the news</h4>
-
-                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-
-                        <form>
-                            <div class="input-group">
-
-                                <input type="text" class="form-control">
-
-                                <span class="input-group-btn">
-
-			    <button class="btn btn-default" type="button">Subscribe!</button>
-
-			</span>
-
-                            </div>
-                            <!-- /input-group -->
-                        </form>
-
-                        <hr>
 
                         <h4>Stay in touch</h4>
 
@@ -140,14 +118,12 @@
 		<div id="copyright">
 			<div class="container">
 				<div class="col-md-6">
-					<p class="pull-left">© 2015 Your name goes here.</p>
+					<p class="pull-left">낙엽조</p>
 
 				</div>
 				<div class="col-md-6">
 					<p class="pull-right">
-						Template by <a
-							href="https://bootstrapious.com/e-commerce-templates">Bootstrapious</a>
-						& <a href="https://fity.cz">Fity</a>
+						 Shoppinmall Project
 						<!-- Not removing these links is part of the license conditions of the template. Thanks for understanding :) If you want to use the template without the attribution links, you can do so after supporting further themes development at https://bootstrapious.com/donate  -->
 					</p>
 				</div>
