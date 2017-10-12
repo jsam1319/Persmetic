@@ -78,8 +78,8 @@ div.price {
                         <div class="item">
                             <a href="list_item.leaf?category_no=320"><img class="img-responsive" src="img/saint.PNG" alt="" width="1000px"></a>
                         </div>
-                        <div class="item">
-                            <a href="list_item.leaf?category_no=120"><img class="img-responsive" src="img/dlqtod.jpg" alt="" width="1000px"></a>
+                         <div class="item"  >
+                            <a href="color_check.leaf"><img style="margin-top: 100px"  class="img-responsive" src="img/zzz.png" alt="" width="1000px" ></a>
                         </div>
 
                     </div>

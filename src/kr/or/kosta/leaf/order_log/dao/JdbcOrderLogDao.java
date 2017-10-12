@@ -61,8 +61,8 @@ public class JdbcOrderLogDao implements OrderLogDao {
 							"FROM order_item item,\r\n" + 
 							"  total_order total\r\n" + 
 							"WHERE item.order_no = total.order_no\r\n" + 
-							"AND order_date between ? AND ?  \r\n" + 
-							"ORDER BY order_date DESC";
+							"AND total.order_date between ? AND ?  \r\n" + 
+							"ORDER BY total.order_date DESC";
 				             			  
 		try {
 			con = dataSource.getConnection();
