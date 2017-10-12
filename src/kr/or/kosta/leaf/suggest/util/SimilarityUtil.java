@@ -135,7 +135,7 @@ public class SimilarityUtil {
 		}
 		
 		
-		int[] most = new int[5];
+		int[] most = new int[6];
 		
 		double mine = reserve[productCode];
 		reserve[productCode] = 0.0;
@@ -154,8 +154,8 @@ public class SimilarityUtil {
 		Arrays.sort(reserve);
 		
 		
-		for(int i=0; i<5; i++) {
-			most[i] = search(copy, reserve[reserve.length-1-i]) + 4;
+		for(int i=0; i<6; i++) {
+			most[i] = search(copy, reserve[reserve.length-1-i]) + 5;
 		}
 		
 		System.out.println(Arrays.toString(most));

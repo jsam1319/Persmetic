@@ -3,6 +3,21 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<style>
+div#mainImage {
+  width: 180px;
+  height: 200px;
+ /*  border: 1px solid gray; */
+}
+div.content {
+  width: 180px;
+  height: 60px;
+}
+div.price {
+    width: 180px;
+  height: 40px;
+}
+</style>
 
 <head>
 
@@ -81,7 +96,6 @@
                 <div class="container" id="suggest">
                 </div>
                 <!-- /.container -->
-
             </div>
             <!-- /#hot -->
 
@@ -149,22 +163,28 @@ appendProduct = function(json) {
 		var product = json.products[i];
 		var div = "";
 		
-		div += 	 "<div class=\"product col-md-2 col-sm-3\">\r\n" + 
+		div += 	 "<div class=\"col-md-2 col-sm-3\">\r\n" + 
+				 "<div id=\"mainImage\">"+
 				 "	<a href=\"detail_item.leaf?product_code=" + product.productCode + "\" class=\"image\"> \r\n" + 
-				 "		<img src=\"uploadphoto/" + product.productImage + "\" alt=\"image\" class=\"img-responsive\">\r\n" + 
+				 "		<img src=\"uploadphoto/" + product.productImage + "\" alt=\"image\" class=\"img-responsive\" style=\"max-height: 200px; height: 90%;\">\r\n" + 
 				 "	</a>\r\n" + 
+				 "</div>"+
 				 "	\r\n" + 
 				 "	<div class=\"content\">\r\n" + 
 				 "		<h3>\r\n" + 
 				 "			<a href=\"detail_item.leaf?product_code=" + product.productCode + "\"</a>\r\n" + 
 				 "		</h3>\r\n" + 
 				 "		<p class=\"name\">" + product.productName + " </p>\r\n" + 
-				 "		<p class=\"price\">" + product.productPrice + " </p>\r\n" + 
+				 "	</div>\r\n" + 
+				 "	<div class=\"price\">"+
+				 "		<p class=\"price\">" + product.productPrice + " </p>\r\n" +
+				 "                 \r\n" + 
+				 "	</div>\r\n" + 
+				 "<div>"+
 				 "		<p class=\"buttons\">\r\n" + 
 				 "			<a href=\"detail_item.leaf?product_code=" + product.productCode + "\" class=\"btn btn-default\">상세보기</a>\r\n" + 
 				 "		</p>\r\n" + 
-				 "                 \r\n" + 
-				 "	</div>\r\n" + 
+				 "</div>"+
 				 "</div>"
 		
 		$("#suggest").append(div);
