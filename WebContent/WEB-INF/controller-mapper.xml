@@ -1,48 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
-	<!-- 메인 페이지 세부 컨트롤러 -->
-	<bean name="/index" class="kr.or.kosta.leaf.main.controller.MainController"/>
-	
-	<!-- 장바구니 페이지 세부 컨트롤러 -->
-	<bean name="/cart" class="kr.or.kosta.leaf.cart.controller.CartController"/>
-<!-- 	<bean name="/cart_create" class="kr.or.kosta.leaf.cart.controller.CartCreateController"/> -->
-	<bean name="/cart_delete" class="kr.or.kosta.leaf.cart.controller.CartDeleteController"/>
-	
-	<!-- 주문항목 세부 컨트롤러 -->
-	<bean name="/orderitem" class="kr.or.kosta.leaf.order_item.controller.OrderItemController"/>
-	
-	<!-- 주문 페이지 세부 컨트롤러 -->
-<!-- 	<bean name="/totalorder" class="kr.or.kosta.leaf.total_order.controller.TotalOrderController"/> -->
-	
-	<!-- 로그인 페이지 세부 컨트롤러 -->
-	<bean name="/customer/certify" class="kr.or.kosta.leaf.customer.controller.CertifyController" />
-	
-	<!-- 회원가입 페이지 세부 컨트롤러 -->
-	<bean name="/join" class="kr.or.kosta.leaf.customer.controller.CustomerJoinController" />
-	
-		<!-- id중복체크 세부 컨트롤러 -->
-	<bean name="/idCheck" class="kr.or.kosta.leaf.customer.controller.idCheckController" />
-	
-	<!--  상품 컨트롤러  -->
-	<bean name="/insert_item/upload" class="kr.or.kosta.leaf.product_image.controller.ProductImageController" />
-	<bean name="/insert_item/create" class="kr.or.kosta.leaf.product.controller.ProductCreateController" />
-	
-	<!-- 상품 리스트  -->
-	<bean name="/list_item" class="kr.or.kosta.leaf.product.controller.ProductListController" />
-	
-	<!-- 상품 상세정보 -->
-	<bean name="/detail_item" class="kr.or.kosta.leaf.product.controller.ProductDetailController" />
-	
-	<!-- 리뷰 작성 -->
-	<bean name="/review_write" class="kr.or.kosta.leaf.review.controller.ReviewActionController" />
-	
-	<!-- 리뷰 리스트 -->
-	<bean name="/review/create" class="kr.or.kosta.leaf.review.controller.ReviewCreateController" />
-	
-<!-- 	회원 관련 세부 컨트롤러 
-	<bean name="/user/list" class="kr.or.kosta.shoppingmall.user.controller.UserListController"/>
-	<bean name="/user/login_action" class="kr.or.kosta.shoppingmall.user.controller.UserLoginController"/>
-	<bean name="/user/regist" class="kr.or.kosta.shoppingmall.user.controller.RegistController"/>
-	<bean name="/user/detail" class="kr.or.kosta.shoppingmall.user.controller.UserDetailController"/>
-	<bean name="/user/remove" class="kr.or.kosta.shoppingmall.user.controller.UserRemoveController"/> -->
+   <!-- 메인 페이지 세부 컨트롤러 -->
+   <bean name="/index" class="kr.or.kosta.leaf.main.controller.MainController"/>
+   
+   <!-- 장바구니 페이지 세부 컨트롤러 -->
+   <bean name="/cart" class="kr.or.kosta.leaf.cart.controller.CartController"/>
+   <bean name="/cart_create" class="kr.or.kosta.leaf.cart.controller.CartCreateController"/>
+   <bean name="/cart_delete" class="kr.or.kosta.leaf.cart.controller.CartDeleteController"/>
+   
+   <!-- 주문항목 세부 컨트롤러 -->
+   <bean name="/orderitem" class="kr.or.kosta.leaf.order_item.controller.OrderItemController"/>
+   <bean name="/orderitem_create" class="kr.or.kosta.leaf.order_item.controller.OrderItemCreateController"/>
+   
+   
+   <!-- 주문 페이지 세부 컨트롤러 -->
+<!--    <bean name="/totalorder" class="kr.or.kosta.leaf.total_order.controller.TotalOrderController"/> -->
+   
+   <!-- 로그인 페이지 세부 컨트롤러 -->
+   <bean name="/customer/certify" class="kr.or.kosta.leaf.customer.controller.CertifyController" />
+   
+   <!--  상품 컨트롤러  -->
+   <bean name="/insert_item/upload" class="kr.or.kosta.leaf.product_image.controller.ProductImageController" />
+   <bean name="/insert_item/create" class="kr.or.kosta.leaf.product.controller.ProductCreateController" />
+   
+   <!-- 상품 리스트  -->
+   <bean name="/list_item" class="kr.or.kosta.leaf.product.controller.ProductListController" />
+   
+   <!-- 상품 상세정보 -->
+   <bean name="/detail_item" class="kr.or.kosta.leaf.product.controller.ProductDetailController" />
+   
+   <!-- 상품 통계 -->
+   <bean name="/stats" class="kr.or.kosta.leaf.stats.controller.StatsController" />
+   
+   <!-- 전체 주문 내역 조회 -->
+   <bean name="/order_list" class="kr.or.kosta.leaf.order_log.controller.OrderLogController" />
+   
+   <!-- 리뷰 작성 -->
+   <bean name="/review_write" class="kr.or.kosta.leaf.review.controller.ReviewActionController" />
+   
+   <!-- 리뷰 리스트 -->
+   <bean name="/review_create" class="kr.or.kosta.leaf.review.controller.ReviewCreateController" />
+   <bean name="/review_list" class="kr.or.kosta.leaf.review.controller.ReviewListController" />
+   
+   <!-- 자동완성  -->
+   <bean name="/auto_complete" class="kr.or.kosta.leaf.search.controller.AutoCompleteController" />
+   
+      
+   <!-- 회원가입 페이지 세부 컨트롤러 -->
+   <bean name="/join" class="kr.or.kosta.leaf.customer.controller.CustomerJoinController" />
+     
+   <!-- 아이디 중복확인 세부 컨트롤러 -->
+   <bean name="/idCheck" class="kr.or.kosta.leaf.customer.controller.idCheckController" />
+
+   <!--  검색 -->
+   <bean name="/search" class="kr.or.kosta.leaf.search.controller.SearchController" />
+   
+   <!-- 추천 -->
+   <bean name="/suggest" class="kr.or.kosta.leaf.suggest.controller.SuggestController" />
+   
+   <!-- 로그 -->
+   <bean name="/log" class="kr.or.kosta.leaf.log.controller.LogController" />
+   
+<!--    회원 관련 세부 컨트롤러 
+   <bean name="/user/list" class="kr.or.kosta.shoppingmall.user.controller.UserListController"/>
+   <bean name="/user/login_action" class="kr.or.kosta.shoppingmall.user.controller.UserLoginController"/>
+   <bean name="/user/regist" class="kr.or.kosta.shoppingmall.user.controller.RegistController"/>
+   <bean name="/user/detail" class="kr.or.kosta.shoppingmall.user.controller.UserDetailController"/>
+   <bean name="/user/remove" class="kr.or.kosta.shoppingmall.user.controller.UserRemoveController"/> -->
 </beans>

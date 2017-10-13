@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +23,7 @@
 <meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
 <meta name="keywords" content="">
 
-<title>Obaju : e-commerce template</title>
+<title>회원가입 페이지</title>
 
 <meta name="keywords" content="">
 
@@ -38,6 +37,8 @@
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/owl.carousel.css" rel="stylesheet">
 <link href="css/owl.theme.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="favicon.png">
 
 <!-- theme stylesheet -->
 <link href="css/style.default.css" rel="stylesheet"
@@ -146,16 +147,7 @@ window.onload = function(){
             }
         }).open();
     }
- 
-    
-  //  window.onload = function(){
-  //    var prices=document.getElementsByName("totalPrice");
-  //    alert(prices);
-  //  }
-    
 </script>   
-
-<link rel="shortcut icon" href="favicon.png">
 
 </head>
 
