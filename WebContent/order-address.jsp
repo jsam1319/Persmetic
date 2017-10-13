@@ -84,11 +84,21 @@
         }).open();
     }
  
+ 	// 총 상품 합계
+    total = function(){
+       var prices=document.getElementsByName("totalPrice");
+       var sum = 0;
+       
+       for(var i=0; i<prices.length; i++){
+       	sum = sum + parseInt(prices[i].innerHTML);
+       }
+    	document.getElementById("total").innerHTML = sum + "원";
+    }
     
-  //  window.onload = function(){
-  //  	var prices=document.getElementsByName("totalPrice");
-  //  	alert(prices);
-  //  }
+    
+    window.onload = function(){
+    	total();
+    }
     
 </script>   
 
@@ -265,14 +275,14 @@
                         <div class="box-header">
                             <h3>주문 요약</h3>
                         </div>
-                        <p class="text-muted">배송 및 추가 비용은 입력한 값을 기준으로 계산됩니다.</p>
+                        <p class="text-muted">배송 및 추가 비용을 포함한 값으로 계산됩니다.</p>
 
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
                                     <tr>
                                         <td>주문 총 합계</td>
-                                        <th>0원</th>
+                                        <th></th>
                                     </tr>
                                     <tr class="total">
                                         <td>총 합계</td>
