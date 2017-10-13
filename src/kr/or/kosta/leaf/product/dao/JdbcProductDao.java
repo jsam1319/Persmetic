@@ -529,100 +529,37 @@ public class JdbcProductDao implements ProductDao {
 	}
 	
 	
-	/*public List<Product> listByParams(Params params) {
-		List<Product> list = null;		
-		
+	
+
+	/** 출력페이지 계산을 위한 {검색유형, 검색값}에 대한 행의 수 반환 */
+	public int pageCountctn(int categoryNo) {
+		int count = 0;
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append(" SELECT PRODUCT_CODE,");
-		sb.append("        PRODUCT_NAME,");
-		sb.append("        PRODUCT_EXPLAIN,");
-		sb.append("        PRODUCT_BRAND,");
-		sb.append("        PRODUCT_COLOR,");
-		sb.append("        PRODUCT_TONE,");
-		sb.append("        PRODUCT_PRICE,");
-		sb.append("        PRODUCT_SOW,");
-		sb.append("        PRODUCT_HITS,");
-		sb.append("        CATEGORY_NO,");
-		sb.append("        PRODUCT_IMAGE");
-		sb.append(" FROM   (SELECT CEIL(rownum / ?) request_page,");
-		sb.append("                PRODUCT_CODE,");
-		sb.append("                PRODUCT_NAME,");
-		sb.append("                PRODUCT_EXPLAIN,");
-		sb.append("                PRODUCT_BRAND,");
-		sb.append("                PRODUCT_COLOR,");
-		sb.append("                PRODUCT_TONE,");
-		sb.append("                PRODUCT_PRICE,");
-		sb.append("                PRODUCT_SOW,");
-		sb.append("                PRODUCT_HITS,");
-		sb.append("                CATEGORY_NO,");
-		sb.append("                PRODUCT_IMAGE");
-		sb.append("         FROM   (SELECT PRODUCT_CODE,");
-		sb.append("                        PRODUCT_NAME,");
-		sb.append("                        PRODUCT_EXPLAIN,");
-		sb.append("                        PRODUCT_BRAND,");
-		sb.append("                        PRODUCT_COLOR,");
-		sb.append("                        PRODUCT_TONE,");
-		sb.append("                        PRODUCT_PRICE,");
-		sb.append("                        PRODUCT_SOW,");
-		sb.append("                        PRODUCT_HITS,");
-		sb.append("                        CATEGORY_NO,");
-		sb.append("                        PRODUCT_IMAGE");
-		sb.append("                 FROM   PRODUCT");
+		sb.append(" SELECT COUNT(PRODUCT_CODE) count");
+		sb.append(" FROM   PRODUCT");
+		sb.append(" WHERE  category_no=?");
 		
-		// 검색 유형별 WHERE 절 동적 추가
-		String type = params.getType();
-		String value = params.getValue();
-		if(type != null){
-			switch (params.getType()) {
-				case "name":    
-					sb.append(" WHERE  PRODUCT_NAME  LIKE ?");
-					value = "%" + value + "%";
-					break;
-				case "brand":  
-					sb.append(" WHERE  PRODUCT_BRAND LIKE ?");
-					value = "%" + value + "%";
-					break;
-				case "color":   
-					sb.append(" WHERE  PRODUCT_COLOR LIKE ?");
-					value = "%" + value + "%";
-					break;
-				case "tone":   
-					sb.append(" WHERE  PRODUCT_TONE LIKE ?");
-					value = "%" + value + "%";
-					break;
-			}
-		}
-		sb.append(" ORDER BY PRODUCT_CODE DESC))");
-		sb.append(" WHERE  request_page = ?");
-		
+				
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
-			pstmt.setInt(1, params.getPageSize());
 			
-			// 전체검색이 아닌경우 경우
-			if(type != null){
-				pstmt.setString(2, value);
-				pstmt.setInt(3, params.getPage());
-			}else{// 전체검색인 경우
-				pstmt.setInt(2, params.getPage());
-			}
-			
+			pstmt.setInt(1, categoryNo);
+
 			rs = pstmt.executeQuery();
-			list = new ArrayList<Product>();
 			
-			while(rs.next()){
-				Product prduct = createProduct(rs);
-				list.add(prduct);
+			if (rs.next()) {
+				count = rs.getInt("count");
 			}
-			System.out.println("listByParams 완료");
+			System.out.println("pageCount 완료");
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("JdbcProductDao.listByParams(Params params) 실행 중 예외발생", e);
+			throw new RuntimeException("JdbcProductDao.pageCount(Params params) 실행 중 예외발생", e);
 		} finally {
 			try {
 				if(rs != null)    rs.close();
@@ -630,52 +567,28 @@ public class JdbcProductDao implements ProductDao {
 				if(con != null)   con.close();
 			} catch (Exception e) {}
 		}
-		return list;
-	}*/
-
+		return count;
+	}
+	
 	/** 출력페이지 계산을 위한 {검색유형, 검색값}에 대한 행의 수 반환 */
-	public int pageCount(Params params) {
+	public int pageCounttone(String tone) {
 		int count = 0;
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+		
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT COUNT(PRODUCT_CODE) count");
 		sb.append(" FROM   PRODUCT");
+		sb.append(" WHERE  product_tone=?");
 		
-		// 검색 유형별 WHERE 절 동적 추가
-		String type = params.getType();
-		String value = params.getValue();
-		if(type != null){
-			switch (params.getType()) {
-				case "name":    
-					sb.append(" WHERE  PRODUCT_NAME  LIKE ?");
-					break;
-				case "brand":  
-					sb.append(" WHERE  PRODUCT_BRAND LIKE ?");
-					value = "%" + value + "%";
-					break;
-				case "color":   
-					sb.append(" WHERE  PRODUCT_COLOR LIKE ?");
-					value = "%" + value + "%";
-					break;
-				case "tone":   
-					sb.append(" WHERE  PRODUCT_TONE LIKE ?");
-					value = "%" + value + "%";
-					break;
-			}
-		}
 				
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
-
-			// 전체검색이 아닌경우 경우
-			if(type != null){
-				pstmt.setString(1, value);
-			}
+			
+			pstmt.setString(1, tone);
 
 			rs = pstmt.executeQuery();
 			

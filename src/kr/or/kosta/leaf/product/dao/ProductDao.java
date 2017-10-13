@@ -38,8 +38,11 @@ public interface ProductDao {
 	/** {선택페이지, 검색유형, 검색값, 한페이지당 출력 행수}에 대한 상품목록 반환 */
 	public List<Product> listByParams(Params params, int categoryNo);
 	
-	/** 출력페이지 계산을 위한 {검색유형, 검색값}에 대한 행의 수 반환 */
-	public int pageCount(Params params);
+	/** 카테고리별 출력페이지 계산을 위한  행의 수 반환 */
+	public int pageCountctn(int categoryNo);
+	
+	/** 톤별 출력페이지 계산을 위한 행의 수 반환 */
+	public int pageCounttone(String tone);
 
 	/** 최근 생성된 제품의 코드 반환하는 메소드 */
 	public int getMaxProductCode();
@@ -49,8 +52,5 @@ public interface ProductDao {
 	
 	/** 톤에 대한 상품목록 반환 */
 	public List<Product> listByTone(Params params, String tone);
-	
-	/** 카테고리별 상품 갯수 */
-	/*public int productCount(int min, int max);*/
 	
 }

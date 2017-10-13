@@ -13,14 +13,14 @@ public interface ProductService {
 	
 	public List<Product> listByParams(Params params, int categoryNo); 
 	
-	public int pageCount(Params params);
+	public int pageCountctn(int categoryNo);
+	
+	public int pageCounttone(String tone);
 	
 	public int getMaxProductCode();
 	
 	public List<Product> listAll();
 	
 	public List<Product> listByTone(Params params, String tone);
-	
-	/*public int productCount(int min, int max);*/
 	
 }

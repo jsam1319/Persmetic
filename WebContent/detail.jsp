@@ -162,7 +162,7 @@
 		/** 장바구니버튼 클릭 이벤트*/
 		window.onload = function() {
 			setCreateButton();
-			print();
+			categoryName();
 		};
 		setCreateButton = function() {
 			var buttons = $("a[name=cart_create]");
@@ -210,33 +210,29 @@
 				$("#review").load("reviewList.leaf?page=1&product_code=${product.productCode}")
 			})
 			
-			/** grade 찍기 */
-			/* var grade="";
-			  for(var g=0; g<${product.grade}; g++){
-				  grade += "<i class='fa fa-star'></i>"
-			  }
-			  $("#grade").html(grade); */
+			
 		});
 		
+		
+		 function categoryName(){
+	          var ctg = "";
+	          var categoryNo = ${product.categoryNo}
+	           switch(categoryNo){
+	        	   case 110 :  ctg+="파운데이션"; break;
+	               case 120 :  ctg+="쿠션"; break;
+	               case 130 :  ctg+="파우더&컴팩트"; break;
+	               case 140 :  ctg+="메이크업 베이스&컨실러"; break;
+	               case 150 :  ctg+="블러셔&하이라이터"; break;
+	               case 210 :  ctg+="마스카라"; break;
+	               case 220 :  ctg+="아이섀도"; break;
+	               case 230 :  ctg+="아이브로우"; break;
+	               case 310 :  ctg+="립스틱"; break;
+	               case 320 :  ctg+="틴트&립글로즈"; break;
+	             default   :   return; break;
+	           }
+	          $("#category1").append(ctg);
+	       }
 	 	
- 	 	function print(){
- 			var ctg = "";
-	 		switch("${product.categoryNo}"){
-	 		case 110 :	ctg+="파운데이션"; break;
-	 		case 120 :	ctg+="쿠션"; break;
-	 		case 130 :	ctg+="파우더&컴팩트"; break;
-			case 140 :	ctg+="메이크업 베이스&컨실러"; break;
- 			case 150 :	ctg+="블러셔&하이라이터"; break;
-	 		case 210 :	ctg+="마스카라"; break;
-	 		case 220 :	ctg+="아이섀도"; break;
-	 		case 230 :	ctg+="아이브로우"; break;
-	 		case 310 :	ctg+="립스틱"; break;
-	 		case 320 :	ctg+="틴트&립글로즈"; break;
-	 		default	:	return; break;
-	 		}
- 			console.log(ctg)
- 			$("#category1").append(ctg);
-	}
 	</script>
 
 

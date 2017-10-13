@@ -60,8 +60,15 @@
 
         <div class="col-md-12">
           <ul class="breadcrumb">
-            <li><a href="index.leaf">Home</a></li>
-                        <li>제품별/톤별</li>
+          <li><a href="index.leaf">Home</a></li>
+            <c:choose>
+            <c:when test="${tone.categoryNo == 0}">
+              <li><a href="list_item.leaf?tone=${tone.productTone}">${tone.productTone}</a></li>
+            </c:when>
+            <c:otherwise>
+              <li><a id="category1" href="list_item.leaf?&category_no=${tone.categoryNo}"></a></li>
+            </c:otherwise>
+            </c:choose>
           </ul>
         </div>
 
@@ -104,18 +111,19 @@
 
 
 
-           <!-- Paging -->
-          <%-- <div class="pages">
-
+             <!-- Paging -->
+            <div class="pages">
             <nav aria-label="Page navigation">
+            <c:choose>
+               <c:when test="${tone.categoryNo == 0}">
                 <ul class="pagination">
                   <c:if test="${pageBuilder.isShowFirst()}">
-                    <li><a href="${pageBuilder.getQueryString(1)}"> << </a></li>
+                    <li><a href="${pageBuilder.getQueryString(1)}&tone=${tone.productTone}"> << </a></li>
                   </c:if>
 
                   <c:if test="${pageBuilder.isShowPrevious()}">
                     <li class="prev"><a
-                      href="${pageBuilder.getQueryString(pageBuilder.getPreviousStartPage())}"> < </a></li>
+                      href="${pageBuilder.getQueryString(pageBuilder.getPreviousStartPage())}&tone=${tone.productTone}"> < </a></li>
                   </c:if>
 
                   <c:forEach var="i" begin="${pageBuilder.currentStartPage }"
@@ -125,26 +133,64 @@
                         <li class="active"><a>${i}</a></li>
                       </c:when>
                       <c:otherwise>
-                        <li><a href="${pageBuilder.getQueryString(i)}">${i}</a></li>
+                        <li><a href="${pageBuilder.getQueryString(i)}&tone=${tone.productTone}">${i}</a></li>
                       </c:otherwise>
                     </c:choose>
                   </c:forEach>
 
                   <c:if test="${pageBuilder.isShowNext()}">
                     <li class="next"><a
-                      href="${pageBuilder.getQueryString(pageBuilder.getNextStartPage())}"> > </a></li>
+                      href="${pageBuilder.getQueryString(pageBuilder.getNextStartPage())}&tone=${tone.productTone}"> > </a></li>
                   </c:if>
 
                   <c:if test="${pageBuilder.isShowLast()}">
                     <li><a
-                      href="${pageBuilder.getQueryString(pageBuilder.getTotalPageCount())}"> >> </a></li>
+                      href="${pageBuilder.getQueryString(pageBuilder.getTotalPageCount())}&tone=${tone.productTone}"> >> </a></li>
+                  </c:if>
+                </ul>
+                 </c:when> 
+                 <c:otherwise>
+                <ul class="pagination">
+                  <c:if test="${pageBuilder.isShowFirst()}">
+                    <li><a href="${pageBuilder.getQueryString(1)}&category_no=${tone.categoryNo}"> << </a></li>
+                  </c:if>
+
+                  <c:if test="${pageBuilder.isShowPrevious()}">
+                    <li class="prev"><a
+                      href="${pageBuilder.getQueryString(pageBuilder.getPreviousStartPage())}&category_no=${tone.categoryNo}"> < </a></li>
+                  </c:if>
+
+                  <c:forEach var="i" begin="${pageBuilder.currentStartPage }"
+                    end="${pageBuilder.currentEndPage}" varStatus="status">
+                    <c:choose>
+                      <c:when test="${i==params.page}">
+                        <li class="active"><a>${i}</a></li>
+                      </c:when>
+                      <c:otherwise>
+                        <li><a href="${pageBuilder.getQueryString(i)}&category_no=${tone.categoryNo}">${i}</a></li>
+                      </c:otherwise>
+                    </c:choose>
+                  </c:forEach>
+
+                  <c:if test="${pageBuilder.isShowNext()}">
+                    <li class="next"><a
+                      href="${pageBuilder.getQueryString(pageBuilder.getNextStartPage())}&category_no=${tone.categoryNo}"> > </a></li>
+                  </c:if>
+
+                  <c:if test="${pageBuilder.isShowLast()}">
+                    <li><a
+                      href="${pageBuilder.getQueryString(pageBuilder.getTotalPageCount())}&category_no=${tone.categoryNo}"> >> </a></li>
                   </c:if>
 
                 </ul>
+                
+                </c:otherwise> 
+                </c:choose>
               </nav>
-          </div> --%>
+          </div> 
 
           <!-- /.Paging --> 
+
 
           
 
@@ -183,7 +229,8 @@
   <script>
   
     window.onload = function() {
-      
+    	categoryName()
+    	
       var addButton = $("a[name=addToCart]");
       
       
@@ -225,63 +272,27 @@
       })
       
       
-    /*  $(function(){
-        $("#category").change(function(){
-          var sel = $("#category2");
-          var value = $(this).val();
-          sel.children().remove();
-          sel.append('<option value="">카테고리</option>');
-          
-          if(value == '100'){
-            sel.append('<option value="110">파운데이션</option>');
-            sel.append('<option value="120">쿠션</option>');
-            sel.append('<option value="130">파우더&컴팩트</option>');
-            sel.append('<option value="140">메이크업 베이스&컨실러</option>');
-            sel.append('<option value="150">블러셔&하이라이터</option>');
-          }else if(value == '200'){
-            sel.append('<option value="210">마스카라</option>');
-            sel.append('<option value="220">아이섀도</option>');
-            sel.append('<option value="230">아이브로우</option>');
-          }else if(value == '300'){
-            sel.append('<option value="310">립스틱</option>');
-            sel.append('<option value="320">틴트&립글로즈</option>');
-          }
-
-          
-        })
-        
-      }) */
-      
-    /*  print();
     
-      function print(){
-        var ctg = "<li>";
-        console.log(${category.categoryNo})
-        if("${tone.productTone}"==null){
-          switch(${category.categoryNo}){
-          case 110 :  ctg+="파운데이션"; break;
-          case 120 :  ctg+="쿠션"; break;
-          case 130 :  ctg+="파우더&컴팩트"; break;
-          case 140 :  ctg+="메이크업 베이스&컨실러"; break;
-          case 150 :  ctg+="블러셔&하이라이터"; break;
-          case 210 :  ctg+="마스카라"; break;
-          case 220 :  ctg+="아이섀도"; break;
-          case 230 :  ctg+="아이브로우"; break;
-          case 310 :  ctg+="립스틱"; break;
-          case 320 :  ctg+="틴트&립글로즈"; break;
-          default : return; break;
-          }
-        }else{
-          ctg += "${tone.productTone}";
-        }
-        ctg+="</li>";
-        console.log(ctg)
-        $(".breadcrumb").append(ctg);
-    } */
-    
-    
-    }
-    
+      function categoryName(){
+          var ctg = "";
+          var categoryNo = ${tone.categoryNo}
+           switch(categoryNo){
+        	   case 110 :  ctg+="파운데이션"; break;
+               case 120 :  ctg+="쿠션"; break;
+               case 130 :  ctg+="파우더&컴팩트"; break;
+               case 140 :  ctg+="메이크업 베이스&컨실러"; break;
+               case 150 :  ctg+="블러셔&하이라이터"; break;
+               case 210 :  ctg+="마스카라"; break;
+               case 220 :  ctg+="아이섀도"; break;
+               case 230 :  ctg+="아이브로우"; break;
+               case 310 :  ctg+="립스틱"; break;
+               case 320 :  ctg+="틴트&립글로즈"; break;
+             default   :   return; break;
+           }
+          $("#category1").append(ctg);
+       }
+       
+     }
   </script>
 
 

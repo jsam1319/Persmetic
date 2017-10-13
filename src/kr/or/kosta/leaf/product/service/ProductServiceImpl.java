@@ -28,8 +28,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public int pageCount(Params params) {
-		return productDao.pageCount(params);
+	public int pageCountctn(int categoryNo) {
+		return productDao.pageCountctn(categoryNo);
+	}
+	
+	@Override
+	public int pageCounttone(String tone) {
+		return productDao.pageCounttone(tone);
 	}
 	
 	@Override
@@ -47,8 +52,4 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.listByTone(params, tone);
 	}
 	
-	/*@Override
-	public int productCount(int min, int max) {
-		return productDao.productCount(min, max);
-	}*/
 }
