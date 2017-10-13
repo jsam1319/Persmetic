@@ -33,7 +33,7 @@ public class ProductListController implements Controller {
 		if(request.getParameter("category_no") != null) {
 			int categoryNo = Integer.parseInt(request.getParameter("category_no"));
 			
-			Params params = new Params(page, null, null, 12, 5);
+			Params params = new Params(page, null, null, 16, 5);
 			
 			int totalRowCount = service.pageCount(params);
 			

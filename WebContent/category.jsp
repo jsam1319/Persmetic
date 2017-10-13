@@ -13,7 +13,7 @@
 <meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
 <meta name="keywords" content="">
 
-<title>Obaju : e-commerce template</title>
+<title>Persmetic</title>
 
 <meta name="keywords" content="">
 
@@ -66,12 +66,9 @@
         </div>
 
 
-        <!-- Side MenuBar -->
-        <jsp:include page="include/sideMenu.jsp"></jsp:include>
-        <!-- Side MenuBar End -->
 
 
-        <div class="col-md-9">
+        <div class="col-md-12">
 
 
           <div class="row products" >
@@ -79,7 +76,7 @@
 
               <c:forEach items="${list}" var="i">
                 <!--List -->
-                <div class=" col-md-4 col-sm-3">
+                <div class=" col-md-3 col-sm-3">
                   <a style="color: black" href="detail_item.leaf?product_code=${i.productCode}" class="image"> <img
                     src="/uploadphoto/${i.productImage}"
                     alt="image" class="img-responsive" >
