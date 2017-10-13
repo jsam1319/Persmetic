@@ -52,11 +52,8 @@ document.getElementById("button").onclick = function(){
 		  $("#question").show();
 	}
 	
+  }
 }
-}
-
-
-
 </script>
 
 <body style="background-color:#FBF8EF">
@@ -176,9 +173,6 @@ document.getElementById("button").onclick = function(){
 		<!-- /.FOOTER -->
 
     </div>
-    <!-- /#all -->
-
-    
 
     <!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->

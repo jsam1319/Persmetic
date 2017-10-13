@@ -1,18 +1,17 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <style>
 .button {
-	width: 80;
-	height: 60%;
-	background-color: black;
-	color: white;
-	border: 0;
-	outline: 0;
+  width: 80;
+  height: 60%;
+  background-color: black;
+  color: white;
+  border: 0;
+  outline: 0;
 }
 </style>
 
@@ -24,7 +23,7 @@
 <meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
 <meta name="keywords" content="">
 
-<title>Obaju : e-commerce template</title>
+<title>회원가입 페이지</title>
 
 <meta name="keywords" content="">
 
@@ -39,6 +38,8 @@
 <link href="css/owl.carousel.css" rel="stylesheet">
 <link href="css/owl.theme.css" rel="stylesheet">
 
+<link rel="shortcut icon" href="favicon.png">
+
 <!-- theme stylesheet -->
 <link href="css/style.default.css" rel="stylesheet"
   id="theme-stylesheet">
@@ -51,50 +52,50 @@
 <script>
 
 window.onload = function(){
-	document.getElementById("btnSubmit").onclick = function(){		
-		
-		if($("#repasswd").val().trim() != $("#passwd").val().trim()  ){
-			 $("#repwCheck").html("비밀번호가 일치하지 않습니다.");
-		}else{
-				 $("#repwCheck").html(""); 
-   					
-		}
-		
-		if($("#gender").val().trim() == '선택'){
-			 $("#genderCheck").html("성별을 선택하세요.");
-		      return false;			
-		}
-		if($("#job").val().trim() == '선택'){
-			 $("#jobCheck").html("직업을 선택하세요.");
-		      return false;			
-		}
-	}
-	
+  document.getElementById("btnSubmit").onclick = function(){    
+    
+    if($("#repasswd").val().trim() != $("#passwd").val().trim()  ){
+       $("#repwCheck").html("비밀번호가 일치하지 않습니다.");
+    }else{
+         $("#repwCheck").html(""); 
+            
+    }
+    
+    if($("#gender").val().trim() == '선택'){
+       $("#genderCheck").html("성별을 선택하세요.");
+          return false;     
+    }
+    if($("#job").val().trim() == '선택'){
+       $("#jobCheck").html("직업을 선택하세요.");
+          return false;     
+    }
+  }
+  
 
-	document.getElementById("btnId").onclick= function(){
-		var id = document.getElementById("id").value;
-		$.ajax({
-			method: "POST",
-			url: "/idCheck.leaf",
-			data: {"ctm_id":id},
-			
-			success:function(data) {
-				if($("#id").val().trim() == ''){
-					 $("#idchk").html("아이디를 입력해 주세요.");
-				      return false;			
-				}
-				
-				$('#idchk').html(data);
-			    
-			},
-			
-			error : function(data) {
-				alert("error!");
-				alert(data);
-			}
-		});
-		
-	}
+  document.getElementById("btnId").onclick= function(){
+    var id = document.getElementById("id").value;
+    $.ajax({
+      method: "POST",
+      url: "/idCheck.leaf",
+      data: {"ctm_id":id},
+      
+      success:function(data) {
+        if($("#id").val().trim() == ''){
+           $("#idchk").html("아이디를 입력해 주세요.");
+              return false;     
+        }
+        
+        $('#idchk').html(data);
+          
+      },
+      
+      error : function(data) {
+        alert("error!");
+        alert(data);
+      }
+    });
+    
+  }
 
 }
 
@@ -146,16 +147,7 @@ window.onload = function(){
             }
         }).open();
     }
- 
-    
-  //  window.onload = function(){
-  //    var prices=document.getElementsByName("totalPrice");
-  //    alert(prices);
-  //  }
-    
 </script>   
-
-<link rel="shortcut icon" href="favicon.png">
 
 </head>
 
